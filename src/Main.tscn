@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Main.gd" type="Script" id=1]
+
+[node name="Main" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="MenuButtons" type="VBoxContainer" parent="Panel"]
+margin_right = 1024.0
+margin_bottom = 600.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Game" type="Button" parent="Panel/MenuButtons"]
+margin_top = 254.0
+margin_right = 1024.0
+margin_bottom = 274.0
+text = "New Game"
+
+[node name="Host Game" type="Button" parent="Panel/MenuButtons"]
+margin_top = 278.0
+margin_right = 1024.0
+margin_bottom = 298.0
+text = "Host Game"
+
+[node name="Join Game" type="Button" parent="Panel/MenuButtons"]
+margin_top = 302.0
+margin_right = 1024.0
+margin_bottom = 322.0
+text = "Join Game"
+
+[node name="Exit" type="Button" parent="Panel/MenuButtons"]
+margin_top = 326.0
+margin_right = 1024.0
+margin_bottom = 346.0
+text = "Exit"
+[connection signal="pressed" from="Panel/MenuButtons/Exit" to="." method="_on_Exit_pressed"]
