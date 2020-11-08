@@ -19,6 +19,10 @@ config/name="frc2020-game-jam"
 run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Signals="*res://src/Singletons/Signals.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
