@@ -15,11 +15,11 @@ func _ready():
 		call_deferred("_reparent_area2d")
 
 func _reparent_area2d():
-	# make this area2d our parent so we can create a polygon2d in the editor, but 
+	# make this area2d our parent so we can create a polygon2d in the editor, but
 	# use an Area2D with a polygon shape and collision box in game
 	remove_child(area2d)
 	get_parent().add_child(area2d)
-	
+
 	get_parent().remove_child(self)
 	area2d.add_child(self)
 

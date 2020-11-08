@@ -1,0 +1,442 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/icons/techtree/center.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/techtree/tier3.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/techtree/tier2.png" type="Texture" id=3]
+[ext_resource path="res://assets/icons/techtree/tier1.png" type="Texture" id=4]
+
+[node name="TechTree" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TechConnectors" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TechTree" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 6
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin2" type="MarginContainer" parent="TechTree"]
+margin_top = 3.0
+margin_right = 1024.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="Row 1" type="HBoxContainer" parent="TechTree"]
+margin_top = 19.0
+margin_right = 1024.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 75 )
+alignment = 1
+
+[node name="TextureMine3" type="TextureRect" parent="TechTree/Row 1"]
+margin_left = 208.0
+margin_right = 283.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 2 )
+
+[node name="Mine3" type="TextureButton" parent="TechTree/Row 1/TextureMine3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginM" type="MarginContainer" parent="TechTree/Row 1"]
+margin_left = 287.0
+margin_right = 737.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 450, 0 )
+
+[node name="TextureMissile3" type="TextureRect" parent="TechTree/Row 1"]
+margin_left = 741.0
+margin_right = 816.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 2 )
+
+[node name="Missile3" type="TextureButton" parent="TechTree/Row 1/TextureMissile3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Row 2" type="HBoxContainer" parent="TechTree"]
+margin_top = 100.0
+margin_right = 1024.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 0, 75 )
+alignment = 1
+
+[node name="TextureMine2" type="TextureRect" parent="TechTree/Row 2"]
+margin_left = 308.0
+margin_right = 383.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 3 )
+
+[node name="Mine2" type="TextureButton" parent="TechTree/Row 2/TextureMine2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginM" type="MarginContainer" parent="TechTree/Row 2"]
+margin_left = 387.0
+margin_right = 637.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="TextureLaser2" type="TextureRect" parent="TechTree/Row 2"]
+margin_left = 641.0
+margin_right = 716.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 3 )
+
+[node name="Laser2" type="TextureButton" parent="TechTree/Row 2/TextureLaser2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Row 3" type="HBoxContainer" parent="TechTree"]
+margin_top = 181.0
+margin_right = 1024.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 0, 75 )
+alignment = 1
+
+[node name="TextureMine1" type="TextureRect" parent="TechTree/Row 3"]
+margin_left = 408.0
+margin_right = 483.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 4 )
+
+[node name="Mine1" type="TextureButton" parent="TechTree/Row 3/TextureMine1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MarginM" type="MarginContainer" parent="TechTree/Row 3"]
+margin_left = 487.0
+margin_right = 537.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="TextureLaser1" type="TextureRect" parent="TechTree/Row 3"]
+margin_left = 541.0
+margin_right = 616.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 4 )
+
+[node name="Laser1" type="TextureButton" parent="TechTree/Row 3/TextureLaser1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Middle Row" type="HBoxContainer" parent="TechTree"]
+margin_top = 262.0
+margin_right = 1024.0
+margin_bottom = 337.0
+rect_min_size = Vector2( 100, 0 )
+custom_constants/separation = 60
+alignment = 1
+
+[node name="TexturePower3" type="TextureRect" parent="TechTree/Middle Row"]
+margin_left = 69.0
+margin_right = 144.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 2 )
+
+[node name="Power3" type="TextureButton" parent="TechTree/Middle Row/TexturePower3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexturePower2" type="TextureRect" parent="TechTree/Middle Row"]
+margin_left = 204.0
+margin_right = 279.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 3 )
+
+[node name="Power2" type="TextureButton" parent="TechTree/Middle Row/TexturePower2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexturePower1" type="TextureRect" parent="TechTree/Middle Row"]
+margin_left = 339.0
+margin_right = 414.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 4 )
+
+[node name="Power1" type="TextureButton" parent="TechTree/Middle Row/TexturePower1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NationName" type="TextureRect" parent="TechTree/Middle Row"]
+margin_left = 474.0
+margin_right = 549.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Name" type="Label" parent="TechTree/Middle Row/NationName"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.5
+margin_top = -37.5
+margin_right = 37.5
+margin_bottom = 37.5
+rect_min_size = Vector2( 75, 75 )
+text = "Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureShield1" type="TextureRect" parent="TechTree/Middle Row"]
+margin_left = 609.0
+margin_right = 684.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 4 )
+
+[node name="Shield1" type="TextureButton" parent="TechTree/Middle Row/TextureShield1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureShield2" type="TextureRect" parent="TechTree/Middle Row"]
+margin_left = 744.0
+margin_right = 819.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 3 )
+
+[node name="Shield2" type="TextureButton" parent="TechTree/Middle Row/TextureShield2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureShield3" type="TextureRect" parent="TechTree/Middle Row"]
+margin_left = 879.0
+margin_right = 954.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 2 )
+
+[node name="Shield3" type="TextureButton" parent="TechTree/Middle Row/TextureShield3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Row 4" type="HBoxContainer" parent="TechTree"]
+margin_top = 343.0
+margin_right = 1024.0
+margin_bottom = 418.0
+rect_min_size = Vector2( 0, 75 )
+alignment = 1
+
+[node name="TextureScience1" type="TextureRect" parent="TechTree/Row 4"]
+margin_left = 408.0
+margin_right = 483.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 4 )
+
+[node name="Science1" type="TextureButton" parent="TechTree/Row 4/TextureScience1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginM" type="MarginContainer" parent="TechTree/Row 4"]
+margin_left = 487.0
+margin_right = 537.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="TextureLaser1" type="TextureRect" parent="TechTree/Row 4"]
+margin_left = 541.0
+margin_right = 616.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 4 )
+
+[node name="Laser1" type="TextureButton" parent="TechTree/Row 4/TextureLaser1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Row 5" type="HBoxContainer" parent="TechTree"]
+margin_top = 424.0
+margin_right = 1024.0
+margin_bottom = 499.0
+rect_min_size = Vector2( 0, 75 )
+alignment = 1
+
+[node name="TextureScience2" type="TextureRect" parent="TechTree/Row 5"]
+margin_left = 308.0
+margin_right = 383.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 3 )
+
+[node name="Science2" type="TextureButton" parent="TechTree/Row 5/TextureScience2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginM" type="MarginContainer" parent="TechTree/Row 5"]
+margin_left = 387.0
+margin_right = 637.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="TextureLaser2" type="TextureRect" parent="TechTree/Row 5"]
+margin_left = 641.0
+margin_right = 716.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 3 )
+
+[node name="Laser2" type="TextureButton" parent="TechTree/Row 5/TextureLaser2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Row 6" type="HBoxContainer" parent="TechTree"]
+margin_top = 505.0
+margin_right = 1024.0
+margin_bottom = 580.0
+rect_min_size = Vector2( 0, 75 )
+alignment = 1
+
+[node name="TextureScience3" type="TextureRect" parent="TechTree/Row 6"]
+margin_left = 208.0
+margin_right = 283.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 2 )
+
+[node name="Science3" type="TextureButton" parent="TechTree/Row 6/TextureScience3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginM" type="MarginContainer" parent="TechTree/Row 6"]
+margin_left = 287.0
+margin_right = 737.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 450, 0 )
+
+[node name="TextureLaser3" type="TextureRect" parent="TechTree/Row 6"]
+margin_left = 741.0
+margin_right = 816.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 2 )
+
+[node name="Laser3" type="TextureButton" parent="TechTree/Row 6/TextureLaser3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 75, 75 )
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="TechTree"]
+margin_top = 586.0
+margin_right = 1024.0
+margin_bottom = 596.0
+rect_min_size = Vector2( 0, 10 )
