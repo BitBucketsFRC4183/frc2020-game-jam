@@ -34,6 +34,19 @@ margin_right = 1024.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 0, 75 )
 
+[node name="TextureMine3" type="TextureRect" parent="TechTree/Row 1"]
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+
+[node name="Mine3" type="TextureButton" parent="TechTree/Row 1/TextureMine3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Row 2" type="HBoxContainer" parent="TechTree"]
 margin_top = 250.0
 margin_right = 1024.0
