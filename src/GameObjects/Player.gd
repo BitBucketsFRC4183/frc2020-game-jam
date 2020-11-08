@@ -11,10 +11,10 @@ var resources = {
 var score = 100
 
 var tech = {
-	"mine": Enums.raw_enum.mine1,
-	"energy": Enums.energy_enum.power1,
-	"science": Enums.science_enum.science1,
-	"missile": Enums.missile_enum.missile1,
-	"laser": Enums.laser_enum.laser1,
-	"shield": Enums.shield_enum.shield1
+	"mine": Enums.raw.mine1,
+	"energy": Enums.energy.power1,
+	"science": Enums.science.science1,
+	"missile": Enums.missile.missile1,
+	"laser": Enums.laser.laser1,
+	"shield": Enums.shield.shield1
 }
