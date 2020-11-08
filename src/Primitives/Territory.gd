@@ -3,11 +3,6 @@ extends CollisionPolygon2D
 export var color: Color = Color.black
 export var highlight_color: Color = Color.lightgray
 
-signal area_entered(area)
-signal area_exited(area)
-signal mouse_entered(area)
-signal mouse_exited(area)
-
 onready var area2d = $Area2D
 
 func _ready():
@@ -29,14 +24,6 @@ func _reparent_area2d():
 # Pass along some area2d signals to the parent
 func _on_Area2D_mouse_entered():
 	$Polygon2D.color = highlight_color
-	emit_signal("mouse_entered", area2d)
 
 func _on_Area2D_mouse_exited():
 	$Polygon2D.color = color
-	emit_signal("mouse_exited", area2d)
-
-func _on_Area2D_area_entered(area):
-	emit_signal("area_entered", area)
-
-func _on_Area2D_area_exited(area):
-	emit_signal("area_exited", area)
