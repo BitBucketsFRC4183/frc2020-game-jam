@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Primitives/Territory.gd" type="Script" id=1]
+
+[node name="Territory" type="CollisionPolygon2D"]
+polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "This is an Area2D with a polygon for collision and drawing. It should be used to make territories on the map"
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
