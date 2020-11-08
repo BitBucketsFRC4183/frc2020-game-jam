@@ -1,5 +1,4 @@
 extends Node2D
 
-func _on_Timer_timeout() -> void:
-	print("10 seconds gone ")
+func _on_DaysTimer_timeout() -> void:
 	Signals.emit_signal("day_passed")
