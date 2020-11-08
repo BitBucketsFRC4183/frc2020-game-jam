@@ -10,6 +10,8 @@ __meta__ = {
 }
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
