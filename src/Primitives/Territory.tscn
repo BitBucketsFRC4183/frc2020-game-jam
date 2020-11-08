@@ -12,7 +12,5 @@ __meta__ = {
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
