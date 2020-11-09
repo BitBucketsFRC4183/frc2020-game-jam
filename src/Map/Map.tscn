@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Primitives/Territory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GameObjects/ResourceBuildings/ScienceLab.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GameObjects/ResourceBuildings/PowerPlant.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/GameObjects/ResourceBuildings/Mine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Map/Camera2D.gd" type="Script" id=6]
 
 [node name="Map" type="Node2D"]
 
 [node name="Left" type="Node2D" parent="."]
-position = Vector2( 664, 1424 )
+position = Vector2( 601.472, 1197.23 )
 rotation = -3.14159
+scale = Vector2( 0.85, 0.85 )
 
 [node name="Territory" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 128.001, 264 )
@@ -229,7 +232,7 @@ territory_owner = 1
 color = Color( 0.764706, 0.196078, 0.196078, 1 )
 
 [node name="Right" type="Node2D" parent="."]
-position = Vector2( 1968, 368 )
+position = Vector2( 1492.31, 114.5 )
 
 [node name="Territory36" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 144, 136 )
@@ -636,18 +639,27 @@ polygon = PoolVector2Array( 640, 144, 696, -24, 592, -8, 520, 56, 608, 96 )
 territory_owner = 5
 color = Color( 0.721569, 0.52549, 0.156863, 1 )
 
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+
 [node name="Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 188.09, 171.12 )
-resource_type = 3
 
 [node name="Mine2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 183.848, 243.245 )
-resource_type = 3
 
 [node name="ScienceLab" parent="." instance=ExtResource( 2 )]
 position = Vector2( 298.264, 201.045 )
-resource_type = 3
 
 [node name="PowerPlant" parent="." instance=ExtResource( 3 )]
 position = Vector2( 272.78, 256.734 )
-resource_type = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 574.524, 267.103 )
+anchor_mode = 0
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+limit_smoothed = true
+script = ExtResource( 6 )

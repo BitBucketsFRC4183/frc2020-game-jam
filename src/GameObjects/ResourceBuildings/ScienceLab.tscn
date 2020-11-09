@@ -9,6 +9,7 @@ height = 16.0428
 
 [node name="ScienceLab" type="Area2D"]
 script = ExtResource( 2 )
+resource_type = 1
 resource_amt = 5
 
 [node name="Sprite" type="Sprite" parent="."]
