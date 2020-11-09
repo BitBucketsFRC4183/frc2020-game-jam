@@ -25,4 +25,5 @@ Signals="*res://src/Singletons/Signals.gd"
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0235294, 0.0235294, 0.0235294, 1 )
 environment/default_environment="res://default_env.tres"
