@@ -8,9 +8,32 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Client",
+"language": "GDScript",
+"path": "res://src/Network/Client.gd"
+}, {
+"base": "Node",
+"class": "GameLifecycleManager",
+"language": "GDScript",
+"path": "res://src/Network/GameLifecycleManager.gd"
+}, {
+"base": "Node",
+"class": "LobbyManager",
+"language": "GDScript",
+"path": "res://src/Network/LobbyManager.gd"
+}, {
+"base": "Node",
+"class": "Server",
+"language": "GDScript",
+"path": "res://src/Network/Server.gd"
+} ]
 _global_script_class_icons={
-
+"Client": "",
+"GameLifecycleManager": "",
+"LobbyManager": "",
+"Server": ""
 }
 
 [application]
@@ -22,11 +45,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Signals="*res://src/Singletons/Signals.gd"
-Enums="*res://src/Singletons/Enums.gd"
-
-Server="*res://src/Network/Server.gd"
+Network="*res://src/Network/Network.tscn"
 
 [rendering]
 
-environment/default_clear_color=Color( 0.0235294, 0.0235294, 0.0235294, 1 )
 environment/default_environment="res://default_env.tres"

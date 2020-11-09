@@ -1,4 +1,11 @@
 extends Node2D
 
-func _on_DaysTimer_timeout() -> void:
-	Signals.emit_signal("day_passed")
+var days = 0
+
+func _ready():
+	# The server sends us a day update and our client emits a day_passed signal
+	Signals.connect("day_passed", self, "_on_day_passed")
+	
+
+func _on_day_passed(day: int) -> void:
+	$MarginContainer/VBoxContainer/HBoxContainer/Day.text = "%d" % day

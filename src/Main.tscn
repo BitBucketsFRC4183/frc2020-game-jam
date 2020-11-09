@@ -45,4 +45,6 @@ margin_top = 326.0
 margin_right = 1024.0
 margin_bottom = 346.0
 text = "Exit"
+[connection signal="pressed" from="Panel/MenuButtons/Host Game" to="." method="_on_Host_Game_pressed"]
+[connection signal="pressed" from="Panel/MenuButtons/Join Game" to="." method="_on_Join_Game_pressed"]
 [connection signal="pressed" from="Panel/MenuButtons/Exit" to="." method="_on_Exit_pressed"]
