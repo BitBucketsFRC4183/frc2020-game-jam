@@ -23,8 +23,8 @@ config/icon="res://icon.png"
 
 Signals="*res://src/Singletons/Signals.gd"
 Enums="*res://src/Singletons/Enums.gd"
+Constants="*res://src/Singletons/Constants.gd"
 
 [rendering]
 
-environment/default_clear_color=Color( 0.0235294, 0.0235294, 0.0235294, 1 )
 environment/default_environment="res://default_env.tres"
