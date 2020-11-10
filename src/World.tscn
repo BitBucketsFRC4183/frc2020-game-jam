@@ -13,6 +13,14 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[node name="DaysTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Map" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+[connection signal="timeout" from="DaysTimer" to="." method="_on_DaysTimer_timeout"]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_right = 40.0
