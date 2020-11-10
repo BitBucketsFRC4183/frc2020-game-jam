@@ -10,19 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "Client",
+"class": "PlayersManager",
 "language": "GDScript",
-"path": "res://src/Network/Client.gd"
-}, {
-"base": "Node",
-"class": "GameLifecycleManager",
-"language": "GDScript",
-"path": "res://src/Network/GameLifecycleManager.gd"
-}, {
-"base": "Node",
-"class": "LobbyManager",
-"language": "GDScript",
-"path": "res://src/Network/LobbyManager.gd"
+"path": "res://src/Network/PlayersManager.gd"
 }, {
 "base": "Node",
 "class": "Server",
@@ -30,9 +20,7 @@ _global_script_classes=[ {
 "path": "res://src/Network/Server.gd"
 } ]
 _global_script_class_icons={
-"Client": "",
-"GameLifecycleManager": "",
-"LobbyManager": "",
+"PlayersManager": "",
 "Server": ""
 }
 
@@ -46,6 +34,7 @@ config/icon="res://icon.png"
 
 Signals="*res://src/Singletons/Signals.gd"
 Network="*res://src/Network/Network.tscn"
+RPC="*res://src/Network/RPC.gd"
 
 [rendering]
 
