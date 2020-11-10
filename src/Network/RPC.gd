@@ -72,4 +72,10 @@ remotesync func post_start_game():
 	# this is called on both clients and servers after the game has started
 	Signals.emit_signal("post_start_game")
 
+func send_player_updated(player: PlayerData):
+	# sent our updated player info to all servers
+	rpc("player_updated", get_tree().get_network_unique_id(), player)
+
+remotesync func player_updated(id: int, player):
+	Signals.emit_signal("player_updated", id, player);
 

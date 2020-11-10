@@ -47,8 +47,9 @@ func host_game(player_name):
 	peer = NetworkedMultiplayerENet.new()
 	peer.create_server(DEFAULT_PORT, MAX_PLAYERS)
 	get_tree().set_network_peer(peer)
-	playersManager.add_player(get_tree().get_network_unique_id())
-	RPC.send_player_name(player_name)
+	var player = playersManager.add_player(get_tree().get_network_unique_id())
+	RPC.send_player_updated(player)
+
 
 func join_game(ip, player_name):
 	peer = NetworkedMultiplayerENet.new()

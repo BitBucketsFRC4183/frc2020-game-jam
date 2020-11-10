@@ -5,6 +5,7 @@ signal resource_generated
 
 
 # Notify when the connected players change
+signal player_updated(id, player)
 signal player_name_updated(id, name)
 
 # These are lifecycle signals. The server sends a

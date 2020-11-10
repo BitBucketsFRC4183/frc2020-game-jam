@@ -49,7 +49,7 @@ func post_start_game():
 
 func _on_DaysTimer_timeout():
 	day += 1
-	print ("Server: It's a new day! %d" % day)
+	print_debug("Server: It\'s a new day! %d" % day)
 	
 	# send a message to clients
 	RPC.send_server_day_updated(day)
