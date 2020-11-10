@@ -11,8 +11,8 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 
 [node name="MenuButtons" type="VBoxContainer" parent="Panel"]
 margin_right = 1024.0

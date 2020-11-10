@@ -4,9 +4,12 @@ func _ready() -> void:
 	Signals.connect("resource_generated", self, "_on_resource_generated")
 
 var resources = {
-	"power": 100,
-	"science": 100,
-	"raw": 20,
+	Enums.resource_types.power: 100,
+	Enums.resource_types.science: 100,
+	Enums.resource_types.raw: 20,
+}
+
+var stats = {
 	"missiles": 5,
 	"lasers": 10
 }
