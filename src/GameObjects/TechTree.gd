@@ -4,12 +4,32 @@ extends Control
 func _ready():
 	pass # Replace with function body.
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+var tech_costs = {
+	"mine": {
+		"mine2": 100,
+		"mine3": 300
+	},
+	"power": {
+		"power2": 100,
+		"power3": 200
+	},
+	"science": {
+		"science2": 200,
+		"science3": 400
+	},
+	"missile": {
+		"missile2": 300,
+		"missile3": 600
+	},
+	"laser": {
+		"laser2": 250,
+		"laser3": 500
+	},
+	"shield": {
+		"shield2": 100,
+		"shield3": 300
+	}
+}
 
 func _on_Tech_pressed(tech_name):
 	#Generic method for when a tech is pressed
