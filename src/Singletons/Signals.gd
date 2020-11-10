@@ -1,6 +1,7 @@
 extends Node
 
 signal day_passed(day)
+signal resource_generated
 
 
 # Notify when the connected players change
