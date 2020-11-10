@@ -43,6 +43,8 @@ func _on_Tech_pressed(tech_name):
 	
 	if(can_research):
 		popup = "ResearchPopup"
+		#Set the player's selected tech to this
+		PlayerData.new().selected_tech = tech_name.substr(0, tech_name.length() - 1).to_lower()
 	else:
 		popup = "ResearchFailedPopup"
 	
