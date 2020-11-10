@@ -63,6 +63,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelMine3" type="Label" parent="TechTree/Row 1/TextureMine3/Mine3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Mine 
+Tier 3"
+align = 1
+valign = 1
+
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 1"]
 margin_left = 735.0
 margin_right = 1185.0
@@ -81,6 +89,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMissile3" type="Label" parent="TechTree/Row 1/TextureMissile3/Missile3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Missile
+Tier 3"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -108,6 +127,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelMine2" type="Label" parent="TechTree/Row 2/TextureMine2/Mine2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Mine
+Tier 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 2"]
 margin_left = 835.0
 margin_right = 1085.0
@@ -126,6 +156,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMissile2" type="Label" parent="TechTree/Row 2/TextureMissile2/Missile2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Missile
+Tier 2"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -153,6 +194,17 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="LabelMine1" type="Label" parent="TechTree/Row 3/TextureMine1/Mine1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Mine
+Tier 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 3"]
 margin_left = 935.0
 margin_right = 985.0
@@ -171,6 +223,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMine2" type="Label" parent="TechTree/Row 3/TextureMissile1/Missile1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Missile
+Tier 1"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -199,6 +262,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelPower3" type="Label" parent="TechTree/Middle Row/TexturePower3/Power3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Power
+Tier 3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TexturePower2" type="TextureRect" parent="TechTree/Middle Row"]
 margin_left = 652.0
 margin_right = 727.0
@@ -215,6 +289,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelPower2" type="Label" parent="TechTree/Middle Row/TexturePower2/Power2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Power
+Tier 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TexturePower1" type="TextureRect" parent="TechTree/Middle Row"]
 margin_left = 787.0
 margin_right = 862.0
@@ -227,6 +312,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelPower1" type="Label" parent="TechTree/Middle Row/TexturePower1/Power1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Power
+Tier 1"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -272,6 +368,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelShield1" type="Label" parent="TechTree/Middle Row/TextureShield1/Shield1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Shield
+Tier 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureShield2" type="TextureRect" parent="TechTree/Middle Row"]
 margin_left = 1192.0
 margin_right = 1267.0
@@ -288,6 +395,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelShield2" type="Label" parent="TechTree/Middle Row/TextureShield2/Shield2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Shield
+Tier 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureShield3" type="TextureRect" parent="TechTree/Middle Row"]
 margin_left = 1327.0
 margin_right = 1402.0
@@ -300,6 +418,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelShield3" type="Label" parent="TechTree/Middle Row/TextureShield3/Shield3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Shield
+Tier 3"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -327,6 +456,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelScience1" type="Label" parent="TechTree/Row 4/TextureScience1/Science1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Science
+Tier 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 4"]
 margin_left = 935.0
 margin_right = 985.0
@@ -345,6 +485,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelLaser1" type="Label" parent="TechTree/Row 4/TextureLaser1/Laser1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Laser
+Tier 1"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -372,6 +523,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelScience2" type="Label" parent="TechTree/Row 5/TextureScience2/Science2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Science
+Tier 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 5"]
 margin_left = 835.0
 margin_right = 1085.0
@@ -390,6 +552,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelLaser2" type="Label" parent="TechTree/Row 5/TextureLaser2/Laser2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Laser
+Tier 2"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -417,6 +590,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LabelScience3" type="Label" parent="TechTree/Row 6/TextureScience3/Science3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Science
+Tier 3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 6"]
 margin_left = 735.0
 margin_right = 1185.0
@@ -435,6 +619,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelLaser3" type="Label" parent="TechTree/Row 6/TextureLaser3/Laser3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Laser
+Tier 3"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
