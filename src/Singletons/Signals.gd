@@ -20,3 +20,6 @@ signal post_start_game
 signal connecterd_to_server
 signal connection_to_server_failed
 signal server_disconnected
+
+
+signal asteroid_impact(impact_point, explosion_radius)

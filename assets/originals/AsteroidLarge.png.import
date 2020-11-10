@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Asteroid Marker.png-945dd29436d9a5c1b8cab2cf0d5fd75b.stex"
+path="res://.import/AsteroidLarge.png-ddfbb41d572e6194cf5846f73ad9d37f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/Asteroid Marker.png"
-dest_files=[ "res://.import/Asteroid Marker.png-945dd29436d9a5c1b8cab2cf0d5fd75b.stex" ]
+source_file="res://assets/originals/AsteroidLarge.png"
+dest_files=[ "res://.import/AsteroidLarge.png-ddfbb41d572e6194cf5846f73ad9d37f.stex" ]
 
 [params]
 
