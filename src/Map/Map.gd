@@ -20,6 +20,13 @@ func _on_game_building_cancelled():
 func _process(delta: float) -> void:
 	if instanced_scene:
 		instanced_scene.position =  get_local_mouse_position()
+		if instanced_scene.placeable:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			Input.set_default_cursor_shape(Input.CURSOR_FORBIDDEN)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and instanced_scene:
