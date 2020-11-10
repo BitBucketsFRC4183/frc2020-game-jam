@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/icons/Asteroids/AsteroidSmall.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/Asteroids/AsteroidLarge.png" type="Texture" id=1]
 [ext_resource path="res://assets/icons/Asteroids/Asteroid Marker.png" type="Texture" id=2]
 [ext_resource path="res://src/GameObjects/Asteroids/Asteroid.gd" type="Script" id=3]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Spin"
+[sub_resource type="Animation" id=2]
+length = 5.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -16,7 +16,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
+"times": PoolRealArray( 0, 2.5, 5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 180.0, 360.0 ]
@@ -24,31 +24,28 @@ tracks/0/keys = {
 
 [sub_resource type="CircleShape2D" id=3]
 
-[node name="FallingAsteroidSmall" type="Node2D"]
+[node name="FallingAsteroidLarge" type="Node2D"]
 script = ExtResource( 3 )
-base_speed = 500
-explosion_radius = 128
+explosion_radius = 1024
 
 [node name="ImpactPoint" type="Area2D" parent="."]
 
 [node name="Asteroid Marker" type="Sprite" parent="ImpactPoint"]
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 offset = Vector2( -1, -5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactPoint"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Asteroid" type="Area2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Asteroid"]
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 offset = Vector2( 10, 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Asteroid/Sprite"]
 autoplay = "Spin"
-anims/Spin = SubResource( 1 )
+anims/Spin = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
 shape = SubResource( 3 )
