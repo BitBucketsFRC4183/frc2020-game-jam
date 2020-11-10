@@ -8,3 +8,4 @@ enum laser {laser1, laser2, laser3}
 enum shield {shield1, shield2, shield3}
 
 enum territory_types {normal, resource, destroyed}
+enum resource_types {power, science, raw, EXCEPTION}

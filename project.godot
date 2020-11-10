@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "PlayerData",
+"language": "GDScript",
+"path": "res://src/GameObjects/PlayerData.gd"
+}, {
+"base": "Node",
+"class": "PlayersManager",
+"language": "GDScript",
+"path": "res://src/Network/PlayersManager.gd"
+}, {
+"base": "Node",
+"class": "Server",
+"language": "GDScript",
+"path": "res://src/Network/Server.gd"
+} ]
 _global_script_class_icons={
-
+"PlayerData": "",
+"PlayersManager": "",
+"Server": ""
 }
 
 [application]
@@ -24,6 +41,8 @@ config/icon="res://icon.png"
 Signals="*res://src/Singletons/Signals.gd"
 Enums="*res://src/Singletons/Enums.gd"
 Constants="*res://src/Singletons/Constants.gd"
+Network="*res://src/Network/Network.tscn"
+RPC="*res://src/Network/RPC.gd"
 
 [display]
 
