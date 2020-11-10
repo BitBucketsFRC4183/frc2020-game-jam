@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/icons/techtree/center.png" type="Texture" id=1]
 [ext_resource path="res://assets/icons/techtree/tier3.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/icons/techtree/tier1.png" type="Texture" id=4]
 [ext_resource path="res://src/GameObjects/TechTree.gd" type="Script" id=5]
 [ext_resource path="res://src/GameObjects/ResearchPopup.gd" type="Script" id=6]
+[ext_resource path="res://src/GameObjects/ResearchFailedPopup.gd" type="Script" id=7]
 
 [node name="TechTree" type="Control"]
 anchor_right = 1.0
@@ -453,6 +454,7 @@ script = ExtResource( 6 )
 [node name="ResearchFailedPopup" type="AcceptDialog" parent="."]
 margin_right = 83.0
 margin_bottom = 58.0
+script = ExtResource( 7 )
 [connection signal="pressed" from="TechTree/Row 1/TextureMine3/Mine3" to="." method="_on_Tech_pressed" binds= [ "Mine3" ]]
 [connection signal="pressed" from="TechTree/Row 1/TextureMissile3/Missile3" to="." method="_on_Tech_pressed" binds= [ "Missile3" ]]
 [connection signal="pressed" from="TechTree/Row 2/TextureMine2/Mine2" to="." method="_on_Tech_pressed" binds= [ "Mine2" ]]
@@ -466,3 +468,4 @@ margin_bottom = 58.0
 [connection signal="pressed" from="TechTree/Row 6/TextureScience3/Science3" to="." method="_on_Tech_pressed" binds= [ "Science3" ]]
 [connection signal="pressed" from="TechTree/Row 6/TextureLaser3/Laser3" to="." method="_on_Tech_pressed" binds= [ "Laser3" ]]
 [connection signal="about_to_show" from="ResearchPopup" to="ResearchPopup" method="set_popup_properties"]
+[connection signal="about_to_show" from="ResearchFailedPopup" to="ResearchFailedPopup" method="set_popup_properties"]

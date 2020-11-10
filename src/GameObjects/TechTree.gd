@@ -18,11 +18,8 @@ func _on_Tech_pressed(tech_name):
 	#	Is tech the next tier (can't directly research Tier 3)
 	print(tech_name)
 	
-	var can_research = true
+	var can_research = is_tech_valid(tech_name)
 	var popup: String
-	
-	#Not complete, still testing
-	is_tech_valid(tech_name)
 	
 	if(can_research):
 		popup = "ResearchPopup"
@@ -35,8 +32,10 @@ func _on_Tech_pressed(tech_name):
 
 func is_tech_valid(tech):
 	var tech_name = tech.substr(0, tech.length() - 1).to_lower()
-	var tech_num = int(tech.substr(tech.length() - 1))
+	var tech_num = int(tech.substr(tech.length() - 1)) - 1
 	
-	print(tech_name)
-	print(tech_num)
+	if(PlayerData.new().tech_level[tech_name] + 1 == tech_num):
+		return true
+	else:
+		return false
 	pass
