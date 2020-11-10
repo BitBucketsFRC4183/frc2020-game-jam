@@ -10,10 +10,12 @@
 [ext_resource path="res://assets/icons/Power Plant.png" type="Texture" id=9]
 
 [node name="GUI" type="MarginContainer"]
-anchor_top = 1.0
+anchor_left = 0.017
+anchor_top = 0.844
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -168.0
+margin_left = -32.64
+margin_top = 0.47998
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20

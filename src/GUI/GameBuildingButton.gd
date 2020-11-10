@@ -23,6 +23,5 @@ func _ready() -> void:
 			texture_normal = load("res://assets/icons/Shield.png")
 
 func _on_GameBuildingButton_pressed() -> void:
-	# pass the image of the button to be used as the cursor
-	# as well as the name of the building to be used to instance the scene (used to check hitboxes)
+	# pass the name of the building to be used to instance the scene (used to check hitboxes)
 	emit_signal("selected", Enums.game_buildings.keys()[building])

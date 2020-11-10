@@ -7,3 +7,4 @@ signal day_passed
 signal resource_generated
 signal game_building_selected
 signal game_building_cancelled
+signal game_building_placed

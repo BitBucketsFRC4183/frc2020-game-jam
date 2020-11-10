@@ -8,6 +8,6 @@ enum laser {laser1, laser2, laser3}
 enum shield {shield1, shield2, shield3}
 
 enum territory_types {normal, resource, destroyed}
-enum resource_types {power, science, raw, EXCEPTION}
+enum resource_types {raw, power, science, EXCEPTION}
 # capital since used in GameBuildingButton/Map scene to instance respective scenes
 enum game_buildings {Mine, PowerPlant, ScienceLab, Radar, Missile, Laser, Shield}
