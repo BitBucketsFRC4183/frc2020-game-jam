@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/GameObjects/Player.gd"
+}, {
 "base": "Resource",
 "class": "PlayerData",
 "language": "GDScript",
@@ -23,11 +28,18 @@ _global_script_classes=[ {
 "class": "Server",
 "language": "GDScript",
 "path": "res://src/Network/Server.gd"
+}, {
+"base": "CollisionPolygon2D",
+"class": "Territory",
+"language": "GDScript",
+"path": "res://src/Primitives/Territory.gd"
 } ]
 _global_script_class_icons={
+"Player": "",
 "PlayerData": "",
 "PlayersManager": "",
-"Server": ""
+"Server": "",
+"Territory": ""
 }
 
 [application]

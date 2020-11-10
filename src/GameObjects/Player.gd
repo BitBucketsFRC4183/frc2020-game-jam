@@ -1,4 +1,5 @@
 extends Node2D
+class_name Player
 
 onready var data: PlayerData = PlayerData.new()
 
