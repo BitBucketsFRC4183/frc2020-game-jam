@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/GUI/GameBuildingButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/icons/Lab.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/Laser.png" type="Texture" id=3]
+[ext_resource path="res://assets/icons/Shield.png" type="Texture" id=4]
+[ext_resource path="res://assets/icons/Radar.png" type="Texture" id=5]
+[ext_resource path="res://assets/icons/Missile.png" type="Texture" id=6]
+[ext_resource path="res://src/GUI/GUI.gd" type="Script" id=8]
+[ext_resource path="res://assets/icons/Power Plant.png" type="Texture" id=9]
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildingButtons" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -160.758
+margin_bottom = -32.7579
+alignment = 1
+
+[node name="GameBuildingButton" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_right = 628.0
+margin_bottom = 128.0
+building = 0
+
+[node name="GameBuildingButton2" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 632.0
+margin_right = 760.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 9 )
+building = 1
+
+[node name="GameBuildingButton3" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 764.0
+margin_right = 892.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 2 )
+building = 2
+
+[node name="GameBuildingButton4" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 896.0
+margin_right = 1024.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 5 )
+building = 3
+
+[node name="GameBuildingButton5" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 1028.0
+margin_right = 1156.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 6 )
+building = 4
+
+[node name="GameBuildingButton6" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 1160.0
+margin_right = 1288.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 3 )
+building = 5
+
+[node name="GameBuildingButton7" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 1292.0
+margin_right = 1420.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 4 )
+building = 6
+
+[node name="Stats" type="VBoxContainer" parent="."]
+margin_right = 158.0
+margin_bottom = 32.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats"]
+margin_top = 18.0
+margin_right = 158.0
+margin_bottom = 32.0
+
+[node name="DayLabel" type="Label" parent="Stats/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 14.0
+text = "Day:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day" type="Label" parent="Stats/HBoxContainer"]
+margin_left = 32.0
+margin_right = 40.0
+margin_bottom = 14.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="selected" from="BuildingButtons/GameBuildingButton" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton2" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton3" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton4" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton5" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton6" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton7" to="." method="_on_GameBuildingButton_selected"]

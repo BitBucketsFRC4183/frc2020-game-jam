@@ -10,7 +10,7 @@ const MAX_PLAYERS = 5
 var peer: NetworkedMultiplayerENet = null
 
 onready var server: Server = $Server
-onready var playersManager: PlayersManager = $PlayersManager
+
 
 func _ready():
 	# wire this up so know when our signat fails to connect
@@ -19,10 +19,6 @@ func _ready():
 	# these might belong in a lobby UI
 	get_tree().connect("connected_to_server", self, "_connected_ok")
 	get_tree().connect("connection_failed", self, "_connected_fail")
-
-	
-	# pass along some shared data to our child nodes
-	server.playersManager = playersManager
 	
 
 # Callback from SceneTree, only for clients (not server).
@@ -49,7 +45,7 @@ func host_game(player_name):
 	get_tree().set_network_peer(peer)
 
 	# create our player locally and send it to the others
-	var player = playersManager.add_player(get_tree().get_network_unique_id())
+	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
 	RPC.send_player_updated(player)
 
 
@@ -59,7 +55,7 @@ func join_game(ip, player_name):
 	get_tree().set_network_peer(peer)
 
 	# create our player locally and send it to the others
-	var player = playersManager.add_player(get_tree().get_network_unique_id())
+	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
 	RPC.send_player_updated(player)
 
 
