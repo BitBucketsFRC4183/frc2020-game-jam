@@ -20,14 +20,6 @@ remotesync func server_day_updated(day):
 	print_debug ("Client: a new day: %d" % day)
 
 	Signals.emit_signal("day_passed", day)
-
-func send_player_name(name: String) -> void:
-	# Send our name to all clients
-	rpc("player_name_updated", get_tree().get_network_unique_id(), name)
-
-remotesync func player_name_updated(id: int, name: String) -> void:
-	# when a new player connects, update our players dictionary
-	Signals.emit_signal("player_name_updated", id, name)	
 	
 
 func send_players_info(id: int, players: Dictionary) -> void:
@@ -39,7 +31,7 @@ remotesync func update_players(players: Dictionary) -> void:
 	Signals.emit_signal("update_connected_players", players)	
 
 
-func send_pre_start_game(players: Dictionary):
+func send_pre_start_game(players: Array):
 	# notify clients we are all ready to start
 	assert(get_tree().is_network_server())
 
@@ -48,10 +40,10 @@ func send_pre_start_game(players: Dictionary):
 	# Call to pre-start game for everyone to get setup
 	rpc("pre_start_game", players)
 
-remotesync func pre_start_game(players: Dictionary):
+remotesync func pre_start_game(players: Array):
 	# Do any prep work to start the game, like create world, setup players, etc
 	print("Client: Preparing to start game")
-	Signals.emit_signal("pre_start_game")
+	Signals.emit_signal("pre_start_game", players)
 
 
 func send_ready_to_start():

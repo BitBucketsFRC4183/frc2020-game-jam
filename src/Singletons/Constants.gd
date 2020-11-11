@@ -23,3 +23,21 @@ var building_costs := {
 	"Laser": BuildingCost.new(Enums.resource_types.raw, 10, Enums.resource_types.power, true),
 	"Shield": BuildingCost.new(Enums.resource_types.power, 10, Enums.resource_types.science, true),
 }
+
+const num_players = 5
+const random_names = [
+	"Tim",
+	"Bob",
+	"Gorak the Cruel",
+	"Gandhi",
+	"Forecia"
+]
+
+# Note: This is duplicated in the Territory.gd...
+const player_colors = [
+	Color.red,
+	Color.blue,
+	Color.green,
+	Color.purple,
+	Color.aqua
+]

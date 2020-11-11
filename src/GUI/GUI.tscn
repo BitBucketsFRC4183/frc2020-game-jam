@@ -82,8 +82,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Stats"]
+margin_top = 18.0
 margin_right = 158.0
-margin_bottom = 14.0
+margin_bottom = 32.0
 
 [node name="DayLabel" type="Label" parent="Stats/HBoxContainer"]
 margin_right = 28.0
@@ -96,28 +97,6 @@ __meta__ = {
 [node name="Day" type="Label" parent="Stats/HBoxContainer"]
 margin_left = 32.0
 margin_right = 40.0
-margin_bottom = 14.0
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Stats"]
-margin_top = 18.0
-margin_right = 158.0
-margin_bottom = 32.0
-
-[node name="ResourcesLabel" type="Label" parent="Stats/HBoxContainer2"]
-margin_right = 146.0
-margin_bottom = 14.0
-text = "Player Raw Resources: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Raw" type="Label" parent="Stats/HBoxContainer2"]
-margin_left = 150.0
-margin_right = 158.0
 margin_bottom = 14.0
 text = "0"
 __meta__ = {

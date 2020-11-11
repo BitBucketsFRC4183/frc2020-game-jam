@@ -1,6 +1,9 @@
 class_name GameBuilding
 extends Area2D
 
+# the index of the player who owns this building
+export var player_num := 0
+
 var placeable := false
 
 # set to true when we enter an area which is NOT a territory
