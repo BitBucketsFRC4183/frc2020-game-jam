@@ -8,7 +8,7 @@ radius = 20.8798
 
 [node name="PowerPlant" type="Area2D"]
 script = ExtResource( 1 )
-resource_type = 0
+resource_type = 1
 resource_amt = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

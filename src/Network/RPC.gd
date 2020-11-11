@@ -20,15 +20,15 @@ remotesync func server_day_updated(day):
 	print_debug ("Client: a new day: %d" % day)
 
 	Signals.emit_signal("day_passed", day)
-	
+
 
 func send_players_info(id: int, players: Dictionary) -> void:
-	# Anytime a new player connects, send them a dictionary of players 
+	# Anytime a new player connects, send them a dictionary of players
 	rpc_id(id, "update_players", players)
 
 remotesync func update_players(players: Dictionary) -> void:
 	# when a new player connects, update our players dictionary
-	Signals.emit_signal("update_connected_players", players)	
+	Signals.emit_signal("update_connected_players", players)
 
 
 func send_pre_start_game(players: Array):

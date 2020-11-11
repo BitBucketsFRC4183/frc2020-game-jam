@@ -11,4 +11,4 @@ func _ready():
 func _on_pre_start_game(players: Array):
 	# tell the server we are ready
 	RPC.send_ready_to_start()
-	
+
