@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 var scene_path: String
 
@@ -13,6 +13,7 @@ func _input(event: InputEvent) -> void:
 # parameter is just there so that the signal works
 func restore_cursor(building):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 
 func _on_GameBuildingButton_selected(building) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

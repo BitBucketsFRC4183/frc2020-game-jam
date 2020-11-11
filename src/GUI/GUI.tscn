@@ -9,79 +9,124 @@
 [ext_resource path="res://src/GUI/GUI.gd" type="Script" id=8]
 [ext_resource path="res://assets/icons/Power Plant.png" type="Texture" id=9]
 
-[node name="GUI" type="MarginContainer"]
-anchor_left = 0.017
-anchor_top = 0.844
+[node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -32.64
-margin_top = 0.47998
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 1900.0
-margin_bottom = 148.0
+[node name="BuildingButtons" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -160.758
+margin_bottom = -32.7579
 alignment = 1
 
-[node name="GameBuildingButton" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 480.0
-margin_right = 608.0
+[node name="GameBuildingButton" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_right = 628.0
 margin_bottom = 128.0
+building = 0
 
-[node name="GameBuildingButton2" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 612.0
-margin_right = 740.0
+[node name="GameBuildingButton2" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 632.0
+margin_right = 760.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 9 )
 building = 1
 
-[node name="GameBuildingButton3" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 744.0
-margin_right = 872.0
+[node name="GameBuildingButton3" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 764.0
+margin_right = 892.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 2 )
 building = 2
 
-[node name="GameBuildingButton4" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 876.0
-margin_right = 1004.0
+[node name="GameBuildingButton4" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 896.0
+margin_right = 1024.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 5 )
 building = 3
 
-[node name="GameBuildingButton5" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 1008.0
-margin_right = 1136.0
+[node name="GameBuildingButton5" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 1028.0
+margin_right = 1156.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 6 )
 building = 4
 
-[node name="GameBuildingButton6" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 1140.0
-margin_right = 1268.0
+[node name="GameBuildingButton6" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 1160.0
+margin_right = 1288.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 3 )
 building = 5
 
-[node name="GameBuildingButton7" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 1272.0
-margin_right = 1400.0
+[node name="GameBuildingButton7" parent="BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 1292.0
+margin_right = 1420.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 4 )
 building = 6
-[connection signal="selected" from="HBoxContainer/GameBuildingButton" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="HBoxContainer/GameBuildingButton2" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="HBoxContainer/GameBuildingButton3" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="HBoxContainer/GameBuildingButton4" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="HBoxContainer/GameBuildingButton5" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="HBoxContainer/GameBuildingButton6" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="HBoxContainer/GameBuildingButton7" to="." method="_on_GameBuildingButton_selected"]
+
+[node name="Stats" type="VBoxContainer" parent="."]
+margin_right = 158.0
+margin_bottom = 32.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats"]
+margin_right = 158.0
+margin_bottom = 14.0
+
+[node name="DayLabel" type="Label" parent="Stats/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 14.0
+text = "Day:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day" type="Label" parent="Stats/HBoxContainer"]
+margin_left = 32.0
+margin_right = 40.0
+margin_bottom = 14.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Stats"]
+margin_top = 18.0
+margin_right = 158.0
+margin_bottom = 32.0
+
+[node name="ResourcesLabel" type="Label" parent="Stats/HBoxContainer2"]
+margin_right = 146.0
+margin_bottom = 14.0
+text = "Player Raw Resources: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raw" type="Label" parent="Stats/HBoxContainer2"]
+margin_left = 150.0
+margin_right = 158.0
+margin_bottom = 14.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="selected" from="BuildingButtons/GameBuildingButton" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton2" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton3" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton4" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton5" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton6" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BuildingButtons/GameBuildingButton7" to="." method="_on_GameBuildingButton_selected"]
