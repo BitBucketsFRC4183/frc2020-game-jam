@@ -39,7 +39,7 @@ func remove_player(id: int):
 	players_by_network_id[id].network_id = 0
 	players_by_network_id.erase(id)
 
-	
+
 func _on_player_updated(id: int, player):
 	players_by_network_id[id] = player
 	print("Player %s (network_id: %s) - %s - has updated data" % [player.num, id, player.name])
