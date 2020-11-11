@@ -8,7 +8,6 @@ var players_ready = []
 # The current day
 var day = 0
 
-var playersManager: PlayersManager
 
 func _ready():
 	Signals.connect("player_ready_to_start", self, "player_ready_to_start")
@@ -21,12 +20,12 @@ func _ready():
 # A new player has connected to the game
 func _player_connected(id):
 	print("Server: Player connected: %d" % id)
-	playersManager.add_player(id)
+	PlayersManager.add_player(id)
 
 
 # Callback from SceneTree.
 func _player_disconnected(id):
-	playersManager.remove_player(id)
+	PlayersManager.remove_player(id)
 
 func player_ready_to_start(id: int):	
 	# A player is ready to start
@@ -35,12 +34,12 @@ func player_ready_to_start(id: int):
 	if not id in players_ready:
 		players_ready.append(id)
 
-	if players_ready.size() == playersManager.players.size():
+	if players_ready.size() == PlayersManager.players_by_network_id.size():
 		print("Server: All players ready, sending post_start_game")
 		RPC.send_post_start_game()
 
 func begin_game():
-	RPC.send_pre_start_game(playersManager.players)
+	RPC.send_pre_start_game(PlayersManager.players)
 	
 func post_start_game():
 	# the server needs to start the timer

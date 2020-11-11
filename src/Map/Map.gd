@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and instanced_scene:
 		if instanced_scene.placeable:
 			instanced_scene.position =  get_local_mouse_position()
-			Signals.emit_signal("game_building_placed", building_type)
+			Signals.emit_signal("game_building_placed", PlayersManager.whoami().num, building_type)
 			instanced_scene = null
 
 

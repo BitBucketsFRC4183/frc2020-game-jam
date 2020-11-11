@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Network/Network.gd" type="Script" id=1]
-[ext_resource path="res://src/Network/PlayersManager.gd" type="Script" id=2]
+[ext_resource path="res://src/Singletons/PlayersManager.gd" type="Script" id=2]
 [ext_resource path="res://src/Network/Server.gd" type="Script" id=4]
+
 
 [node name="Network" type="Node"]
 script = ExtResource( 1 )

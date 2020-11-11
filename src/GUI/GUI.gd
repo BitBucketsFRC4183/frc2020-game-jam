@@ -1,9 +1,27 @@
 extends Control
 
+var Player = preload("res://src/GameObjects/Player.tscn")
+var PlayerResources = preload("res://src/Map/PlayerResources.tscn")
+
 var scene_path: String
 
 func _ready() -> void:
 	Signals.connect("game_building_placed", self, "restore_cursor")
+
+	# The server sends us a day update and our client emits a day_passed signal
+	Signals.connect("day_passed", self, "_on_day_passed")
+
+	var container = $Stats
+	
+	for playerData in PlayersManager.players:
+		var playerNode = Player.instance()
+		var playerResourcesNode = PlayerResources.instance()
+
+		playerNode.data = playerData	
+		playerResourcesNode.player = playerNode
+		container.add_child(playerNode)
+		container.add_child(playerResourcesNode)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
@@ -14,7 +32,9 @@ func _input(event: InputEvent) -> void:
 func restore_cursor(building):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-
+func _on_day_passed(day: int) -> void:
+	$Stats/HBoxContainer/Day.text = "%d" % day
+	
 func _on_GameBuildingButton_selected(building) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 

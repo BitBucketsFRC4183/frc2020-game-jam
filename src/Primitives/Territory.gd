@@ -18,6 +18,7 @@ export var player_colors = [
 	Color.aqua
 ]
 
+
 func _ready():
 	$Polygon2D.polygon = polygon
 	$Polygon2D.color = get_polygon_color()

@@ -15,4 +15,4 @@ func _on_day_passed(day: int):
 	assert(resource_amt != -1)
 
 	var resource_info = [resource_type, resource_amt]
-	Signals.emit_signal("resource_generated", resource_info)
+	Signals.emit_signal("resource_generated", player_num, resource_info)
