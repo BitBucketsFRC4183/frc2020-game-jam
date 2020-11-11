@@ -40,12 +40,12 @@ _global_script_classes=[ {
 "path": "res://src/Primitives/Territory.gd"
 } ]
 _global_script_class_icons={
+"GameBuilding": "",
 "Player": "",
 "PlayerData": "",
 "PlayersManager": "",
 "Server": "",
-"Territory": "",
-"GameBuilding": ""
+"Territory": ""
 }
 
 [application]
