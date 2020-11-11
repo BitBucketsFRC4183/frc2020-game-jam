@@ -1,5 +1,11 @@
 extends Node
 
+func _ready() -> void:
+	OS.window_maximized = true
+
+signal game_building_selected
+signal game_building_cancelled
+signal game_building_placed
 signal day_passed(day)
 signal resource_generated
 
