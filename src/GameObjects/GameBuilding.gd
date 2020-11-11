@@ -53,7 +53,6 @@ func _on_area_exited(area):
 			var areas = get_overlapping_areas()
 			# remove the area we just exited from
 			areas.erase(area)
-			print(areas)
 			for a in areas:
 				var child = a.get_child(0)
 				if child is Territory:
