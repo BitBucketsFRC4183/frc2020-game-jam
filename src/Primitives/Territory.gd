@@ -1,6 +1,6 @@
 tool
-
 extends CollisionPolygon2D
+class_name Territory
 
 export var territory_owner: int = 0 setget set_territory_owner
 export var color: Color = Color.black setget set_color

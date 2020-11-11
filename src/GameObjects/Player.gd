@@ -1,4 +1,7 @@
 extends Node2D
+class_name Player
+
+onready var data: PlayerData = PlayerData.new()
 
 func _ready() -> void:
 	Signals.connect("resource_generated", self, "_on_resource_generated")
@@ -28,6 +31,7 @@ var tech = {
 
 func _on_resource_generated(res_list):
 	resources[res_list[0]] += res_list[1]
+  RPC.send_player_updated(data)
 
 func _on_game_building_placed(building):
 	var building_cost = Constants.building_costs[building]
