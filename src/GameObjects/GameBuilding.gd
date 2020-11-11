@@ -8,7 +8,9 @@ var placeable := false
 
 # set to true when we enter an area which is NOT a territory
 # ie, it is another building
-var in_another_area := false
+var in_non_territory_area := false
+# set by Map.gd
+# ensures we only process this for the thing we just selected and are moving around, nothing else
 var newly_spawned := false
 
 func _ready() -> void:
@@ -19,50 +21,59 @@ func _on_area_entered(area):
 	if not newly_spawned:
 		return
 
-	# if we enter another territory, validate the territory
-	if area.is_in_group("territories"):
-		check_valid_territory(area)
-	# otherwise, we're in another building
+	var child = area.get_child(0)
+	if child is Territory:
+		# we just entered a resource territory
+		if child.type == Enums.territory_types.resource:
+			# and we're not touching a building
+			if not in_non_territory_area:
+				placeable = true
+		# not a resource territory
+		else:
+			placeable = false
+	# not a territory; some building or whatever
 	else:
-		in_another_area = true
+		in_non_territory_area = true
 		placeable = false
 
 func _on_area_exited(area):
 	if not newly_spawned:
 		return
 
-	# if we just left a territory, set placeable to false
-	# the new territory will be validated in _on_area_entered
-#	if area.is_in_group("territories"):
-#			placeable = false
+	# if we exit a resource territory, we would normally want to set plcaeable to false
+	# but if we entered a new resoruce territory, we don't want to do that
+	# so we check for that
 
-	if in_another_area:
-		# if we're touching another building and just left a territory,
-		# we're still in another building
-		# so we can't place
-		if area.is_in_group("territories"):
-			placeable = false
-		else:
-			# we just left the other area we're in
-			in_another_area = false
-			# check to see if we're in a territory
-			# if we are, validate the territory
-			# we need this because if we exit the building to a territory,
-			# it won't call an "area_entered" since we never left the territory area
-			# that's why we check manually
-			for area in get_overlapping_areas():
-				if area.is_in_group("territories"):
-					check_valid_territory(area)
-#	else:
-#		if area.is_in_group("territories"):
-#			placeable = false
+	var child_node = area.get_child(0)
+	# if we just exited a territory
+	if child_node is Territory:
+		# only go ahead if we just exited a resource territory
+		if child_node.type == Enums.territory_types.resource:
+			# get all the areas we're inside of
+			var areas = get_overlapping_areas()
+			# remove the area we just exited from
+			areas.erase(area)
+			print(areas)
+			for a in areas:
+				var child = a.get_child(0)
+				if child is Territory:
+					# if we're in another resource territory, we're good
+					if child.type == Enums.territory_types.resource:
+						placeable = true
+					# we r in a non-resource territory
+					else:
+						placeable = false
+				# if the area is not a Territory, it's something else
+				# say it's not placeable and quit
+				else:
+					in_non_territory_area = true
+					placeable = false
+					return
 
-func check_valid_territory(area):
-	# if the area is a resource territory AND
-	# we are not touching another building, placeable
-	if area.get_child(0).type == Enums.territory_types.resource and not in_another_area:
-		placeable = true
-	# if either of those are false, say no
+			# if the list is empty, we're in the ocean. heck nah
+			if areas.size() == 0:
+				placeable = false
+	# if we just exited an area and it wasn't a territory
+	# we're probably no longer intneractng with a non-territory area
 	else:
-		placeable = false
-
+		in_non_territory_area = false

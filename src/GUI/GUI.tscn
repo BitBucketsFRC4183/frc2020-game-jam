@@ -77,6 +77,7 @@ building = 6
 [node name="Stats" type="VBoxContainer" parent="."]
 margin_right = 158.0
 margin_bottom = 32.0
+mouse_filter = 2
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
