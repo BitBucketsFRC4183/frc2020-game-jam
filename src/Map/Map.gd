@@ -35,7 +35,7 @@ func _input(event: InputEvent) -> void:
 			Signals.emit_signal("game_building_placed", building_type)
 			instanced_scene = null
 
-    
+
 func get_territories(root: Node = self) -> Array:
 	# recursively loop through all nodes in the tree and find all the Territories
 	var territories = []

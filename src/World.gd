@@ -8,9 +8,9 @@ func _ready():
 	# The server sends us a day update and our client emits a day_passed signal
 	Signals.connect("day_passed", self, "_on_day_passed")
 	Signals.connect("player_updated", self, "_on_player_updated")
-	
+
 	for player in Network.playersManager.players:
-		var p = Player.instance()	
+		var p = Player.instance()
 		p.data = player
 		add_child(p)
 
