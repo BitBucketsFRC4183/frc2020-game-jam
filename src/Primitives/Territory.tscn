@@ -14,8 +14,6 @@ player_colors = [ Color( 0, 0, 0, 1 ), Color( 0.764706, 0.196078, 0.196078, 1 ),
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
 
-[node name="Area2D" type="Area2D" parent="." groups=[
-"territories",
-]]
+[node name="Area2D" type="Area2D" parent="."]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

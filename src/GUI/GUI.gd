@@ -31,6 +31,7 @@ func _input(event: InputEvent) -> void:
 # parameters are just there so that the signal works
 func restore_cursor(network_data, building):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _on_day_passed(day: int) -> void:
 	$Stats/HBoxContainer/Day.text = "%d" % day
