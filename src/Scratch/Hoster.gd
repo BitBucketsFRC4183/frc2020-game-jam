@@ -4,8 +4,8 @@ extends Node2D
 func _ready():
 	Signals.connect("pre_start_game", self, "_on_pre_start_game")
 
-	Network.host_game("Host")
-	Network.server.begin_game()
+	Network.host_game("Host", false)
+	Network.server.begin_game(false)
 	get_tree().change_scene("res://src/World.tscn")
 
 func _on_pre_start_game(players: Array):

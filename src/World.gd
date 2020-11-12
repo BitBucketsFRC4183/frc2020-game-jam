@@ -3,6 +3,8 @@ extends Node2D
 func _ready():
 	$AsteroidManager.territories = $Map.get_territories()
 
-func _input(event):
-	if(event.is_action_pressed("ui_tech_tree")):
-		get_tree().change_scene("res://src/GameObjects/TechTree.tscn")
+	if not Network.server.started:
+		Network.host_game("Single Player", true)
+		Network.server.begin_game(true)
+		RPC.send_ready_to_start()
+

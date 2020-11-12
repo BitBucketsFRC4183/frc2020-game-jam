@@ -39,14 +39,16 @@ func _connected_fail():
 	Signals.emit_signal("connection_to_server_failed")
 
 
-func host_game(player_name):
+func host_game(host_name: String, single_player := true):
 	# create a new server
+	# for single player games, we have 0 users
+
 	peer = NetworkedMultiplayerENet.new()
-	peer.create_server(DEFAULT_PORT, Constants.num_players)
+	peer.create_server(DEFAULT_PORT, 1 if single_player else Constants.num_players)
 	get_tree().set_network_peer(peer)
 
-	# create our player locally in the PlayersManager
-	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
+	if single_player:
+		get_tree().refuse_new_network_connections = true
 
 
 func join_game(ip, player_name):
