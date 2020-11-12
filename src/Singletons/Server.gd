@@ -30,7 +30,7 @@ func _player_connected(id):
 	if get_tree().is_network_server():
 		# if we aren't the server, we don't
 		# care about players connecting to us
-		# we will wait for the player_updated call
+		# we will wait for the players_updated call
 		print("Server: Player connected: %d" % id)
 
 
@@ -46,8 +46,12 @@ func player_ready_to_start(id: int):
 		players_ready.append(id)
 
 	if players_ready.size() == PlayersManager.players_by_network_id.size():
-		print("Server: All players ready, sending post_start_game")
-		RPC.send_post_start_game()
+		if started:
+			print("Server: New player ready, sending post_start_game")
+			RPC.send_post_start_game(id)
+		else:
+			print("Server: All players ready, sending post_start_game")
+			RPC.send_post_start_game()
 
 func begin_game(single_player := true):
 
@@ -58,9 +62,10 @@ func begin_game(single_player := true):
 
 
 func post_start_game():
-	# the server needs to start the timer
-	$DaysTimer.start()
-	started = true
+	if get_tree().is_network_server():
+		# the server needs to start the timer
+		$DaysTimer.start()
+		started = true
 
 
 func _on_DaysTimer_timeout():
@@ -72,12 +77,15 @@ func _on_DaysTimer_timeout():
 
 func _on_player_joined(id: int, player_name: String) -> void:
 	# TODO: Support player_name. For now it's randomly assigned
+	
+	# add this new player to the server's PlayersManager
 	var player = PlayersManager.add_player(id)
 	print("Player %s joined, assumed player %s - %s" % [id, player.num, player.name])
-	RPC.send_player_updated(player)
+	
+	# send our player data to all clients, so everyone knows about the new player
+	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
 
-	# also send the player our host information
-	RPC.send_player_updated(PlayersManager.whoami())
-
-	RPC.send_pre_start_game([])
-	RPC.send_post_start_game()
+	if started:
+		# if we already started the game, tell this new player to join us
+		RPC.send_pre_start_game(PlayersManager.get_all_player_dicts(), id)
+		RPC.send_post_start_game(id)

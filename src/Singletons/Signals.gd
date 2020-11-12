@@ -1,7 +1,11 @@
 extends Node
 
 func _ready() -> void:
-	OS.window_maximized = true
+	var username := ""
+	if OS.has_environment("USER"):
+		username = OS.get_environment("USER")
+	if not username.begins_with('craig'):
+		OS.window_maximized = true
 
 signal game_building_selected
 signal game_building_cancelled
@@ -12,7 +16,8 @@ signal player_data_updated(player_data)
 
 
 # Notify when the connected players change
-signal player_updated(player_dict)
+signal players_updated(player_dicts)
+signal player_owner_changed(player)
 signal player_joined(id, player)
 
 # These are lifecycle signals. The server sends a
