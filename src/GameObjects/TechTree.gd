@@ -62,7 +62,6 @@ func _on_Tech_pressed(tech_name):
 	if(can_research):
 		popup = "ResearchPopup"
 		#Set the player's selected tech to this
-		PlayerData.new().selected_tech = tech_name.substr(0, tech_name.length() - 1).to_lower()
 	else:
 		popup = "ResearchFailedPopup"
 	
@@ -73,9 +72,4 @@ func _on_Tech_pressed(tech_name):
 func is_tech_valid(tech):
 	var tech_name = tech.substr(0, tech.length() - 1).to_lower()
 	var tech_num = int(tech.substr(tech.length() - 1)) - 1
-	
-	if(PlayerData.new().tech_level[tech_name] + 1 == tech_num):
-		return true
-	else:
-		return false
 	pass
