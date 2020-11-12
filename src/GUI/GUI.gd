@@ -13,14 +13,14 @@ func _ready() -> void:
 
 	var container = $Stats
 
-	for playerData in PlayersManager.players:
-		var playerNode = Player.instance()
-		var playerResourcesNode = PlayerResources.instance()
+	for player_data in PlayersManager.players:
+		var player_node = Player.instance()
+		var player_resources_node = PlayerResources.instance()
 
-		playerNode.data = playerData
-		playerResourcesNode.player = playerNode
-		container.add_child(playerNode)
-		container.add_child(playerResourcesNode)
+		player_node.data = player_data
+		player_resources_node.player = player_node
+		container.add_child(player_node)
+		container.add_child(player_resources_node)
 
 
 func _input(event: InputEvent) -> void:

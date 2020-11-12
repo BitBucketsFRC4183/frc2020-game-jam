@@ -6,7 +6,7 @@ func _ready():
 	isTechTreeOpen = false
 	$AsteroidManager.territories = $Map.get_territories()
 
-	if not Server.started:
+	if not get_tree().has_network_peer() and not Server.started:
 		Network.host_game("Single Player", true)
 		Server.begin_game(true)
 		RPC.send_ready_to_start()

@@ -22,7 +22,7 @@ func _init():
 
 
 func _ready():
-	Signals.connect("player_updated", self, "_on_player_updated")
+	Signals.connect("players_updated", self, "update_players")
 
 
 func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
@@ -32,7 +32,9 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 		var player = PlayerData.new(0, "", Color.black)
 		player.from_dict(player_dict)
 		player.ai_controlled = false
-		players_by_network_id[id] = player
+		if id != 0:
+			# only add this player to the network list if it's a network controlled player
+			players_by_network_id[id] = player
 		players[player.num] = player
 
 		print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
@@ -42,11 +44,15 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 			if player.ai_controlled:
 				player.ai_controlled = false
 				player.network_id = id
-				players_by_network_id[id] = player
+				if id != 0:
+					# only add this player to the network list if it's a network controlled player
+					players_by_network_id[id] = player
 				print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
 				break
 
-	return players_by_network_id[id]
+	var added_player = players_by_network_id[id]
+	Signals.emit_signal("player_owner_changed", added_player)
+	return added_player
 
 
 func remove_player(id: int):
@@ -56,7 +62,7 @@ func remove_player(id: int):
 	players_by_network_id.erase(id)
 
 	
-func _on_player_updated(player_dict: Dictionary):
+func update_player(player_dict: Dictionary):
 	var id: int = player_dict.get("network_id", -1)
 	if (id == -1):
 		printerr("We received an update for a player without a player network_id!")
@@ -66,9 +72,10 @@ func _on_player_updated(player_dict: Dictionary):
 	if players_by_network_id.has(id):
 		player = players_by_network_id[id]
 		players_by_network_id[id].from_dict(player_dict)
+		print_debug("Player %s - %s (network_id: %s) updated in PlayersManager" % [player.num, player.name, player.network_id])
 	else:
 		player = add_player(id, player_dict)
-	print("Player %s (network_id: %s) - %s - has updated data" % [player.num, id, player.name])
+		print_debug("Player %s - %s (network_id: %s) added to PlayersManager" % [player.num, player.name, player.network_id])
 
 func whoami() -> PlayerData:
 	# return my player. Default to player 0 if none is defined
@@ -79,3 +86,15 @@ func whoami() -> PlayerData:
 		return players[0]
 	else:
 		return me
+
+func get_all_player_dicts() -> Array:
+	# get all the PlayerDatas as dicts to send over the wire
+	var player_dicts = []
+	for player in players:
+		player_dicts.append(player.to_dict())
+	return player_dicts
+
+func update_players(player_dicts: Array):
+	# update all players in our dictionary
+	for player_dict in player_dicts:
+		update_player(player_dict)

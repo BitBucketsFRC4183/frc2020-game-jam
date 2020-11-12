@@ -11,6 +11,8 @@ extends Node
 # remote with rpc_id(1, ...) means execute only on the server. The server has an id of 1
 
 func send_server_day_updated(day):
+	assert(get_tree().is_network_server())
+
 	# Make an RPC to notify clients of a new day
 	rpc("server_day_updated", day)
 
@@ -30,23 +32,21 @@ remotesync func player_joined(player_name: String) -> void:
 	print("Received player_joined message for %s from %s" % [player_name, get_tree().get_rpc_sender_id()])
 	Signals.emit_signal("player_joined", get_tree().get_rpc_sender_id(), player_name)
 
-func send_players_info(id: int, players: Dictionary) -> void:
-	# Anytime a new player connects, send them a dictionary of players
-	rpc_id(id, "update_players", players)
-
-remotesync func update_players(players: Dictionary) -> void:
-	# when a new player connects, update our players dictionary
-	Signals.emit_signal("update_connected_players", players)
-
-
-func send_pre_start_game(players: Array):
+func send_pre_start_game(player_dicts: Array, id: int = 0):
 	# notify clients we are all ready to start
 	assert(get_tree().is_network_server())
 
-	print("Server: Notifying clients to prepare to start")
+	if id == 0:
+		print("Server: Notifying all clients to prepare to start")
 
-	# Call to pre-start game for everyone to get setup
-	rpc("pre_start_game", players)
+		# Call to pre-start game for everyone to get setup
+		rpc("pre_start_game", player_dicts)
+	else:
+		print("Server: Notifying client %s to prepare to start" % id)
+
+		# Call to pre-start game for everyone to get setup
+		rpc_id(id, "pre_start_game", player_dicts)
+
 
 remotesync func pre_start_game(players: Array):
 	# Do any prep work to start the game, like create world, setup players, etc
@@ -64,18 +64,21 @@ remotesync func ready_to_start(id):
 	print("Server: Client %d is ready to start" % id)
 	Signals.emit_signal("player_ready_to_start", id)
 
-func send_post_start_game():
+func send_post_start_game(id: int = 0):
 	# sent by the server when all players are ready and we have begun
-	rpc("post_start_game")
+	if id == 0:
+		rpc("post_start_game")
+	else:
+		rpc_id(id, "post_start_game")
 
 remotesync func post_start_game():
 	# this is called on both clients and servers after the game has started
 	Signals.emit_signal("post_start_game")
 
-func send_player_updated(player: PlayerData):
+func send_players_updated(player_dicts: Array):
 	# sent our updated player info to all servers
-	rpc("player_updated", player.to_dict())
+	rpc("players_updated", player_dicts)
 
-remote func player_updated(player: Dictionary):
-	Signals.emit_signal("player_updated", player);
+remote func players_updated(player_dicts: Array):
+	Signals.emit_signal("players_updated", player_dicts);
 
