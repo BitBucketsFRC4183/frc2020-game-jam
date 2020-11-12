@@ -40,28 +40,34 @@ __meta__ = {
 }
 
 [node name="Margin2" type="MarginContainer" parent="TechTree"]
-margin_top = 120.0
+margin_top = 32.0
 margin_right = 1920.0
-margin_bottom = 130.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="Row 1" type="HBoxContainer" parent="TechTree"]
-margin_top = 145.0
+margin_top = 57.0
 margin_right = 1920.0
-margin_bottom = 245.0
-rect_min_size = Vector2( 0, 75 )
+margin_bottom = 182.0
+rect_min_size = Vector2( 0, 125 )
 alignment = 1
 
 [node name="TextureMine3" type="TextureRect" parent="TechTree/Row 1"]
-margin_left = 631.0
+margin_left = 606.0
 margin_right = 731.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 75, 75 )
+margin_bottom = 125.0
+rect_min_size = Vector2( 125, 125 )
 texture = ExtResource( 2 )
 
 [node name="Mine3" type="TextureButton" parent="TechTree/Row 1/TextureMine3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = -62.5
+margin_right = 62.5
+margin_bottom = 62.5
 rect_min_size = Vector2( 75, 75 )
 action_mode = 0
 __meta__ = {
@@ -79,14 +85,14 @@ valign = 1
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 1"]
 margin_left = 735.0
 margin_right = 1185.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 450, 0 )
 
 [node name="TextureMissile3" type="TextureRect" parent="TechTree/Row 1"]
 margin_left = 1189.0
-margin_right = 1289.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 75, 75 )
+margin_right = 1314.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 125, 125 )
 texture = ExtResource( 2 )
 
 [node name="Missile3" type="TextureButton" parent="TechTree/Row 1/TextureMissile3"]
@@ -110,16 +116,16 @@ __meta__ = {
 }
 
 [node name="Row 2" type="HBoxContainer" parent="TechTree"]
-margin_top = 260.0
+margin_top = 197.0
 margin_right = 1920.0
-margin_bottom = 360.0
-rect_min_size = Vector2( 0, 75 )
+margin_bottom = 322.0
+rect_min_size = Vector2( 0, 125 )
 alignment = 1
 
 [node name="TextureMine2" type="TextureRect" parent="TechTree/Row 2"]
-margin_left = 731.0
+margin_left = 706.0
 margin_right = 831.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 3 )
 
@@ -146,13 +152,13 @@ __meta__ = {
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 2"]
 margin_left = 835.0
 margin_right = 1085.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 250, 0 )
 
 [node name="TextureMissile2" type="TextureRect" parent="TechTree/Row 2"]
 margin_left = 1089.0
-margin_right = 1189.0
-margin_bottom = 100.0
+margin_right = 1214.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 3 )
 
@@ -177,16 +183,16 @@ __meta__ = {
 }
 
 [node name="Row 3" type="HBoxContainer" parent="TechTree"]
-margin_top = 375.0
+margin_top = 337.0
 margin_right = 1920.0
-margin_bottom = 475.0
-rect_min_size = Vector2( 0, 75 )
+margin_bottom = 462.0
+rect_min_size = Vector2( 0, 125 )
 alignment = 1
 
 [node name="TextureMine1" type="TextureRect" parent="TechTree/Row 3"]
-margin_left = 831.0
+margin_left = 806.0
 margin_right = 931.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 4 )
 
@@ -213,13 +219,13 @@ __meta__ = {
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 3"]
 margin_left = 935.0
 margin_right = 985.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="TextureMissile1" type="TextureRect" parent="TechTree/Row 3"]
 margin_left = 989.0
-margin_right = 1089.0
-margin_bottom = 100.0
+margin_right = 1114.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 4 )
 
@@ -244,17 +250,17 @@ __meta__ = {
 }
 
 [node name="Middle Row" type="HBoxContainer" parent="TechTree"]
-margin_top = 490.0
+margin_top = 477.0
 margin_right = 1920.0
-margin_bottom = 590.0
-rect_min_size = Vector2( 100, 0 )
+margin_bottom = 602.0
+rect_min_size = Vector2( 100, 125 )
 custom_constants/separation = 88
 alignment = 1
 
 [node name="TexturePower3" type="TextureRect" parent="TechTree/Middle Row"]
-margin_left = 358.0
-margin_right = 458.0
-margin_bottom = 100.0
+margin_left = 258.0
+margin_right = 383.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 2 )
 
@@ -279,9 +285,9 @@ __meta__ = {
 }
 
 [node name="TexturePower2" type="TextureRect" parent="TechTree/Middle Row"]
-margin_left = 546.0
-margin_right = 646.0
-margin_bottom = 100.0
+margin_left = 471.0
+margin_right = 596.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 3 )
 
@@ -306,9 +312,9 @@ __meta__ = {
 }
 
 [node name="TexturePower1" type="TextureRect" parent="TechTree/Middle Row"]
-margin_left = 734.0
-margin_right = 834.0
-margin_bottom = 100.0
+margin_left = 684.0
+margin_right = 809.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 4 )
 
@@ -333,10 +339,10 @@ __meta__ = {
 }
 
 [node name="NationName" type="TextureRect" parent="TechTree/Middle Row"]
-margin_left = 922.0
-margin_right = 997.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 75, 75 )
+margin_left = 897.0
+margin_right = 1022.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 125, 125 )
 texture = ExtResource( 2 )
 expand = true
 
@@ -358,9 +364,9 @@ __meta__ = {
 }
 
 [node name="TextureShield1" type="TextureRect" parent="TechTree/Middle Row"]
-margin_left = 1085.0
-margin_right = 1185.0
-margin_bottom = 100.0
+margin_left = 1110.0
+margin_right = 1235.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 4 )
 
@@ -385,9 +391,9 @@ __meta__ = {
 }
 
 [node name="TextureShield2" type="TextureRect" parent="TechTree/Middle Row"]
-margin_left = 1273.0
-margin_right = 1373.0
-margin_bottom = 100.0
+margin_left = 1323.0
+margin_right = 1448.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 3 )
 
@@ -412,9 +418,9 @@ __meta__ = {
 }
 
 [node name="TextureShield3" type="TextureRect" parent="TechTree/Middle Row"]
-margin_left = 1461.0
-margin_right = 1561.0
-margin_bottom = 100.0
+margin_left = 1536.0
+margin_right = 1661.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 2 )
 
@@ -439,16 +445,16 @@ __meta__ = {
 }
 
 [node name="Row 4" type="HBoxContainer" parent="TechTree"]
-margin_top = 605.0
+margin_top = 617.0
 margin_right = 1920.0
-margin_bottom = 705.0
-rect_min_size = Vector2( 0, 75 )
+margin_bottom = 742.0
+rect_min_size = Vector2( 0, 125 )
 alignment = 1
 
 [node name="TextureScience1" type="TextureRect" parent="TechTree/Row 4"]
-margin_left = 831.0
+margin_left = 806.0
 margin_right = 931.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 4 )
 
@@ -475,13 +481,13 @@ __meta__ = {
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 4"]
 margin_left = 935.0
 margin_right = 985.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="TextureLaser1" type="TextureRect" parent="TechTree/Row 4"]
 margin_left = 989.0
-margin_right = 1089.0
-margin_bottom = 100.0
+margin_right = 1114.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 4 )
 
@@ -506,16 +512,16 @@ __meta__ = {
 }
 
 [node name="Row 5" type="HBoxContainer" parent="TechTree"]
-margin_top = 720.0
+margin_top = 757.0
 margin_right = 1920.0
-margin_bottom = 820.0
-rect_min_size = Vector2( 0, 75 )
+margin_bottom = 882.0
+rect_min_size = Vector2( 0, 125 )
 alignment = 1
 
 [node name="TextureScience2" type="TextureRect" parent="TechTree/Row 5"]
-margin_left = 731.0
+margin_left = 706.0
 margin_right = 831.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 3 )
 
@@ -542,13 +548,13 @@ __meta__ = {
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 5"]
 margin_left = 835.0
 margin_right = 1085.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 250, 0 )
 
 [node name="TextureLaser2" type="TextureRect" parent="TechTree/Row 5"]
 margin_left = 1089.0
-margin_right = 1189.0
-margin_bottom = 100.0
+margin_right = 1214.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 3 )
 
@@ -573,16 +579,16 @@ __meta__ = {
 }
 
 [node name="Row 6" type="HBoxContainer" parent="TechTree"]
-margin_top = 835.0
+margin_top = 897.0
 margin_right = 1920.0
-margin_bottom = 935.0
-rect_min_size = Vector2( 0, 75 )
+margin_bottom = 1022.0
+rect_min_size = Vector2( 0, 125 )
 alignment = 1
 
 [node name="TextureScience3" type="TextureRect" parent="TechTree/Row 6"]
-margin_left = 631.0
+margin_left = 606.0
 margin_right = 731.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 2 )
 
@@ -609,13 +615,13 @@ __meta__ = {
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 6"]
 margin_left = 735.0
 margin_right = 1185.0
-margin_bottom = 100.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 450, 0 )
 
 [node name="TextureLaser3" type="TextureRect" parent="TechTree/Row 6"]
 margin_left = 1189.0
-margin_right = 1289.0
-margin_bottom = 100.0
+margin_right = 1314.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 75 )
 texture = ExtResource( 2 )
 
@@ -640,9 +646,9 @@ __meta__ = {
 }
 
 [node name="Margin" type="MarginContainer" parent="TechTree"]
-margin_top = 950.0
+margin_top = 1037.0
 margin_right = 1920.0
-margin_bottom = 960.0
+margin_bottom = 1047.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="ResearchPopup" type="AcceptDialog" parent="."]

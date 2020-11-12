@@ -19,12 +19,12 @@ margin_top = 0.237282
 margin_right = 0.00012207
 margin_bottom = 0.237305
 
-[node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
-
-[node name="TechTree" parent="." instance=ExtResource( 3 )]
+[node name="TechTree" parent="CanvasLayer" instance=ExtResource( 3 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_min_size = Vector2( 1920, 1080 )
+
+[node name="AsteroidManager" parent="." instance=ExtResource( 5 )]

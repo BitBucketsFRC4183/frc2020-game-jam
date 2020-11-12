@@ -14,7 +14,7 @@ var tech: String
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_ok().visible = false
-	dialog_text = "You cannot research this tech!"
+	set_text("You cannot research this tech!")
 	add_cancel("Cancel")
 	
 func set_popup_properties():
