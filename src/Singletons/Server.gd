@@ -1,6 +1,5 @@
 # all server specific functions go here
 extends Node
-class_name Server
 
 # which players are ready
 var players_ready = []
