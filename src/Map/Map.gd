@@ -15,8 +15,9 @@ func _on_game_building_selected(scene_path, building):
 	building_type = building
 
 func _on_game_building_cancelled():
-	instanced_scene.queue_free()
-	instanced_scene = null
+	if instanced_scene:
+		instanced_scene.queue_free()
+		instanced_scene = null
 
 func _process(delta: float) -> void:
 	if instanced_scene:
