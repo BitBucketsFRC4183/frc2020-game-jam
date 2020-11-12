@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/icons/Asteroids/AsteroidSmall.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/Asteroids/Asteroid Marker.png" type="Texture" id=2]
+[ext_resource path="res://src/GameObjects/Asteroids/Asteroid.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+
+[node name="FallingAsteroidSmall" type="Node2D"]
+script = ExtResource( 3 )
+base_speed = 500
+
+[node name="ImpactPoint" type="Area2D" parent="."]
+
+[node name="Asteroid Marker" type="Sprite" parent="ImpactPoint"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+offset = Vector2( -1, -5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactPoint"]
+shape = SubResource( 1 )
+
+[node name="Asteroid" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Asteroid"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+offset = Vector2( 10, 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Asteroid/Sprite"]
+autoplay = "Spin"
+anims/Spin = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
+shape = SubResource( 3 )
+[connection signal="area_entered" from="ImpactPoint" to="." method="_on_ImpactPoint_area_entered"]

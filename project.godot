@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Territory",
 "language": "GDScript",
 "path": "res://src/Primitives/Territory.gd"
+}, {
+"base": "Area2D",
+"class": "TerritoryArea",
+"language": "GDScript",
+"path": "res://src/Primitives/TerritoryArea.gd"
 } ]
 _global_script_class_icons={
 "GameBuilding": "",
 "Player": "",
 "PlayerData": "",
 "Server": "",
-"Territory": ""
+"Territory": "",
+"TerritoryArea": ""
 }
 
 [application]
