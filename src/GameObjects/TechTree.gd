@@ -56,18 +56,23 @@ func _on_Tech_pressed(tech_name):
 	#	Is tech the next tier (can't directly research Tier 3)
 	print(tech_name)
 	
-	var can_research = is_tech_valid(tech_name)
+	var can_research = is_tech_valid(tech_name) && not is_player_researching()
 	var popup: String
 	
 	if(can_research):
-		popup = "ResearchPopup"
-		#Set the player's selected tech to this
-	else:
-		popup = "ResearchFailedPopup"
-	
-	get_node(popup).set_info(tech_name)
-	get_node(popup).popup_centered()
+		$ResearchPopup.set_info(tech_name)
+		$ResearchPopup.popup_centered()
+		$ResearchPopup.add_button("Research!", true, tech_name)
 	pass
+
+func on_research_tech(tech: String):
+	print("Researching " + tech)
+	PlayersManager.whoami().selected_tech = tech.to_lower()
+	$ResearchPopup.hide()
+	pass
+
+func is_player_researching():
+	return PlayersManager.whoami().selected_tech != ""
 
 func is_tech_valid(tech):
 	var tech_name = tech.substr(0, tech.length() - 1).to_lower()

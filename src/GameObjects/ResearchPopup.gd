@@ -14,7 +14,6 @@ func _ready():
 	
 	set_text("Do you want to research this Tech? \nTech Info: " + tech_info)
 	
-	add_button("Research Tech", true)
 	add_cancel("Cancel")
 	
 func set_popup_properties():
