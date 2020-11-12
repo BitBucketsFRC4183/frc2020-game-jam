@@ -2,6 +2,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_tech_names()
+	set_tech_colors()
+	set_valid_tech_colors()
+	pass
+
+func set_tech_names():
 	get_node("TechTree/Row 1/TextureMine3/Mine3/LabelMine3").text = "Chromium\nMines"
 	get_node("TechTree/Row 1/TextureMissile3/Missile3/LabelMissile3").text = "Ultimate\nMissiles"
 	get_node("TechTree/Row 2/TextureMine2/Mine2/LabelMine2").text = "Titanium\nMines"
@@ -20,7 +26,66 @@ func _ready():
 	get_node("TechTree/Row 5/TextureScience2/Science2/LabelScience2").text = "Advanced\nLabs"
 	get_node("TechTree/Row 6/TextureLaser3/Laser3/LabelLaser3").text = "Ultimate\nLasers"
 	get_node("TechTree/Row 6/TextureScience3/Science3/LabelScience3").text = "Supreme\nLabs"
+
+func set_valid_tech_colors():
+	var p = PlayersManager.whoami()
+	var tier2 = preload("res://assets/icons/techtree/tier2.png")
+	var tier3 = preload("res://assets/icons/techtree/tier3.png")
+	
+	if(p.tech_level["mine"] == 0):
+		$"TechTree/Row 2/TextureMine2".texture = tier2
+	if(p.tech_level["mine"] >= 1):
+		$"TechTree/Row 1/TextureMine3".texture = tier3
+		
+	if(p.tech_level["power"] == 0):
+		$"TechTree/Middle Row/TexturePower2".texture = tier2
+	if(p.tech_level["power"] >= 1):
+		$"TechTree/Middle Row/TexturePower3".texture = tier3
+		
+	if(p.tech_level["science"] == 0):
+		$"TechTree/Row 5/TextureScience2".texture = tier2
+	if(p.tech_level["science"] >= 1):
+		$"TechTree/Row 6/TextureScience3".texture = tier3
+		
+	if(p.tech_level["laser"] == 0):
+		$"TechTree/Row 5/TextureLaser2".texture = tier2
+	if(p.tech_level["laser"] >= 1):
+		$"TechTree/Row 6/TextureLaser3".texture = tier3
+		
+	if(p.tech_level["shield"] == 0):
+		$"TechTree/Middle Row/TextureShield2".texture = tier2
+	if(p.tech_level["shield"] >= 1):
+		$"TechTree/Middle Row/TextureShield3".texture = tier3
+		
+	if(p.tech_level["missile"] == 0):
+		$"TechTree/Row 2/TextureMissile2".texture = tier2
+	if(p.tech_level["missile"] >= 1):
+		$"TechTree/Row 1/TextureMissile3".texture = tier3
 	pass
+	
+func set_tech_colors():
+	var p = PlayersManager.whoami()
+	var disabled = preload("res://assets/icons/techtree/disabled.png")
+	var tier2 = preload("res://assets/icons/techtree/tier2.png")
+	var tier3 = preload("res://assets/icons/techtree/tier3.png")
+	
+	$"TechTree/Row 1/TextureMine3".set_texture(tier3 if p.tech_level["mine"] == 2 else disabled)
+	$"TechTree/Row 2/TextureMine2".set_texture(tier2 if p.tech_level["mine"] >= 1 else disabled)
+	
+	$"TechTree/Row 1/TextureMissile3".set_texture(tier3 if p.tech_level["missile"] == 2 else disabled)
+	$"TechTree/Row 2/TextureMissile2".set_texture(tier2 if p.tech_level["missile"] >= 1 else disabled)
+
+	$"TechTree/Middle Row/TexturePower3".set_texture(tier3 if p.tech_level["power"] == 2 else disabled)
+	$"TechTree/Middle Row/TexturePower2".set_texture(tier2 if p.tech_level["power"] >= 1 else disabled)
+	
+	$"TechTree/Middle Row/TextureShield2".set_texture(tier3 if p.tech_level["shield"] == 2 else disabled)
+	$"TechTree/Middle Row/TextureShield3".set_texture(tier2 if p.tech_level["shield"] >= 1 else disabled)
+
+	$"TechTree/Row 5/TextureScience2".set_texture(tier3 if p.tech_level["science"] == 2 else disabled)
+	$"TechTree/Row 5/TextureLaser2".set_texture(tier2 if p.tech_level["laser"] >= 1 else disabled)
+	
+	$"TechTree/Row 6/TextureScience3".set_texture(tier3 if p.tech_level["science"] == 1 else disabled)
+	$"TechTree/Row 6/TextureLaser3".set_texture(tier2 if p.tech_level["laser"] >= 1 else disabled)
 
 var tech_costs = {
 	"mine": {
@@ -79,6 +144,7 @@ func on_research_tech(tech: String):
 	PlayersManager.whoami().tech_research_progress = 0
 	
 	$ResearchPopup.hide()
+	set_tech_colors()
 	pass
 
 func is_player_researching():
