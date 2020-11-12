@@ -49,6 +49,15 @@ var tech_costs = {
 	}
 }
 
+#Returns the total tech cost of the currently researched tech
+func get_cost_research():
+	var p = PlayersManager.whoami()
+	if(p.selected_tech == ""):
+		return 0
+	else:
+		var t_name = p.selected_tech.substr(0, p.selected_tech.length() - 1).to_lower()
+		return tech_costs[t_name][p.selected_tech]
+
 func _on_Tech_pressed(tech_name):
 	#Generic method for when a tech is pressed
 	# Need to check:
