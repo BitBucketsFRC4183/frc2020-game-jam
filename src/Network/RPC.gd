@@ -17,10 +17,18 @@ func send_server_day_updated(day):
 remotesync func server_day_updated(day):
 	# The server calls this function and it executes on each clients
 	# each client uses it to update it's current day
-	print_debug ("Client: a new day: %d" % day)
+	# print_debug ("Client: a new day: %d" % day)
 
 	Signals.emit_signal("day_passed", day)
 
+func send_join_game(player_name: String) -> void:
+	# tell the server we joined the game
+	print("Sending player_joined call to server for %s" % player_name)
+	rpc_id(1, "player_joined", player_name)
+
+remotesync func player_joined(player_name: String) -> void:
+	print("Received player_joined message for %s from %s" % [player_name, get_tree().get_rpc_sender_id()])
+	Signals.emit_signal("player_joined", get_tree().get_rpc_sender_id(), player_name)
 
 func send_players_info(id: int, players: Dictionary) -> void:
 	# Anytime a new player connects, send them a dictionary of players
@@ -66,8 +74,8 @@ remotesync func post_start_game():
 
 func send_player_updated(player: PlayerData):
 	# sent our updated player info to all servers
-	rpc("player_updated", get_tree().get_network_unique_id(), player)
+	rpc("player_updated", player.to_dict())
 
-remotesync func player_updated(id: int, player):
-	Signals.emit_signal("player_updated", id, player);
+remote func player_updated(player: Dictionary):
+	Signals.emit_signal("player_updated", player);
 

@@ -34,3 +34,28 @@ func _init(num: int, name: String, color: Color) -> void:
 	self.num = num
 	self.name = name
 	self.color = color
+
+func to_dict() -> Dictionary:
+	# convert this player to a dictionary so we can send it over RPC
+	return {
+		"network_id": network_id,
+		"name": name,
+		"num": num,
+		"ai_controlled": ai_controlled,
+		"color": color.to_rgba32(),
+		"resources": resources,
+		"selected_tech": selected_tech,
+		"tech_level": tech_level
+	}
+
+func from_dict(dict: Dictionary) -> void:
+	# update some fields based on this dict
+	# if the field isn't present, just keep what we have
+	network_id = dict.get("network_id", network_id)
+	name = dict.get("name", name)
+	num = dict.get("num", num)
+	ai_controlled = dict.get("ai_controlled", ai_controlled)
+	color = Color(dict.get("color", color.to_rgba32()))
+	resources = dict.get("resources", resources)
+	selected_tech = dict.get("selected_tech", selected_tech)
+	tech_level = dict.get("tech_level", tech_level)

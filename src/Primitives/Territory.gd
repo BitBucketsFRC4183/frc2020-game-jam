@@ -2,24 +2,19 @@ tool
 extends CollisionPolygon2D
 class_name Territory
 
+var PlayerColors = preload("res://assets/PlayerColors.tres")
+
 export var territory_owner: int = 0 setget set_territory_owner
-export var color: Color = Color.black setget set_color
-export var highlight_color: Color = Color.lightgray
 export(Enums.territory_types) var type = Enums.territory_types.normal setget set_type
 
+var color: Color setget set_color
+var highlight_color: Color
 onready var area2d = $Area2D
 
-export var player_colors = [
-	Color.black,
-	Color.red,
-	Color.blue,
-	Color.green,
-	Color.purple,
-	Color.aqua
-]
-
-
 func _ready():
+	color = PlayerColors.colors[territory_owner]
+	highlight_color = color.lightened(.2)
+	
 	$Polygon2D.polygon = polygon
 	$Polygon2D.color = get_polygon_color()
 
@@ -39,9 +34,9 @@ func set_color(value):
 	color = value
 	$Polygon2D.color = get_polygon_color()
 
-func set_territory_owner(value):
+func set_territory_owner(value: int):
 	territory_owner = value
-	set_color(player_colors[value])
+	set_color(PlayerColors.colors[value])
 
 func set_type(value):
 	type = value

@@ -1,5 +1,6 @@
 extends Node
 
+const seconds_per_day = 3
 
 class BuildingCost:
 	var type1: int
@@ -24,20 +25,17 @@ var building_costs := {
 	"Shield": BuildingCost.new(Enums.resource_types.power, 10, Enums.resource_types.science, true),
 }
 
+# WARNING! This value can't really just be changed here. We need to add
+# * Colors
+# * Names
+# * Map Territories
 const num_players = 5
 const random_names = [
-	"Tim",
-	"Bob",
-	"Gorak the Cruel",
-	"Gandhi",
-	"Forecia"
+	"Bit Buckets",
+	"The Buhlian Operators",
+	"Javawockies",
+	"Blue Alliange",
+	"Alumiboti",
+	"Blarglefish"
 ]
 
-# Note: This is duplicated in the Territory.gd...
-const player_colors = [
-	Color.red,
-	Color.blue,
-	Color.green,
-	Color.purple,
-	Color.aqua
-]

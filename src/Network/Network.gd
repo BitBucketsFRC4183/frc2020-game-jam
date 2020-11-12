@@ -4,27 +4,28 @@ extends Node
 # Default game port. Can be any number between 1024 and 49151.
 const DEFAULT_PORT = 3000
 
-# Max number of players.
-const MAX_PLAYERS = 5
-
 var peer: NetworkedMultiplayerENet = null
 
 onready var server: Server = $Server
 
+var player_name := ""
 
 func _ready():
 	# wire this up so know when our signat fails to connect
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 
 	# these might belong in a lobby UI
-	get_tree().connect("connected_to_server", self, "_connected_ok")
+	get_tree().connect("connected_to_server", self, "_on_connected_to_server")
 	get_tree().connect("connection_failed", self, "_connected_fail")
 	
 
-# Callback from SceneTree, only for clients (not server).
-func _connected_ok():
+func _on_connected_to_server():
 	# We just connected to a server
 	Signals.emit_signal("connected_to_server")
+
+	# tell the server we are joining and give them our name
+	RPC.send_join_game(player_name)
+
 
 
 # Callback from SceneTree, only for clients (not server).
@@ -41,22 +42,20 @@ func _connected_fail():
 func host_game(player_name):
 	# create a new server
 	peer = NetworkedMultiplayerENet.new()
-	peer.create_server(DEFAULT_PORT, MAX_PLAYERS)
+	peer.create_server(DEFAULT_PORT, Constants.num_players)
 	get_tree().set_network_peer(peer)
 
-	# create our player locally and send it to the others
+	# create our player locally in the PlayersManager
 	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
-	RPC.send_player_updated(player)
 
 
 func join_game(ip, player_name):
+	# connect to a server. When this is successful, we'll
+	# get a connected_to_server event
+	# when that comes in, we'll send a join request
 	peer = NetworkedMultiplayerENet.new()
 	peer.create_client(ip, DEFAULT_PORT)
 	get_tree().set_network_peer(peer)
-
-	# create our player locally and send it to the others
-	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
-	RPC.send_player_updated(player)
 
 
 
