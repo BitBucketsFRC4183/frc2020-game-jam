@@ -1,8 +1,7 @@
 extends Node
 
 func _ready() -> void:
-	pass
-	# OS.window_maximized = true
+	OS.window_maximized = true
 
 signal game_building_selected
 signal game_building_cancelled
