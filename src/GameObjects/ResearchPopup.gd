@@ -9,10 +9,9 @@ var tech: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var tech_info = "NYI" #Add this later
 	get_ok().visible = false	
 	
-	set_text("Do you want to research this Tech? \nTech Info: " + tech_info)
+	set_text("Do you want to research this Tech? \nTech Info: ")
 	
 	add_cancel("Cancel")
 	
@@ -21,3 +20,7 @@ func set_popup_properties():
 	
 func set_info(tech_name):
 	tech = tech_name
+	print(tech.substr(0, tech.length() - 1))
+	var t_name = tech.substr(0, tech.length() - 1).to_lower()
+	var cost = Constants.tech_costs[t_name][tech.to_lower()]
+	self.set_text(self.get_text() + " Cost = " + str(cost))

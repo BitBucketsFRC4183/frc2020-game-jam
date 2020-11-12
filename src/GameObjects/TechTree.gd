@@ -90,42 +90,15 @@ func set_tech_colors():
 	
 	$"TechTree/Row 6/TextureLaser3".set_texture(tier3 if p.tech_level["laser"] == 2 else (res if is_tech_being_researched("laser3") else disabled))
 	$"TechTree/Row 5/TextureLaser2".set_texture(tier2 if p.tech_level["laser"] >= 1 else (res if is_tech_being_researched("laser2") else disabled))
-
-var tech_costs = {
-	"mine": {
-		"mine2": 100,
-		"mine3": 300
-	},
-	"power": {
-		"power2": 100,
-		"power3": 200
-	},
-	"science": {
-		"science2": 200,
-		"science3": 400
-	},
-	"missile": {
-		"missile2": 300,
-		"missile3": 600
-	},
-	"laser": {
-		"laser2": 250,
-		"laser3": 500
-	},
-	"shield": {
-		"shield2": 100,
-		"shield3": 300
-	}
-}
-
+	
 #Returns the total tech cost of the currently researched tech
-func get_cost_research():
+func get_cost_research() -> int:
 	var p = PlayersManager.whoami()
 	if(p.selected_tech == ""):
 		return 0
 	else:
 		var t_name = p.selected_tech.substr(0, p.selected_tech.length() - 1).to_lower()
-		return tech_costs[t_name][p.selected_tech]
+		return Constants.tech_costs[t_name][p.selected_tech]
 
 func _on_Tech_pressed(tech_name):
 	#Generic method for when a tech is pressed
