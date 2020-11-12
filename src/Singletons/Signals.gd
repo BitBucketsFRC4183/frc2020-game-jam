@@ -35,3 +35,4 @@ signal server_disconnected
 
 
 signal asteroid_impact(impact_point, explosion_radius)
+signal final_wave_complete()

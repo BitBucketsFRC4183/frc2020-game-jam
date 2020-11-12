@@ -28,6 +28,7 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 base_speed = 250
 explosion_radius = 128
+max_health = 200
 
 [node name="ImpactPoint" type="Area2D" parent="."]
 
