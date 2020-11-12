@@ -23,4 +23,4 @@ func _input(event):
 			$Map.show()
 			$AsteroidManager.show()
 			$CanvasLayer/GUI.show()	
-	isTechTreeOpen = !isTechTreeOpen
+		isTechTreeOpen = !isTechTreeOpen
