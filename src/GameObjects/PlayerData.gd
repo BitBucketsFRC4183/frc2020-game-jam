@@ -4,10 +4,10 @@ class_name PlayerData
 
 var network_id: int 						# The player's network id
 export var num: int 						# The player number, i.e. player 1, 2, 3...
-export var name: String						# The player's name in the game
+export var name: String					# The player's name in the game
 export var ai_controlled: bool = true		# Is the player AI Controlled?
 export var color: Color = Color.black		# The player's color
-export var score = 0
+export var score = 0						# The player's score
 
 # the current resources the player has on hand
 var resources = {
@@ -49,7 +49,8 @@ func to_dict() -> Dictionary:
 		"resources": resources,
 		"selected_tech": selected_tech,
 		"tech_research_progress": tech_research_progress,
-		"tech_level": tech_level
+		"tech_level": tech_level,
+		"score": score
 	}
 
 func from_dict(dict: Dictionary) -> void:
@@ -64,3 +65,4 @@ func from_dict(dict: Dictionary) -> void:
 	selected_tech = dict.get("selected_tech", selected_tech)
 	tech_research_progress = dict.get("tech_research_progres", tech_research_progress)
 	tech_level = dict.get("tech_level", tech_level)
+	score = dict.get("score", score)

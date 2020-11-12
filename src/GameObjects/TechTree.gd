@@ -143,7 +143,7 @@ func _on_Tech_pressed(tech_name):
 		$ResearchPopup.add_button("Research!", true, tech_name)
 	pass
 
-func on_research_tech(tech: String):	
+func on_research_tech(tech: String):
 	PlayersManager.whoami().selected_tech = tech.to_lower()
 	PlayersManager.whoami().tech_research_progress = 0
 	
