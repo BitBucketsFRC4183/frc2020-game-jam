@@ -72,4 +72,7 @@ func _on_Tech_pressed(tech_name):
 func is_tech_valid(tech):
 	var tech_name = tech.substr(0, tech.length() - 1).to_lower()
 	var tech_num = int(tech.substr(tech.length() - 1)) - 1
+	
+	#Temporary
+	return true
 	pass

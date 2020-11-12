@@ -1,6 +1,9 @@
 extends Node2D
 
+var isTechTreeOpen
+
 func _ready():
+	isTechTreeOpen = false
 	$AsteroidManager.territories = $Map.get_territories()
 
 	if not Network.server.started:
@@ -8,3 +11,16 @@ func _ready():
 		Network.server.begin_game(true)
 		RPC.send_ready_to_start()
 
+func _input(event):
+	if(event.is_action_pressed("ui_tech_tree")):
+		if(!isTechTreeOpen):
+			$TechTree.show()
+			$Map.hide()
+			$AsteroidManager.hide()
+			$CanvasLayer/GUI.hide()
+		else:
+			$TechTree.hide()
+			$Map.show()
+			$AsteroidManager.show()
+			$CanvasLayer/GUI.show()	
+	isTechTreeOpen = !isTechTreeOpen
