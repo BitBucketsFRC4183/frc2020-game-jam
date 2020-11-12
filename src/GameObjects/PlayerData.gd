@@ -27,7 +27,7 @@ var tech_level = {
 }
 
 # the player's currently selected tech
-var selected_tech = "mine"
+var selected_tech = ""
 
 func _init(num: int, name: String, color: Color) -> void:
 	._init()

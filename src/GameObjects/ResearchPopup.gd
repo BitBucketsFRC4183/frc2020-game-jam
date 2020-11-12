@@ -11,8 +11,9 @@ var tech: String
 func _ready():
 	var tech_info = "NYI" #Add this later
 	get_ok().visible = false	
-	dialog_text = "Do you want to research this Tech? \nTech Info: " + tech_info
-	add_button("Research Tech", true)
+	
+	set_text("Do you want to research this Tech? \nTech Info: " + tech_info)
+	
 	add_cancel("Cancel")
 	
 func set_popup_properties():

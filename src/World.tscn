@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/World.gd" type="Script" id=1]
 [ext_resource path="res://src/Map/Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/GameObjects/TechTree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/GUI/GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/GameObjects/Asteroids/AsteroidManager.tscn" type="PackedScene" id=5]
 
@@ -17,5 +18,13 @@ position = Vector2( 0.520325, 0 )
 margin_top = 0.237282
 margin_right = 0.00012207
 margin_bottom = 0.237305
+
+[node name="TechTree" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 1920, 1080 )
 
 [node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
