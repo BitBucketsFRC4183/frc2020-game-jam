@@ -43,13 +43,12 @@ func host_game(host_name: String, single_player := true):
 	# create a new server
 	# for single player games, we have 0 users
 
-	if single_player:
-		get_tree().refuse_new_network_connections = true
-
 	peer = NetworkedMultiplayerENet.new()
 	peer.create_server(DEFAULT_PORT, 1 if single_player else Constants.num_players)
 	get_tree().set_network_peer(peer)
 
+	if single_player:
+		get_tree().refuse_new_network_connections = true
 
 
 func join_game(ip, player_name):

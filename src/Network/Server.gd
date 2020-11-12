@@ -74,6 +74,7 @@ func _on_DaysTimer_timeout():
 func _on_player_joined(id: int, player_name: String) -> void:
 	# TODO: Support player_name. For now it's randomly assigned
 	var player = PlayersManager.add_player(id)
+	print("Player %s joined, assumed player %s - %s" % [id, player.num, player.name])
 	RPC.send_player_updated(player)
 
 	# also send the player our host information
