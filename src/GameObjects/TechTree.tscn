@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://assets/icons/techtree/disabled.png" type="Texture" id=1]
 [ext_resource path="res://assets/icons/techtree/tier3.png" type="Texture" id=2]
 [ext_resource path="res://assets/icons/techtree/tier2.png" type="Texture" id=3]
 [ext_resource path="res://assets/icons/techtree/tier1.png" type="Texture" id=4]
@@ -342,7 +343,7 @@ margin_left = 885.0
 margin_right = 1035.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 expand = true
 
 [node name="Name" type="Label" parent="TechTree/Middle Row/NationName"]

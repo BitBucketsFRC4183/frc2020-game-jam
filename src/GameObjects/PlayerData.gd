@@ -29,6 +29,9 @@ var tech_level = {
 # the player's currently selected tech
 var selected_tech = ""
 
+# the player's current progress towards researching the tech
+var tech_research_progress = 0
+
 func _init(num: int, name: String, color: Color) -> void:
 	._init()
 	self.num = num
@@ -45,6 +48,7 @@ func to_dict() -> Dictionary:
 		"color": color.to_rgba32(),
 		"resources": resources,
 		"selected_tech": selected_tech,
+		"tech_research_progress": tech_research_progress,
 		"tech_level": tech_level
 	}
 
@@ -58,4 +62,5 @@ func from_dict(dict: Dictionary) -> void:
 	color = Color(dict.get("color", color.to_rgba32()))
 	resources = dict.get("resources", resources)
 	selected_tech = dict.get("selected_tech", selected_tech)
+	tech_research_progress = dict.get("tech_research_progres", tech_research_progress)
 	tech_level = dict.get("tech_level", tech_level)
