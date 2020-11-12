@@ -63,29 +63,33 @@ func set_valid_tech_colors():
 		$"TechTree/Row 1/TextureMissile3".texture = tier3
 	pass
 	
+func is_tech_being_researched(tech):
+	return PlayersManager.whoami().selected_tech == tech
+	
 func set_tech_colors():
 	var p = PlayersManager.whoami()
 	var disabled = preload("res://assets/icons/techtree/disabled.png")
+	var res = preload("res://assets/icons/techtree/researching.png")
 	var tier2 = preload("res://assets/icons/techtree/tier2.png")
 	var tier3 = preload("res://assets/icons/techtree/tier3.png")
 	
-	$"TechTree/Row 1/TextureMine3".set_texture(tier3 if p.tech_level["mine"] == 2 else disabled)
-	$"TechTree/Row 2/TextureMine2".set_texture(tier2 if p.tech_level["mine"] >= 1 else disabled)
+	$"TechTree/Row 1/TextureMine3".set_texture(tier3 if p.tech_level["mine"] == 2 else (res if is_tech_being_researched("mine3") else disabled))
+	$"TechTree/Row 2/TextureMine2".set_texture(tier2 if p.tech_level["mine"] >= 1 else (res if is_tech_being_researched("mine2") else disabled))
 	
-	$"TechTree/Row 1/TextureMissile3".set_texture(tier3 if p.tech_level["missile"] == 2 else disabled)
-	$"TechTree/Row 2/TextureMissile2".set_texture(tier2 if p.tech_level["missile"] >= 1 else disabled)
+	$"TechTree/Row 1/TextureMissile3".set_texture(tier3 if p.tech_level["missile"] == 2 else (res if is_tech_being_researched("missile3") else disabled))
+	$"TechTree/Row 2/TextureMissile2".set_texture(tier2 if p.tech_level["missile"] >= 1 else (res if is_tech_being_researched("missile2") else disabled))
 
-	$"TechTree/Middle Row/TexturePower3".set_texture(tier3 if p.tech_level["power"] == 2 else disabled)
-	$"TechTree/Middle Row/TexturePower2".set_texture(tier2 if p.tech_level["power"] >= 1 else disabled)
+	$"TechTree/Middle Row/TexturePower3".set_texture(tier3 if p.tech_level["power"] == 2 else (res if is_tech_being_researched("power3") else disabled))
+	$"TechTree/Middle Row/TexturePower2".set_texture(tier2 if p.tech_level["power"] >= 1 else (res if is_tech_being_researched("power2") else disabled))
 	
-	$"TechTree/Middle Row/TextureShield2".set_texture(tier3 if p.tech_level["shield"] == 2 else disabled)
-	$"TechTree/Middle Row/TextureShield3".set_texture(tier2 if p.tech_level["shield"] >= 1 else disabled)
+	$"TechTree/Middle Row/TextureShield3".set_texture(tier3 if p.tech_level["shield"] == 2 else (res if is_tech_being_researched("shield3") else disabled))
+	$"TechTree/Middle Row/TextureShield2".set_texture(tier2 if p.tech_level["shield"] >= 1 else (res if is_tech_being_researched("shield2") else disabled))
 
-	$"TechTree/Row 5/TextureScience2".set_texture(tier3 if p.tech_level["science"] == 2 else disabled)
-	$"TechTree/Row 5/TextureLaser2".set_texture(tier2 if p.tech_level["laser"] >= 1 else disabled)
+	$"TechTree/Row 6/TextureScience3".set_texture(tier3 if p.tech_level["science"] == 2 else (res if is_tech_being_researched("science3") else disabled))
+	$"TechTree/Row 5/TextureScience2".set_texture(tier2 if p.tech_level["science"] >= 1 else (res if is_tech_being_researched("science2") else disabled))
 	
-	$"TechTree/Row 6/TextureScience3".set_texture(tier3 if p.tech_level["science"] == 1 else disabled)
-	$"TechTree/Row 6/TextureLaser3".set_texture(tier2 if p.tech_level["laser"] >= 1 else disabled)
+	$"TechTree/Row 6/TextureLaser3".set_texture(tier3 if p.tech_level["laser"] == 2 else (res if is_tech_being_researched("laser3") else disabled))
+	$"TechTree/Row 5/TextureLaser2".set_texture(tier2 if p.tech_level["laser"] >= 1 else (res if is_tech_being_researched("laser2") else disabled))
 
 var tech_costs = {
 	"mine": {
