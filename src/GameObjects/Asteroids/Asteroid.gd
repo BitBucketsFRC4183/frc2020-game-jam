@@ -23,5 +23,5 @@ func _on_ImpactPoint_area_entered(area):
 		impact()
 		
 func impact():
-	Signals.emit_signal("asteroid_impact", impact_point.position, explosion_radius)
+	Signals.emit_signal("asteroid_impact", impact_point.global_position, explosion_radius)
 	queue_free()

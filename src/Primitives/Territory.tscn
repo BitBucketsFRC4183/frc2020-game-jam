@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Primitives/Territory.gd" type="Script" id=1]
+[ext_resource path="res://src/Primitives/TerritoryArea.gd" type="Script" id=2]
 
 [node name="Territory" type="CollisionPolygon2D"]
 polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
@@ -15,5 +16,6 @@ color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 2 )
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

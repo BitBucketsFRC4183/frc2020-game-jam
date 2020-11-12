@@ -6,6 +6,7 @@ var building_type
 func _ready() -> void:
 	Signals.connect("game_building_selected", self, "_on_game_building_selected")
 	Signals.connect("game_building_cancelled", self, "_on_game_building_cancelled")
+	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
 
 func _on_game_building_selected(scene_path, building):
 	instanced_scene = load(scene_path).instance()
@@ -47,3 +48,32 @@ func get_territories(root: Node = self) -> Array:
 			for child_territory in child_territories:
 				territories.append(child_territory)
 	return territories
+
+
+func _on_asteroid_impact(impact_point, explosion_radius):
+	var area = Area2D.new()
+	
+	var shape = CircleShape2D.new()
+	shape.set_radius(explosion_radius)
+
+	var collision = CollisionShape2D.new()
+	collision.set_shape(shape)
+
+	area.add_child(collision)
+	
+	area.global_position = impact_point
+	call_deferred("impact_deferred", area)
+	
+func impact_deferred(area: Area2D) -> void:
+	add_child(area)
+	area.connect("area_entered", self, "_on_impact_registered", [area])
+
+
+func _on_impact_registered(target, area):
+	var areas = area.get_overlapping_areas()
+	for node in areas:
+		if node is TerritoryArea:
+			if node.get_child_count() > 0:
+				var child = node.get_child(0)
+				if child is Territory:
+					child.set_type(Enums.territory_types.destroyed)

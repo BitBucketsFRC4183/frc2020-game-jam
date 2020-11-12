@@ -4,10 +4,9 @@
 [ext_resource path="res://assets/icons/Asteroids/Asteroid Marker.png" type="Texture" id=2]
 [ext_resource path="res://src/GameObjects/Asteroids/Asteroid.gd" type="Script" id=3]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Spin"
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -27,32 +26,28 @@ tracks/0/keys = {
 [node name="FallingAsteroidSmall" type="Node2D"]
 script = ExtResource( 3 )
 base_speed = 500
-explosion_radius = 128
 
 [node name="ImpactPoint" type="Area2D" parent="."]
 
 [node name="Asteroid Marker" type="Sprite" parent="ImpactPoint"]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 offset = Vector2( -1, -5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactPoint"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Asteroid" type="Area2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Asteroid"]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 offset = Vector2( 10, 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Asteroid/Sprite"]
 autoplay = "Spin"
-anims/Spin = SubResource( 1 )
+anims/Spin = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
 shape = SubResource( 3 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
 [connection signal="area_entered" from="ImpactPoint" to="." method="_on_ImpactPoint_area_entered"]

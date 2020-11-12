@@ -27,12 +27,12 @@ tracks/0/keys = {
 [node name="FallingAsteroidMedium" type="Node2D"]
 script = ExtResource( 3 )
 base_speed = 250
-explosion_radius = 512
+explosion_radius = 128
 
 [node name="ImpactPoint" type="Area2D" parent="."]
 
 [node name="Asteroid Marker" type="Sprite" parent="ImpactPoint"]
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 2 )
 offset = Vector2( -1, -5 )
 
@@ -42,7 +42,7 @@ shape = SubResource( 1 )
 [node name="Asteroid" type="Area2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Asteroid"]
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 1 )
 offset = Vector2( 10, 10 )
 
@@ -52,7 +52,4 @@ anims/Spin = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
 shape = SubResource( 3 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
 [connection signal="area_entered" from="ImpactPoint" to="." method="_on_ImpactPoint_area_entered"]
