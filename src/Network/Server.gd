@@ -8,6 +8,9 @@ var players_ready = []
 # The current day
 var day := 0
 
+# default to single_player
+var single_player := true
+
 # have we started the game already?
 var started := false
 
@@ -47,13 +50,18 @@ func player_ready_to_start(id: int):
 		print("Server: All players ready, sending post_start_game")
 		RPC.send_post_start_game()
 
-func begin_game():
+func begin_game(single_player := true):
+
+	# The server/host is always player 1
+	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
+
 	RPC.send_pre_start_game(PlayersManager.players)
 
 
 func post_start_game():
 	# the server needs to start the timer
 	$DaysTimer.start()
+	started = true
 
 
 func _on_DaysTimer_timeout():
