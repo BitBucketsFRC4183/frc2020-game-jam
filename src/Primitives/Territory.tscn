@@ -17,5 +17,8 @@ polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 2 )
+
+[node name="Center" type="Position2D" parent="."]
+visible = false
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

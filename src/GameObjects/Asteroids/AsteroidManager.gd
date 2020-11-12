@@ -34,5 +34,5 @@ func _on_Timer_timeout():
 			asteroid = load("res://src/GameObjects/Asteroids/FallingAsteroidMedium.tscn").instance()
 		else:
 			asteroid = load("res://src/GameObjects/Asteroids/FallingAsteroidSmall.tscn").instance()
-		asteroid.global_position = territories[i].global_position
+		asteroid.global_position = territories[i].center_global
 		add_child(asteroid)

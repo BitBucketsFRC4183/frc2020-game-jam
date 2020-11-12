@@ -8,6 +8,9 @@ export var highlight_color: Color = Color.lightgray
 export(Enums.territory_types) var type = Enums.territory_types.normal setget set_type
 
 onready var area2d = $Area2D
+var center_global = Vector2.ZERO
+var center_local = Vector2.ZERO
+
 
 export var player_colors = [
 	Color.black,
@@ -22,9 +25,13 @@ export var player_colors = [
 func _ready():
 	$Polygon2D.polygon = polygon
 	$Polygon2D.color = get_polygon_color()
-
+	
+	calculate_center()
+	
 	if not Engine.editor_hint:
 		call_deferred("_reparent_area2d")
+		$Center.position = center_local
+		center_global = $Center.global_position
 
 func _reparent_area2d():
 	# make this area2d our parent so we can create a polygon2d in the editor, but
@@ -61,3 +68,20 @@ func _on_Area2D_mouse_entered():
 
 func _on_Area2D_mouse_exited():
 	$Polygon2D.color = get_polygon_color()
+	
+func calculate_center():
+	var min_x = INF
+	var min_y = INF
+	var max_x = -INF
+	var max_y = -INF
+	
+	for vector in polygon:
+		if vector.x < min_x:
+			min_x = vector.x
+		if vector.y < min_y:
+			min_y = vector.y
+		if vector.x > max_x:
+			max_x = vector.x
+		if vector.y > max_y:
+			max_y = vector.y
+	center_local = Vector2((max_x - min_x) / 2 + min_x, (max_y - min_y) / 2 + min_y)
