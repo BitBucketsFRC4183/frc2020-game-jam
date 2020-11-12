@@ -1,7 +1,8 @@
 extends Node
 
 func _ready() -> void:
-	OS.window_maximized = true
+	pass
+	# OS.window_maximized = true
 
 signal game_building_selected
 signal game_building_cancelled
@@ -12,7 +13,8 @@ signal player_data_updated(player_data)
 
 
 # Notify when the connected players change
-signal player_updated(id, player)
+signal player_updated(player_dict)
+signal player_joined(id, player)
 
 # These are lifecycle signals. The server sends a
 # pre_start_game to each client
@@ -23,7 +25,7 @@ signal player_ready_to_start(id)
 signal post_start_game
 
 # client connection signals
-signal connecterd_to_server
+signal connected_to_server
 signal connection_to_server_failed
 signal server_disconnected
 

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+export var colors = [
+	Color.black,
+	Color(\"c33232\"),
+	Color(\"1f8ba7\"),
+	Color(\"43a43e\"),
+	Color(\"8d29cb\"),
+	Color(\"b88628\")
+]
+"
+
+[resource]
+script = SubResource( 1 )
+colors = [ Color( 0, 0, 0, 1 ), Color( 0.764706, 0.196078, 0.196078, 1 ), Color( 0.121569, 0.545098, 0.654902, 1 ), Color( 0.262745, 0.643137, 0.243137, 1 ), Color( 0.552941, 0.160784, 0.796078, 1 ), Color( 0.721569, 0.52549, 0.156863, 1 ) ]
