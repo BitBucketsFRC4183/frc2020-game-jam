@@ -25,6 +25,33 @@ var building_costs := {
 	"Shield": BuildingCost.new(Enums.resource_types.power, 10, Enums.resource_types.science, true),
 }
 
+var tech_costs := {
+	"mine": {
+		"mine2": 100,
+		"mine3": 300
+	},
+	"power": {
+		"power2": 100,
+		"power3": 200
+	},
+	"science": {
+		"science2": 200,
+		"science3": 400
+	},
+	"missile": {
+		"missile2": 300,
+		"missile3": 600
+	},
+	"laser": {
+		"laser2": 250,
+		"laser3": 500
+	},
+	"shield": {
+		"shield2": 100,
+		"shield3": 300
+	}
+}
+
 # WARNING! This value can't really just be changed here. We need to add
 # * Colors
 # * Names
