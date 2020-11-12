@@ -14,7 +14,7 @@ onready var area2d = $Area2D
 func _ready():
 	color = PlayerColors.colors[territory_owner]
 	highlight_color = color.lightened(.2)
-	
+
 	$Polygon2D.polygon = polygon
 	$Polygon2D.color = get_polygon_color()
 
