@@ -10,6 +10,9 @@ extends Node
 # remote - means "execute on all clients except me". This is used for the server to broadcast to clients
 # remote with rpc_id(1, ...) means execute only on the server. The server has an id of 1
 
+###
+### This is player management stuff
+###
 func send_server_day_updated(day):
 	assert(get_tree().is_network_server())
 
@@ -25,7 +28,7 @@ remotesync func server_day_updated(day):
 
 func send_join_game(player_name: String) -> void:
 	# tell the server we joined the game
-	print("Sending player_joined call to server for %s" % player_name)
+	print("Sending player_joined call to server for %s" % get_tree().get_network_unique_id())
 	rpc_id(1, "player_joined", player_name)
 
 remotesync func player_joined(player_name: String) -> void:
@@ -82,3 +85,14 @@ func send_players_updated(player_dicts: Array):
 remote func players_updated(player_dicts: Array):
 	Signals.emit_signal("players_updated", player_dicts);
 
+###
+### This is player actions
+###
+
+func send_game_building_placed(building_type_name: String, position: Vector2):
+	# tell the other players about our placed building
+	rpc("game_building_placed", building_type_name, position)
+
+remote func game_building_placed(building_type_name: String, position: Vector2):
+	# Message sent to us from another player about a building placement
+	Signals.emit_signal("game_building_placed", PlayersManager.get_player_num(get_tree().get_rpc_sender_id()), building_type_name, position)
