@@ -3,6 +3,7 @@ extends Node2D
 export var base_speed = 100
 export var explosion_radius = 64
 export var base_distance = 1000
+export var max_health = 100
 
 onready var distance = base_distance * rand_range(0.75,3)
 onready var speed = base_speed * rand_range(0.75,1.25)

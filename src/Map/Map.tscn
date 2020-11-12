@@ -385,6 +385,7 @@ territory_owner = 4
 [node name="Territory57" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -448, 536 )
 polygon = PoolVector2Array( 176, -48, 304, -104, 192, -104, 64, -48 )
+territory_owner = 4
 type = 1
 
 [node name="Territory74" parent="Right" instance=ExtResource( 1 )]
