@@ -52,7 +52,7 @@ func get_territories(root: Node = self) -> Array:
 
 func _on_asteroid_impact(impact_point, explosion_radius):
 	var area = Area2D.new()
-	
+
 	var shape = CircleShape2D.new()
 	shape.set_radius(explosion_radius)
 
@@ -60,10 +60,10 @@ func _on_asteroid_impact(impact_point, explosion_radius):
 	collision.set_shape(shape)
 
 	area.add_child(collision)
-	
+
 	area.global_position = impact_point
 	call_deferred("impact_deferred", area)
-	
+
 func impact_deferred(area: Area2D) -> void:
 	add_child(area)
 	area.connect("area_entered", self, "_on_impact_registered", [area])
