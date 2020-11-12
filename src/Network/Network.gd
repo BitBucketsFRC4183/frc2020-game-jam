@@ -6,8 +6,6 @@ const DEFAULT_PORT = 3000
 
 var peer: NetworkedMultiplayerENet = null
 
-onready var server: Server = $Server
-
 var player_name := ""
 
 func _ready():

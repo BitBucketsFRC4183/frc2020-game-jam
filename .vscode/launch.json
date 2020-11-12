@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "GDScript Godot - Main",
+            "name": "Godot - Main",
             "type": "godot",
             "request": "launch",
             "project": "${workspaceFolder}",
@@ -16,7 +16,7 @@
             "scene_file": "src/Main.tscn"
         },
         {
-            "name": "GDScript Godot - World",
+            "name": "Godot - World",
             "type": "godot",
             "request": "launch",
             "project": "${workspaceFolder}",
@@ -27,7 +27,7 @@
             "scene_file": "src/World.tscn"
         },
         {
-            "name": "GDScript Godot - Hoster",
+            "name": "Godot - Hoster",
             "type": "godot",
             "request": "launch",
             "project": "${workspaceFolder}",
@@ -38,7 +38,7 @@
             "scene_file": "src/Scratch/Hoster.tscn"
         },
         {
-            "name": "GDScript Godot - Joiner",
+            "name": "Godot - Joiner",
             "type": "godot",
             "request": "launch",
             "project": "${workspaceFolder}",
