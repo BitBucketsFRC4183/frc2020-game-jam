@@ -9,6 +9,9 @@ var building_owner = 1
 func _ready() -> void:
 	Signals.connect("day_passed", self, "_on_day_passed")
 
+	is_defense_building = false
+	is_resource_building = true
+
 func _on_day_passed(day: int):
 	assert(resource_type != Enums.resource_types.EXCEPTION)
 	assert(resource_amt != -1)
