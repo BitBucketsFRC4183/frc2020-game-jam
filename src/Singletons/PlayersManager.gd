@@ -87,6 +87,12 @@ func whoami() -> PlayerData:
 	else:
 		return me
 
+func get_player_num(network_id: int) -> int:
+	if players_by_network_id.has(network_id):
+		return players_by_network_id[network_id].num
+	printerr("could not find player_num for network_id: %s" % network_id)
+	return 0
+
 func get_all_player_dicts() -> Array:
 	# get all the PlayerDatas as dicts to send over the wire
 	var player_dicts = []

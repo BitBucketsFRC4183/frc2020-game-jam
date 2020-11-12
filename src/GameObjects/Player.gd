@@ -36,9 +36,9 @@ func _on_resource_generated(player_num: int, res_list):
 		data.resources[res_list[0]] += res_list[1]
 		emit_signal("player_data_changed", data)
 
-func _on_game_building_placed(player_num, building_type):
+func _on_game_building_placed(player_num, building_type_name, position):
 	if data.num == player_num:
-		var building_cost = Constants.building_costs[building_type]
+		var building_cost = Constants.building_costs[building_type_name]
 		data.resources[building_cost.type1] -= building_cost.cost
 		if building_cost.has_type_2:
 			data.resources[building_cost.type2] -= building_cost.cost

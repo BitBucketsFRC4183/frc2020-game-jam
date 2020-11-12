@@ -9,7 +9,7 @@ func _ready() -> void:
 
 signal game_building_selected
 signal game_building_cancelled
-signal game_building_placed(player_num, building_type)
+signal game_building_placed(player_num, building_type_name, position)
 signal day_passed(day)
 signal resource_generated(player_num, resource_info)
 signal player_data_updated(player_data)
