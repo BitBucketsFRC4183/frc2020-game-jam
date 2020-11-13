@@ -52,7 +52,12 @@ func set_tech_node_colors():
 	update_node_texture(player, "TechTree/Row 6/TextureLaser3", "laser3", false)
 	
 func update_node_texture(p: PlayerData, node: String, tech_name: String, tier: bool):
-	get_node(node).set_texture(texture_researching if p.selected_tech == tech_name else ((texture_tier2 if tier else texture_tier3) if is_tech_valid(tech_name) && p.selected_tech == "" else texture_disabled))
+	get_node(node).set_texture(texture_researching if p.selected_tech == tech_name else ((texture_tier2 if tier else texture_tier3) if p.selected_tech == "" && (is_tech_valid(tech_name) || has_tech(p, tech_name)) else texture_disabled))
+	
+func has_tech(p: PlayerData, tech_name: String):
+	var name = tech_name.substr(0, tech_name.length() - 1)
+	var tier = int(tech_name.substr(tech_name.length() - 1, tech_name.length())) - 1
+	return p.tech_level[name.to_lower()] >= tier
 	
 func is_tech_being_researched(tech):
 	return PlayersManager.whoami().selected_tech == tech
@@ -73,7 +78,7 @@ func _on_Tech_pressed(tech_name):
 	#	Is tech the next tier (can't directly research Tier 3)
 	#print(tech_name)
 	
-	var can_research = is_tech_valid(tech_name) && not is_player_researching()
+	var can_research = is_tech_valid(tech_name) && not is_player_researching() && not has_tech(PlayersManager.whoami(), tech_name)
 	
 	if(can_research):
 		if($ResearchPopup.visible):
@@ -106,5 +111,5 @@ func is_tech_valid(tech):
 
 func _on_show():
 	if(self.visible):
-		print(PlayersManager.whoami().tech_level)
 		set_tech_node_colors()
+		#$TechTree/ProgressBar/ResearchProgress.update_step(PlayersManager.whoami())

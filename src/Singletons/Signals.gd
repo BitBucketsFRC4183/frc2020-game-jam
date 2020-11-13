@@ -14,6 +14,7 @@ signal day_passed(day)
 signal resource_generated(player_num, resource_info)
 signal player_data_updated(player_data)
 
+signal tech_progress_changed(player_data)
 
 # Notify when the connected players change
 signal players_updated(player_dicts)
