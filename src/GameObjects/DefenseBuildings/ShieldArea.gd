@@ -1,12 +1,13 @@
 extends Area2D
 class_name ShieldArea
 
+export var active = false
+
 var radius = 256.0
 var cooldown = 10
 var regen = 10
 var max_health = 100
 var health = max_health
-var active = true
 
 onready var shape = CircleShape2D.new()
 onready var collision = CollisionShape2D.new()
