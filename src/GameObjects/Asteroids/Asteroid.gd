@@ -63,14 +63,13 @@ func impact():
 				if health <= 0:
 					destroy()
 	if not destroyed:
-		Signals.emit_signal("asteroid_impact", impact_point.global_position, explosion_radius)
+		Signals.emit_signal("asteroid_impact", id, impact_point.global_position, explosion_radius)
+		RPC.send_asteroid_impact(id, impact_point.global_position, explosion_radius)
 		queue_free()
 	
 func destroy():
 	destroyed = true
 	Signals.emit_signal("asteroid_destroyed", global_position, size)
-	Signals.emit_signal("asteroid_impact", id, impact_point.global_position, explosion_radius)
-	RPC.send_asteroid_impact(id, impact_point.global_position, explosion_radius)
 	queue_free()
 
 func _on_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):

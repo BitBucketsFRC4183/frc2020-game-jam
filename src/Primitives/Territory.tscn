@@ -15,6 +15,8 @@ color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2147483653
 script = ExtResource( 2 )
 
 [node name="Center" type="Position2D" parent="."]

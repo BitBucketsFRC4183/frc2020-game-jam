@@ -84,6 +84,9 @@ func validate_new_territory(area):
 	areas.erase(area)
 	for a in areas:
 		var child = a.get_child(0)
+		if child is ShieldArea:
+			# ignore the shield area
+			continue
 		if child is Territory:
 			if is_resource_building:
 				# if we're in another resource territory, we're good
@@ -109,5 +112,6 @@ func validate_new_territory(area):
 	# if the list is empty, we're in the ocean. heck nah
 	if areas.size() == 0:
 		placeable = false
+
 func activate():
 	active = true
