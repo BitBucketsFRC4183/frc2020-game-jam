@@ -46,6 +46,7 @@ func _on_game_building_placed(player_num: int, building_type_name: String, posit
 	var building_scene = load(_get_scene_path_for_building_type(building_type_name)).instance()
 	building_scene.player_num = player_num
 	building_scene.position =  position
+	building_scene.activate()
 	add_child(building_scene)
 
 

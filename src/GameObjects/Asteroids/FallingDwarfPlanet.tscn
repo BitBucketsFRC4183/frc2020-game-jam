@@ -29,6 +29,7 @@ script = ExtResource( 3 )
 base_speed = 25
 explosion_radius = 2048
 max_health = 2000
+size = 3
 
 [node name="ImpactPoint" type="Area2D" parent="."]
 
