@@ -7,7 +7,7 @@ func _ready() -> void:
 	if not username.begins_with('craig'):
 		OS.window_maximized = true
 
-signal game_building_selected
+signal game_building_selected(scene_path, building)
 signal game_building_cancelled
 signal game_building_placed(player_num, building_type_name, position)
 signal day_passed(day)
@@ -34,7 +34,13 @@ signal connected_to_server
 signal connection_to_server_failed
 signal server_disconnected
 
+# server signals
+# this is called by the server to let any server specific code know it's ready to go
+signal server_started
+
 
 signal asteroid_impact(impact_point, explosion_radius)
 signal asteroid_destroyed(position, size)
+signal asteroid_incoming(position, asteroid_strength, attributes)
+signal asteroid_position_updated(asteroid_id, position)
 signal final_wave_complete()

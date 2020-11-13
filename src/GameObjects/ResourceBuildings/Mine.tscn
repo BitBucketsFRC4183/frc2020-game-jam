@@ -7,6 +7,8 @@
 radius = 11.8673
 
 [node name="Mine" type="Area2D"]
+collision_layer = 4
+collision_mask = 6
 script = ExtResource( 2 )
 resource_type = 0
 resource_amt = 5

@@ -1,16 +1,20 @@
 extends Area2D
 class_name TerritoryArea
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var buildings_in_area := []
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func get_territory():
+	return get_child(0)
 
+func get_buildings():
+	# if it's already destroyed, don't care about buildings passing through after the fact
+	if get_territory().type == Enums.territory_types.destroyed:
+		return []
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	var all_areas = get_overlapping_areas()
+	for a in all_areas:
+		if a is GameBuilding:
+			buildings_in_area.append(a)
+
+	return buildings_in_area

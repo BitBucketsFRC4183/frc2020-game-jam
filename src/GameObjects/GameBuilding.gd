@@ -2,8 +2,11 @@ class_name GameBuilding
 extends Area2D
 
 # the index of the player who owns this building
-export var player_num := 0
+export var player_num := 1
 
+# flag set on ready by the building themselves
+# see DefenseBuilding.gd and ResourceBuilding.gd
+# used to determine whether we go in resource tile or normal tile
 var is_defense_building: bool
 var is_resource_building: bool
 
@@ -21,12 +24,20 @@ func _ready() -> void:
 	connect("area_entered", self, "_on_area_entered")
 	connect("area_exited", self, "_on_area_exited")
 
+	if player_num == 1:
+		player_num = PlayersManager.whoami().num
+
 func _on_area_entered(area):
 	if not newly_spawned:
 		return
 
 	var child = area.get_child(0)
 	if child is Territory:
+
+		if child.territory_owner != player_num:
+			placeable = false
+			return
+
 		if is_resource_building:
 			# we just entered a resource territory
 			if child.type == Enums.territory_types.resource:
@@ -60,6 +71,11 @@ func _on_area_exited(area):
 	var child_node = area.get_child(0)
 	# if we just exited a territory
 	if child_node is Territory:
+
+		if child_node.territory_owner != player_num:
+			placeable = false
+			return
+
 		if is_resource_building:
 			# only go ahead if we just exited a resource territory
 			if child_node.type == Enums.territory_types.resource:
@@ -84,7 +100,15 @@ func validate_new_territory(area):
 	areas.erase(area)
 	for a in areas:
 		var child = a.get_child(0)
+		if child is ShieldArea:
+			# ignore the shield area
+			continue
 		if child is Territory:
+
+			if child.territory_owner != player_num:
+				placeable = false
+				return
+
 			if is_resource_building:
 				# if we're in another resource territory, we're good
 				if child.type == Enums.territory_types.resource:
@@ -109,5 +133,6 @@ func validate_new_territory(area):
 	# if the list is empty, we're in the ocean. heck nah
 	if areas.size() == 0:
 		placeable = false
+
 func activate():
 	active = true

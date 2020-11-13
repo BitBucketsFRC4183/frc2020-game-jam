@@ -5,4 +5,5 @@ func _ready() -> void:
 	is_resource_building = false
 
 func activate():
+	.activate()
 	$ShieldArea.active = true

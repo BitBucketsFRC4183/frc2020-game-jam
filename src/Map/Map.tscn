@@ -549,19 +549,19 @@ position = Vector2( 241.964, 150.969 )
 
 [node name="Player2Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 860.785, 284.5 )
-player_num = 1
+player_num = 2
 
 [node name="Player3Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 323.101, 788.024 )
-player_num = 2
+player_num = 3
 
 [node name="Player4Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1262.27, 623.88 )
-player_num = 3
+player_num = 4
 
 [node name="Player5Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1619.82, 125.499 )
-player_num = 4
+player_num = 5
 
 [node name="Player1ScienceLab" parent="." instance=ExtResource( 2 )]
 position = Vector2( 298.264, 201.045 )

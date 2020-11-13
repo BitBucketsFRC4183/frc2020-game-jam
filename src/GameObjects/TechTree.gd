@@ -79,7 +79,6 @@ func _on_Tech_pressed(tech_name):
 	#print(tech_name)
 	
 	var can_research = is_tech_valid(tech_name) && not is_player_researching() && not has_tech(PlayersManager.whoami(), tech_name)
-	
 	if(can_research):
 		if($ResearchPopup.visible):
 			$ResearchPopup.hide()
@@ -90,7 +89,7 @@ func _on_Tech_pressed(tech_name):
 func on_research_tech(tech: String):
 	PlayersManager.whoami().selected_tech = tech.to_lower()
 	PlayersManager.whoami().tech_research_progress = 0
-	
+
 	$ResearchPopup.hide()
 	set_tech_node_colors()
 	pass
@@ -101,7 +100,7 @@ func is_player_researching():
 func is_tech_valid(tech):
 	var tech_name = tech.substr(0, tech.length() - 1).to_lower()
 	var tech_num = int(tech.substr(tech.length() - 1)) - 1
-	
+
 	if tech_num - PlayersManager.whoami().tech_level[tech_name] == 1:
 		return true
 	else:
