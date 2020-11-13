@@ -19,6 +19,7 @@ var active_asteroids = 0
 
 func _ready():
 	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
+	Signals.connect("asteroid_destroyed", self, "_on_asteroid_destroyed")
 
 func _on_Timer_timeout():
 	wave += 1
@@ -52,6 +53,8 @@ func _on_Timer_timeout():
 func _on_asteroid_impact(impact_point, explosion_radius):
 	remove_active_asteroid()
 
+func _on_asteroid_destroyed(position, size):
+	remove_active_asteroid()
 func final_wave():
 	var boss = dwarf_planet.instance()
 	boss.global_position = territories[asteroid_count + 1].center_global
