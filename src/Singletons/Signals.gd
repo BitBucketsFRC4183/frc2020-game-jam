@@ -39,6 +39,7 @@ signal server_started
 
 
 signal asteroid_impact(impact_point, explosion_radius)
+signal asteroid_destroyed(position, size)
 signal asteroid_incoming(position, asteroid_strength, attributes)
 signal asteroid_position_updated(asteroid_id, position)
 signal final_wave_complete()
