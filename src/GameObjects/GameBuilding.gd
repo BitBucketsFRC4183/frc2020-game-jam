@@ -18,6 +18,7 @@ var newly_spawned := false
 func _ready() -> void:
 	connect("area_entered", self, "_on_area_entered")
 	connect("area_exited", self, "_on_area_exited")
+	Signals.connect("game_building_selected", self, "_on_game_building_selected")
 
 func _on_area_entered(area):
 	if not newly_spawned:
@@ -47,6 +48,7 @@ func _on_area_entered(area):
 	else:
 		in_non_territory_area = true
 		placeable = false
+
 
 func _on_area_exited(area):
 	if not newly_spawned:
@@ -107,3 +109,7 @@ func validate_new_territory(area):
 	# if the list is empty, we're in the ocean. heck nah
 	if areas.size() == 0:
 		placeable = false
+
+
+func _on_game_building_selected(scene_path, building):
+	player_num = PlayersManager.whoami().num

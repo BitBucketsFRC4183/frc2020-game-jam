@@ -22,7 +22,7 @@ func _process(delta):
 func _on_ImpactPoint_area_entered(area):
 	if area == asteroid:
 		impact()
-		
+
 func impact():
 	Signals.emit_signal("asteroid_impact", impact_point.global_position, explosion_radius)
 	queue_free()
