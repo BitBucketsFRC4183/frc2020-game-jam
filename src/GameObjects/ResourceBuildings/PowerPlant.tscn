@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/icons/Power Plant.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 20.8798
+radius = 18.1122
 
 [node name="PowerPlant" type="Area2D"]
 collision_layer = 4
@@ -14,10 +14,9 @@ resource_type = 1
 resource_amt = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.78784, -3.35448 )
+position = Vector2( -1.89921, 3.66134 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.939751, -9.15215 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )

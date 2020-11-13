@@ -25,7 +25,7 @@ func _on_Timer_timeout():
 	health = max_health / 4
 	sprite.visible = true
 	active = true
-	
+
 func _on_day_passed(day):
 	if active:
 		health += regen

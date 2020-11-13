@@ -23,6 +23,7 @@ var newly_spawned := false
 func _ready() -> void:
 	connect("area_entered", self, "_on_area_entered")
 	connect("area_exited", self, "_on_area_exited")
+#	draw_circle(position, $CollisionShape2D.shape.radius, Color.lightblue)
 
 func _on_area_entered(area):
 	if not newly_spawned:
@@ -133,3 +134,8 @@ func validate_new_territory(area):
 
 func activate():
 	active = true
+
+func _draw() -> void:
+	if newly_spawned:
+		draw_arc($CollisionShape2D.position, $CollisionShape2D.shape.radius, deg2rad(0), deg2rad(359), 100, Color.lightblue)
+
