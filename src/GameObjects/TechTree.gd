@@ -136,3 +136,10 @@ func is_tech_valid(tech):
 	else:
 		return false
 	pass
+
+
+func _on_show():
+	if(self.visible):
+		print(PlayersManager.whoami().tech_level)
+		set_valid_tech_colors()
+		set_tech_colors()

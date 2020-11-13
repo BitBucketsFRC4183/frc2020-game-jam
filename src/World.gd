@@ -15,13 +15,21 @@ func _ready():
 func _input(event):
 	if(event.is_action_pressed("ui_tech_tree")):
 		if(!isTechTreeOpen):
-			$CanvasLayer/TechTree.show()
-			$Map.hide()
-			$AsteroidManager.hide()
-			$CanvasLayer/GUI.hide()
+			show_tech_tree()
 		else:
-			$CanvasLayer/TechTree.hide()
-			$Map.show()
-			$AsteroidManager.show()
-			$CanvasLayer/GUI.show()	
+			close_tech_tree()
 		isTechTreeOpen = !isTechTreeOpen
+	elif(event.is_action_pressed("escape") && isTechTreeOpen):
+		close_tech_tree()
+
+func close_tech_tree():
+	$CanvasLayer/TechTree.hide()
+	$Map.show()
+	$AsteroidManager.show()
+	$CanvasLayer/GUI.show()
+	
+func show_tech_tree():
+	$CanvasLayer/TechTree.show()
+	$Map.hide()
+	$AsteroidManager.hide()
+	$CanvasLayer/GUI.hide()
