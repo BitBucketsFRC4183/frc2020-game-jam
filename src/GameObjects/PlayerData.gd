@@ -37,10 +37,14 @@ func check_research_complete():
 		var tech_name = selected_tech.substr(0, selected_tech.length() - 1)
 		var tech_tier = int(selected_tech.substr(selected_tech.length() - 1, selected_tech.length()))
 		var tech_cost = Constants.tech_costs[tech_name][selected_tech]
+		
+		print("Research Progress: " + str(tech_research_progress))
 		if tech_cost <= tech_research_progress:
 			research_tech(tech_name, tech_tier)
 			tech_research_progress = 0
 			selected_tech = ""
+		else:
+			Signals.emit_signal("tech_progress_changed", self)
 
 func research_tech(name, tier):
 	print("Completing Research for " + name + str(tier))
