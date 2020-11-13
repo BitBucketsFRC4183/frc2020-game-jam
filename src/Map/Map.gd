@@ -86,6 +86,11 @@ func _on_impact_registered(target, area):
 	var areas = area.get_overlapping_areas()
 	for node in areas:
 		if node is TerritoryArea:
+
+			# delete buildings on now-destroyed territories
+			for b in node.get_buildings():
+				b.queue_free()
+
 			if node.get_child_count() > 0:
 				var child = node.get_child(0)
 				if child is Territory:

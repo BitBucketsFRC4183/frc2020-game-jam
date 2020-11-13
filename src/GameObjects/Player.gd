@@ -32,7 +32,8 @@ var tech = {
 
 func _on_resource_generated(player_num: int, res_list):
 	if data.num == player_num:
-		# print("Generating resource for player: %s day: %s" % [player_num, day])
+
+#		print("Generating resource for player: %s day: %s" % [player_num, day])
 		data.resources[res_list[0]] += res_list[1]
 		emit_signal("player_data_changed", data)
 

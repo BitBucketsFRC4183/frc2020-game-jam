@@ -80,3 +80,4 @@ func calculate_center():
 		if vector.y > max_y:
 			max_y = vector.y
 	center_local = Vector2((max_x - min_x) / 2 + min_x, (max_y - min_y) / 2 + min_y)
+

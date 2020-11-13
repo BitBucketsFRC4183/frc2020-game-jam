@@ -40,7 +40,7 @@ func impact():
 	if not destroyed:
 		Signals.emit_signal("asteroid_impact", impact_point.global_position, explosion_radius)
 		queue_free()
-	
+
 func destroy():
 	destroyed = true
 	Signals.emit_signal("asteroid_destroyed", global_position, size)
