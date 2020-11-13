@@ -91,8 +91,6 @@ func _on_impact_registered(target, area):
 					child.set_type(Enums.territory_types.destroyed)
 
 func _get_scene_path_for_building_type(building_type_name: String) -> String:
-	print(building_type_name)
-
 	match building_type_name:
 		"Mine":
 			return "res://src/GameObjects/ResourceBuildings/Mine.tscn"
