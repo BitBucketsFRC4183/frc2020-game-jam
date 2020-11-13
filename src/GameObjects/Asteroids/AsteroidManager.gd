@@ -24,8 +24,13 @@ func _ready():
 	# clients listen for asteroid_incoming messages
 	Signals.connect("asteroid_incoming", self, "_on_asteroid_incoming")
 
+	if get_tree().is_network_server() && Server.started:
+		# if we are network server and the server is already started, start the timer
+		$Timer.start()
+
 func _on_server_started():
 	if get_tree().is_network_server():
+		print("Starting asteroid waves")
 		# only start the timer to spanw new waves if we are the server
 		$Timer.start()
 
