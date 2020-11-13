@@ -1,5 +1,7 @@
 extends Node2D
 
+export var own_all = false
+
 var instanced_scene = null
 var building_type_name: String
 
@@ -8,6 +10,11 @@ func _ready() -> void:
 	Signals.connect("game_building_cancelled", self, "_on_game_building_cancelled")
 	Signals.connect("game_building_placed", self, "_on_game_building_placed")
 	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
+	if own_all:
+		var territories = get_territories()
+		for territory in territories:
+			if territory is Territory:
+				territory.set_territory_owner(1)
 
 func _on_game_building_selected(scene_path, building):
 	instanced_scene = load(scene_path).instance()

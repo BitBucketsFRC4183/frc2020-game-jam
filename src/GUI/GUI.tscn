@@ -25,6 +25,9 @@ anchor_bottom = 1.0
 margin_top = -160.758
 margin_bottom = -32.7579
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameBuildingButton" parent="BuildingButtons" instance=ExtResource( 1 )]
 margin_left = 500.0

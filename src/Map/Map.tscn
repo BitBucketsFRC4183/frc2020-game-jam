@@ -543,31 +543,75 @@ territory_owner = 5
 
 [node name="Player1Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 188.09, 171.12 )
+active = true
 
-[node name="Player1Mine2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 241.964, 150.969 )
+[node name="Player1ScienceLab" parent="." instance=ExtResource( 2 )]
+position = Vector2( 184, 144 )
+active = true
+
+[node name="Player1PowerPlant" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224, 168 )
+active = true
 
 [node name="Player2Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 860.785, 284.5 )
 player_num = 2
+active = true
+
+[node name="Player2ScienceLab2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 824, 272 )
+player_num = 2
+active = true
+
+[node name="Player2PowerPlant2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 896, 296 )
+player_num = 2
+active = true
 
 [node name="Player3Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 323.101, 788.024 )
 player_num = 3
+active = true
+
+[node name="Player3ScienceLab3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 320, 728 )
+player_num = 3
+active = true
+
+[node name="Player3PowerPlant3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 352, 760 )
+player_num = 3
+active = true
 
 [node name="Player4Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1262.27, 623.88 )
 player_num = 4
+active = true
+
+[node name="Player4ScienceLab4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1200, 616 )
+player_num = 4
+active = true
+
+[node name="Player4PowerPlant4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1208, 656 )
+player_num = 4
+active = true
 
 [node name="Player5Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1619.82, 125.499 )
 player_num = 5
+active = true
 
-[node name="Player1ScienceLab" parent="." instance=ExtResource( 2 )]
-position = Vector2( 298.264, 201.045 )
+[node name="Player5ScienceLab5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1616, 96 )
+player_num = 5
+active = true
 
-[node name="Player1PowerPlant" parent="." instance=ExtResource( 3 )]
-position = Vector2( 272.78, 256.734 )
+[node name="Player5PowerPlant5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1584, 128 )
+player_num = 5
+active = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 574.524, 267.103 )

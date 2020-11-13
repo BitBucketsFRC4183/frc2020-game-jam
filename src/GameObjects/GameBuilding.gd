@@ -4,13 +4,13 @@ extends Area2D
 # the index of the player who owns this building
 export var player_num := 1
 
+export var active = false
+
 # flag set on ready by the building themselves
 # see DefenseBuilding.gd and ResourceBuilding.gd
 # used to determine whether we go in resource tile or normal tile
 var is_defense_building: bool
 var is_resource_building: bool
-
-var active = false
 
 var placeable := false
 # set to true when we enter an area which is NOT a territory
