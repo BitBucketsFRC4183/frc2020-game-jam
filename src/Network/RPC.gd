@@ -96,3 +96,22 @@ func send_game_building_placed(building_type_name: String, position: Vector2):
 remote func game_building_placed(building_type_name: String, position: Vector2):
 	# Message sent to us from another player about a building placement
 	Signals.emit_signal("game_building_placed", PlayersManager.get_player_num(get_tree().get_rpc_sender_id()), building_type_name, position)
+
+func send_asteroid(position: Vector2, asteroid_strength: int, attributes: Dictionary):
+	rpc("asteroid_incoming", position, asteroid_strength, attributes)
+
+remote func asteroid_incoming(position: Vector2, asteroid_strength:int, attributes: Dictionary):
+	Signals.emit_signal("asteroid_incoming", position, asteroid_strength, attributes)
+
+func send_asteroid_position_update(asteroid_id: int, position: Vector2):
+	rpc_unreliable("asteroid_position_updated", asteroid_id, position)
+
+remote func asteroid_position_updated(asteroid_id: int, position: Vector2):
+	Signals.emit_signal("asteroid_position_updated", asteroid_id, position)
+
+func send_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
+	rpc("asteroid_impact", asteroid_id, position, explosion_radius)
+
+remote func asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
+	Signals.emit_signal("asteroid_impact", asteroid_id, position, explosion_radius)
+	

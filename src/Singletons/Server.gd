@@ -66,6 +66,7 @@ func post_start_game():
 		# the server needs to start the timer
 		$DaysTimer.start()
 		started = true
+		Signals.emit_signal("server_started")
 
 
 func _on_DaysTimer_timeout():
