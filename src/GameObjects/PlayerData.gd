@@ -32,6 +32,31 @@ var selected_tech = ""
 # the player's current progress towards researching the tech
 var tech_research_progress = 0
 
+func check_research_complete():
+	if selected_tech != "":
+		var tech_name = selected_tech.substr(0, selected_tech.length() - 1)
+		var tech_tier = int(selected_tech.substr(selected_tech.length() - 1, selected_tech.length()))
+		var tech_cost = Constants.tech_costs[tech_name][selected_tech]
+		if tech_cost <= tech_research_progress:
+			research_tech(tech_name, tech_tier)
+			tech_research_progress = 0
+			selected_tech = ""
+
+func research_tech(name, tier):
+	print("Completing Research for " + name + str(tier))
+	if(name == "mine"):
+		tech_level = Enums.raw.mine2 if tier == 2 else Enums.raw.mine3
+	elif(name == "power"):
+		tech_level = Enums.power.power2 if tier == 2 else Enums.raw.power3
+	elif(name == "science"):
+		tech_level = Enums.science.science2 if tier == 2 else Enums.science.science3
+	elif(name == "missile"):
+		tech_level = Enums.missile.missile2 if tier == 2 else Enums.missile.missile3
+	elif(name == "laser"):
+		tech_level = Enums.laser.laser2 if tier == 2 else Enums.laser.laser3
+	elif(name == "shield"):
+		tech_level = Enums.shield.shield2 if tier == 2 else Enums.shield.shield3
+
 func _init(num: int, name: String, color: Color) -> void:
 	._init()
 	self.num = num
