@@ -74,12 +74,12 @@ func _on_Tech_pressed(tech_name):
 	#print(tech_name)
 	
 	var can_research = is_tech_valid(tech_name) && not is_player_researching()
-	var popup: String
 	
 	if(can_research):
+		if($ResearchPopup.visible):
+			$ResearchPopup.hide()
 		$ResearchPopup.set_info(tech_name)
 		$ResearchPopup.popup_centered()
-		$ResearchPopup.add_button("Research!", true, tech_name)
 	pass
 
 func on_research_tech(tech: String):
