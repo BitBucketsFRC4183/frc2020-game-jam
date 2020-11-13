@@ -34,12 +34,12 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and instanced_scene:
 		if instanced_scene.placeable:
-			# emit a signal so it will be placed			
+			# emit a signal so it will be placed
 			var position := get_local_mouse_position()
-			Signals.emit_signal("game_building_placed", PlayersManager.whoami().num, building_type_name, position)
+			Signals.emit_signal("game_building_placed", instanced_scene.player_num, building_type_name, position)
 			RPC.send_game_building_placed(building_type_name, position)
 
-			# cancel our placement 
+			# cancel our placement
 			_on_game_building_cancelled()
 
 func _on_game_building_placed(player_num: int, building_type_name: String, position: Vector2):
@@ -48,6 +48,7 @@ func _on_game_building_placed(player_num: int, building_type_name: String, posit
 	building_scene.position =  position
 	building_scene.activate()
 	add_child(building_scene)
+
 
 func get_territories(root: Node = self) -> Array:
 	# recursively loop through all nodes in the tree and find all the Territories
@@ -91,16 +92,15 @@ func _on_impact_registered(target, area):
 					child.set_type(Enums.territory_types.destroyed)
 
 func _get_scene_path_for_building_type(building_type_name: String) -> String:
-	
 	match building_type_name:
 		"Mine":
 			return "res://src/GameObjects/ResourceBuildings/Mine.tscn"
 		"PowerPlant":
-			return "res://src/GameObjects/ResourceBuildings/Power Plant.tscn"
+			return "res://src/GameObjects/ResourceBuildings/PowerPlant.tscn"
 		"ScienceLab":
-			return "res://src/GameObjects/ResourceBuildings/Lab.tscn"
+			return "res://src/GameObjects/ResourceBuildings/ScienceLab.tscn"
 		"Radar":
-			return "res://src/GameObjects/ResourceBuildings/Radar.tscn"
+			return "res://src/GameObjects/DefenseBuildings/Radar.tscn"
 		"Missile":
 			return "res://src/GameObjects/DefenseBuildings/Missile.tscn"
 		"Laser":

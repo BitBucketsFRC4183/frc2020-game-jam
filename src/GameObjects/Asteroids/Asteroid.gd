@@ -26,7 +26,7 @@ func _process(delta):
 func _on_ImpactPoint_area_entered(area):
 	if area == asteroid:
 		impact()
-		
+
 func impact():
 	var areas = impact_point.get_overlapping_areas()
 	for area in areas:

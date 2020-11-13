@@ -20,9 +20,9 @@ func _ready():
 
 	$Polygon2D.polygon = polygon
 	$Polygon2D.color = get_polygon_color()
-	
+
 	calculate_center()
-	
+
 	if not Engine.editor_hint:
 		call_deferred("_reparent_area2d")
 		$Center.position = center_local
@@ -63,13 +63,13 @@ func _on_Area2D_mouse_entered():
 
 func _on_Area2D_mouse_exited():
 	$Polygon2D.color = get_polygon_color()
-	
+
 func calculate_center():
 	var min_x = INF
 	var min_y = INF
 	var max_x = -INF
 	var max_y = -INF
-	
+
 	for vector in polygon:
 		if vector.x < min_x:
 			min_x = vector.x
