@@ -11,9 +11,9 @@ export var score = 0						# The player's score
 
 # the current resources the player has on hand
 var resources = {
-	Enums.resource_types.power: 0,
-	Enums.resource_types.science: 0,
-	Enums.resource_types.raw: 0,
+	Enums.resource_types.power: Constants.starting_resources["Power"],
+	Enums.resource_types.science: Constants.starting_resources["Science"],
+	Enums.resource_types.raw: Constants.starting_resources["Raw"],
 }
 
 # the player's current tech level

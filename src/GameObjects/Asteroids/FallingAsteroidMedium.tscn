@@ -26,8 +26,9 @@ tracks/0/keys = {
 
 [node name="FallingAsteroidMedium" type="Node2D"]
 script = ExtResource( 3 )
-base_speed = 250
+base_speed = 150
 explosion_radius = 128
+base_distance = 1500
 max_health = 200
 size = 1
 

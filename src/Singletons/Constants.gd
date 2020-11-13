@@ -14,15 +14,20 @@ class BuildingCost:
 		self.type2 = type2
 		self.has_type_2 = has_type_2
 
+var starting_resources := {
+	"Raw": 50,
+	"Power": 50,
+	"Science": 0
+}
 
 var building_costs := {
-	"Mine": BuildingCost.new(Enums.resource_types.raw, 10),
-	"PowerPlant": BuildingCost.new(Enums.resource_types.power, 10),
-	"ScienceLab": BuildingCost.new(Enums.resource_types.science, 10),
-	"Radar": BuildingCost.new(Enums.resource_types.power, 10, Enums.resource_types.science, true),
-	"Missile": BuildingCost.new(Enums.resource_types.raw, 10, Enums.resource_types.science, true),
-	"Laser": BuildingCost.new(Enums.resource_types.raw, 10, Enums.resource_types.power, true),
-	"Shield": BuildingCost.new(Enums.resource_types.power, 10, Enums.resource_types.science, true),
+	"Mine": BuildingCost.new(Enums.resource_types.raw, 15),
+	"PowerPlant": BuildingCost.new(Enums.resource_types.raw, 15),
+	"ScienceLab": BuildingCost.new(Enums.resource_types.raw, 15),
+	"Radar": BuildingCost.new(Enums.resource_types.raw, 25, Enums.resource_types.power, true),
+	"Missile": BuildingCost.new(Enums.resource_types.raw, 100),
+	"Laser": BuildingCost.new(Enums.resource_types.raw, 50, Enums.resource_types.power, true),
+	"Shield": BuildingCost.new(Enums.resource_types.raw, 50, Enums.resource_types.power, true),
 }
 
 var tech_costs := {

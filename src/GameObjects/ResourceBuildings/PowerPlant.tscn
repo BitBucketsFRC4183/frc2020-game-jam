@@ -11,7 +11,7 @@ collision_layer = 4
 collision_mask = 2147483654
 script = ExtResource( 1 )
 resource_type = 1
-resource_amt = 5
+resource_amt = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.78784, -3.35448 )
