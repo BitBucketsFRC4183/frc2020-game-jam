@@ -62,7 +62,7 @@ func get_territories(root: Node = self) -> Array:
 	return territories
 
 
-func _on_asteroid_impact(impact_point, explosion_radius):
+func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
 	var area = Area2D.new()
 
 	var shape = CircleShape2D.new()
@@ -96,9 +96,9 @@ func _get_scene_path_for_building_type(building_type_name: String) -> String:
 		"Mine":
 			return "res://src/GameObjects/ResourceBuildings/Mine.tscn"
 		"PowerPlant":
-			return "res://src/GameObjects/ResourceBuildings/Power Plant.tscn"
+			return "res://src/GameObjects/ResourceBuildings/PowerPlant.tscn"
 		"ScienceLab":
-			return "res://src/GameObjects/ResourceBuildings/Lab.tscn"
+			return "res://src/GameObjects/ResourceBuildings/ScienceLab.tscn"
 		"Radar":
 			return "res://src/GameObjects/ResourceBuildings/Radar.tscn"
 		"Missile":

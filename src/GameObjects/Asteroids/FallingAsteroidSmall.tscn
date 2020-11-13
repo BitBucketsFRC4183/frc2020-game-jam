@@ -29,6 +29,7 @@ base_speed = 500
 explosion_radius = 32
 
 [node name="ImpactPoint" type="Area2D" parent="."]
+collision_mask = 2147483658
 
 [node name="Asteroid Marker" type="Sprite" parent="ImpactPoint"]
 scale = Vector2( 0.15, 0.15 )

@@ -8,6 +8,8 @@ radius = 8.34214
 height = 16.0428
 
 [node name="ScienceLab" type="Area2D"]
+collision_layer = 4
+collision_mask = 6
 script = ExtResource( 2 )
 resource_type = 2
 resource_amt = 5

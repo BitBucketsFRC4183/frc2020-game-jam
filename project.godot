@@ -98,6 +98,13 @@ ui_tech_tree={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Asteroids"
+2d_physics/layer_2="Territory"
+2d_physics/layer_3="Building"
+2d_physics/layer_4="Shield"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
