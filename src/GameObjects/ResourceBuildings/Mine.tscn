@@ -14,10 +14,9 @@ resource_type = 0
 resource_amt = 1
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.939751, -9.15215 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.90735e-06, 1.28067 )
+position = Vector2( -0.936443, 9.64535 )
 shape = SubResource( 1 )

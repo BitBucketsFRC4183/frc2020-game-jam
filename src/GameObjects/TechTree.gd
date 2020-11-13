@@ -29,39 +29,39 @@ func set_tech_names():
 	get_node("TechTree/Row 5/TextureScience2/Science2/LabelScience2").text = "Advanced\nLabs"
 	get_node("TechTree/Row 6/TextureLaser3/Laser3/LabelLaser3").text = "Ultimate\nLasers"
 	get_node("TechTree/Row 6/TextureScience3/Science3/LabelScience3").text = "Supreme\nLabs"
-	
+
 func set_tech_node_colors():
 	var player = PlayersManager.whoami()
-	
+
 	update_node_texture(player, "TechTree/Row 2/TextureMine2", "mine2", true)
 	update_node_texture(player, "TechTree/Row 1/TextureMine3", "mine3", false)
-	
+
 	update_node_texture(player, "TechTree/Row 2/TextureMissile2", "missile2", true)
 	update_node_texture(player, "TechTree/Row 1/TextureMissile3", "missile3", false)
-	
+
 	update_node_texture(player, "TechTree/Middle Row/TexturePower2", "power2", true)
 	update_node_texture(player, "TechTree/Middle Row/TexturePower3", "power3", false)
-	
+
 	update_node_texture(player, "TechTree/Middle Row/TextureShield2", "shield2", true)
 	update_node_texture(player, "TechTree/Middle Row/TextureShield3", "shield3", false)
-	
+
 	update_node_texture(player, "TechTree/Row 5/TextureScience2", "science2", true)
 	update_node_texture(player, "TechTree/Row 6/TextureScience3", "science3", false)
-	
+
 	update_node_texture(player, "TechTree/Row 5/TextureLaser2", "laser2", true)
 	update_node_texture(player, "TechTree/Row 6/TextureLaser3", "laser3", false)
-	
+
 func update_node_texture(p: PlayerData, node: String, tech_name: String, tier: bool):
 	get_node(node).set_texture(texture_researching if p.selected_tech == tech_name else ((texture_tier2 if tier else texture_tier3) if p.selected_tech == "" && (is_tech_valid(tech_name) || has_tech(p, tech_name)) else texture_disabled))
-	
+
 func has_tech(p: PlayerData, tech_name: String):
 	var name = tech_name.substr(0, tech_name.length() - 1)
 	var tier = int(tech_name.substr(tech_name.length() - 1, tech_name.length())) - 1
 	return p.tech_level[name.to_lower()] >= tier
-	
+
 func is_tech_being_researched(tech):
 	return PlayersManager.whoami().selected_tech == tech
-	
+
 #Returns the total tech cost of the currently researched tech
 func get_cost_research() -> int:
 	var p = PlayersManager.whoami()
@@ -77,7 +77,7 @@ func _on_Tech_pressed(tech_name):
 	#	Is tech already unlocked
 	#	Is tech the next tier (can't directly research Tier 3)
 	#print(tech_name)
-	
+
 	var can_research = is_tech_valid(tech_name) && not is_player_researching() && not has_tech(PlayersManager.whoami(), tech_name)
 	if(can_research):
 		if($ResearchPopup.visible):
