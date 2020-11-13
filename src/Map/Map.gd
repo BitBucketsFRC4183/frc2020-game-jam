@@ -101,7 +101,7 @@ func _get_scene_path_for_building_type(building_type_name: String) -> String:
 		"ScienceLab":
 			return "res://src/GameObjects/ResourceBuildings/ScienceLab.tscn"
 		"Radar":
-			return "res://src/GameObjects/ResourceBuildings/Radar.tscn"
+			return "res://src/GameObjects/DefenseBuildings/Radar.tscn"
 		"Missile":
 			return "res://src/GameObjects/DefenseBuildings/Missile.tscn"
 		"Laser":
