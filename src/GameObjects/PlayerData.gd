@@ -45,17 +45,17 @@ func check_research_complete():
 func research_tech(name, tier):
 	print("Completing Research for " + name + str(tier))
 	if(name == "mine"):
-		tech_level = Enums.raw.mine2 if tier == 2 else Enums.raw.mine3
+		tech_level["mine"] = Enums.raw.mine2 if tier == 2 else Enums.raw.mine3
 	elif(name == "power"):
-		tech_level = Enums.power.power2 if tier == 2 else Enums.raw.power3
+		tech_level["power"] = Enums.power.power2 if tier == 2 else Enums.raw.power3
 	elif(name == "science"):
-		tech_level = Enums.science.science2 if tier == 2 else Enums.science.science3
+		tech_level["science"] = Enums.science.science2 if tier == 2 else Enums.science.science3
 	elif(name == "missile"):
-		tech_level = Enums.missile.missile2 if tier == 2 else Enums.missile.missile3
+		tech_level["missile"] = Enums.missile.missile2 if tier == 2 else Enums.missile.missile3
 	elif(name == "laser"):
-		tech_level = Enums.laser.laser2 if tier == 2 else Enums.laser.laser3
+		tech_level["laser"] = Enums.laser.laser2 if tier == 2 else Enums.laser.laser3
 	elif(name == "shield"):
-		tech_level = Enums.shield.shield2 if tier == 2 else Enums.shield.shield3
+		tech_level["shield"] = Enums.shield.shield2 if tier == 2 else Enums.shield.shield3
 
 func _init(num: int, name: String, color: Color) -> void:
 	._init()

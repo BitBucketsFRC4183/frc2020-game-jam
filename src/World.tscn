@@ -28,3 +28,4 @@ margin_bottom = 1080.0
 rect_min_size = Vector2( 1920, 1080 )
 
 [node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
+[connection signal="visibility_changed" from="CanvasLayer/TechTree" to="CanvasLayer/TechTree" method="_on_show"]
