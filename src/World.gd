@@ -12,10 +12,8 @@ func _ready():
 
 	isTechTreeOpen = false
 	$AsteroidManager.territories = $Map.get_territories()
-	
+
 	_add_players_to_world()
-	
-	$Music.play()
 
 func _add_players_to_world():
 	for player_data in PlayersManager.players:
@@ -39,7 +37,7 @@ func close_tech_tree():
 	$Map.show()
 	$AsteroidManager.show()
 	$CanvasLayer/GUI.show()
-	
+
 func show_tech_tree():
 	$CanvasLayer/TechTree.show()
 	$Map.hide()
