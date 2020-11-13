@@ -1,10 +1,13 @@
 extends Control
 
+var texture_disabled = preload("res://assets/icons/techtree/disabled.png")
+var texture_researching = preload("res://assets/icons/techtree/researching.png")
+var texture_tier2 = preload("res://assets/icons/techtree/tier2.png")
+var texture_tier3 = preload("res://assets/icons/techtree/tier3.png")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_tech_names()
-	set_tech_colors()
-	set_valid_tech_colors()
 	pass
 
 func set_tech_names():
@@ -26,70 +29,33 @@ func set_tech_names():
 	get_node("TechTree/Row 5/TextureScience2/Science2/LabelScience2").text = "Advanced\nLabs"
 	get_node("TechTree/Row 6/TextureLaser3/Laser3/LabelLaser3").text = "Ultimate\nLasers"
 	get_node("TechTree/Row 6/TextureScience3/Science3/LabelScience3").text = "Supreme\nLabs"
-
-func set_valid_tech_colors():
-	var p = PlayersManager.whoami()
-	var tier2 = preload("res://assets/icons/techtree/tier2.png")
-	var tier3 = preload("res://assets/icons/techtree/tier3.png")
 	
-	if(p.tech_level["mine"] == 0):
-		$"TechTree/Row 2/TextureMine2".texture = tier2
-	if(p.tech_level["mine"] >= 1):
-		$"TechTree/Row 1/TextureMine3".texture = tier3
-		
-	if(p.tech_level["power"] == 0):
-		$"TechTree/Middle Row/TexturePower2".texture = tier2
-	if(p.tech_level["power"] >= 1):
-		$"TechTree/Middle Row/TexturePower3".texture = tier3
-		
-	if(p.tech_level["science"] == 0):
-		$"TechTree/Row 5/TextureScience2".texture = tier2
-	if(p.tech_level["science"] >= 1):
-		$"TechTree/Row 6/TextureScience3".texture = tier3
-		
-	if(p.tech_level["laser"] == 0):
-		$"TechTree/Row 5/TextureLaser2".texture = tier2
-	if(p.tech_level["laser"] >= 1):
-		$"TechTree/Row 6/TextureLaser3".texture = tier3
-		
-	if(p.tech_level["shield"] == 0):
-		$"TechTree/Middle Row/TextureShield2".texture = tier2
-	if(p.tech_level["shield"] >= 1):
-		$"TechTree/Middle Row/TextureShield3".texture = tier3
-		
-	if(p.tech_level["missile"] == 0):
-		$"TechTree/Row 2/TextureMissile2".texture = tier2
-	if(p.tech_level["missile"] >= 1):
-		$"TechTree/Row 1/TextureMissile3".texture = tier3
-	pass
+func set_tech_node_colors():
+	var player = PlayersManager.whoami()
+	
+	update_node_texture(player, "TechTree/Row 2/TextureMine2", "mine2", true)
+	update_node_texture(player, "TechTree/Row 1/TextureMine3", "mine3", false)
+	
+	update_node_texture(player, "TechTree/Row 2/TextureMissile2", "missile2", true)
+	update_node_texture(player, "TechTree/Row 1/TextureMissile3", "missile3", false)
+	
+	update_node_texture(player, "TechTree/Middle Row/TexturePower2", "power2", true)
+	update_node_texture(player, "TechTree/Middle Row/TexturePower3", "power3", false)
+	
+	update_node_texture(player, "TechTree/Middle Row/TextureShield2", "shield2", true)
+	update_node_texture(player, "TechTree/Middle Row/TextureShield3", "shield3", false)
+	
+	update_node_texture(player, "TechTree/Row 5/TextureScience2", "science2", true)
+	update_node_texture(player, "TechTree/Row 6/TextureScience3", "science3", false)
+	
+	update_node_texture(player, "TechTree/Row 5/TextureLaser2", "laser2", true)
+	update_node_texture(player, "TechTree/Row 6/TextureLaser3", "laser3", false)
+	
+func update_node_texture(p: PlayerData, node: String, tech_name: String, tier: bool):
+	get_node(node).set_texture(texture_researching if p.selected_tech == tech_name else ((texture_tier2 if tier else texture_tier3) if is_tech_valid(tech_name) && p.selected_tech == "" else texture_disabled))
 	
 func is_tech_being_researched(tech):
 	return PlayersManager.whoami().selected_tech == tech
-	
-func set_tech_colors():
-	var p = PlayersManager.whoami()
-	var disabled = preload("res://assets/icons/techtree/disabled.png")
-	var res = preload("res://assets/icons/techtree/researching.png")
-	var tier2 = preload("res://assets/icons/techtree/tier2.png")
-	var tier3 = preload("res://assets/icons/techtree/tier3.png")
-	
-	$"TechTree/Row 1/TextureMine3".set_texture(tier3 if p.tech_level["mine"] == 2 else (res if is_tech_being_researched("mine3") else disabled))
-	$"TechTree/Row 2/TextureMine2".set_texture(tier2 if p.tech_level["mine"] >= 1 else (res if is_tech_being_researched("mine2") else disabled))
-	
-	$"TechTree/Row 1/TextureMissile3".set_texture(tier3 if p.tech_level["missile"] == 2 else (res if is_tech_being_researched("missile3") else disabled))
-	$"TechTree/Row 2/TextureMissile2".set_texture(tier2 if p.tech_level["missile"] >= 1 else (res if is_tech_being_researched("missile2") else disabled))
-
-	$"TechTree/Middle Row/TexturePower3".set_texture(tier3 if p.tech_level["power"] == 2 else (res if is_tech_being_researched("power3") else disabled))
-	$"TechTree/Middle Row/TexturePower2".set_texture(tier2 if p.tech_level["power"] >= 1 else (res if is_tech_being_researched("power2") else disabled))
-	
-	$"TechTree/Middle Row/TextureShield3".set_texture(tier3 if p.tech_level["shield"] == 2 else (res if is_tech_being_researched("shield3") else disabled))
-	$"TechTree/Middle Row/TextureShield2".set_texture(tier2 if p.tech_level["shield"] >= 1 else (res if is_tech_being_researched("shield2") else disabled))
-
-	$"TechTree/Row 6/TextureScience3".set_texture(tier3 if p.tech_level["science"] == 2 else (res if is_tech_being_researched("science3") else disabled))
-	$"TechTree/Row 5/TextureScience2".set_texture(tier2 if p.tech_level["science"] >= 1 else (res if is_tech_being_researched("science2") else disabled))
-	
-	$"TechTree/Row 6/TextureLaser3".set_texture(tier3 if p.tech_level["laser"] == 2 else (res if is_tech_being_researched("laser3") else disabled))
-	$"TechTree/Row 5/TextureLaser2".set_texture(tier2 if p.tech_level["laser"] >= 1 else (res if is_tech_being_researched("laser2") else disabled))
 	
 #Returns the total tech cost of the currently researched tech
 func get_cost_research() -> int:
@@ -105,7 +71,7 @@ func _on_Tech_pressed(tech_name):
 	# Need to check:
 	#	Is tech already unlocked
 	#	Is tech the next tier (can't directly research Tier 3)
-	print(tech_name)
+	#print(tech_name)
 	
 	var can_research = is_tech_valid(tech_name) && not is_player_researching()
 	var popup: String
@@ -121,7 +87,7 @@ func on_research_tech(tech: String):
 	PlayersManager.whoami().tech_research_progress = 0
 	
 	$ResearchPopup.hide()
-	set_tech_colors()
+	set_tech_node_colors()
 	pass
 
 func is_player_researching():
@@ -141,5 +107,4 @@ func is_tech_valid(tech):
 func _on_show():
 	if(self.visible):
 		print(PlayersManager.whoami().tech_level)
-		set_valid_tech_colors()
-		set_tech_colors()
+		set_tech_node_colors()
