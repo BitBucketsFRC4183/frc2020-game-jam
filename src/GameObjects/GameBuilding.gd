@@ -7,6 +7,8 @@ export var player_num := 0
 var is_defense_building: bool
 var is_resource_building: bool
 
+var active = false
+
 var placeable := false
 # set to true when we enter an area which is NOT a territory
 # ie, it is another building
@@ -107,3 +109,5 @@ func validate_new_territory(area):
 	# if the list is empty, we're in the ocean. heck nah
 	if areas.size() == 0:
 		placeable = false
+func activate():
+	active = true

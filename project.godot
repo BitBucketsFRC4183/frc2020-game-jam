@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/GameObjects/PlayerData.gd"
 }, {
+"base": "Area2D",
+"class": "ShieldArea",
+"language": "GDScript",
+"path": "res://src/GameObjects/DefenseBuildings/ShieldArea.gd"
+}, {
 "base": "CollisionPolygon2D",
 "class": "Territory",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "GameBuilding": "",
 "Player": "",
 "PlayerData": "",
+"ShieldArea": "",
 "Territory": "",
 "TerritoryArea": ""
 }
