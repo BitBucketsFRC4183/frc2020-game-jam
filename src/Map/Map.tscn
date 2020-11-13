@@ -19,16 +19,19 @@ scale = Vector2( 0.85, 0.85 )
 position = Vector2( 128.001, 264 )
 polygon = PoolVector2Array( -48, 56, -64, -72, 40, -104, 80, 24, -64, 120 )
 territory_owner = 3
+type = 0
 
 [node name="Territory2" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 224, 272 )
 polygon = PoolVector2Array( -160, 112, -16, 16, 32, -16, 8, 64, -32, 112 )
 territory_owner = 3
+type = 0
 
 [node name="Territory3" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 152, 352 )
 polygon = PoolVector2Array( -40, 104, -64, 72, 0, 32, 40, 32, 24, 104 )
 territory_owner = 3
+type = 0
 
 [node name="Territory4" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 56, 336 )
@@ -40,16 +43,19 @@ type = 1
 position = Vector2( 288, 264 )
 polygon = PoolVector2Array( -32, -8, 24, 160, -8, 128, -96, 120, -56, 72 )
 territory_owner = 3
+type = 0
 
 [node name="Territory6" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 288, 328 )
 polygon = PoolVector2Array( -112, 128, -96, 56, -8, 64, 24, 96, -32, 184 )
 territory_owner = 3
+type = 0
 
 [node name="Territory7" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 360, 336 )
 polygon = PoolVector2Array( -104, -80, 80, 48, 0, 32, 16, 88, -48, 88 )
 territory_owner = 3
+type = 0
 
 [node name="Territory8" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 424, 440 )
@@ -67,16 +73,19 @@ type = 1
 position = Vector2( 272, 144 )
 polygon = PoolVector2Array( -64, 144, -104, 16, -16, 40, 48, 112, -16, 112 )
 territory_owner = 3
+type = 0
 
 [node name="Territory11" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 504, 240 )
 polygon = PoolVector2Array( -64, 144, -248, 16, -184, 16, -136, 8, -96, 72 )
 territory_owner = 3
+type = 0
 
 [node name="Territory12" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 136, 560 )
 polygon = PoolVector2Array( -48, 56, -24, -104, 40, -104, 120, -48, 24, -16 )
 territory_owner = 3
+type = 0
 
 [node name="Territory13" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 368, 608 )
@@ -88,21 +97,25 @@ type = 1
 position = Vector2( 176, 680 )
 polygon = PoolVector2Array( -88, -64, -16, -136, 96, -104, 32, -64, -8, -16 )
 territory_owner = 3
+type = 0
 
 [node name="Territory15" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 176, 680 )
 polygon = PoolVector2Array( 96, -104, -16, -136, 80, -168, 104, -136, 184, -88 )
 territory_owner = 3
+type = 0
 
 [node name="Territory16" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 184.002, 800 )
 polygon = PoolVector2Array( 96, -104, -16, -136, 24, -184, 88, -224, 176, -208 )
 territory_owner = 3
+type = 0
 
 [node name="Territory17" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 296, 832 )
 polygon = PoolVector2Array( 96, -104, -16, -136, 64, -240, 104, -288, 88, -192 )
 territory_owner = 3
+type = 0
 
 [node name="Territory18" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 64.0024, 952 )
@@ -114,51 +127,61 @@ type = 1
 position = Vector2( 248.003, 1080 )
 polygon = PoolVector2Array( 112, -312, 32, -296, 24, -336, 32, -384, 88, -368 )
 territory_owner = 1
+type = 0
 
 [node name="Territory20" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 248.003, 1168 )
 polygon = PoolVector2Array( 112, -336, 72, -232, 56, -336, 32, -384, 112, -400 )
 territory_owner = 1
+type = 0
 
 [node name="Territory21" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 328.003, 1216 )
 polygon = PoolVector2Array( 112, -336, 56, -320, -8, -280, 32, -384, 32, -448 )
 territory_owner = 1
+type = 0
 
 [node name="Territory22" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 352.003, 1344 )
 polygon = PoolVector2Array( 88, -464, 120, -384, 32, -368, -32, -408, 32, -448 )
 territory_owner = 1
+type = 0
 
 [node name="Territory23" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 232.004, 1400 )
 polygon = PoolVector2Array( 88, -464, 152, -424, 136, -328, 88, -312, 72, -400 )
 territory_owner = 1
+type = 0
 
 [node name="Territory24" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 296, 1440 )
 polygon = PoolVector2Array( 88, -464, 176, -480, 168, -368, 88, -312, 72, -368 )
 territory_owner = 1
+type = 0
 
 [node name="Territory25" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 392, 1440 )
 polygon = PoolVector2Array( 80, -480, 128, -416, 176, -336, 56, -312, 72, -368 )
 territory_owner = 1
+type = 0
 
 [node name="Territory26" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 312, 1584 )
 polygon = PoolVector2Array( 152, -512, 136, -456, 256, -480, 72, -368, 72, -456 )
 territory_owner = 1
+type = 0
 
 [node name="Territory27" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 64.004, 1568 )
 polygon = PoolVector2Array( 240, -568, 256, -480, 304, -496, 320, -440, 200, -408 )
 territory_owner = 1
+type = 0
 
 [node name="Territory28" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 72, 1696 )
 polygon = PoolVector2Array( 248, -472, 192, -536, 312, -568, 312, -480, 312, -432 )
 territory_owner = 1
+type = 0
 
 [node name="Territory29" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 192, 1752 )
@@ -176,26 +199,31 @@ type = 1
 position = Vector2( 288, 1320 )
 polygon = PoolVector2Array( 152, -536, 176, -592, 208, -544, 208, -480, 224, -424 )
 territory_owner = 1
+type = 0
 
 [node name="Territory32" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 168, 1888 )
 polygon = PoolVector2Array( 184, -536, 160, -624, 200, -568, 272, -496, 224, -512 )
 territory_owner = 1
+type = 0
 
 [node name="Territory33" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 160, 752 )
 polygon = PoolVector2Array( 160, -536, 136, -568, 192, -560, 216, -544, 200, -536 )
 territory_owner = 3
+type = 0
 
 [node name="Territory34" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 48, 1360 )
 polygon = PoolVector2Array( 136, -560, 120, -608, 168, -560, 216, -544, 200, -536 )
 territory_owner = 1
+type = 0
 
 [node name="Territory35" parent="Left" instance=ExtResource( 1 )]
 position = Vector2( 392, 1456 )
 polygon = PoolVector2Array( 136, -560, 120, -608, 152, -568, 160, -528, 144, -488 )
 territory_owner = 1
+type = 0
 
 [node name="Right" type="Node2D" parent="."]
 position = Vector2( 1492.31, 114.5 )
@@ -204,76 +232,91 @@ position = Vector2( 1492.31, 114.5 )
 position = Vector2( 144, 136 )
 polygon = PoolVector2Array( -48, 56, 80, 24, -64, 120 )
 territory_owner = 5
+type = 0
 
 [node name="Territory82" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 144, 136 )
 polygon = PoolVector2Array( -48, 56, 80, 24, 40, -104 )
 territory_owner = 5
+type = 0
 
 [node name="Territory83" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 144, 136 )
 polygon = PoolVector2Array( -48, 56, -64, -72, 40, -104 )
 territory_owner = 5
+type = 0
 
 [node name="Territory37" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 144, 328 )
 polygon = PoolVector2Array( -48, -136, -64, -72, -16, -104, 32, 8, -128, -56 )
 territory_owner = 5
+type = 0
 
 [node name="Territory81" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 144, 328 )
 polygon = PoolVector2Array( 80, -168, -16, -104, 32, 8 )
 territory_owner = 5
+type = 0
 
 [node name="Territory38" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -16, 264 )
 polygon = PoolVector2Array( -8, -120, 112, -72, 32, 8, -24, -56 )
 territory_owner = 5
+type = 0
 
 [node name="Territory84" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -16, 264 )
 polygon = PoolVector2Array( -8, -120, 112, -72, 96, -200 )
 territory_owner = 5
+type = 0
 
 [node name="Territory39" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 184, 456 )
 polygon = PoolVector2Array( -8, -120, 56, -136, 112, -72, 8, -56, -72, -96 )
 territory_owner = 5
+type = 0
 
 [node name="Territory92" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 184, 456 )
 polygon = PoolVector2Array( -8, -120, 56, -136, 112, -72, 40, -296 )
 territory_owner = 5
+type = 0
 
 [node name="Territory40" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -48, 464 )
 polygon = PoolVector2Array( 64, -192, 64, -96, 8, -256 )
 territory_owner = 5
+type = 0
 
 [node name="Territory80" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -48, 464 )
 polygon = PoolVector2Array( 64, -192, 64, -96, 160, -104, 224, -128 )
 territory_owner = 5
+type = 0
 
 [node name="Territory41" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 8, 624 )
 polygon = PoolVector2Array( 104, -264, 184, -224, 112, -160, -56, -224, 8, -256 )
 territory_owner = 5
+type = 0
 
 [node name="Territory42" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -232, 576 )
 polygon = PoolVector2Array( 184, -272, 248, -208, 184, -176, 104, -200, 120, -240 )
 territory_owner = 5
+type = 0
 
 [node name="Territory79" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -232, 576 )
 polygon = PoolVector2Array( 184, -272, 248, -208, 192, -368, 120, -240 )
 territory_owner = 5
+type = 0
 
 [node name="Territory43" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -360, 544 )
 polygon = PoolVector2Array( 320, -336, 248, -208, 200, -232, 184, -344, 248, -312 )
 territory_owner = 5
+type = 0
 
 [node name="Territory44" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -360, 440 )
@@ -285,6 +328,7 @@ type = 1
 position = Vector2( -360, 440 )
 polygon = PoolVector2Array( 272, -248, 184, -240, 248, -208, 320, -232, 336, -296 )
 territory_owner = 5
+type = 0
 
 [node name="Territory45" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -240, 296 )
@@ -302,46 +346,55 @@ type = 1
 position = Vector2( 32, 304 )
 polygon = PoolVector2Array( 296, -176, 192, -144, 152, -272, 208, -248, 216, -208 )
 territory_owner = 5
+type = 0
 
 [node name="Territory48" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 72, 432 )
 polygon = PoolVector2Array( 280, -248, 256, -304, 152, -272, 208, -248, 216, -208 )
 territory_owner = 5
+type = 0
 
 [node name="Territory49" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 144, 656 )
 polygon = PoolVector2Array( 136, -472, 80, -496, 152, -272, 168, -416, 144, -432 )
 territory_owner = 5
+type = 0
 
 [node name="Territory50" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -336, 728 )
 polygon = PoolVector2Array( 136, -472, 208, -352, 224, -392, 176, -416, 160, -528 )
 territory_owner = 5
+type = 0
 
 [node name="Territory51" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -352, 768 )
 polygon = PoolVector2Array( 144, -400, 96, -336, 224, -392, 152, -512, 112, -456 )
 territory_owner = 4
+type = 0
 
 [node name="Territory52" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -432, 760 )
 polygon = PoolVector2Array( 104, -392, 96, -336, 224, -392 )
 territory_owner = 2
+type = 0
 
 [node name="Territory87" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -432, 760 )
 polygon = PoolVector2Array( 104, -392, 96, -336, 56, -432, 56, -520 )
 territory_owner = 2
+type = 0
 
 [node name="Territory88" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -432, 760 )
 polygon = PoolVector2Array( 104, -392, 160, -392, 128, -528, 56, -520 )
 territory_owner = 2
+type = 0
 
 [node name="Territory89" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -432, 760 )
 polygon = PoolVector2Array( 224, -392, 160, -392, 128, -528, 192, -448 )
 territory_owner = 2
+type = 0
 
 [node name="Territory53" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -472, 576 )
@@ -353,6 +406,7 @@ type = 1
 position = Vector2( -608, 504 )
 polygon = PoolVector2Array( 176, -168, 272, -80, 232, -176, 232, -264 )
 territory_owner = 2
+type = 0
 
 [node name="Territory86" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -608, 504 )
@@ -376,11 +430,13 @@ type = 1
 position = Vector2( -688, 304 )
 polygon = PoolVector2Array( 256, 32, 272, -80, 224, -88 )
 territory_owner = 2
+type = 0
 
 [node name="Territory56" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -320, 480 )
 polygon = PoolVector2Array( 176, -48, 440, -16, 272, -80, 192, -104, 64, -48 )
 territory_owner = 4
+type = 0
 
 [node name="Territory57" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -448, 536 )
@@ -404,21 +460,25 @@ type = 1
 position = Vector2( -576, 592 )
 polygon = PoolVector2Array( 304, -16, 320, 72, 192, -104 )
 territory_owner = 4
+type = 0
 
 [node name="Territory76" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -576, 592 )
 polygon = PoolVector2Array( 304, -16, 320, 72, 368, 136, 376, 72, 304, -104 )
 territory_owner = 4
+type = 0
 
 [node name="Territory59" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -392, 768 )
 polygon = PoolVector2Array( 240, 152, 264, -64, 184, -40 )
 territory_owner = 4
+type = 0
 
 [node name="Territory77" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -392, 768 )
 polygon = PoolVector2Array( 256, -200, 192, -104, 184, -40, 264, -64 )
 territory_owner = 4
+type = 0
 
 [node name="Territory78" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -392, 768 )
@@ -430,26 +490,31 @@ type = 1
 position = Vector2( -328, 472 )
 polygon = PoolVector2Array( 248, 0, 184, -40, 200, 232 )
 territory_owner = 4
+type = 0
 
 [node name="Territory66" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -328, 472 )
 polygon = PoolVector2Array( 448, -8, 184, -40, 248, 0 )
 territory_owner = 4
+type = 0
 
 [node name="Territory67" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -256, 528 )
 polygon = PoolVector2Array( 280, -40, 184, -40, 240, -24, 264, -32, 312, -24 )
 territory_owner = 4
+type = 0
 
 [node name="Territory68" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -88, 552 )
 polygon = PoolVector2Array( 240, -48, 192, -64, 224, -32, 240, 16 )
 territory_owner = 4
+type = 0
 
 [node name="Territory69" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -328, 808 )
 polygon = PoolVector2Array( 256, -64, 248, -168, 240, -104, 224, -32, 240, 16 )
 territory_owner = 4
+type = 0
 
 [node name="Territory70" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -736, 480 )
@@ -467,6 +532,7 @@ type = 1
 position = Vector2( -744, 264 )
 polygon = PoolVector2Array( 240, -112, 152, -136, 208, -88, 248, -72, 304, -72 )
 territory_owner = 2
+type = 0
 
 [node name="Territory94" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -856, 280 )
@@ -490,56 +556,67 @@ type = 1
 position = Vector2( -784, 416 )
 polygon = PoolVector2Array( 224, -128, 184, -144, 120, -160, 192, -120, 240, -112 )
 territory_owner = 2
+type = 0
 
 [node name="Territory98" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -808, 360 )
 polygon = PoolVector2Array( 224, -128, 184, -144, 160, -144, 184, -136, 208, -120 )
 territory_owner = 2
+type = 0
 
 [node name="Territory99" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -720, 240 )
 polygon = PoolVector2Array( 216, -128, 184, -144, 160, -144, 176, -136, 200, -128 )
 territory_owner = 2
+type = 0
 
 [node name="Territory100" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -944, 168 )
 polygon = PoolVector2Array( 216, -128, 184, -144, 160, -144, 176, -136, 200, -128 )
 territory_owner = 2
+type = 0
 
 [node name="Territory72" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( 72, 144 )
 polygon = PoolVector2Array( 216, -112, 192, -152, 200, -104, 248, -56, 272, -48 )
 territory_owner = 5
+type = 0
 
 [node name="Territory73" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -528, 184 )
 polygon = PoolVector2Array( 208, -80, 168, -80, 192, -72, 240, -64, 264, -72 )
 territory_owner = 2
+type = 0
 
 [node name="Territory60" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -632, 824 )
 polygon = PoolVector2Array( 480, 96, 424, -96, 384, -64, 360, -24, 384, 8 )
 territory_owner = 4
+type = 0
 
 [node name="Territory61" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -816, 640 )
 polygon = PoolVector2Array( 608, 88, 560, 24, 512, 8, 544, 160, 568, 120 )
 territory_owner = 4
+type = 0
 
 [node name="Territory62" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -944, 464 )
 polygon = PoolVector2Array( 688, 200, 560, 24, 512, 8, 576, 128, 640, 184 )
 territory_owner = 4
+type = 0
 
 [node name="Territory63" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -960, 600 )
 polygon = PoolVector2Array( 688, 200, 656, 48, 592, -8, 592, 56, 640, 120 )
 territory_owner = 4
+type = 0
 
 [node name="Territory64" parent="Right" instance=ExtResource( 1 )]
 position = Vector2( -400, 408 )
 polygon = PoolVector2Array( 640, 144, 696, -24, 592, -8, 520, 56, 608, 96 )
 territory_owner = 5
+type = 0
 
 [node name="Player1Mine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 188.09, 171.12 )

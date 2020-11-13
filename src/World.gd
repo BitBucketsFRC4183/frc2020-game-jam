@@ -1,5 +1,7 @@
 extends Node2D
 
+var Player = preload("res://src/GameObjects/Player.tscn")
+
 var isTechTreeOpen
 
 func _ready():
@@ -10,6 +12,14 @@ func _ready():
 
 	isTechTreeOpen = false
 	$AsteroidManager.territories = $Map.get_territories()
+	
+	_add_players_to_world()
+
+func _add_players_to_world():
+	for player_data in PlayersManager.players:
+		var player_node = Player.instance()
+		player_node.data = player_data
+		add_child(player_node)
 
 
 func _input(event):

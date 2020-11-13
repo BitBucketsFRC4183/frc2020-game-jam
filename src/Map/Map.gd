@@ -12,6 +12,7 @@ func _ready() -> void:
 func _on_game_building_selected(scene_path, building):
 	instanced_scene = load(scene_path).instance()
 	instanced_scene.newly_spawned = true
+	instanced_scene.player_num = PlayersManager.whoami().num
 	add_child(instanced_scene)
 	building_type_name = building
 

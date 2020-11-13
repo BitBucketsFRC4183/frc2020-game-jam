@@ -1,6 +1,5 @@
 extends Control
 
-var Player = preload("res://src/GameObjects/Player.tscn")
 var PlayerResources = preload("res://src/Map/PlayerResources.tscn")
 
 var scene_path: String
@@ -11,15 +10,16 @@ func _ready() -> void:
 	# The server sends us a day update and our client emits a day_passed signal
 	Signals.connect("day_passed", self, "_on_day_passed")
 
+	_add_player_hud_items()
+	
+func _add_player_hud_items():
 	var container = $Stats
 
 	for player_data in PlayersManager.players:
-		var player_node = Player.instance()
 		var player_resources_node = PlayerResources.instance()
+		player_resources_node.data = player_data
 
-		player_node.data = player_data
-		player_resources_node.player = player_node
-		container.add_child(player_node)
+		player_resources_node
 		container.add_child(player_resources_node)
 
 

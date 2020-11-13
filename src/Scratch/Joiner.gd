@@ -1,7 +1,7 @@
 # this is a test node for automatically joining a game
 # call this from the command line with
 # godot src/Scratch/Joiner.tscn
-extends Node2D
+extends MarginContainer
 
 func _ready():
 	Network.join_game("127.0.0.1", "Joiner")

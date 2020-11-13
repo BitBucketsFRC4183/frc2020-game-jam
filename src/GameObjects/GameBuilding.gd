@@ -24,9 +24,6 @@ func _ready() -> void:
 	connect("area_entered", self, "_on_area_entered")
 	connect("area_exited", self, "_on_area_exited")
 
-	if player_num == 1:
-		player_num = PlayersManager.whoami().num
-
 func _on_area_entered(area):
 	if not newly_spawned:
 		return
