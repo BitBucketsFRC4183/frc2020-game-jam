@@ -1,18 +1,19 @@
 extends Node2D
 
 var instanced_scene = null
-var building_type
+var building_type_name: String
 
 func _ready() -> void:
 	Signals.connect("game_building_selected", self, "_on_game_building_selected")
 	Signals.connect("game_building_cancelled", self, "_on_game_building_cancelled")
+	Signals.connect("game_building_placed", self, "_on_game_building_placed")
 	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
 
 func _on_game_building_selected(scene_path, building):
 	instanced_scene = load(scene_path).instance()
 	instanced_scene.newly_spawned = true
 	add_child(instanced_scene)
-	building_type = building
+	building_type_name = building
 
 func _on_game_building_cancelled():
 	if instanced_scene:
@@ -33,10 +34,20 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and instanced_scene:
 		if instanced_scene.placeable:
-			instanced_scene.position =  get_local_mouse_position()
-			Signals.emit_signal("game_building_placed", PlayersManager.whoami().num, building_type)
-			instanced_scene = null
+			# emit a signal so it will be placed			
+			var position := get_local_mouse_position()
+			Signals.emit_signal("game_building_placed", PlayersManager.whoami().num, building_type_name, position)
+			RPC.send_game_building_placed(building_type_name, position)
 
+			# cancel our placement 
+			_on_game_building_cancelled()
+
+func _on_game_building_placed(player_num: int, building_type_name: String, position: Vector2):
+	var building_scene = load(_get_scene_path_for_building_type(building_type_name)).instance()
+	building_scene.player_num = player_num
+	building_scene.position =  position
+	add_child(building_scene)
+	
 
 func get_territories(root: Node = self) -> Array:
 	# recursively loop through all nodes in the tree and find all the Territories
@@ -78,3 +89,23 @@ func _on_impact_registered(target, area):
 				var child = node.get_child(0)
 				if child is Territory:
 					child.set_type(Enums.territory_types.destroyed)
+
+func _get_scene_path_for_building_type(building_type_name: String) -> String:
+	
+	match building_type_name:
+		"Mine":
+			return "res://src/GameObjects/ResourceBuildings/Mine.tscn"
+		"PowerPlant":
+			return "res://src/GameObjects/ResourceBuildings/Power Plant.tscn"
+		"ScienceLab":
+			return "res://src/GameObjects/ResourceBuildings/Lab.tscn"
+		"Radar":
+			return "res://src/GameObjects/ResourceBuildings/Radar.tscn"
+		"Missile":
+			return "res://src/GameObjects/DefenseBuildings/Missile.tscn"
+		"Laser":
+			return "res://src/GameObjects/DefenseBuildings/Laser.tscn"
+		"Shield":
+			return "res://src/GameObjects/DefenseBuildings/Shield.tscn"
+	printerr("Tried to find a scene path for an unknown building_type_name %s" % building_type_name)
+	return ""

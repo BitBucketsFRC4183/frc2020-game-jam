@@ -15,6 +15,10 @@ func _ready() -> void:
 func _on_day_passed(day: int):
 	assert(resource_type != Enums.resource_types.EXCEPTION)
 	assert(resource_amt != -1)
+	
+	if(resource_type == Enums.resource_types.science):
+		PlayersManager.whoami().tech_research_progress += resource_amt
+		PlayersManager.whoami().check_research_complete()
 
 	var resource_info = [resource_type, resource_amt]
 	Signals.emit_signal("resource_generated", player_num, resource_info)

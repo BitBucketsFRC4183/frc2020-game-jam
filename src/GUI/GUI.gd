@@ -25,11 +25,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
-		restore_cursor("", "")
+		restore_cursor(0, Enums.game_buildings.Mine, Vector2.ZERO)
 		Signals.emit_signal("game_building_cancelled")
 
 # parameters are just there so that the signal works
-func restore_cursor(network_data, building):
+func restore_cursor(player_num, building_type_name, position):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 

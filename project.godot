@@ -56,8 +56,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Signals="*res://src/Singletons/Signals.gd"
 Enums="*res://src/Singletons/Enums.gd"
+Signals="*res://src/Singletons/Signals.gd"
 Constants="*res://src/Singletons/Constants.gd"
 Network="*res://src/Network/Network.tscn"
 RPC="*res://src/Network/RPC.gd"
