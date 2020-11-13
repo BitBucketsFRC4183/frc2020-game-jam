@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/icons/techtree/disabled.png" type="Texture" id=1]
 [ext_resource path="res://assets/icons/techtree/tier3.png" type="Texture" id=2]
@@ -6,6 +6,20 @@
 [ext_resource path="res://assets/icons/techtree/tier1.png" type="Texture" id=4]
 [ext_resource path="res://src/GameObjects/TechTree.gd" type="Script" id=5]
 [ext_resource path="res://src/GameObjects/ResearchPopup.gd" type="Script" id=6]
+[ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 7 )
 
 [node name="TechTree" type="Control"]
 anchor_right = 1.0
@@ -77,10 +91,14 @@ __meta__ = {
 [node name="LabelMine3" type="Label" parent="TechTree/Row 1/TextureMine3/Mine3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
 text = "Mine 
 Tier 3"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginM" type="MarginContainer" parent="TechTree/Row 1"]
 margin_left = 735.0
@@ -107,6 +125,7 @@ __meta__ = {
 [node name="LabelMissile3" type="Label" parent="TechTree/Row 1/TextureMissile3/Missile3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Missile
 Tier 3"
 align = 1
@@ -141,6 +160,7 @@ __meta__ = {
 [node name="LabelMine2" type="Label" parent="TechTree/Row 2/TextureMine2/Mine2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Mine
 Tier 2"
 align = 1
@@ -174,6 +194,7 @@ __meta__ = {
 [node name="LabelMissile2" type="Label" parent="TechTree/Row 2/TextureMissile2/Missile2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Missile
 Tier 2"
 align = 1
@@ -208,6 +229,7 @@ __meta__ = {
 [node name="LabelMine1" type="Label" parent="TechTree/Row 3/TextureMine1/Mine1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
 text = "Mine
 Tier 1"
 align = 1
@@ -241,6 +263,7 @@ __meta__ = {
 [node name="LabelMine2" type="Label" parent="TechTree/Row 3/TextureMissile1/Missile1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
 text = "Missile
 Tier 1"
 align = 1
@@ -276,6 +299,7 @@ __meta__ = {
 [node name="LabelPower3" type="Label" parent="TechTree/Middle Row/TexturePower3/Power3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Power
 Tier 3"
 align = 1
@@ -303,6 +327,7 @@ __meta__ = {
 [node name="LabelPower2" type="Label" parent="TechTree/Middle Row/TexturePower2/Power2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Power
 Tier 2"
 align = 1
@@ -330,6 +355,7 @@ __meta__ = {
 [node name="LabelPower1" type="Label" parent="TechTree/Middle Row/TexturePower1/Power1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Power
 Tier 1"
 align = 1
@@ -356,6 +382,7 @@ margin_top = -37.5
 margin_right = 37.5
 margin_bottom = 37.5
 rect_min_size = Vector2( 75, 75 )
+custom_fonts/font = SubResource( 2 )
 text = "Name"
 align = 1
 valign = 1
@@ -382,6 +409,7 @@ __meta__ = {
 [node name="LabelShield1" type="Label" parent="TechTree/Middle Row/TextureShield1/Shield1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Shield
 Tier 1"
 align = 1
@@ -415,6 +443,7 @@ margin_left = -62.5
 margin_top = -75.0
 margin_right = 62.5
 margin_bottom = 75.0
+custom_fonts/font = SubResource( 2 )
 text = "Shield
 Tier 2"
 align = 1
@@ -442,6 +471,7 @@ __meta__ = {
 [node name="LabelShield3" type="Label" parent="TechTree/Middle Row/TextureShield3/Shield3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Shield
 Tier 3"
 align = 1
@@ -476,6 +506,7 @@ __meta__ = {
 [node name="LabelScience1" type="Label" parent="TechTree/Row 4/TextureScience1/Science1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Science
 Tier 1"
 align = 1
@@ -509,6 +540,7 @@ __meta__ = {
 [node name="LabelLaser1" type="Label" parent="TechTree/Row 4/TextureLaser1/Laser1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Laser
 Tier 1"
 align = 1
@@ -543,6 +575,7 @@ __meta__ = {
 [node name="LabelScience2" type="Label" parent="TechTree/Row 5/TextureScience2/Science2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Science
 Tier 2"
 align = 1
@@ -576,6 +609,7 @@ __meta__ = {
 [node name="LabelLaser2" type="Label" parent="TechTree/Row 5/TextureLaser2/Laser2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Laser
 Tier 2"
 align = 1
@@ -610,6 +644,7 @@ __meta__ = {
 [node name="LabelScience3" type="Label" parent="TechTree/Row 6/TextureScience3/Science3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Science
 Tier 3"
 align = 1
@@ -643,6 +678,7 @@ __meta__ = {
 [node name="LabelLaser3" type="Label" parent="TechTree/Row 6/TextureLaser3/Laser3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Laser
 Tier 3"
 align = 1

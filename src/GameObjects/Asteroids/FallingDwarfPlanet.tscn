@@ -32,6 +32,7 @@ max_health = 2000
 size = 3
 
 [node name="ImpactPoint" type="Area2D" parent="."]
+collision_mask = 2147483658
 
 [node name="Asteroid Marker" type="Sprite" parent="ImpactPoint"]
 scale = Vector2( 1.5, 1.5 )
@@ -42,6 +43,7 @@ offset = Vector2( -1, -5 )
 shape = SubResource( 1 )
 
 [node name="Asteroid" type="Area2D" parent="."]
+collision_mask = 2147483649
 
 [node name="Sprite" type="Sprite" parent="Asteroid"]
 scale = Vector2( 0.5, 0.5 )

@@ -27,10 +27,12 @@ func _ready():
 
 
 func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
+	var player: PlayerData
+
 	if !player_dict.empty():
 		# We are adding a player with a dictionary, so that means
 		# we need to replace an existing player with a new network_id/num
-		var player = PlayerData.new(0, "", Color.black)
+		player = PlayerData.new(0, "", Color.black)
 		player.from_dict(player_dict)
 		player.ai_controlled = false
 		if id != 0:
@@ -38,29 +40,30 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 			players_by_network_id[id] = player
 		players[player.num - 1] = player
 
-		print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
+		# print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
 	else:
 		# find the first available player
-		for player in players:
-			if player.ai_controlled:
-				player.ai_controlled = false
-				player.network_id = id
+		for existing_player in players:
+			if existing_player.ai_controlled:
+				existing_player.ai_controlled = false
+				existing_player.network_id = id
 				if id != 0:
 					# only add this player to the network list if it's a network controlled player
-					players_by_network_id[id] = player
-				print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
+					players_by_network_id[id] = existing_player
+				player = existing_player
+				# print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
 				break
 
-	var added_player = players_by_network_id[id]
-	Signals.emit_signal("player_owner_changed", added_player)
-	return added_player
+	Signals.emit_signal("player_owner_changed", player)
+	return player
 
 
 func remove_player(id: int):
 	# reset this player to ai controlled
-	players_by_network_id[id].ai_controlled = true
-	players_by_network_id[id].network_id = 0
-	players_by_network_id.erase(id)
+	if players_by_network_id.has(id):
+		players_by_network_id[id].ai_controlled = true
+		players_by_network_id[id].network_id = 0
+		players_by_network_id.erase(id)
 
 
 func update_player(player_dict: Dictionary):
@@ -73,10 +76,10 @@ func update_player(player_dict: Dictionary):
 	if players_by_network_id.has(id):
 		player = players_by_network_id[id]
 		players_by_network_id[id].from_dict(player_dict)
-		print_debug("Player %s - %s (network_id: %s) updated in PlayersManager" % [player.num, player.name, player.network_id])
+		# print_debug("Player %s - %s (network_id: %s) updated in PlayersManager" % [player.num, player.name, player.network_id])
 	else:
 		player = add_player(id, player_dict)
-		print_debug("Player %s - %s (network_id: %s) added to PlayersManager" % [player.num, player.name, player.network_id])
+		# print_debug("Player %s - %s (network_id: %s) added to PlayersManager" % [player.num, player.name, player.network_id])
 
 func whoami() -> PlayerData:
 	# return my player. Default to player 0 if none is defined

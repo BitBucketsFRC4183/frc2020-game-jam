@@ -63,7 +63,7 @@ func get_territories(root: Node = self) -> Array:
 	return territories
 
 
-func _on_asteroid_impact(impact_point, explosion_radius):
+func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
 	var area = Area2D.new()
 
 	var shape = CircleShape2D.new()

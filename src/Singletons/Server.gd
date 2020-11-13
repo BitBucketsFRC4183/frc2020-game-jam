@@ -62,10 +62,12 @@ func begin_game(single_player := true):
 
 
 func post_start_game():
+	print("post_start_game: is_network_server: %s" % get_tree().is_network_server())
 	if get_tree().is_network_server():
 		# the server needs to start the timer
 		$DaysTimer.start()
 		started = true
+		Signals.emit_signal("server_started")
 
 
 func _on_DaysTimer_timeout():
