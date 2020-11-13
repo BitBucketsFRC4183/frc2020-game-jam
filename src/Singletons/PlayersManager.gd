@@ -48,7 +48,7 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 				existing_player.network_id = id
 				if id != 0:
 					# only add this player to the network list if it's a network controlled player
-					players_by_network_id[id] = player
+					players_by_network_id[id] = existing_player
 				player = existing_player
 				# print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
 				break
