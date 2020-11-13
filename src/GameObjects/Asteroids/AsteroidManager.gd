@@ -41,13 +41,13 @@ func _on_Timer_timeout():
 		$Timer.start(base_wave_time * rand_range(0.25,2))
 	if wave == waves:
 		final_wave()
-	
+
 	asteroid_count += wave + asteroid_quantity_modifier
-	
+
 	if asteroid_count > max_count:
 			asteroid_count = max_count
 	territories.shuffle()
-	
+
 	for i in range(asteroid_count):
 		var asteroid_strength = rand_range(0, wave * asteroid_strength_multiplier)
 		var asteroid = _get_asteroid_instance(asteroid_strength)

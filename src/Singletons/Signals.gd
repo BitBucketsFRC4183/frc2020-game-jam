@@ -7,7 +7,7 @@ func _ready() -> void:
 	if not username.begins_with('craig'):
 		OS.window_maximized = true
 
-signal game_building_selected
+signal game_building_selected(scene_path, building)
 signal game_building_cancelled
 signal game_building_placed(player_num, building_type_name, position)
 signal day_passed(day)

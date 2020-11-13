@@ -17,8 +17,9 @@ func _init():
 	names.shuffle()
 
 	# add players to our list
-	for i in range(0, Constants.num_players):
-		players.append(PlayerData.new(i, names[i], PlayerColors.colors[i+1]))
+	# start from 1 since territories go from 1
+	for i in range(1, Constants.num_players):
+		players.append(PlayerData.new(i, names[i - 1], PlayerColors.colors[i]))
 
 
 func _ready():
@@ -37,7 +38,7 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 		if id != 0:
 			# only add this player to the network list if it's a network controlled player
 			players_by_network_id[id] = player
-		players[player.num] = player
+		players[player.num - 1] = player
 
 		# print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
 	else:
@@ -64,13 +65,13 @@ func remove_player(id: int):
 		players_by_network_id[id].network_id = 0
 		players_by_network_id.erase(id)
 
-	
+
 func update_player(player_dict: Dictionary):
 	var id: int = player_dict.get("network_id", -1)
 	if (id == -1):
 		printerr("We received an update for a player without a player network_id!")
 		return
-	
+
 	var player: PlayerData
 	if players_by_network_id.has(id):
 		player = players_by_network_id[id]
