@@ -18,7 +18,7 @@ func _init():
 
 	# add players to our list
 	# start from 1 since territories go from 1
-	for i in range(1, Constants.num_players):
+	for i in range(1, Constants.num_players+1):
 		players.append(PlayerData.new(i, names[i - 1], PlayerColors.colors[i]))
 
 
@@ -32,7 +32,7 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 	if !player_dict.empty():
 		# We are adding a player with a dictionary, so that means
 		# we need to replace an existing player with a new network_id/num
-		player = PlayerData.new(0, "", Color.black)
+		player = PlayerData.new(1, "", Color.black)
 		player.from_dict(player_dict)
 		player.ai_controlled = false
 		if id != 0:
@@ -55,6 +55,7 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 				break
 
 	Signals.emit_signal("player_owner_changed", player)
+	Signals.emit_signal("player_data_updated", player)
 	return player
 
 
