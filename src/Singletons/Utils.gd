@@ -33,7 +33,13 @@ func can_research(tech_name, p: PlayerData):
 
 func research_tech(tech: String, p: PlayerData):
 	p.selected_tech = tech.to_lower()
-	p.tech_research_progress = 0
+
+	var science = p.resources[Enums.resource_types.science]
+	var t_name = tech.to_lower().substr(0, tech.length() - 1).to_lower()
+	var cost = Constants.tech_costs[t_name][tech.to_lower()]
+
+	p.tech_research_progress = science if science < cost else cost
+	p.resources[Enums.resource_types.science] -= science if science < cost else cost
 
 func is_player_researching(p: PlayerData):
 	return p.selected_tech != ""

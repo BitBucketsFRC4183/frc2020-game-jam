@@ -108,7 +108,7 @@ func _on_day_passed(day):
 				new_build_tile.build_tile()
 			else:
 				new_build_tile.queue_free()
-    research_next()
+	research_next()
 
 	# every day brings new players
 	check_active()
