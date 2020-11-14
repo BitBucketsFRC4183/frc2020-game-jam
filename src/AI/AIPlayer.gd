@@ -1,7 +1,10 @@
 extends Node
 
 export var id: int
+
 var active := true
+var player_data: PlayerData
+var research_list = ["mine2",  "power2", "shield2", "science2", "laser2", "mine3", "shield3", "laser3", "power3", "science3"]
 
 """
 So I was told to tell everyone my strategy, so here it is:
@@ -20,14 +23,12 @@ class BuildOrderSorter:
 			return true
 		return false
 
-# if PlayersManager.players_by_network_id is 0, single player. ALL AI'S ARE ACTIVE
-# if it's not, get the size of it. get the id's which are there. the rest are AIs
-# PlayerData.ai_controlled should be set to whatever
-
 func _ready() -> void:
 	check_active()
 	Signals.connect("day_passed", self, "_on_day_passed")
 	Signals.connect("player_data_updated", self, "_on_player_data_updated")
+
+	player_data = PlayersManager.players[id - 1]
 
 func check_active():
 	if PlayersManager.players[id - 1].ai_controlled:
@@ -42,6 +43,17 @@ func check_active():
 func _on_player_data_updated(player_data: PlayerData):
 	if player_data.num == id:
 		check_active()
+
+func get_next_research():
+	for tech in research_list:
+		if not Utils.has_tech(tech, player_data):
+			return tech
+
+func research_next():
+	var next_research = get_next_research()
+	if Utils.can_research(next_research, player_data):
+		Utils.research_tech(next_research, player_data)
+
 
 func _on_day_passed(day):
 	# only the server does AI
@@ -58,7 +70,10 @@ func _on_day_passed(day):
 		our_build_tiles.sort_custom(BuildOrderSorter, "sort_build_order")
 
 		if our_build_tiles.size() > 0:
-			our_build_tiles[0].build_tile()
+			var made_tile = our_build_tiles[0].build_tile()
+
+		research_next()
+
 
 	# every day brings new players
 	check_active()

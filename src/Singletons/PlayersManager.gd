@@ -99,6 +99,8 @@ func whoami() -> PlayerData:
 		return players[0]
 	else:
 		return me
+
+
 func get_player(player_num: int) -> PlayerData:
 	# get the player based on their number
 	if player_num > 0 && player_num <= players.size():
