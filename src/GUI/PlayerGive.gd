@@ -14,6 +14,14 @@ func _ready():
 
 		Signals.connect("player_data_updated", self, "_on_player_data_updated")
 
+func _input(event):
+	if event.is_action_pressed("ui_give_100"):
+		resource_give_amount = 100
+	if event.is_action_pressed("ui_give_10"):
+		resource_give_amount = 10
+	if event.is_action_released("ui_give_10") or event.is_action_released("ui_give_100"):
+		resource_give_amount = 1
+
 func set_player_num(value):
 	if value >= 0 && value < PlayerColors.colors.size():
 		modulate = PlayerColors.colors[value]
