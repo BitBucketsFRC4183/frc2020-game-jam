@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/GameObjects/Leaderboard.gd" type="Script" id=2]
+[ext_resource path="res://assets/icons/LeaderboardStat.png" type="Texture" id=3]
+[ext_resource path="res://assets/icons/LeaderboardBack.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -14,91 +16,458 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Leaderboard" type="VBoxContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leaderboard" type="VBoxContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 35
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player1" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 282.0
+[node name="Player1" type="TextureRect" parent="Background/Leaderboard"]
+margin_top = 95.0
 margin_right = 1920.0
-margin_bottom = 382.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 245.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
 
-[node name="Stats" type="Label" parent="Leaderboard/Player1"]
-margin_top = -1.0
-margin_right = 1920.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 1920, 100 )
+[node name="Stats" type="HBoxContainer" parent="Background/Leaderboard/Player1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 150 )
+custom_constants/separation = 150
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Background/Leaderboard/Player1/Stats"]
+margin_left = 160.0
+margin_top = 24.0
+margin_right = 360.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Player2" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 386.0
-margin_right = 1920.0
-margin_bottom = 486.0
-rect_min_size = Vector2( 0, 100 )
-
-[node name="Stats" type="Label" parent="Leaderboard/Player2"]
-margin_top = -1.0
-margin_right = 1920.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 1920, 100 )
+[node name="Score" type="Label" parent="Background/Leaderboard/Player1/Stats"]
+margin_left = 510.0
+margin_top = 24.0
+margin_right = 710.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Player3" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 490.0
-margin_right = 1920.0
-margin_bottom = 590.0
-rect_min_size = Vector2( 0, 100 )
-
-[node name="Stats" type="Label" parent="Leaderboard/Player3"]
-margin_top = -1.0
-margin_right = 1920.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 1920, 100 )
+[node name="Raw" type="Label" parent="Background/Leaderboard/Player1/Stats"]
+margin_left = 860.0
+margin_top = 24.0
+margin_right = 1060.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Player4" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 594.0
-margin_right = 1920.0
-margin_bottom = 694.0
-rect_min_size = Vector2( 0, 100 )
-
-[node name="Stats" type="Label" parent="Leaderboard/Player4"]
-margin_top = -1.0
-margin_right = 1920.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 1920, 100 )
+[node name="Science" type="Label" parent="Background/Leaderboard/Player1/Stats"]
+margin_left = 1210.0
+margin_top = 24.0
+margin_right = 1410.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Player5" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 698.0
-margin_right = 1920.0
-margin_bottom = 798.0
-rect_min_size = Vector2( 0, 100 )
-
-[node name="Stats" type="Label" parent="Leaderboard/Player5"]
-margin_top = -1.0
-margin_right = 1920.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 1920, 100 )
+[node name="Power" type="Label" parent="Background/Leaderboard/Player1/Stats"]
+margin_left = 1560.0
+margin_top = 24.0
+margin_right = 1760.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player2" type="TextureRect" parent="Background/Leaderboard"]
+margin_top = 280.0
+margin_right = 1920.0
+margin_bottom = 430.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+
+[node name="Stats" type="HBoxContainer" parent="Background/Leaderboard/Player2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 150 )
+custom_constants/separation = 150
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Name" type="Label" parent="Background/Leaderboard/Player2/Stats"]
+margin_left = 160.0
+margin_top = 24.0
+margin_right = 360.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Background/Leaderboard/Player2/Stats"]
+margin_left = 510.0
+margin_top = 24.0
+margin_right = 710.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raw" type="Label" parent="Background/Leaderboard/Player2/Stats"]
+margin_left = 860.0
+margin_top = 24.0
+margin_right = 1060.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Science" type="Label" parent="Background/Leaderboard/Player2/Stats"]
+margin_left = 1210.0
+margin_top = 24.0
+margin_right = 1410.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Power" type="Label" parent="Background/Leaderboard/Player2/Stats"]
+margin_left = 1560.0
+margin_top = 24.0
+margin_right = 1760.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player3" type="TextureRect" parent="Background/Leaderboard"]
+margin_top = 465.0
+margin_right = 1920.0
+margin_bottom = 615.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+
+[node name="Stats" type="HBoxContainer" parent="Background/Leaderboard/Player3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 150 )
+custom_constants/separation = 150
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Name" type="Label" parent="Background/Leaderboard/Player3/Stats"]
+margin_left = 160.0
+margin_top = 24.0
+margin_right = 360.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Background/Leaderboard/Player3/Stats"]
+margin_left = 510.0
+margin_top = 24.0
+margin_right = 710.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raw" type="Label" parent="Background/Leaderboard/Player3/Stats"]
+margin_left = 860.0
+margin_top = 24.0
+margin_right = 1060.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Science" type="Label" parent="Background/Leaderboard/Player3/Stats"]
+margin_left = 1210.0
+margin_top = 24.0
+margin_right = 1410.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Power" type="Label" parent="Background/Leaderboard/Player3/Stats"]
+margin_left = 1560.0
+margin_top = 24.0
+margin_right = 1760.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player4" type="TextureRect" parent="Background/Leaderboard"]
+margin_top = 650.0
+margin_right = 1920.0
+margin_bottom = 800.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="HBoxContainer" parent="Background/Leaderboard/Player4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 150 )
+custom_constants/separation = 150
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Name" type="Label" parent="Background/Leaderboard/Player4/Stats"]
+margin_left = 160.0
+margin_top = 24.0
+margin_right = 360.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Background/Leaderboard/Player4/Stats"]
+margin_left = 510.0
+margin_top = 24.0
+margin_right = 710.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raw" type="Label" parent="Background/Leaderboard/Player4/Stats"]
+margin_left = 860.0
+margin_top = 24.0
+margin_right = 1060.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Science" type="Label" parent="Background/Leaderboard/Player4/Stats"]
+margin_left = 1210.0
+margin_top = 24.0
+margin_right = 1410.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Power" type="Label" parent="Background/Leaderboard/Player4/Stats"]
+margin_left = 1560.0
+margin_top = 24.0
+margin_right = 1760.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player5" type="TextureRect" parent="Background/Leaderboard"]
+margin_top = 835.0
+margin_right = 1920.0
+margin_bottom = 985.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+
+[node name="Stats" type="HBoxContainer" parent="Background/Leaderboard/Player5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 150 )
+custom_constants/separation = 150
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Background/Leaderboard/Player5/Stats"]
+margin_left = 160.0
+margin_top = 24.0
+margin_right = 360.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Background/Leaderboard/Player5/Stats"]
+margin_left = 510.0
+margin_top = 24.0
+margin_right = 710.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Raw" type="Label" parent="Background/Leaderboard/Player5/Stats"]
+margin_left = 860.0
+margin_top = 24.0
+margin_right = 1060.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Science" type="Label" parent="Background/Leaderboard/Player5/Stats"]
+margin_left = 1210.0
+margin_top = 24.0
+margin_right = 1410.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Power" type="Label" parent="Background/Leaderboard/Player5/Stats"]
+margin_left = 1560.0
+margin_top = 24.0
+margin_right = 1760.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Player 1:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="visibility_changed" from="." to="." method="on_show"]
