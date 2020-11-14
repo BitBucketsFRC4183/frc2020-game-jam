@@ -12,14 +12,14 @@ You are leading a nation and helping to defend the world against waves of astero
 
 ## Buildings
 
-| Building    | Icons                                          | Purpose                                             |
-| ----------- | ---------------------------------------------- | --------------------------------------------------- |
-| Mine        | ![Mine](assets/icons/Mine.png)                 | Generates raw resources stored for building         |
-| Power Plant | ![Power Plant](<assets/icons/Power Plant.png>) | Generates constant energy                           |
-| Lab         | ![Lab](assets/icons/Lab.png)                   | Generates science points for research               |
-| Shield      | ![Shield](assets/icons/Shield.png)             | Protects against asteroids                          |
-| Missile     | ![Missile](assets/icons/Missile.png)           | Consumes resources to shoot down incoming asteroids |
-| Laser       | ![Laser](assets/icons/Missile.png)             | Consumes energy to shoot down incoming asteroids    |
+| Building    | Icons                                            | Purpose                                             |
+| ----------- | ------------------------------------------------ | --------------------------------------------------- |
+| Mine        | ![Mine](assets/icons/Mine.png)                   | Generates raw resources stored for building         |
+| Power Plant | ![<Power Plant>](<assets/icons/Power Plant.png>) | Generates constant energy                           |
+| Lab         | ![Lab](assets/icons/Lab.png)                     | Generates science points for research               |
+| Shield      | ![Shield](assets/icons/Shield.png)               | Protects against asteroids                          |
+| Missile     | ![Missile](assets/icons/Missile.png)             | Consumes resources to shoot down incoming asteroids |
+| Laser       | ![Laser](assets/icons/Missile.png)               | Consumes energy to shoot down incoming asteroids    |
 
 ## Research
 

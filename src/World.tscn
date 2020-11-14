@@ -30,10 +30,6 @@ rect_min_size = Vector2( 1920, 1080 )
 
 [node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
-autoplay = true
-__meta__ = {
-"_editor_description_": ""
-}
 [connection signal="visibility_changed" from="CanvasLayer/TechTree" to="CanvasLayer/TechTree" method="_on_show"]
