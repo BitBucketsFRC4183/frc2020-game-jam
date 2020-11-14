@@ -99,6 +99,13 @@ func whoami() -> PlayerData:
 		return players[0]
 	else:
 		return me
+func get_player(player_num: int) -> PlayerData:
+	# get the player based on their number
+	if player_num > 0 && player_num <= players.size():
+		return players[player_num - 1]
+	printerr("Tried to get a player with player_num %s" % player_num)
+	return players[0]
+
 
 func get_player_num(network_id: int) -> int:
 	if players_by_network_id.has(network_id):

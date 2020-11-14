@@ -69,7 +69,8 @@ func impact():
 
 func destroy():
 	destroyed = true
-	Signals.emit_signal("asteroid_destroyed", global_position, size)
+	Signals.emit_signal("asteroid_destroyed", id, global_position, size)
+	RPC.send_asteroid_destroyed(id, global_position, size)
 	queue_free()
 
 func damage(damage):

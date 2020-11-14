@@ -98,7 +98,7 @@ func _update_asteroid_after_spawn(asteroid, attributes: Dictionary):
 func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
 	remove_active_asteroid()
 
-func _on_asteroid_destroyed(position, size):
+func _on_asteroid_destroyed(asteroid_id, position, size):
 	remove_active_asteroid()
 
 func final_wave():
