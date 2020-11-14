@@ -37,7 +37,7 @@ func check_research_complete():
 		var tech_name = selected_tech.substr(0, selected_tech.length() - 1)
 		var tech_tier = int(selected_tech.substr(selected_tech.length() - 1, selected_tech.length()))
 		var tech_cost = Constants.tech_costs[tech_name][selected_tech]
-		
+
 		print("Research Progress: " + str(tech_research_progress))
 		if tech_cost <= tech_research_progress:
 			research_tech(tech_name, tech_tier)
@@ -60,6 +60,41 @@ func research_tech(name, tier):
 		tech_level["laser"] = Enums.laser.laser2 if tier == 2 else Enums.laser.laser3
 	elif(name == "shield"):
 		tech_level["shield"] = Enums.shield.shield2 if tier == 2 else Enums.shield.shield3
+
+func can_afford_building(building_name):
+	var costs = Constants.building_costs[building_name]
+	var cost = costs.cost
+	var type1 = costs.type1
+	var type2
+	if costs.has_type_2:
+		type2 = costs.type2
+	else:
+		type2 = null
+
+	# if we have enough resources for type1, that's fine
+	# still go on since we need to check type2
+	if resources[type1] >= cost:
+		pass
+	# not enoguh resources - reutrn
+	else:
+		return false
+
+	if type2:
+		# if we have enough resources for type2 as well
+		if resources[type2] >= cost:
+			return true
+		# not enough resources for type2
+		else:
+			return false
+	# there is no type2, and we already have enoguh for type1
+	else:
+		return true
+
+func can_donate_amount(resource_type: int, amount:int):
+	if resources[resource_type] >= amount:
+		return true
+	else:
+		return false
 
 func _init(num: int, name: String, color: Color) -> void:
 	._init()
