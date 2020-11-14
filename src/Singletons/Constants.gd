@@ -1,7 +1,6 @@
 extends Node
 
 const seconds_per_day := 3
-const play_music := true
 
 class BuildingCost:
 	var type1: int

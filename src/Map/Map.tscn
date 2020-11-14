@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Primitives/Territory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GameObjects/ResourceBuildings/ScienceLab.tscn" type="PackedScene" id=2]
@@ -7,8 +7,11 @@
 [ext_resource path="res://src/Map/Map.gd" type="Script" id=5]
 [ext_resource path="res://src/Map/Camera2D.gd" type="Script" id=6]
 [ext_resource path="res://assets/sound/Click.ogg" type="AudioStream" id=7]
+[ext_resource path="res://src/AI/AIBuildTile.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/AI/AIPlayer.tscn" type="PackedScene" id=9]
 
 [node name="Map" type="Node2D"]
+position = Vector2( 0, 2.82843 )
 script = ExtResource( 5 )
 
 [node name="Left" type="Node2D" parent="."]
@@ -624,6 +627,252 @@ limit_right = 1920
 limit_bottom = 1080
 limit_smoothed = true
 script = ExtResource( 6 )
+
+[node name="BuildTiles" type="Node2D" parent="."]
+
+[node name="Blue" type="Node2D" parent="BuildTiles"]
+
+[node name="AIBuildTile" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 1249.46, 373.035 )
+id = 2
+building_to_build = 0
+
+[node name="AIBuildTile2" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 1209.94, 349.121 )
+id = 2
+build_order = 2
+building_to_build = 1
+
+[node name="AIBuildTile3" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 1166.72, 379.427 )
+id = 2
+build_order = 3
+
+[node name="AIBuildTile4" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 1172.07, 337.243 )
+id = 2
+build_order = 4
+building_to_build = 2
+
+[node name="AIBuildTile5" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 1097.72, 426.04 )
+id = 2
+build_order = 5
+building_to_build = 5
+
+[node name="AIBuildTile6" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 941.894, 264.223 )
+id = 2
+build_order = 6
+
+[node name="AIBuildTile7" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 1133.95, 438.442 )
+id = 2
+build_order = 7
+building_to_build = 5
+
+[node name="AIBuildTile8" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 984.28, 285.207 )
+id = 2
+build_order = 8
+building_to_build = 5
+
+[node name="AIBuildTile9" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 1198.99, 452.696 )
+id = 2
+build_order = 9
+
+[node name="AIBuildTile10" parent="BuildTiles/Blue" instance=ExtResource( 8 )]
+position = Vector2( 894.582, 393.833 )
+id = 2
+build_order = 10
+building_to_build = 5
+
+[node name="AIPlayer" parent="BuildTiles/Blue" instance=ExtResource( 9 )]
+id = 2
+
+[node name="Green" type="Node2D" parent="BuildTiles"]
+
+[node name="AIBuildTile" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 555.708, 829.826 )
+id = 3
+building_to_build = 0
+
+[node name="AIBuildTile2" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 523.767, 855.723 )
+id = 3
+build_order = 2
+building_to_build = 1
+
+[node name="AIBuildTile3" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 391.362, 677.918 )
+id = 3
+build_order = 3
+
+[node name="AIBuildTile4" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 283.729, 741.574 )
+id = 3
+build_order = 4
+building_to_build = 2
+
+[node name="AIBuildTile5" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 528.088, 989.724 )
+id = 3
+build_order = 5
+building_to_build = 5
+
+[node name="AIBuildTile6" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 410.318, 1011.04 )
+id = 3
+build_order = 6
+
+[node name="AIBuildTile7" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 509.617, 702.446 )
+id = 3
+build_order = 7
+building_to_build = 5
+
+[node name="AIBuildTile8" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 495.516, 790.62 )
+id = 3
+build_order = 8
+building_to_build = 5
+
+[node name="AIBuildTile9" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 339.19, 843.945 )
+id = 3
+build_order = 9
+
+[node name="AIBuildTile10" parent="BuildTiles/Green" instance=ExtResource( 8 )]
+position = Vector2( 492.63, 905.192 )
+id = 3
+build_order = 10
+building_to_build = 5
+
+[node name="AIPlayer" parent="BuildTiles/Green" instance=ExtResource( 9 )]
+id = 3
+
+[node name="Purple" type="Node2D" parent="BuildTiles"]
+
+[node name="AIBuildTile" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1295.12, 740.677 )
+id = 4
+building_to_build = 0
+
+[node name="AIBuildTile2" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1316.37, 690.16 )
+id = 4
+build_order = 2
+building_to_build = 1
+
+[node name="AIBuildTile3" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1251.58, 707.908 )
+id = 4
+build_order = 3
+
+[node name="AIBuildTile4" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1160.99, 610.472 )
+id = 4
+build_order = 4
+building_to_build = 2
+
+[node name="AIBuildTile5" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1369.12, 662.821 )
+id = 4
+build_order = 5
+building_to_build = 5
+
+[node name="AIBuildTile6" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1287.13, 873.362 )
+id = 4
+build_order = 6
+
+[node name="AIBuildTile7" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1381.02, 600.76 )
+id = 4
+build_order = 7
+building_to_build = 5
+
+[node name="AIBuildTile8" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1403.51, 558.859 )
+id = 4
+build_order = 8
+building_to_build = 5
+
+[node name="AIBuildTile9" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1363.06, 539.164 )
+id = 4
+build_order = 9
+
+[node name="AIBuildTile10" parent="BuildTiles/Purple" instance=ExtResource( 8 )]
+position = Vector2( 1327.6, 505.167 )
+id = 4
+build_order = 10
+building_to_build = 5
+
+[node name="AIPlayer" parent="BuildTiles/Purple" instance=ExtResource( 9 )]
+id = 4
+
+[node name="Orange" type="Node2D" parent="BuildTiles"]
+
+[node name="AIBuildTile" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1375.8, 283 )
+id = 5
+building_to_build = 0
+
+[node name="AIBuildTile2" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1409.14, 263.011 )
+id = 5
+build_order = 2
+building_to_build = 1
+
+[node name="AIBuildTile3" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1516.58, 247.908 )
+id = 5
+build_order = 3
+
+[node name="AIBuildTile4" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1444.99, 240.472 )
+id = 5
+build_order = 4
+building_to_build = 2
+
+[node name="AIBuildTile5" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1600.23, 203.713 )
+id = 5
+build_order = 5
+building_to_build = 5
+
+[node name="AIBuildTile6" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1690.5, 441.927 )
+id = 5
+build_order = 6
+
+[node name="AIBuildTile7" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1634.02, 243.76 )
+id = 5
+build_order = 7
+building_to_build = 5
+
+[node name="AIBuildTile8" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1662.51, 285.859 )
+id = 5
+build_order = 8
+building_to_build = 5
+
+[node name="AIBuildTile9" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1469.06, 387.164 )
+id = 5
+build_order = 9
+
+[node name="AIBuildTile10" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
+position = Vector2( 1705.6, 339.167 )
+id = 5
+build_order = 10
+building_to_build = 5
+
+[node name="AIPlayer" parent="BuildTiles/Orange" instance=ExtResource( 9 )]
+id = 5
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

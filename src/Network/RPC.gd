@@ -29,14 +29,14 @@ remotesync func server_day_updated(day: int, player_dicts: Array):
 		Signals.emit_signal("players_updated", player_dicts)
 	Signals.emit_signal("day_passed", day)
 
-func send_join_game(player_name: String) -> void:
+func send_join_game() -> void:
 	# tell the server we joined the game
 	print("Sending player_joined call to server for %s" % get_tree().get_network_unique_id())
-	rpc_id(1, "player_joined", player_name)
+	rpc_id(1, "player_joined")
 
-remotesync func player_joined(player_name: String) -> void:
-	print("Received player_joined message for %s from %s" % [player_name, get_tree().get_rpc_sender_id()])
-	Signals.emit_signal("player_joined", get_tree().get_rpc_sender_id(), player_name)
+remotesync func player_joined() -> void:
+	print("Received player_joined message for network id %s" % [get_tree().get_rpc_sender_id()])
+	Signals.emit_signal("player_joined", get_tree().get_rpc_sender_id())
 
 func send_pre_start_game(player_dicts: Array, id: int = 0):
 	# notify clients we are all ready to start
@@ -124,7 +124,7 @@ func send_asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 
 remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 	Signals.emit_signal("asteroid_destroyed", asteroid_id, position, size)
-	
+
 
 func send_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
 	rpc("player_give_resources", source_player_num, dest_player_num, resource_type, amount)

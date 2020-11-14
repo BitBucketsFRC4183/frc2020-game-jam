@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/World.gd" type="Script" id=1]
 [ext_resource path="res://src/Map/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GameObjects/TechTree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/GUI/GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/GameObjects/Asteroids/AsteroidManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/music/Music01.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/GameObjects/Leaderboard.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Node2D"]
@@ -33,8 +32,4 @@ rect_min_size = Vector2( 1920, 1080 )
 visible = false
 
 [node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -10.0
 [connection signal="visibility_changed" from="CanvasLayer/TechTree" to="CanvasLayer/TechTree" method="_on_show"]

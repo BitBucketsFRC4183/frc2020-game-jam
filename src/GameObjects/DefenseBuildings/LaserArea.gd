@@ -13,3 +13,8 @@ func _ready():
 	collision.set_shape(shape)
 	add_child(collision)
 	sprite.set_scale(Vector2(radius * 2 / 512, radius * 2 / 512))
+	
+func set_radius(new_radius):
+	radius = new_radius
+	shape.set_radius(radius)
+	sprite.set_scale(Vector2(radius * 2 / 512, radius * 2 / 512))

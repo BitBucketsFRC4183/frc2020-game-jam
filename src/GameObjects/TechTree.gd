@@ -50,7 +50,7 @@ func set_tech_node_colors():
 
 	update_node_texture(player, "TechTree/Row 5/TextureLaser2", "laser2", true)
 	update_node_texture(player, "TechTree/Row 6/TextureLaser3", "laser3", false)
-	
+
 	set_missile_disabled()
 
 func update_node_texture(p: PlayerData, node: String, tech_name: String, tier: bool):

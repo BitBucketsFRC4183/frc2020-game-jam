@@ -16,7 +16,7 @@ var num_of_territories = {
 
 func _ready():
 	if not get_tree().has_network_peer() and not Server.started:
-		Network.host_game("Single Player", true)
+		Network.host_game(true)
 		Server.begin_game(true)
 		RPC.send_ready_to_start()
 
@@ -24,9 +24,6 @@ func _ready():
 	$AsteroidManager.territories = $Map.get_territories()
 
 	_add_players_to_world()
-
-	if Constants.play_music:
-		$Music.play()
 
 	Signals.connect("final_wave_complete", self, "win_game")
 	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
@@ -114,7 +111,7 @@ func _input(event):
 func show_leaderboard():
 	$CanvasLayer/Leaderboard.show()
 	close_map()
-	
+
 func close_leaderboard():
 	$CanvasLayer/Leaderboard.hide()
 	show_map()

@@ -69,7 +69,7 @@ func begin_game(single_player := true):
 	# The server/host is always player 1
 	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
 
-	RPC.send_pre_start_game(PlayersManager.players)
+	RPC.send_pre_start_game(PlayersManager.get_all_player_dicts())
 
 
 func post_start_game():
@@ -88,7 +88,7 @@ func _on_DaysTimer_timeout():
 	# send a message to clients
 	RPC.send_server_day_updated(day)
 
-func _on_player_joined(id: int, player_name: String) -> void:
+func _on_player_joined(id: int) -> void:
 	# TODO: Support player_name. For now it's randomly assigned
 
 	# add this new player to the server's PlayersManager

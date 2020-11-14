@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/GUI/NumLineEdit.gd" type="Script" id=1]
+
+[node name="NumLineEdit" type="LineEdit"]
+margin_left = 104.0
+margin_top = 32.0
+margin_right = 304.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 200, 0 )
+text = "3000"
+placeholder_text = "Port Number"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="." to="." method="_on_NumLineEdit_text_changed"]
