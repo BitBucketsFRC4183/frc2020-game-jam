@@ -58,6 +58,14 @@ var tech_costs := {
 	}
 }
 
+var score_granted := {
+	"building_built": 200,
+	"research_completed": 500,
+	"donated": 750,
+	"asteroid_shot": 250,
+	"asteroid_deflected": 150
+}
+
 # WARNING! This value can't really just be changed here. We need to add
 # * Colors
 # * Names
