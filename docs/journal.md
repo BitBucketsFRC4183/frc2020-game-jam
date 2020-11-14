@@ -92,7 +92,9 @@ Buildings can be placed on territories.
 
 ### CP
 
-...
+More networking work today. Player Management is better structured, and each player that joins and assumes one of the AI players.
+
+![Player Names in Sync](JournalImages/2020-11-11-03.png)
 
 ### SM
 
@@ -112,11 +114,36 @@ Menu Mockups
 
 ### OS
 
+Working on asteroids destroying territories and buildings.
+
+![Asteroid Destruction](JournalImages/2020-11-12-01.gif)
+
+### CP
+
+More networking work today. Player Management is better structured, and each player that joins becomes another player
+
+### SM
+
+...
+
+### EP
+
+...
+
+### IB
+
+...
+
+## 11/13/2020
+
+### OS
+
 ...
 
 ### CP
 
-...
+New HUD with player gifting!
+![HUD](JournalImages/2020-11-13-01.png)
 
 ### SM
 
