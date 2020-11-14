@@ -38,8 +38,14 @@ func damage(damage):
 		disable()
 	else:
 		PlayersManager.whoami().add_score("asteroid_deflected")
+
 func disable():
 	health = 0
 	sprite.visible = false
 	active = false
 	timer.start(cooldown)
+
+func set_radius(new_radius):
+	radius = new_radius
+	shape.set_radius(radius)
+	sprite.set_scale(Vector2(radius * 2 / 512, radius * 2 / 512))
