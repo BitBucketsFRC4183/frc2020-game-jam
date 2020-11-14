@@ -124,7 +124,7 @@ func send_asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 
 remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 	Signals.emit_signal("asteroid_destroyed", asteroid_id, position, size)
-	
+
 
 func send_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
 	rpc("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
