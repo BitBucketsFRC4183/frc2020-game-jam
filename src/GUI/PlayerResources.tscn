@@ -6,17 +6,18 @@
 [ext_resource path="res://assets/icons/Science.png" type="Texture" id=4]
 [ext_resource path="res://src/GUI/PlayerResources.gd" type="Script" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 3 )
 
 [node name="PlayerResources" type="VBoxContainer"]
 margin_right = 296.0
 margin_bottom = 330.0
+mouse_filter = 2
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,7 +26,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 margin_right = 296.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "My Resources"
 
 [node name="RawResourcesContainer" type="HBoxContainer" parent="."]
@@ -50,7 +51,7 @@ margin_left = 100.0
 margin_top = 33.0
 margin_right = 296.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "%s Raw Resources"
 
 [node name="PowerContainer" type="HBoxContainer" parent="."]
@@ -75,7 +76,7 @@ margin_left = 100.0
 margin_top = 33.0
 margin_right = 262.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "%s Power Cells"
 
 [node name="ScienceContainer" type="HBoxContainer" parent="."]
@@ -100,5 +101,5 @@ margin_left = 100.0
 margin_top = 33.0
 margin_right = 290.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "%s Science Points"
