@@ -15,3 +15,7 @@ func update_step(p: PlayerData):
 	var progress = p.tech_research_progress
 	var cost = Constants.tech_costs[p.selected_tech.substr(0, p.selected_tech.length() - 1)][p.selected_tech]
 	set_value(float(progress) / float(cost))
+	
+	if get_value() >= max_value:
+		set_value(0.0)
+		$TechTree.set_tech_node_colors()
