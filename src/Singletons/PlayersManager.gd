@@ -40,8 +40,8 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 		# We are adding a player with a dictionary, so that means
 		# we need to replace an existing player with a new network_id/num
 		player = PlayerData.new(1, "", Color.black)
-		player.from_dict(player_dict)
 		player.ai_controlled = false
+		player.from_dict(player_dict)
 		if id != 0:
 			# only add this player to the network list if it's a network controlled player
 			players_by_network_id[id] = player
