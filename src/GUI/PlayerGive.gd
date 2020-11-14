@@ -31,11 +31,14 @@ func _on_player_data_updated(player_data: PlayerData):
 
 func _on_GiveRawButton_pressed():
 	Signals.emit_signal("player_give_resources", source_player_num, player_num, Enums.resource_types.raw, resource_give_amount)
+	RPC.send_player_give_resources(source_player_num, player_num, Enums.resource_types.raw, resource_give_amount)
 
 
 func _on_GivePowerButton_pressed():
 	Signals.emit_signal("player_give_resources", source_player_num, player_num, Enums.resource_types.power, resource_give_amount)
+	RPC.send_player_give_resources(source_player_num, player_num, Enums.resource_types.power, resource_give_amount)
 
 
 func _on_GiveScienceButton_pressed():
 	Signals.emit_signal("player_give_resources", source_player_num, player_num, Enums.resource_types.science, resource_give_amount)
+	RPC.send_player_give_resources(source_player_num, player_num, Enums.resource_types.science, resource_give_amount)

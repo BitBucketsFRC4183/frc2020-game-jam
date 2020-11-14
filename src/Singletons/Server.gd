@@ -8,7 +8,7 @@ var players_ready = []
 var day := 0
 
 # default to single_player
-var single_player := true
+var single_player := false
 
 # have we started the game already?
 var started := false
@@ -28,14 +28,13 @@ func _ready():
 	get_tree().connect("network_peer_disconnected", self,"_player_disconnected")
 
 	reset_values()
-	timer.wait_time = Constants.seconds_per_day
 
 func reset_values():
 	players_ready = []
 	day = 0
-	single_player = true
+	single_player = false
 	started = false
-	timer.wait_time = 1
+	timer.wait_time = Constants.seconds_per_day
 
 # A new player has connected to the game
 func _player_connected(id):
