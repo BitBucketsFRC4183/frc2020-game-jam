@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/GUI/PlayerReadyContainer.gd" type="Script" id=1]
+[ext_resource path="res://assets/icons/Checkmark.png" type="Texture" id=2]
+
+[node name="PlayerReadyContainer1" type="HBoxContainer"]
+margin_right = 480.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 32 )
+rect_rotation = -0.00563189
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+modulate = Color( 0.764706, 0.196078, 0.196078, 1 )
+margin_top = 9.0
+margin_right = 73.0
+margin_bottom = 23.0
+text = "Bit Buckets"
+
+[node name="Ready" type="Label" parent="."]
+margin_left = 77.0
+margin_top = 9.0
+margin_right = 480.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "Not Ready"
+align = 2
+
+[node name="ReadyCheck" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 0.764706, 0.196078, 0.196078, 1 )
+margin_left = 448.0
+margin_right = 480.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )

@@ -59,16 +59,44 @@ remotesync func pre_start_game(players: Array):
 	print("Client: Preparing to start game")
 	Signals.emit_signal("pre_start_game", players)
 
+func send_message(message: String):
+	var player = PlayersManager.whoami()
+	rpc("message", PlayerMessage.new(player.num, message).to_dict())
 
-func send_ready_to_start():
-	print("Client: Sending ready_to_start to server")
-	rpc_id(1, "ready_to_start", get_tree().get_network_unique_id())
+remotesync func message(message_dict: Dictionary):
+	var message = Utils.player_message_from_dict(message_dict)
+	var player = PlayersManager.get_player(message.num)
+	print("%s%s: %s" % ["Host - " if player.num == 1 else "", player.name, message.message])
+	Signals.emit_signal("player_message", message)
 
-
-remotesync func ready_to_start(id):
+func send_all_messages(messages: Array, id: int = -1):
+	# server sends all messages on startup
 	assert(get_tree().is_network_server())
+	var message_dicts = []
+	for message in messages:
+		message_dicts.append(message.to_dict())
+	if id != -1:
+		rpc("all_messages", message_dicts)
+	else:
+		rpc_id(id, "all_messages", message_dicts)
+
+remote func all_messages(messages: Array):
+	PlayersManager.player_messages.clear()
+	for message_dict in messages:
+		Signals.emit_signal("player_message", Utils.player_message_from_dict(message_dict))
+
+
+func send_ready_to_start(ready: bool):
+	# tell the server we are ready or not
+	print("Client: Sending ready_to_start to server")
+	rpc_id(1, "ready_to_start", ready)
+
+
+remotesync func ready_to_start(ready: bool):
+	assert(get_tree().is_network_server())
+	var id = get_tree().get_rpc_sender_id()
 	print("Server: Client %d is ready to start" % id)
-	Signals.emit_signal("player_ready_to_start", id)
+	Signals.emit_signal("player_ready_to_start", id, ready)
 
 func send_post_start_game(id: int = 0):
 	# sent by the server when all players are ready and we have begun

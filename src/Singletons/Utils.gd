@@ -18,3 +18,6 @@ func _get_scene_path_for_building_type(building_type_name: String) -> String:
 			return "res://src/GameObjects/DefenseBuildings/Shield.tscn"
 	printerr("Tried to find a scene path for an unknown building_type_name %s" % building_type_name)
 	return ""
+
+func player_message_from_dict(dict: Dictionary) -> PlayerMessage:
+	return PlayerMessage.new(dict.get("num", 1), dict.get("message", ""))

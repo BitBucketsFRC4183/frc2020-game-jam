@@ -2,12 +2,13 @@
 extends Reference
 class_name PlayerData
 
-var network_id: int 						# The player's network id
-export var num: int 						# The player number, i.e. player 1, 2, 3...
-export var name: String					# The player's name in the game
-export var ai_controlled: bool = true		# Is the player AI Controlled?
-export var color: Color = Color.black		# The player's color
-export var score = 0						# The player's score
+var network_id: int 				# The player's network id
+var num: int 						# The player number, i.e. player 1, 2, 3...
+var name: String					# The player's name in the game
+var ready: bool = true				# Is the player AI Controlled?
+var ai_controlled: bool = true		# Is the player AI Controlled?
+var color: Color = Color.black		# The player's color
+var score = 0						# The player's score
 
 # the current resources the player has on hand
 var resources = {
@@ -114,6 +115,7 @@ func to_dict() -> Dictionary:
 		"network_id": network_id,
 		"name": name,
 		"num": num,
+		"ready": ready,
 		"ai_controlled": ai_controlled,
 		"color": color.to_rgba32(),
 		"resources": resources,
@@ -129,6 +131,7 @@ func from_dict(dict: Dictionary) -> void:
 	network_id = dict.get("network_id", network_id)
 	name = dict.get("name", name)
 	num = dict.get("num", num)
+	ready = dict.get("ready", ready)
 	ai_controlled = dict.get("ai_controlled", ai_controlled)
 	color = Color(dict.get("color", color.to_rgba32()))
 	resources = dict.get("resources", resources)
