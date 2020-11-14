@@ -34,8 +34,11 @@ func _on_asteroid_wave_timer_reset(time_left: float):
 
 
 func set_days_until_next_asteroid(value: int):
-	days_until_next_asteroid = value
-	$TopMenu/Center/VBoxContainer/HeaderLabel.text = "Asteroids incoming in %s days!" % days_until_next_asteroid
+	if value >= 0:
+		days_until_next_asteroid = value
+	else:
+		days_until_next_asteroid = 0
+	$TopMenu/Center/VBoxContainer/HeaderLabel.text = "Asteroids incoming in %s days!" % days_until_next_asteroid	
 
 
 func _input(event: InputEvent) -> void:

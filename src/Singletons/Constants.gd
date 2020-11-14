@@ -63,7 +63,8 @@ var score_granted := {
 	"research_completed": 500,
 	"donated": 750,
 	"asteroid_shot": 250,
-	"asteroid_deflected": 150
+	"asteroid_deflected": 150,
+	"asteroid_destroyed": 250
 }
 
 # WARNING! This value can't really just be changed here. We need to add
