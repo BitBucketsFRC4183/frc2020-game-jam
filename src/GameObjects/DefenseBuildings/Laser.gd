@@ -41,6 +41,7 @@ func _on_LaserArea_area_exited(area):
 		reevaluate_targeting()
 
 func _on_asteroid_destroyed(position, size):
+	PlayersManager.whoami().score += Constants.score_granted["asteroid_destroyed"]
 	if target == null or target.get_parent().destroyed:
 		reevaluate_targeting()
 
