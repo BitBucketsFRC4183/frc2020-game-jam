@@ -59,6 +59,6 @@ func _on_day_passed(day):
 
 		if our_build_tiles.size() > 0:
 			our_build_tiles[0].build_tile()
-		
+
 	# every day brings new players
 	check_active()

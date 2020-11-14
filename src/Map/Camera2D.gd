@@ -5,7 +5,7 @@ var pressed
 # how much we zoom in/out at a time
 export var zoom_constant = Vector2(0.05, 0.05)
 # how much we scroll at a time
-export var scroll_constant = 0.5
+export var scroll_constant = 1.5
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_in"):
@@ -30,11 +30,12 @@ func _input(event: InputEvent) -> void:
 			pressed = event.pressed
 
 func _process(delta: float) -> void:
+	var scroll_amt = scroll_constant * zoom.x
 	if Input.is_action_pressed("up"):
-		position.y -= scroll_constant
+		position.y -= scroll_amt
 	if Input.is_action_pressed("down"):
-		position.y += scroll_constant
+		position.y += scroll_amt
 	if Input.is_action_pressed("left"):
-		position.x -= scroll_constant
+		position.x -= scroll_amt
 	if Input.is_action_pressed("right"):
-		position.x += scroll_constant
+		position.x += scroll_amt
