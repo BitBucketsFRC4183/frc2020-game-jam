@@ -96,9 +96,10 @@ func _update_asteroid_after_spawn(asteroid, attributes: Dictionary):
 
 func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
 	remove_active_asteroid()
-
+	
 func _on_asteroid_destroyed(position, size):
 	remove_active_asteroid()
+
 func final_wave():
 	var boss = dwarf_planet.instance()
 	boss.global_position = territories[asteroid_count + 1].center_global

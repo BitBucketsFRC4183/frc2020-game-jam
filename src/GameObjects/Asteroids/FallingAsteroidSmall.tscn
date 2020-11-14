@@ -25,8 +25,9 @@ tracks/0/keys = {
 
 [node name="FallingAsteroidSmall" type="Node2D"]
 script = ExtResource( 3 )
-base_speed = 500
+base_speed = 250
 explosion_radius = 32
+base_distance = 2500
 
 [node name="ImpactPoint" type="Area2D" parent="."]
 collision_mask = 2147483658
