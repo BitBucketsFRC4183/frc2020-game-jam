@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="frc2020-game-jam"
-run/main_scene="res://src/World.tscn"
+run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -65,11 +65,13 @@ config/icon="res://icon.png"
 Enums="*res://src/Singletons/Enums.gd"
 Signals="*res://src/Singletons/Signals.gd"
 Constants="*res://src/Singletons/Constants.gd"
+Settings="*res://src/Singletons/Settings.gd"
 Network="*res://src/Network/Network.tscn"
 RPC="*res://src/Network/RPC.gd"
 PlayersManager="*res://src/Singletons/PlayersManager.gd"
 Server="*res://src/Singletons/Server.tscn"
 Utils="*res://src/Singletons/Utils.gd"
+MusicManager="*res://src/Singletons/MusicManager.tscn"
 
 [display]
 

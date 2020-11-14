@@ -26,27 +26,39 @@ class BuildOrderSorter:
 
 func _ready() -> void:
 	check_active()
-	if active:
-		Signals.connect("day_passed", self, "_on_day_passed")
+	Signals.connect("day_passed", self, "_on_day_passed")
+	Signals.connect("player_data_updated", self, "_on_player_data_updated")
 
 func check_active():
-	if PlayersManager.players_by_network_id.size() == 0:
-		active = true
+	if PlayersManager.players[id - 1].ai_controlled:
+		if not active:
+			print("Player %s is now ai controlled: " % id)
+			active = true
 	else:
-		if id in PlayersManager.players_by_network_id.keys():
+		if active:
+			print("Player %s is no longer ai controlled: " % id)
 			active = false
 
+func _on_player_data_updated(player_data: PlayerData):
+	if player_data.num == id:
+		check_active()
+
 func _on_day_passed(day):
-	var all_build_tiles = get_tree().get_nodes_in_group("ai_tiles")
+	# only the server does AI
+	if get_tree().is_network_server() and active:
+		var all_build_tiles = get_tree().get_nodes_in_group("ai_tiles")
 
-	var our_build_tiles = []
-	# ensure that the tile is actually the same id as the AIPlayer
-	# and also that we haven't built it
-	for t in all_build_tiles:
-		if t.id == id and not t.built:
-			our_build_tiles.append(t)
+		var our_build_tiles = []
+		# ensure that the tile is actually the same id as the AIPlayer
+		# and also that we haven't built it
+		for t in all_build_tiles:
+			if t.id == id and not t.built:
+				our_build_tiles.append(t)
 
-	our_build_tiles.sort_custom(BuildOrderSorter, "sort_build_order")
+		our_build_tiles.sort_custom(BuildOrderSorter, "sort_build_order")
 
-	if our_build_tiles.size() > 0:
-		our_build_tiles[0].build_tile()
+		if our_build_tiles.size() > 0:
+			our_build_tiles[0].build_tile()
+		
+	# every day brings new players
+	check_active()
