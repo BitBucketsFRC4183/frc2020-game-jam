@@ -16,6 +16,7 @@ signal player_data_updated(player_data)
 signal player_give_resources(source_player_num, dest_player_num, resource_type, amount)
 
 signal tech_progress_changed(player_data)
+signal player_score_changed
 
 # Notify when the connected players change
 signal players_updated(player_dicts)

@@ -47,6 +47,8 @@ func _on_player_give_resources(source_player_num: int, dest_player_num: int, res
 		data.resources[resource_type] -= amount
 		print_debug("(%s) gave player %s gave me %s %s resources!" % [data.name, dest_player_num, amount, Enums.resource_types.keys()[resource_type]])
 		Signals.emit_signal("player_data_updated", data)
+		
+		PlayersManager.whoami().add_score("donated")
 	elif dest_player_num == data.num:
 		# I am the receiver. I gain resources
 		data.resources[resource_type] += amount
