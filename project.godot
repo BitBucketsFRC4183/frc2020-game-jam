@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "FallingAsteroid",
+"language": "GDScript",
+"path": "res://src/GameObjects/Asteroids/FallingAsteroid.gd"
+}, {
+"base": "Area2D",
 "class": "GameBuilding",
 "language": "GDScript",
 "path": "res://src/GameObjects/GameBuilding.gd"
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://src/Primitives/TerritoryArea.gd"
 } ]
 _global_script_class_icons={
+"FallingAsteroid": "",
 "GameBuilding": "",
 "Player": "",
 "PlayerData": "",

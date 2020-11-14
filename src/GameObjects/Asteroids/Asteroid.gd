@@ -72,6 +72,11 @@ func destroy():
 	Signals.emit_signal("asteroid_destroyed", global_position, size)
 	queue_free()
 
+func damage(damage):
+	health -= damage
+	if health <= 0:
+		destroy()
+
 func _on_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
 	if asteroid_id == id:
 		queue_free()
