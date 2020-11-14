@@ -18,7 +18,7 @@ func can_afford_tile():
 
 func build_tile():
 	if built:
-		return
+		return false
 
 	if can_afford_tile():
 		var building_scene = load(Utils._get_scene_path_for_building_type(building_name)).instance()
@@ -33,3 +33,5 @@ func build_tile():
 
 		Signals.emit_signal("game_building_placed", id, building_name, position)
 		RPC.send_game_building_placed(building_name, position)
+
+		return true

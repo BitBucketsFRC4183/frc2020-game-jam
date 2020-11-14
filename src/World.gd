@@ -93,7 +93,7 @@ func _input(event):
 			close_tech_tree()
 		if(isLeaderboardOpen):
 				$CanvasLayer/Leaderboard.hide()
-		isTechTreeOpen = !isTechTreeOpen		
+		isTechTreeOpen = !isTechTreeOpen
 	elif(event.is_action_pressed("ui_leaderboard")):
 		if(!isLeaderboardOpen):
 			show_leaderboard()

@@ -15,8 +15,8 @@ func _on_day_passed(day: int):
 		assert(resource_amt != -1)
 
 		if(resource_type == Enums.resource_types.science):
-			PlayersManager.whoami().tech_research_progress += resource_amt
-			PlayersManager.whoami().check_research_complete()
+			PlayersManager.players[player_num - 1].tech_research_progress += resource_amt
+			PlayersManager.players[player_num - 1].check_research_complete()
 
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
