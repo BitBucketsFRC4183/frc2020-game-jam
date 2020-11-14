@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/GUI/fonts/Font30.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/GUI/MainMenuButton.gd" type="Script" id=2]
+
+[node name="Button" type="Button"]
+margin_left = 725.402
+margin_top = 787.648
+margin_right = 1082.4
+margin_bottom = 940.648
+custom_fonts/font = ExtResource( 1 )
+text = "Return to home screen"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="." to="." method="_on_Button_pressed"]
