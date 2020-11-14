@@ -20,10 +20,22 @@ func _ready():
 	Signals.connect("post_start_game", self, "post_start_game")
 	Signals.connect("player_joined", self, "_on_player_joined")
 
+	Signals.connect("grand_winner", self, "reset_values")
+	Signals.connect("winner", self, "reset_values")
+	Signals.connect("loser", self, "reset_values")
+
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self,"_player_disconnected")
+
+	reset_values()
 	timer.wait_time = Constants.seconds_per_day
 
+func reset_values():
+	players_ready = []
+	day = 0
+	single_player = true
+	started = false
+	timer.wait_time = 1
 
 # A new player has connected to the game
 func _player_connected(id):
@@ -38,9 +50,9 @@ func _player_connected(id):
 func _player_disconnected(id):
 	PlayersManager.remove_player(id)
 
-func player_ready_to_start(id: int):	
+func player_ready_to_start(id: int):
 	# A player is ready to start
-	assert(get_tree().is_network_server())	
+	assert(get_tree().is_network_server())
 
 	if not id in players_ready:
 		players_ready.append(id)
@@ -73,17 +85,17 @@ func post_start_game():
 func _on_DaysTimer_timeout():
 	day += 1
 	# print_debug("Server: It\'s a new day! %d" % day)
-	
+
 	# send a message to clients
 	RPC.send_server_day_updated(day)
 
 func _on_player_joined(id: int, player_name: String) -> void:
 	# TODO: Support player_name. For now it's randomly assigned
-	
+
 	# add this new player to the server's PlayersManager
 	var player = PlayersManager.add_player(id)
 	print("Player %s joined, assumed player %s - %s" % [id, player.num, player.name])
-	
+
 	# send our player data to all clients, so everyone knows about the new player
 	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
 

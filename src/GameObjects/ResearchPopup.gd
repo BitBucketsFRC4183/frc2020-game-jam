@@ -13,10 +13,10 @@ func _ready():
 	set_scale(Vector2(2.0, 2.0))
 	set_text(default_text)
 	get_ok().set_text("Research!")
-	
+
 func set_popup_properties():
 	window_title = tech
-	
+
 func set_info(tech_name):
 	tech = tech_name
 	print(tech.substr(0, tech.length() - 1))

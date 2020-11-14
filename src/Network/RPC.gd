@@ -114,4 +114,4 @@ func send_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius:
 
 remote func asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
 	Signals.emit_signal("asteroid_impact", asteroid_id, position, explosion_radius)
-	
+

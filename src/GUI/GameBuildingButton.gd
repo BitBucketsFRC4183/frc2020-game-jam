@@ -26,4 +26,4 @@ func _on_GameBuildingButton_pressed() -> void:
 	# pass the name of the building to be used to instance the scene (used to check hitboxes)
 	emit_signal("selected", Enums.game_buildings.keys()[building])
 	$ClickSound.play(.2)
-	
+

@@ -3,6 +3,15 @@ extends Node2D
 var Player = preload("res://src/GameObjects/Player.tscn")
 
 var isTechTreeOpen
+var num_asteroids_hit := 0
+
+var num_of_territories = {
+	1: 0,
+	2: 0,
+	3: 0,
+	4: 0,
+	5: 0
+}
 
 func _ready():
 	if not get_tree().has_network_peer() and not Server.started:
@@ -17,6 +26,59 @@ func _ready():
 
 	if Constants.play_music:
 		$Music.play()
+
+	Signals.connect("final_wave_complete", self, "win_game")
+	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
+
+
+	make_territories_list()
+
+
+func win_game():
+	var player_with_highest_score = 1
+	var highest_score = PlayersManager.whoami().score
+
+	for p in PlayersManager.players:
+		if p.score > highest_score:
+			player_with_highest_score = p.num
+			highest_score = p.score
+
+	if player_with_highest_score == PlayersManager.whoami().num:
+		Signals.emit_signal("grand_winner")
+		get_tree().change_scene("res://src/GUI/GrandWinScreen.tscn")
+	else:
+		Signals.emit_signal("winner")
+		get_tree().change_scene("res://src/GUI/WinScreen.tscn")
+
+
+func lose_game():
+	Signals.emit_signal("loser")
+	get_tree().change_scene("res://src/GUI/LoseScreen.tscn")
+
+
+func make_territories_list():
+	var territories = $Map.get_territories()
+	for t in territories:
+		num_of_territories[t.territory_owner] += 1
+
+func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
+	var territories = $Map.get_territories()
+
+	# for each player id
+	for player in PlayersManager.players:
+		var id = player.num
+		var tiles_destroyed = 0
+		# we go through every territory in the map
+		for t in territories:
+			# only check territory for curernt player
+			if t.territory_owner == id:
+				# if there is a non-destroyed tile, set flag to true
+				# re-start loop which will hit the if statement below
+				if t.type == Enums.territory_types.destroyed:
+					tiles_destroyed += 1
+					if tiles_destroyed == num_of_territories[id]:
+						lose_game()
+
 
 func _add_players_to_world():
 	for player_data in PlayersManager.players:

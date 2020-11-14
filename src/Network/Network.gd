@@ -15,7 +15,7 @@ func _ready():
 	# these might belong in a lobby UI
 	get_tree().connect("connected_to_server", self, "_on_connected_to_server")
 	get_tree().connect("connection_failed", self, "_connected_fail")
-	
+
 
 func _on_connected_to_server():
 	# We just connected to a server
@@ -56,7 +56,3 @@ func join_game(ip, player_name):
 	peer = NetworkedMultiplayerENet.new()
 	peer.create_client(ip, DEFAULT_PORT)
 	get_tree().set_network_peer(peer)
-
-
-
-
