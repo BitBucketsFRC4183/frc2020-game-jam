@@ -9,7 +9,7 @@ func _ready() -> void:
 	is_resource_building = false
 	Signals.connect("asteroid_destroyed", self, "_on_asteroid_destroyed")
 	Signals.connect("day_passed", self, "_on_day_passed")
-	
+
 	tech_check()
 	$Timer.start(cooldown)
 
@@ -35,7 +35,7 @@ func reevaluate_targeting():
 func tech_check():
 	var building_owner := PlayersManager.get_player(player_num)
 	var radius = 256.0
-	
+
 	if building_owner.tech_level["laser"] == 1:
 		radius = 320.0
 	if building_owner.tech_level["laser"] == 2:
@@ -69,7 +69,7 @@ func _on_Timer_timeout():
 	if target != null:
 		target.damage(damage)
 	$Timer.start(cooldown)
-	
+
 func _on_day_passed(day):
 	tech_check()
 
