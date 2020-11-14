@@ -9,7 +9,7 @@ func _ready():
 	font.set_size(36)
 	
 	for i in range (1, 6):
-		get_node("Leaderboard/Player" + str(i) + "/Stats").add_font_override("font", font)
+		get_node(node_path(i)).add_font_override("font", font)
 	
 	pass
 
@@ -29,6 +29,9 @@ func update_player_data(num: int):
 func set_leaderboard_rows():
 	var node = ""
 	for i in range (1, 6):
-		node = "Leaderboard/Player" + str(i) + "/Stats"
+		node = node_path(i)
 		get_node(node).set_text(players[i - 1])
 	pass
+
+func node_path(i: int):
+	return "Leaderboard/Player" + str(i) + "/Stats"

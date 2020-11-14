@@ -29,9 +29,8 @@ margin_bottom = 382.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Stats" type="Label" parent="Leaderboard/Player1"]
-margin_top = -1.0
 margin_right = 1920.0
-margin_bottom = 99.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
@@ -45,9 +44,8 @@ margin_bottom = 486.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Stats" type="Label" parent="Leaderboard/Player2"]
-margin_top = -1.0
 margin_right = 1920.0
-margin_bottom = 99.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
@@ -61,9 +59,8 @@ margin_bottom = 590.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Stats" type="Label" parent="Leaderboard/Player3"]
-margin_top = -1.0
 margin_right = 1920.0
-margin_bottom = 99.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
@@ -77,9 +74,8 @@ margin_bottom = 694.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Stats" type="Label" parent="Leaderboard/Player4"]
-margin_top = -1.0
 margin_right = 1920.0
-margin_bottom = 99.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
@@ -93,9 +89,8 @@ margin_bottom = 798.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Stats" type="Label" parent="Leaderboard/Player5"]
-margin_top = -1.0
 margin_right = 1920.0
-margin_bottom = 99.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
