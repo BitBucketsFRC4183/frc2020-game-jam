@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/icons/Raw Materials.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/Power.png" type="Texture" id=2]
+[ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/icons/Science.png" type="Texture" id=4]
+[ext_resource path="res://src/GUI/PlayerResources.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="PlayerResources" type="VBoxContainer"]
+margin_right = 296.0
+margin_bottom = 330.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 296.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 2 )
+text = "My Resources"
+
+[node name="RawResourcesContainer" type="HBoxContainer" parent="."]
+margin_top = 34.0
+margin_right = 296.0
+margin_bottom = 130.0
+
+[node name="TextureRect" type="TextureRect" parent="RawResourcesContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RawResourcesContainer"]
+margin_left = 100.0
+margin_top = 33.0
+margin_right = 296.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 1 )
+text = "%s Raw Resources"
+
+[node name="PowerContainer" type="HBoxContainer" parent="."]
+margin_top = 134.0
+margin_right = 296.0
+margin_bottom = 230.0
+
+[node name="TextureRect" type="TextureRect" parent="PowerContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PowerContainer"]
+margin_left = 100.0
+margin_top = 33.0
+margin_right = 262.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 1 )
+text = "%s Power Cells"
+
+[node name="ScienceContainer" type="HBoxContainer" parent="."]
+margin_top = 234.0
+margin_right = 296.0
+margin_bottom = 330.0
+
+[node name="TextureRect" type="TextureRect" parent="ScienceContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScienceContainer"]
+margin_left = 100.0
+margin_top = 33.0
+margin_right = 290.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 1 )
+text = "%s Science Points"

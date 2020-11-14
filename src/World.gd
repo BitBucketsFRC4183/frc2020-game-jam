@@ -15,7 +15,8 @@ func _ready():
 	
 	_add_players_to_world()
 	
-	$Music.play()
+	if Constants.play_music:
+		$Music.play()
 
 func _add_players_to_world():
 	for player_data in PlayersManager.players:

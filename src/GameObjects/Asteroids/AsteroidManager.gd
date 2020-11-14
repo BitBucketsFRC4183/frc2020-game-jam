@@ -34,11 +34,13 @@ func _on_server_started():
 		print("Starting asteroid waves")
 		# only start the timer to spanw new waves if we are the server
 		$Timer.start()
+		Signals.emit_signal("asteroid_wave_timer_reset", $Timer.time_left)
 
 func _on_Timer_timeout():
 	wave += 1
 	if wave < waves or waves == -1:
 		$Timer.start(base_wave_time * rand_range(0.25,2))
+		Signals.emit_signal("asteroid_wave_timer_reset", $Timer.time_left)
 	if wave == waves:
 		final_wave()
 

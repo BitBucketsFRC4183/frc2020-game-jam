@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and instanced_scene:
 		if instanced_scene.placeable:
+			$Click.play(.2)
 			# emit a signal so it will be placed
 			var position := get_local_mouse_position()
 			Signals.emit_signal("game_building_placed", instanced_scene.player_num, building_type_name, position)

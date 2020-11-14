@@ -13,6 +13,7 @@ signal game_building_placed(player_num, building_type_name, position)
 signal day_passed(day)
 signal resource_generated(player_num, resource_info)
 signal player_data_updated(player_data)
+signal player_give_resources(source_player_num, dest_player_num, resource_type, amount)
 
 signal tech_progress_changed(player_data)
 
@@ -39,6 +40,7 @@ signal server_disconnected
 signal server_started
 
 
+signal asteroid_wave_timer_reset(time_left)
 signal asteroid_impact(impact_point, explosion_radius)
 signal asteroid_destroyed(position, size)
 signal asteroid_incoming(position, asteroid_strength, attributes)

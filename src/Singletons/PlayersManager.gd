@@ -87,7 +87,8 @@ func whoami() -> PlayerData:
 	var me = players_by_network_id.get(get_tree().get_network_unique_id(), null)
 	if me == null:
 		if not Server.single_player:
-			print_debug("I don't exist in the player registry!")
+			if not Engine.editor_hint:
+				print_debug("I don't exist in the player registry!")
 		return players[0]
 	else:
 		return me

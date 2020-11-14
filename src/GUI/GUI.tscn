@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/GUI/GameBuildingButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/icons/Lab.png" type="Texture" id=2]
@@ -6,8 +6,16 @@
 [ext_resource path="res://assets/icons/Shield.png" type="Texture" id=4]
 [ext_resource path="res://assets/icons/Radar.png" type="Texture" id=5]
 [ext_resource path="res://assets/icons/Missile.png" type="Texture" id=6]
+[ext_resource path="res://src/GUI/CircleLabel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/GUI/GUI.gd" type="Script" id=8]
 [ext_resource path="res://assets/icons/Power Plant.png" type="Texture" id=9]
+[ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://src/GUI/PlayerResources.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/GUI/PlayerGive.tscn" type="PackedScene" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 10 )
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -18,95 +26,199 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BuildingButtons" type="HBoxContainer" parent="."]
+[node name="TopMenu" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="MarginContainer" parent="TopMenu"]
+margin_right = 200.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 200, 0 )
+custom_constants/margin_top = 5
+custom_constants/margin_left = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopMenu/Left"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 200.0
+margin_bottom = 109.0
+
+[node name="Score" parent="TopMenu/Left/HBoxContainer" instance=ExtResource( 7 )]
+alignment = 0
+label = "Score"
+
+[node name="Center" type="MarginContainer" parent="TopMenu"]
+margin_left = 204.0
+margin_right = 1716.0
+margin_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+custom_constants/margin_top = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopMenu/Center"]
+margin_top = 5.0
+margin_right = 1512.0
+margin_bottom = 109.0
+
+[node name="HeaderLabel" type="Label" parent="TopMenu/Center/VBoxContainer"]
+margin_right = 1512.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 1 )
+text = "Incoming asteroid wave in 3 days!"
+align = 1
+
+[node name="Right" type="MarginContainer" parent="TopMenu"]
+margin_left = 1720.0
+margin_right = 1920.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 200, 0 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopMenu/Right"]
+margin_top = 5.0
+margin_right = 190.0
+margin_bottom = 109.0
+alignment = 2
+
+[node name="Days" parent="TopMenu/Right/HBoxContainer" instance=ExtResource( 7 )]
+margin_left = 126.0
+margin_right = 190.0
+alignment = 0
+
+[node name="BottomMenu" type="HBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -160.758
-margin_bottom = -32.7579
-alignment = 1
+margin_top = -762.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="GameBuildingButton" parent="BuildingButtons" instance=ExtResource( 1 )]
-margin_left = 500.0
-margin_right = 628.0
+[node name="Left" type="MarginContainer" parent="BottomMenu"]
+margin_right = 100.0
+margin_bottom = 762.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Center" type="MarginContainer" parent="BottomMenu"]
+margin_left = 104.0
+margin_right = 1620.0
+margin_bottom = 762.0
+size_flags_horizontal = 3
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomMenu/Center"]
+margin_right = 1516.0
+margin_bottom = 742.0
+alignment = 2
+
+[node name="BuildingButtons" type="HBoxContainer" parent="BottomMenu/Center/VBoxContainer"]
+margin_top = 614.0
+margin_right = 1516.0
+margin_bottom = 742.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameBuildingButton" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 364.0
+margin_right = 492.0
 margin_bottom = 128.0
 
-[node name="GameBuildingButton2" parent="BuildingButtons" instance=ExtResource( 1 )]
-margin_left = 632.0
-margin_right = 760.0
+[node name="GameBuildingButton2" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 496.0
+margin_right = 624.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 9 )
 building = 1
 
-[node name="GameBuildingButton3" parent="BuildingButtons" instance=ExtResource( 1 )]
-margin_left = 764.0
-margin_right = 892.0
+[node name="GameBuildingButton3" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 628.0
+margin_right = 756.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 2 )
 building = 2
 
-[node name="GameBuildingButton4" parent="BuildingButtons" instance=ExtResource( 1 )]
-margin_left = 896.0
-margin_right = 1024.0
+[node name="GameBuildingButton4" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
+visible = false
+margin_right = 1712.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 5 )
 building = 3
 
-[node name="GameBuildingButton5" parent="BuildingButtons" instance=ExtResource( 1 )]
-margin_left = 1028.0
-margin_right = 1156.0
+[node name="GameBuildingButton5" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 760.0
+margin_right = 888.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 6 )
 building = 4
 
-[node name="GameBuildingButton6" parent="BuildingButtons" instance=ExtResource( 1 )]
-margin_left = 1160.0
-margin_right = 1288.0
+[node name="GameBuildingButton6" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 892.0
+margin_right = 1020.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 3 )
 building = 5
 
-[node name="GameBuildingButton7" parent="BuildingButtons" instance=ExtResource( 1 )]
-margin_left = 1292.0
-margin_right = 1420.0
+[node name="GameBuildingButton7" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
+margin_left = 1024.0
+margin_right = 1152.0
 margin_bottom = 128.0
 texture_normal = ExtResource( 4 )
 building = 6
 
-[node name="Stats" type="VBoxContainer" parent="."]
-margin_right = 158.0
-margin_bottom = 32.0
-mouse_filter = 2
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Right" type="MarginContainer" parent="BottomMenu"]
+margin_left = 1624.0
+margin_right = 1920.0
+margin_bottom = 762.0
+rect_min_size = Vector2( 100, 0 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Stats"]
-margin_top = 18.0
-margin_right = 158.0
-margin_bottom = 32.0
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomMenu/Right"]
+margin_right = 296.0
+margin_bottom = 762.0
 
-[node name="DayLabel" type="Label" parent="Stats/HBoxContainer"]
-margin_right = 28.0
-margin_bottom = 14.0
-text = "Day:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PlayerResources" parent="BottomMenu/Right/VBoxContainer" instance=ExtResource( 11 )]
 
-[node name="Day" type="Label" parent="Stats/HBoxContainer"]
-margin_left = 32.0
-margin_right = 40.0
-margin_bottom = 14.0
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="selected" from="BuildingButtons/GameBuildingButton" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="BuildingButtons/GameBuildingButton2" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="BuildingButtons/GameBuildingButton3" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="BuildingButtons/GameBuildingButton4" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="BuildingButtons/GameBuildingButton5" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="BuildingButtons/GameBuildingButton6" to="." method="_on_GameBuildingButton_selected"]
-[connection signal="selected" from="BuildingButtons/GameBuildingButton7" to="." method="_on_GameBuildingButton_selected"]
+[node name="OtherPlayerStats" type="MarginContainer" parent="BottomMenu/Right/VBoxContainer"]
+margin_top = 334.0
+margin_right = 296.0
+margin_bottom = 762.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomMenu/Right/VBoxContainer/OtherPlayerStats"]
+margin_right = 296.0
+margin_bottom = 428.0
+
+[node name="PlayerGive1" parent="BottomMenu/Right/VBoxContainer/OtherPlayerStats/VBoxContainer" instance=ExtResource( 12 )]
+
+[node name="PlayerGive2" parent="BottomMenu/Right/VBoxContainer/OtherPlayerStats/VBoxContainer" instance=ExtResource( 12 )]
+modulate = Color( 0.262745, 0.643137, 0.243137, 1 )
+margin_top = 108.0
+margin_bottom = 212.0
+player_num = 3
+player_name = "The Buhlian Operators"
+
+[node name="PlayerGive3" parent="BottomMenu/Right/VBoxContainer/OtherPlayerStats/VBoxContainer" instance=ExtResource( 12 )]
+modulate = Color( 0.552941, 0.160784, 0.796078, 1 )
+margin_top = 216.0
+margin_bottom = 320.0
+player_num = 4
+player_name = "Javawockies"
+
+[node name="PlayerGive4" parent="BottomMenu/Right/VBoxContainer/OtherPlayerStats/VBoxContainer" instance=ExtResource( 12 )]
+modulate = Color( 0.721569, 0.52549, 0.156863, 1 )
+margin_top = 324.0
+margin_bottom = 428.0
+player_num = 5
+player_name = "Alumiboti"
+[connection signal="selected" from="BottomMenu/Center/VBoxContainer/BuildingButtons/GameBuildingButton" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BottomMenu/Center/VBoxContainer/BuildingButtons/GameBuildingButton2" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BottomMenu/Center/VBoxContainer/BuildingButtons/GameBuildingButton3" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BottomMenu/Center/VBoxContainer/BuildingButtons/GameBuildingButton4" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BottomMenu/Center/VBoxContainer/BuildingButtons/GameBuildingButton5" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BottomMenu/Center/VBoxContainer/BuildingButtons/GameBuildingButton6" to="." method="_on_GameBuildingButton_selected"]
+[connection signal="selected" from="BottomMenu/Center/VBoxContainer/BuildingButtons/GameBuildingButton7" to="." method="_on_GameBuildingButton_selected"]
