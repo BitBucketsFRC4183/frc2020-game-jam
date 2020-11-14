@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/icons/Power.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/Science.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/Raw Materials.png" type="Texture" id=3]
+[ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/icons/PlusButton.png" type="Texture" id=5]
+[ext_resource path="res://assets/icons/PlusButtonPressed.png" type="Texture" id=6]
+[ext_resource path="res://src/GUI/PlayerGive.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[node name="PlayerGive" type="HBoxContainer"]
+modulate = Color( 0.121569, 0.545098, 0.654902, 1 )
+margin_right = 296.0
+margin_bottom = 104.0
+alignment = 2
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="Label" parent="."]
+margin_left = 111.0
+margin_top = 42.0
+margin_right = 192.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 1 )
+text = "Bit Buckets"
+
+[node name="Resources" type="VBoxContainer" parent="."]
+margin_left = 196.0
+margin_right = 296.0
+margin_bottom = 104.0
+
+[node name="Raw" type="HBoxContainer" parent="Resources"]
+margin_right = 100.0
+margin_bottom = 32.0
+__meta__ = {
+"_editor_description_": "Give Raw Resources"
+}
+
+[node name="GiveRawButton" type="TextureButton" parent="Resources/Raw"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Resources/Raw"]
+margin_left = 36.0
+margin_top = 6.0
+margin_right = 100.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 64, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+
+[node name="Power" type="HBoxContainer" parent="Resources"]
+margin_top = 36.0
+margin_right = 100.0
+margin_bottom = 68.0
+__meta__ = {
+"_editor_description_": "Give Raw Resources"
+}
+
+[node name="GivePowerButton" type="TextureButton" parent="Resources/Power"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+expand = true
+
+[node name="Value" type="Label" parent="Resources/Power"]
+margin_left = 36.0
+margin_top = 6.0
+margin_right = 100.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 64, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "0"
+
+[node name="Science" type="HBoxContainer" parent="Resources"]
+margin_top = 72.0
+margin_right = 100.0
+margin_bottom = 104.0
+__meta__ = {
+"_editor_description_": "Give Raw Resources"
+}
+
+[node name="GiveScienceButton" type="TextureButton" parent="Resources/Science"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+expand = true
+
+[node name="Value" type="Label" parent="Resources/Science"]
+margin_left = 36.0
+margin_top = 6.0
+margin_right = 45.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+[connection signal="pressed" from="Resources/Raw/GiveRawButton" to="." method="_on_GiveRawButton_pressed"]
+[connection signal="pressed" from="Resources/Power/GivePowerButton" to="." method="_on_GivePowerButton_pressed"]
+[connection signal="pressed" from="Resources/Science/GiveScienceButton" to="." method="_on_GiveScienceButton_pressed"]

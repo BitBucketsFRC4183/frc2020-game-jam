@@ -7,6 +7,7 @@ var data: PlayerData
 func _ready() -> void:
 	Signals.connect("resource_generated", self, "_on_resource_generated")
 	Signals.connect("game_building_placed", self, "_on_game_building_placed")
+	Signals.connect("player_give_resources", self, "_on_player_give_resources")
 
 var stats = {
 	"missiles": 5,
@@ -37,4 +38,15 @@ func _on_game_building_placed(player_num, building_type_name, position):
 			data.resources[building_cost.type2] -= building_cost.cost
 		Signals.emit_signal("player_data_updated", data)
 
-
+func _on_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount:int):
+	if source_player_num == data.num:
+		# I am the giver. I lose resources
+		data.resources[resource_type] -= amount
+		print_debug("(%s) gave player %s gave me %s %s resources!" % [data.name, dest_player_num, amount, Enums.resource_types.keys()[resource_type]])
+		Signals.emit_signal("player_data_updated", data)
+	elif dest_player_num == data.num:
+		# I am the receiver. I gain resources
+		data.resources[resource_type] += amount
+		print_debug("(%s) player %s gave me %s %s resources!" % [data.name, source_player_num, amount, Enums.resource_types.keys()[resource_type]])
+		Signals.emit_signal("player_data_updated", data)
+	
