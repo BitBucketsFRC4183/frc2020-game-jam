@@ -14,8 +14,11 @@ func _ready() -> void:
 func _process(delta):
 	if target != null:
 		$Beam.points[1] = target.global_position - $Beam.global_position
+		if not $AudioStreamPlayer.playing:
+			$AudioStreamPlayer.play(.5)
 	else:
 		$Beam.points[1] = $Beam.points[0]
+		$AudioStreamPlayer.stop()
 
 func reevaluate_targeting():
 	if active:
