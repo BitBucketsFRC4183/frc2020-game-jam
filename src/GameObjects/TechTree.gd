@@ -36,8 +36,8 @@ func set_tech_node_colors():
 	update_node_texture(player, "TechTree/Row 2/TextureMine2", "mine2", true)
 	update_node_texture(player, "TechTree/Row 1/TextureMine3", "mine3", false)
 
-	update_node_texture(player, "TechTree/Row 2/TextureMissile2", "missile2", true)
-	update_node_texture(player, "TechTree/Row 1/TextureMissile3", "missile3", false)
+	#update_node_texture(player, "TechTree/Row 2/TextureMissile2", "missile2", true)
+	#update_node_texture(player, "TechTree/Row 1/TextureMissile3", "missile3", false)
 
 	update_node_texture(player, "TechTree/Middle Row/TexturePower2", "power2", true)
 	update_node_texture(player, "TechTree/Middle Row/TexturePower3", "power3", false)
@@ -50,9 +50,16 @@ func set_tech_node_colors():
 
 	update_node_texture(player, "TechTree/Row 5/TextureLaser2", "laser2", true)
 	update_node_texture(player, "TechTree/Row 6/TextureLaser3", "laser3", false)
+	
+	set_missile_disabled()
 
 func update_node_texture(p: PlayerData, node: String, tech_name: String, tier: bool):
 	get_node(node).set_texture(texture_researching if p.selected_tech == tech_name else ((texture_tier2 if tier else texture_tier3) if p.selected_tech == "" && (is_tech_valid(tech_name) || has_tech(p, tech_name)) else texture_disabled))
+
+func set_missile_disabled():
+	$"TechTree/Row 3/TextureMissile1".set_texture(texture_disabled)
+	$"TechTree/Row 2/TextureMissile2".set_texture(texture_disabled)
+	$"TechTree/Row 1/TextureMissile3".set_texture(texture_disabled)
 
 func has_tech(p: PlayerData, tech_name: String):
 	var name = tech_name.substr(0, tech_name.length() - 1)
@@ -100,6 +107,9 @@ func is_player_researching():
 func is_tech_valid(tech):
 	var tech_name = tech.substr(0, tech.length() - 1).to_lower()
 	var tech_num = int(tech.substr(tech.length() - 1)) - 1
+
+	if(tech_name == "missile"):
+		return false
 
 	if tech_num - PlayersManager.whoami().tech_level[tech_name] == 1:
 		return true
