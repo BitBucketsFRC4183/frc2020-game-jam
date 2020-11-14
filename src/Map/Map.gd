@@ -56,7 +56,7 @@ func _input(event: InputEvent) -> void:
 			_on_game_building_cancelled()
 
 func _on_game_building_placed(player_num: int, building_type_name: String, position: Vector2):
-	var building_scene = load(_get_scene_path_for_building_type(building_type_name)).instance()
+	var building_scene = load(Utils._get_scene_path_for_building_type(building_type_name)).instance()
 	building_scene.player_num = player_num
 	building_scene.position =  position
 	building_scene.activate()
@@ -110,21 +110,4 @@ func _on_impact_registered(target, area):
 				if child is Territory:
 					child.set_type(Enums.territory_types.destroyed)
 
-func _get_scene_path_for_building_type(building_type_name: String) -> String:
-	match building_type_name:
-		"Mine":
-			return "res://src/GameObjects/ResourceBuildings/Mine.tscn"
-		"PowerPlant":
-			return "res://src/GameObjects/ResourceBuildings/PowerPlant.tscn"
-		"ScienceLab":
-			return "res://src/GameObjects/ResourceBuildings/ScienceLab.tscn"
-		"Radar":
-			return "res://src/GameObjects/DefenseBuildings/Radar.tscn"
-		"Missile":
-			return "res://src/GameObjects/DefenseBuildings/Missile.tscn"
-		"Laser":
-			return "res://src/GameObjects/DefenseBuildings/Laser.tscn"
-		"Shield":
-			return "res://src/GameObjects/DefenseBuildings/Shield.tscn"
-	printerr("Tried to find a scene path for an unknown building_type_name %s" % building_type_name)
-	return ""
+

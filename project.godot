@@ -69,6 +69,7 @@ Network="*res://src/Network/Network.tscn"
 RPC="*res://src/Network/RPC.gd"
 PlayersManager="*res://src/Singletons/PlayersManager.gd"
 Server="*res://src/Singletons/Server.tscn"
+Utils="*res://src/Singletons/Utils.gd"
 
 [display]
 
