@@ -6,9 +6,9 @@ func _ready():
 
 	Network.host_game("Host", false)
 	Server.begin_game(false)
-	get_tree().change_scene("res://src/World.tscn")
 
 func _on_pre_start_game(players: Array):
 	# tell the server we are ready
 	RPC.send_ready_to_start()
+	get_tree().change_scene("res://src/World.tscn")
 

@@ -28,6 +28,7 @@ func _ready():
 	if get_tree().is_network_server() && Server.started:
 		# if we are network server and the server is already started, start the timer
 		$Timer.start()
+		Signals.emit_signal("asteroid_wave_timer_reset", $Timer.time_left)
 
 func _on_server_started():
 	if get_tree().is_network_server():

@@ -19,6 +19,17 @@ func _ready() -> void:
 	$TopMenu/Left/HBoxContainer/Score.label = "%s Score" % player.name
 	$TopMenu/Left/HBoxContainer/Score.modulate = player.color
 
+	var other_player_num := 1
+	for i in range(PlayersManager.players.size()):
+		var players := PlayersManager.players as Array
+		var other_player := PlayersManager.players[i] as PlayerData
+		if player.num != other_player.num:
+			var node_path := "BottomMenu/Right/VBoxContainer/OtherPlayerStats/VBoxContainer/PlayerGive%s" % (other_player_num)
+			var give_node = get_node(node_path)
+			give_node.player_num = other_player.num
+			give_node.player_name = other_player.name
+			other_player_num += 1
+
 
 func _on_day_passed(day: int) -> void:
 	$TopMenu/Right/HBoxContainer/Days.value = "%d" % day

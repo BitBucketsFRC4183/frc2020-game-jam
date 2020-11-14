@@ -115,3 +115,9 @@ func send_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius:
 remote func asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
 	Signals.emit_signal("asteroid_impact", asteroid_id, position, explosion_radius)
 
+
+func send_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
+	rpc("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
+
+remote func player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
+	Signals.emit_signal("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
