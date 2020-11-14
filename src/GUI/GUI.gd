@@ -49,7 +49,7 @@ func set_days_until_next_asteroid(value: int):
 		days_until_next_asteroid = value
 	else:
 		days_until_next_asteroid = 0
-	$TopMenu/Center/VBoxContainer/HeaderLabel.text = "Asteroids incoming in %s days!" % days_until_next_asteroid	
+	$TopMenu/Center/VBoxContainer/HeaderLabel.text = "Asteroids incoming in %s days!" % days_until_next_asteroid
 
 
 func _input(event: InputEvent) -> void:
