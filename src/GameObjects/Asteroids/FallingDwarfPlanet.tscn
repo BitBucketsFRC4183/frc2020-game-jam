@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/icons/Asteroids/DwarfPlanet.png" type="Texture" id=1]
 [ext_resource path="res://assets/icons/Asteroids/Asteroid Marker.png" type="Texture" id=2]
 [ext_resource path="res://src/GameObjects/Asteroids/Asteroid.gd" type="Script" id=3]
+[ext_resource path="res://src/GameObjects/Asteroids/FallingAsteroid.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -44,6 +45,7 @@ shape = SubResource( 1 )
 
 [node name="Asteroid" type="Area2D" parent="."]
 collision_mask = 2147483649
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Asteroid"]
 scale = Vector2( 0.5, 0.5 )
