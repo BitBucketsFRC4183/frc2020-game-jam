@@ -49,6 +49,8 @@ margin_bottom = 109.0
 [node name="Score" parent="TopMenu/Left/HBoxContainer" instance=ExtResource( 7 )]
 alignment = 0
 label = "Score"
+value = "0"
+color = Color( 1, 1, 1, 1 )
 
 [node name="Center" type="MarginContainer" parent="TopMenu"]
 margin_left = 204.0
@@ -89,6 +91,9 @@ alignment = 2
 margin_left = 126.0
 margin_right = 190.0
 alignment = 0
+label = "Day"
+value = "0"
+color = Color( 1, 1, 1, 1 )
 
 [node name="BottomMenu" type="HBoxContainer" parent="."]
 anchor_top = 1.0
@@ -129,6 +134,7 @@ __meta__ = {
 margin_left = 364.0
 margin_right = 492.0
 margin_bottom = 128.0
+building = 0
 
 [node name="GameBuildingButton2" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
 margin_left = 496.0

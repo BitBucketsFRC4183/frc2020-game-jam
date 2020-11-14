@@ -19,11 +19,19 @@ var in_non_territory_area := false
 # set by Map.gd
 # ensures we only process this for the thing we just selected and are moving around, nothing else
 var newly_spawned := false
+# set by Map.gd
+# we need this to check if the player has enough money to afford the building
+var building_name: String
 
 func _ready() -> void:
 	connect("area_entered", self, "_on_area_entered")
 	connect("area_exited", self, "_on_area_exited")
-#	draw_circle(position, $CollisionShape2D.shape.radius, Color.lightblue)
+
+# parameters just there to satisfy requirement
+func check_price(num, info):
+	if not PlayersManager.whoami().can_afford_building(building_name):
+		placeable = false
+
 
 func _on_area_entered(area):
 	if not newly_spawned:
@@ -59,6 +67,9 @@ func _on_area_entered(area):
 		in_non_territory_area = true
 		placeable = false
 
+	check_price("", "")
+
+
 func _on_area_exited(area):
 	if not newly_spawned:
 		return
@@ -89,6 +100,8 @@ func _on_area_exited(area):
 		# but we might have exited the building into a resource/normal territory
 		# so we need to re-validate
 		validate_new_territory(area)
+
+	check_price("", "")
 
 
 func validate_new_territory(area):
@@ -138,4 +151,3 @@ func activate():
 func _draw() -> void:
 	if newly_spawned:
 		draw_arc($CollisionShape2D.position, $CollisionShape2D.shape.radius, deg2rad(0), deg2rad(359), 100, Color.lightblue)
-

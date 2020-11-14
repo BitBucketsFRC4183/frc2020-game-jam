@@ -11,7 +11,7 @@ export var resource_give_amount := 1 # default to give one resource
 func _ready():
 	if not Engine.editor_hint:
 		source_player_num = PlayersManager.whoami().num
-		
+
 		Signals.connect("player_data_updated", self, "_on_player_data_updated")
 
 func set_player_num(value):

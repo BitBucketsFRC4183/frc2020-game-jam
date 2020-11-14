@@ -8,10 +8,10 @@ func _ready() -> void:
 
 	# The server sends us a day update and our client emits a day_passed signal
 	Signals.connect("day_passed", self, "_on_day_passed")
-	
+
 	# update our asteroid incoming message
 	Signals.connect("asteroid_wave_timer_reset", self, "_on_asteroid_wave_timer_reset")
-	
+
 	var player = PlayersManager.whoami()
 	$TopMenu/Left/HBoxContainer/Score.label = "%s Score" % player.name
 	$TopMenu/Left/HBoxContainer/Score.modulate = player.color

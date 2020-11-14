@@ -14,7 +14,7 @@ func _ready():
 	$AsteroidManager.territories = $Map.get_territories()
 
 	_add_players_to_world()
-	
+
 	if Constants.play_music:
 		$Music.play()
 

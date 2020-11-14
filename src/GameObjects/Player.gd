@@ -39,6 +39,9 @@ func _on_game_building_placed(player_num, building_type_name, position):
 		Signals.emit_signal("player_data_updated", data)
 
 func _on_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount:int):
+	if not PlayersManager.whoami().can_donate_amount(resource_type, amount):
+		return
+
 	if source_player_num == data.num:
 		# I am the giver. I lose resources
 		data.resources[resource_type] -= amount
@@ -49,4 +52,4 @@ func _on_player_give_resources(source_player_num: int, dest_player_num: int, res
 		data.resources[resource_type] += amount
 		print_debug("(%s) player %s gave me %s %s resources!" % [data.name, source_player_num, amount, Enums.resource_types.keys()[resource_type]])
 		Signals.emit_signal("player_data_updated", data)
-	
+

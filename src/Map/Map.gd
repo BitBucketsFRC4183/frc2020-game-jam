@@ -10,6 +10,8 @@ func _ready() -> void:
 	Signals.connect("game_building_cancelled", self, "_on_game_building_cancelled")
 	Signals.connect("game_building_placed", self, "_on_game_building_placed")
 	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
+
+
 	if own_all:
 		var territories = get_territories()
 		for territory in territories:
@@ -20,6 +22,7 @@ func _on_game_building_selected(scene_path, building):
 	instanced_scene = load(scene_path).instance()
 	instanced_scene.newly_spawned = true
 	instanced_scene.player_num = PlayersManager.whoami().num
+	instanced_scene.building_name = building
 	add_child(instanced_scene)
 	building_type_name = building
 
