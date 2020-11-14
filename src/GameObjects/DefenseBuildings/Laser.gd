@@ -14,8 +14,11 @@ func _ready() -> void:
 func _process(delta):
 	if target != null:
 		$Beam.points[1] = target.global_position - $Beam.global_position
+		if not $AudioStreamPlayer.playing:
+			$AudioStreamPlayer.play(.5)
 	else:
 		$Beam.points[1] = $Beam.points[0]
+		$AudioStreamPlayer.stop()
 
 func reevaluate_targeting():
 	if active:
@@ -40,8 +43,12 @@ func _on_LaserArea_area_exited(area):
 	if target == area:
 		reevaluate_targeting()
 
-func _on_asteroid_destroyed(position, size):
-	PlayersManager.whoami().add_score("asteroid_destroyed")
+func _on_asteroid_destroyed(asteroid_id, position, size):
+	if target && target.get_id() == asteroid_id:
+		# we were targeting this asteroid when it was destroyed
+		# give us points!
+		var building_owner := PlayersManager.get_player(player_num)
+		building_owner.add_score("asteroid_destroyed")
 	if target == null or target.get_parent().destroyed:
 		reevaluate_targeting()
 

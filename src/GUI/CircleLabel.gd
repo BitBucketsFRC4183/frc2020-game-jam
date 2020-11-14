@@ -14,10 +14,12 @@ func _ready():
 func set_label(value):
 	$Label.text = value
 	label = value
-	
+
+
 func set_value(new_value):
 	$HBoxContainer/CenterContainer/Value.text = new_value
 	value = new_value
+
 
 func set_color(value: Color):
 	modulate = value

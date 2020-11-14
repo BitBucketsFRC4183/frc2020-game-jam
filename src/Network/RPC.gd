@@ -17,13 +17,16 @@ func send_server_day_updated(day):
 	assert(get_tree().is_network_server())
 
 	# Make an RPC to notify clients of a new day
-	rpc("server_day_updated", day)
+	rpc("server_day_updated", day, PlayersManager.get_all_player_dicts())
 
-remotesync func server_day_updated(day):
+remotesync func server_day_updated(day: int, player_dicts: Array):
 	# The server calls this function and it executes on each clients
 	# each client uses it to update it's current day
 	# print_debug ("Client: a new day: %d" % day)
 
+	# update all the player dicts from the server
+	if not get_tree().is_network_server():
+		Signals.emit_signal("players_updated", player_dicts)
 	Signals.emit_signal("day_passed", day)
 
 func send_join_game(player_name: String) -> void:
@@ -114,4 +117,17 @@ func send_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius:
 
 remote func asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
 	Signals.emit_signal("asteroid_impact", asteroid_id, position, explosion_radius)
+
+
+func send_asteroid_destroyed(asteroid_id: int, position: Vector2, size):
+	rpc("asteroid_destroyed", asteroid_id, position, size)
+
+remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
+	Signals.emit_signal("asteroid_destroyed", asteroid_id, position, size)
 	
+
+func send_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
+	rpc("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
+
+remote func player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
+	Signals.emit_signal("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
