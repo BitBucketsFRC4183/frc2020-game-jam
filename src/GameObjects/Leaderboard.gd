@@ -34,4 +34,4 @@ func set_leaderboard_rows():
 	pass
 
 func node_path(i: int):
-	return "Leaderboard/Player" + str(i) + "/Stats"
+	return "Background/Leaderboard/Player" + str(i) + "/Background/Stats"

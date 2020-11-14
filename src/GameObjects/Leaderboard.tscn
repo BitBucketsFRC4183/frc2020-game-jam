@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/GameObjects/Leaderboard.gd" type="Script" id=2]
+[ext_resource path="res://assets/icons/LeaderboardStat.png" type="Texture" id=3]
+[ext_resource path="res://assets/icons/LeaderboardBack.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -14,86 +16,140 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Leaderboard" type="VBoxContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leaderboard" type="VBoxContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 35
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player1" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 282.0
+[node name="Player1" type="HBoxContainer" parent="Background/Leaderboard"]
+margin_top = 95.0
 margin_right = 1920.0
-margin_bottom = 382.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 245.0
+rect_min_size = Vector2( 0, 150 )
 
-[node name="Stats" type="Label" parent="Leaderboard/Player1"]
+[node name="Background" type="TextureRect" parent="Background/Leaderboard/Player1"]
 margin_right = 1920.0
-margin_bottom = 100.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+
+[node name="Stats" type="Label" parent="Background/Leaderboard/Player1/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Player2" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 386.0
+[node name="Player2" type="HBoxContainer" parent="Background/Leaderboard"]
+margin_top = 280.0
 margin_right = 1920.0
-margin_bottom = 486.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 430.0
+rect_min_size = Vector2( 0, 150 )
 
-[node name="Stats" type="Label" parent="Leaderboard/Player2"]
+[node name="Background" type="TextureRect" parent="Background/Leaderboard/Player2"]
 margin_right = 1920.0
-margin_bottom = 100.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+
+[node name="Stats" type="Label" parent="Background/Leaderboard/Player2/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Player3" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 490.0
+[node name="Player3" type="HBoxContainer" parent="Background/Leaderboard"]
+margin_top = 465.0
 margin_right = 1920.0
-margin_bottom = 590.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 615.0
+rect_min_size = Vector2( 0, 150 )
 
-[node name="Stats" type="Label" parent="Leaderboard/Player3"]
+[node name="Background" type="TextureRect" parent="Background/Leaderboard/Player3"]
 margin_right = 1920.0
-margin_bottom = 100.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+
+[node name="Stats" type="Label" parent="Background/Leaderboard/Player3/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Player4" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 594.0
+[node name="Player4" type="HBoxContainer" parent="Background/Leaderboard"]
+margin_top = 650.0
 margin_right = 1920.0
-margin_bottom = 694.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 800.0
+rect_min_size = Vector2( 0, 150 )
 
-[node name="Stats" type="Label" parent="Leaderboard/Player4"]
+[node name="Background" type="TextureRect" parent="Background/Leaderboard/Player4"]
 margin_right = 1920.0
-margin_bottom = 100.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+
+[node name="Stats" type="Label" parent="Background/Leaderboard/Player4/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Player5" type="HBoxContainer" parent="Leaderboard"]
-margin_top = 698.0
+[node name="Player5" type="HBoxContainer" parent="Background/Leaderboard"]
+margin_top = 835.0
 margin_right = 1920.0
-margin_bottom = 798.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 985.0
+rect_min_size = Vector2( 0, 150 )
 
-[node name="Stats" type="Label" parent="Leaderboard/Player5"]
+[node name="Background" type="TextureRect" parent="Background/Leaderboard/Player5"]
 margin_right = 1920.0
-margin_bottom = 100.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 1920, 150 )
+texture = ExtResource( 3 )
+
+[node name="Stats" type="Label" parent="Background/Leaderboard/Player5/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1920, 100 )
 custom_fonts/font = SubResource( 1 )
 text = "Player 1:"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="visibility_changed" from="." to="." method="on_show"]
