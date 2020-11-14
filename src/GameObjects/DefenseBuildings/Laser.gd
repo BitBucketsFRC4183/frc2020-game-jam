@@ -8,7 +8,9 @@ func _ready() -> void:
 	is_defense_building = true
 	is_resource_building = false
 	Signals.connect("asteroid_destroyed", self, "_on_asteroid_destroyed")
+	Signals.connect("day_passed", self, "_on_day_passed")
 	
+	tech_check()
 	$Timer.start(cooldown)
 
 func _process(delta):
@@ -29,7 +31,18 @@ func reevaluate_targeting():
 				new_target = area
 				break
 		target = new_target
+
+func tech_check():
+	var building_owner := PlayersManager.get_player(player_num)
+	var radius = 256.0
 	
+	if building_owner.tech_level["laser"] == 1:
+		radius = 320.0
+	if building_owner.tech_level["laser"] == 2:
+		radius = 384.0
+		damage = 25
+	$LaserArea.set_radius(radius)
+
 func activate():
 	.activate()
 	$LaserArea/Sprite.visible = false
@@ -56,7 +69,9 @@ func _on_Timer_timeout():
 	if target != null:
 		target.damage(damage)
 	$Timer.start(cooldown)
-
+	
+func _on_day_passed(day):
+	tech_check()
 
 func _on_Laser_mouse_entered():
 	if active:
