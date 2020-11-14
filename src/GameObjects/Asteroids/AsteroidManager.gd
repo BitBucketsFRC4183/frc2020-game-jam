@@ -53,12 +53,12 @@ func _on_Timer_timeout():
 	for i in range(asteroid_count):
 		var asteroid_strength = rand_range(0, wave * asteroid_strength_multiplier)
 		var asteroid = _get_asteroid_instance(asteroid_strength)
-		
+
 		# give each new asteroid an incrementing id
 		# so we can uniquely identify them
 		asteroid.id = num_asteroids
 		num_asteroids += 1
-		
+
 		asteroid.global_position = territories[i].center_global
 		active_asteroids += 1
 		add_child(asteroid)
@@ -84,7 +84,7 @@ func send_asteroid(position: Vector2, asteroid_strength: int, asteroid):
 func _on_asteroid_incoming(position: Vector2, asteroid_strength, attributes: Dictionary):
 	if not get_tree().is_network_server():
 		# only clients care about this method
-		# they spawn 
+		# they spawn
 		var asteroid = _get_asteroid_instance(asteroid_strength)
 		asteroid.global_position = position
 		active_asteroids += 1
@@ -96,7 +96,7 @@ func _update_asteroid_after_spawn(asteroid, attributes: Dictionary):
 
 func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
 	remove_active_asteroid()
-	
+
 func _on_asteroid_destroyed(position, size):
 	remove_active_asteroid()
 

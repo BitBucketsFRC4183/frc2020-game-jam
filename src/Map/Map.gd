@@ -18,6 +18,7 @@ func _ready() -> void:
 			if territory is Territory:
 				territory.set_territory_owner(1)
 
+
 func _on_game_building_selected(scene_path, building):
 	instanced_scene = load(scene_path).instance()
 	instanced_scene.newly_spawned = true
@@ -60,7 +61,7 @@ func _on_game_building_placed(player_num: int, building_type_name: String, posit
 	building_scene.position =  position
 	building_scene.activate()
 	add_child(building_scene)
-	
+
 	PlayersManager.whoami().add_score("building_built")
 
 func get_territories(root: Node = self) -> Array:

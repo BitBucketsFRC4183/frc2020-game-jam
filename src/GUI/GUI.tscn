@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/GUI/GameBuildingButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/icons/Lab.png" type="Texture" id=2]
@@ -9,13 +9,9 @@
 [ext_resource path="res://src/GUI/CircleLabel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/GUI/GUI.gd" type="Script" id=8]
 [ext_resource path="res://assets/icons/Power Plant.png" type="Texture" id=9]
-[ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://src/GUI/fonts/Font30.tres" type="DynamicFont" id=10]
 [ext_resource path="res://src/GUI/PlayerResources.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/GUI/PlayerGive.tscn" type="PackedScene" id=12]
-
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 10 )
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -50,8 +46,11 @@ margin_bottom = 109.0
 mouse_filter = 2
 
 [node name="Score" parent="TopMenu/Left/HBoxContainer" instance=ExtResource( 7 )]
+mouse_filter = 2
 alignment = 0
 label = "Score"
+value = "0"
+color = Color( 1, 1, 1, 1 )
 
 [node name="Center" type="MarginContainer" parent="TopMenu"]
 margin_left = 204.0
@@ -72,7 +71,7 @@ mouse_filter = 2
 [node name="HeaderLabel" type="Label" parent="TopMenu/Center/VBoxContainer"]
 margin_right = 1512.0
 margin_bottom = 37.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "Incoming asteroid wave in 3 days!"
 align = 1
 
@@ -95,7 +94,11 @@ alignment = 2
 [node name="Days" parent="TopMenu/Right/HBoxContainer" instance=ExtResource( 7 )]
 margin_left = 126.0
 margin_right = 190.0
+mouse_filter = 2
 alignment = 0
+label = "Day"
+value = "0"
+color = Color( 1, 1, 1, 1 )
 
 [node name="BottomMenu" type="HBoxContainer" parent="."]
 anchor_top = 1.0
@@ -140,12 +143,13 @@ __meta__ = {
 margin_left = 430.0
 margin_right = 558.0
 margin_bottom = 128.0
-building = 0
+mouse_filter = 1
 
 [node name="GameBuildingButton2" parent="BottomMenu/Center/VBoxContainer/BuildingButtons" instance=ExtResource( 1 )]
 margin_left = 562.0
 margin_right = 690.0
 margin_bottom = 128.0
+mouse_filter = 1
 texture_normal = ExtResource( 9 )
 building = 1
 
@@ -153,6 +157,7 @@ building = 1
 margin_left = 694.0
 margin_right = 822.0
 margin_bottom = 128.0
+mouse_filter = 1
 texture_normal = ExtResource( 2 )
 building = 2
 
@@ -160,6 +165,7 @@ building = 2
 visible = false
 margin_right = 1712.0
 margin_bottom = 128.0
+mouse_filter = 1
 texture_normal = ExtResource( 5 )
 building = 3
 
@@ -168,6 +174,7 @@ visible = false
 margin_left = 760.0
 margin_right = 888.0
 margin_bottom = 128.0
+mouse_filter = 1
 texture_normal = ExtResource( 6 )
 building = 4
 
@@ -175,6 +182,7 @@ building = 4
 margin_left = 826.0
 margin_right = 954.0
 margin_bottom = 128.0
+mouse_filter = 1
 texture_normal = ExtResource( 3 )
 building = 5
 
@@ -182,6 +190,7 @@ building = 5
 margin_left = 958.0
 margin_right = 1086.0
 margin_bottom = 128.0
+mouse_filter = 1
 texture_normal = ExtResource( 4 )
 building = 6
 

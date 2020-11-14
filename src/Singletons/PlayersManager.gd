@@ -10,8 +10,20 @@ var players = []
 # players by their network id
 var players_by_network_id: Dictionary
 
-func _init():
+func _ready():
+	Signals.connect("players_updated", self, "update_players")
 
+	Signals.connect("grand_winner", self, "reset_values")
+	Signals.connect("winner", self, "reset_values")
+	Signals.connect("loser", self, "reset_values")
+	reset_values()
+
+func reset_values():
+	players = []
+	players_by_network_id = {}
+	set_names()
+
+func set_names():
 	# some random names
 	var names = Constants.random_names
 	names.shuffle()
@@ -20,11 +32,6 @@ func _init():
 	# start from 1 since territories go from 1
 	for i in range(1, Constants.num_players+1):
 		players.append(PlayerData.new(i, names[i - 1], PlayerColors.colors[i]))
-
-
-func _ready():
-	Signals.connect("players_updated", self, "update_players")
-
 
 func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 	var player: PlayerData

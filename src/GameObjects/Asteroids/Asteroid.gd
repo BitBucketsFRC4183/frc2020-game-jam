@@ -35,7 +35,7 @@ func _physics_process(delta):
 	update_asteroid_position(asteroid.position + (impact_vector * speed * delta))
 	# only the server updates asteroids
 	# then it sends the new position to each client
-	if get_tree().is_network_server():		
+	if get_tree().is_network_server():
 		RPC.send_asteroid_position_update(id, asteroid.position)
 
 func _on_asteroid_position_updated(asteroid_id: int, position: Vector2):
@@ -51,7 +51,7 @@ func _on_ImpactPoint_area_entered(area):
 		# only detect collisions if we are the server
 		if area == asteroid:
 			impact()
-		
+
 func impact():
 	var areas = impact_point.get_overlapping_areas()
 	for area in areas:
@@ -85,12 +85,12 @@ func _on_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: 
 func get_attributes() -> Dictionary:
 	# get the attributes of this asteroid as a dictionary
 	# so we can send it over RPC
-	return { 
+	return {
 		"id": id,
 		"base_speed": base_speed,
 		"explosion_radius": explosion_radius,
 		"base_distance": base_distance,
-		"max_health": max_health,		
+		"max_health": max_health,
 		"distance": distance,
 		"speed": speed,
 		"impact_vector": impact_vector

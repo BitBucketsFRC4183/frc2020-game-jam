@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/GUI/MainMenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/GUI/fonts/Font75.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/GUI/fonts/Font175.tres" type="DynamicFont" id=3]
+
+[node name="GrandWinScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -436.746
+margin_top = 92.7765
+margin_right = 288.254
+margin_bottom = 303.776
+custom_fonts/font = ExtResource( 3 )
+text = "You Win!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SubTitle" type="Label" parent="."]
+margin_left = 199.354
+margin_top = 384.298
+margin_right = 1639.35
+margin_bottom = 663.298
+custom_fonts/font = ExtResource( 2 )
+text = "Against all the odds, you have managed to not only come out on top, but also protect your fellow countries at the same time!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="." instance=ExtResource( 1 )]
