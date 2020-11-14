@@ -15,4 +15,13 @@ __meta__ = {
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 136.0
+margin_right = 128.0
+margin_bottom = 163.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="." to="." method="_on_GameBuildingButton_pressed"]
