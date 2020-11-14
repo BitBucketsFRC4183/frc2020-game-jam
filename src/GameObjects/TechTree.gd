@@ -90,7 +90,15 @@ func _on_Tech_pressed(tech_name):
 		$ResearchPopup.popup_centered()
 
 func on_research_tech(tech: String):
-	Utils.research_tech(tech, PlayersManager.whoami())
+	#Utils.research_tech(tech, PlayersManager.whoami())
+  # CHANGE THIS
+	var player = PlayersManager.whoami()
+	player.selected_tech = tech.to_lower()
+	var science = PlayersManager.whoami().resources[Enums.resource_types.science]
+	var t_name = tech.to_lower().substr(0, tech.length() - 1).to_lower()
+	var cost = Constants.tech_costs[t_name][tech.to_lower()]
+	player.tech_research_progress = science if science < cost else cost
+	player.resources[Enums.resource_types.science] -= science if science < cost else cost
 
 	$ResearchPopup.hide()
 	set_tech_node_colors()
