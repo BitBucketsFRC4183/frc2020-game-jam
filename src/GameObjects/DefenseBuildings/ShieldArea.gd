@@ -37,7 +37,7 @@ func damage(damage):
 	if health <= 0:
 		disable()
 	else:
-		PlayersManager.whoami().score += Constants.score_granted["asteroid_deflected"]
+		PlayersManager.whoami().add_score("asteroid_deflected")
 func disable():
 	health = 0
 	sprite.visible = false

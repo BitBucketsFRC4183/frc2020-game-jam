@@ -61,7 +61,7 @@ func _on_game_building_placed(player_num: int, building_type_name: String, posit
 	building_scene.activate()
 	add_child(building_scene)
 	
-	PlayersManager.whoami().score += Constants.score_granted["building_built"]
+	PlayersManager.whoami().add_score("building_built")
 
 func get_territories(root: Node = self) -> Array:
 	# recursively loop through all nodes in the tree and find all the Territories

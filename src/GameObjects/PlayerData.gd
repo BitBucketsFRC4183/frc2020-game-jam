@@ -26,6 +26,10 @@ var tech_level = {
 	"shield": Enums.shield.shield1
 }
 
+func add_score(score_event_name):
+	score += Constants.score_granted[score_event_name];
+	Signals.emit_signal("player_score_changed")
+
 # the player's currently selected tech
 var selected_tech = ""
 
@@ -61,7 +65,7 @@ func research_tech(name, tier):
 	elif(name == "shield"):
 		tech_level["shield"] = Enums.shield.shield2 if tier == 2 else Enums.shield.shield3
 		
-	PlayersManager.whoami().score += Constants.score_granted["research_completed"]
+	PlayersManager.whoami().add_score("research_completed")
 
 func can_afford_building(building_name):
 	var costs = Constants.building_costs[building_name]

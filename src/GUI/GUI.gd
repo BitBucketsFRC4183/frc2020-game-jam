@@ -12,6 +12,9 @@ func _ready() -> void:
 	# update our asteroid incoming message
 	Signals.connect("asteroid_wave_timer_reset", self, "_on_asteroid_wave_timer_reset")
 
+	# update score gui node
+	Signals.connect("player_score_changed", self, "update_player_score_label")
+
 	var player = PlayersManager.whoami()
 	$TopMenu/Left/HBoxContainer/Score.label = "%s Score" % player.name
 	$TopMenu/Left/HBoxContainer/Score.modulate = player.color
@@ -21,6 +24,9 @@ func _on_day_passed(day: int) -> void:
 	$TopMenu/Right/HBoxContainer/Days.value = "%d" % day
 	set_days_until_next_asteroid(days_until_next_asteroid - 1)
 
+func update_player_score_label() -> void:
+	print("Updating score: " + str(PlayersManager.whoami().score))
+	$TopMenu/Left/HBoxContainer/Score.set_value(str(PlayersManager.whoami().score))
 
 func _on_asteroid_wave_timer_reset(time_left: float):
 	# this gives us the time left in seconds
