@@ -16,9 +16,9 @@ class BuildingCost:
 		self.has_type_2 = has_type_2
 
 var starting_resources := {
-	"Raw": 500,
-	"Power": 500,
-	"Science": 500
+	"Raw": 50,
+	"Power": 50,
+	"Science": 0
 }
 
 var building_costs := {
