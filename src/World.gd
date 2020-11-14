@@ -3,6 +3,7 @@ extends Node2D
 var Player = preload("res://src/GameObjects/Player.tscn")
 
 var isTechTreeOpen
+var isLeaderboardOpen
 var num_asteroids_hit := 0
 
 var num_of_territories = {
@@ -96,6 +97,27 @@ func _input(event):
 		isTechTreeOpen = !isTechTreeOpen
 	elif(event.is_action_pressed("escape") && isTechTreeOpen):
 		close_tech_tree()
+		
+	if(event.is_action_pressed("ui_leaderboard")):
+		if(!isLeaderboardOpen):
+			show_leaderboard()
+		else:
+			close_leaderboard()
+		isLeaderboardOpen = !isLeaderboardOpen
+
+func show_leaderboard():
+	$CanvasLayer/Leaderboard.show()
+	$Map.hide()
+	$AsteroidManager.hide()
+	$CanvasLayer/GUI.hide()
+	pass
+	
+func close_leaderboard():
+	$CanvasLayer/Leaderboard.hide()
+	$Map.show()
+	$AsteroidManager.show()
+	$CanvasLayer/GUI.show()
+	pass
 
 func close_tech_tree():
 	$CanvasLayer/TechTree.hide()
