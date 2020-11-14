@@ -27,6 +27,7 @@ var tech = {
 
 func _on_resource_generated(player_num: int, res_list):
 	if data.num == player_num:
+		
 		data.resources[res_list[0]] += res_list[1]
 		Signals.emit_signal("player_data_updated", data)
 

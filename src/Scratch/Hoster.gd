@@ -4,7 +4,7 @@ extends Node2D
 func _ready():
 	Signals.connect("pre_start_game", self, "_on_pre_start_game")
 
-	Network.host_game("Host", false)
+	Network.host_game(false)
 	Server.begin_game(false)
 
 func _on_pre_start_game(players: Array):

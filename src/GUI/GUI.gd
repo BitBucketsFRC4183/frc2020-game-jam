@@ -36,7 +36,7 @@ func _on_day_passed(day: int) -> void:
 	set_days_until_next_asteroid(days_until_next_asteroid - 1)
 
 func update_player_score_label() -> void:
-	print("Updating score: " + str(PlayersManager.whoami().score))
+	# print_debug("Updating score: " + str(PlayersManager.whoami().score))
 	$TopMenu/Left/HBoxContainer/Score.set_value(str(PlayersManager.whoami().score))
 
 func _on_asteroid_wave_timer_reset(time_left: float):

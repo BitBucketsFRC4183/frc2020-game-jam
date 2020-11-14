@@ -4,7 +4,7 @@
 extends MarginContainer
 
 func _ready():
-	Network.join_game("127.0.0.1", "Joiner")
+	Network.join_game("127.0.0.1", Network.DEFAULT_PORT)
 
 	# TODO: don't change scenes until we get the final ready from the server
 	Signals.connect("pre_start_game", self, "_on_pre_start_game")
