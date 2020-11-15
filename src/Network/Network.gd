@@ -1,9 +1,6 @@
 # The Network object is a singleton to manage network connections. If we host the game, it's a server. If we join, it's a client
 extends Node
 
-# Default game port. Can be any number between 1024 and 49151.
-const DEFAULT_PORT = 3000
-
 var peer: NetworkedMultiplayerENet = null
 
 
@@ -40,7 +37,7 @@ func host_game(single_player := true):
 	# for single player games, we have 0 users
 
 	peer = NetworkedMultiplayerENet.new()
-	peer.create_server(DEFAULT_PORT, 1 if single_player else Constants.num_players)
+	peer.create_server(Settings.server_port, 1 if single_player else Constants.num_players)
 	get_tree().set_network_peer(peer)
 
 	if single_player:
