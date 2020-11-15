@@ -181,4 +181,5 @@ quit={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.113725, 0.337255, 0.552941, 1 )
 environment/default_environment="res://default_env.tres"
