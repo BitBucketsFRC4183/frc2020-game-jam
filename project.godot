@@ -62,7 +62,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="frc2020-game-jam"
+config/name="Asteroid Apocalypse"
 run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 
