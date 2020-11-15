@@ -15,9 +15,9 @@ func _ready():
 	Signals.connect("players_updated", self, "update_players")
 	Signals.connect("player_message", self, "_on_player_message")
 
-	Signals.connect("grand_winner", self, "reset_values")
-	Signals.connect("winner", self, "reset_values")
-	Signals.connect("loser", self, "reset_values")
+	#Signals.connect("grand_winner", self, "reset_values")
+	#Signals.connect("winner", self, "reset_values")
+	#Signals.connect("loser", self, "reset_values")
 	reset_values()
 
 func reset_values():

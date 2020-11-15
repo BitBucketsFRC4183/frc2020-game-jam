@@ -6,4 +6,5 @@ func _ready():
 
 
 func _on_Button_pressed() -> void:
+	PlayersManager.reset_values()
 	get_tree().change_scene("res://src/Main.tscn")
