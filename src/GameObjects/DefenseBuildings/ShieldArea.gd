@@ -25,6 +25,7 @@ func _on_Timer_timeout():
 	health = max_health / 4
 	sprite.visible = true
 	active = true
+	$RechargeAudio.play()
 
 func _on_day_passed(day):
 	if active:
@@ -38,6 +39,7 @@ func damage(damage):
 		disable()
 	else:
 		PlayersManager.whoami().add_score("asteroid_deflected")
+		$AsteroidStrikeAudio.play()
 
 func disable():
 	health = 0

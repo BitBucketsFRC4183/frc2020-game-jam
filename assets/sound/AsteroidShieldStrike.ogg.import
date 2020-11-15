@@ -11,5 +11,5 @@ dest_files=[ "res://.import/AsteroidShieldStrike.ogg-65117dd46f6c33ae9e9d1f529b1
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
