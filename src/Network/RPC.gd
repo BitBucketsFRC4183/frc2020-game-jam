@@ -10,6 +10,7 @@ extends Node
 # remote - means "execute on all clients except me". This is used for the server to broadcast to clients
 # remote with rpc_id(1, ...) means execute only on the server. The server has an id of 1
 
+
 ###
 ### the server day message is kind of a "sync up with the server" message
 ###
@@ -17,7 +18,8 @@ func send_server_day_updated(day: int, asteroid_time_left: float):
 	assert(get_tree().is_network_server())
 
 	# Make an RPC to notify clients of a new day
-	rpc("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_dicts())
+	rpc_unreliable("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_dicts())
+
 
 remotesync func server_day_updated(day: int, asteroid_time_left: float, player_dicts: Array):
 	# The server calls this function and it executes on each clients
@@ -65,7 +67,7 @@ remotesync func pre_start_game(players: Array):
 
 func send_message(message: String):
 	var player = PlayersManager.whoami()
-	rpc("message", PlayerMessage.new(player.num, message).to_dict())
+	rpc_unreliable("message", PlayerMessage.new(player.num, message).to_dict())
 
 remotesync func message(message_dict: Dictionary):
 	var message = Utils.player_message_from_dict(message_dict)
@@ -115,7 +117,7 @@ remotesync func post_start_game():
 
 func send_players_updated(player_dicts: Array):
 	# sent our updated player info to all servers
-	rpc("players_updated", player_dicts)
+	rpc_unreliable("players_updated", player_dicts)
 
 remote func players_updated(player_dicts: Array):
 	Signals.emit_signal("players_updated", player_dicts);
@@ -126,7 +128,7 @@ remote func players_updated(player_dicts: Array):
 
 func send_game_building_placed(building_id: String, building_type_name: String, position: Vector2):
 	# tell the other players about our placed building
-	rpc("game_building_placed", building_id, building_type_name, position)
+	rpc_unreliable("game_building_placed", building_id, building_type_name, position)
 
 remote func game_building_placed(building_id: String, building_type_name: String, position: Vector2):
 	# Message sent to us from another player about a building placement
@@ -145,7 +147,7 @@ remote func asteroid_wave_started(wave: int, waves: int):
 
 
 func send_asteroid(position: Vector2, asteroid_strength: int, attributes: Dictionary):
-	rpc("asteroid_incoming", position, asteroid_strength, attributes)
+	rpc_unreliable("asteroid_incoming", position, asteroid_strength, attributes)
 
 remote func asteroid_incoming(position: Vector2, asteroid_strength:int, attributes: Dictionary):
 	Signals.emit_signal("asteroid_incoming", position, asteroid_strength, attributes)
@@ -157,14 +159,14 @@ remote func asteroid_position_updated(asteroid_id: int, position: Vector2):
 	Signals.emit_signal("asteroid_position_updated", asteroid_id, position)
 
 func send_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
-	rpc("asteroid_impact", asteroid_id, position, explosion_radius)
+	rpc_unreliable("asteroid_impact", asteroid_id, position, explosion_radius)
 
 remote func asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
 	Signals.emit_signal("asteroid_impact", asteroid_id, position, explosion_radius)
 
 
 func send_asteroid_destroyed(asteroid_id: int, position: Vector2, size):
-	rpc("asteroid_destroyed", asteroid_id, position, size)
+	rpc_unreliable("asteroid_destroyed", asteroid_id, position, size)
 
 remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 	Signals.emit_signal("asteroid_destroyed", asteroid_id, position, size)
@@ -174,7 +176,7 @@ remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 #
 func send_shield_update(building_id: String, active: bool):
 	# the server will notify clients when shields go down
-	rpc("shield_update", building_id, active)
+	rpc_unreliable("shield_update", building_id, active)
 
 remote func sheild_update(building_id: String, active: bool):
 	Signals.emit_signal("shield_update", building_id, active)
@@ -188,7 +190,7 @@ remote func shield_damaged(building_id: String, damage):
 	Signals.emit_signal("shield_damaged", building_id, damage)
 
 func send_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
-	rpc("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
+	rpc_unreliable("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
 
 remote func player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
 	Signals.emit_signal("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
