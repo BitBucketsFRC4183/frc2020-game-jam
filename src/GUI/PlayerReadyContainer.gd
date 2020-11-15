@@ -36,7 +36,7 @@ func set_ready(value: bool):
 	$Ready.text = "Ready" if ready else "Not Ready"
 	$Ready.modulate = PlayerColors.colors[player_num] if ready else Color.white
 	$ReadyCheck.visible = ready
-	
+
 func _on_player_data_updated(player):
 	if player.num == player_num:
 		_update_name()

@@ -8,7 +8,7 @@ func _ready():
 
 func _on_NumLineEdit_text_changed(new_text):
 	if regex.search(new_text):
-		text = new_text   
+		text = new_text
 		oldtext = text
 	else:
 		text = oldtext

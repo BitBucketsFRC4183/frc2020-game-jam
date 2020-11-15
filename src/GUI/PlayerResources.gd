@@ -17,7 +17,7 @@ func _ready():
 	Signals.connect("player_data_updated", self, "_on_player_data_updated")
 	modulate = player.color
 	_on_player_data_updated(player)
-	
+
 	#$RawResourcesContainer/TextureRect.modulate = player.color
 	#$PowerContainer/TextureRect.modulate = player.color
 	#$ScienceContainer/TextureRect.modulate = player.color
