@@ -36,16 +36,21 @@ Create icons and set tone for art style.
 
 Researched menu designing godot
 
+---
+
 ## 11/9/2020
 
 ### OS
 
-Created Player and World scenes and Signals Singleton
+Created Player and World scenes and Signals Singleton. Also created camera system for the map
+![zoom pan](JournalImages/zoompan.gif)
 
 ### CP
 
 Design and task management.
 More networking.
+Managed to get the client and server in sync
+![sync](JournalImages/clientserversycn.png)
 
 ### SM
 
@@ -61,11 +66,13 @@ Map design
 
 ...
 
+---
+
 ## 11/10/2020
 
 ### OS
 
-Buildings can be placed on territories.
+Buildings can be placed on territories, and they also cost resources.
 ![Building Placement](JournalImages/2020-11-10-01.gif)
 
 ### CP
@@ -78,17 +85,20 @@ Buildings can be placed on territories.
 
 ### EP
 
-...
+Initial asteroid mechanic implemented
+![asteroid](JournalImages/asteroid.gif)
 
 ### IB
 
-...
+Began designing menu system
+
+---
 
 ## 11/11/2020
 
 ### OS
 
-...
+Worked on cursor changing based on whether or not a building is being placed or not
 
 ### CP
 
@@ -102,7 +112,8 @@ More networking work today. Player Management is better structured, and each pla
 
 ### EP
 
-...
+Asteroids now destroy tiles!
+![asteroid destroy](JournalImages/asteroidsdestroy.gif)
 
 ### IB
 
@@ -110,29 +121,39 @@ Menu Mockups
 ![Menu Mockup1](JournalImages/2020-11-11-01.jpg)
 ![Menu Mockup2](JournalImages/2020-11-11-02.jpg)
 
+---
+
 ## 11/12/2020
 
 ### OS
 
-Working on asteroids destroying territories and buildings.
+Working on asteroids destroying the buildings on a destroyed tiles.
+As you can see in this gif.. it didn't exactly pan out in the beginning
 
 ![Asteroid Destruction](JournalImages/2020-11-12-01.gif)
 
 ### CP
 
-More networking work today. Player Management is better structured, and each player that joins becomes another player
+More networking work today. Player Management is better structured, and each player that joins becomes another player.
+Implemented networked building placement as well as asteroids
+![networkas](JournalImages/Networked-Asteroids.gif)
+![netowrkbuild](JournalImages/Networked-Building-Placement.gif)
 
 ### SM
 
-...
+Worked on tech tree, nodes change based on whether or not players can research a tech, and it shows a progress bar!
+![techtree](JournalImages/tecthree.gif)
 
 ### EP
 
-...
+Worked on a wave system for the asteroids!
+![wave](JournalImages/asteoridwave.gif)
 
 ### IB
 
 ...
+
+---
 
 ## 11/13/2020
 
