@@ -17,6 +17,7 @@ var asteroid_count = 1
 var territories = []
 var active_asteroids = 0
 var num_asteroids = 0
+var dwarf_planet_destroyed = false
 
 func _ready():
 	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
@@ -24,6 +25,7 @@ func _ready():
 	Signals.connect("server_started", self, "_on_server_started")
 	# clients listen for asteroid_incoming messages
 	Signals.connect("asteroid_incoming", self, "_on_asteroid_incoming")
+	Signals.connect("dwarf_planet_destroyed", self, "_on_dwarf_planet_destroyed")
 
 	if get_tree().is_network_server() && Server.started:
 		# if we are network server and the server is already started, start the timer
@@ -101,13 +103,20 @@ func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
 func _on_asteroid_destroyed(asteroid_id, position, size):
 	remove_active_asteroid()
 
+func _on_dwarf_planet_destroyed():
+	dwarf_planet_destroyed = true
+	Signals.emit_signal("final_wave_complete")
+
 func final_wave():
 	var boss = dwarf_planet.instance()
-	boss.global_position = territories[asteroid_count + 1].center_global
-	active_asteroids += 1
+	for territory in territories:
+		if PlayersManager.get_player(territory.territory_owner).ai_controlled == false:
+			boss.global_position = territory.center_global
+			active_asteroids += 1
+			break
 	add_child(boss)
 
 func remove_active_asteroid():
 	active_asteroids -= 1
-	if wave == waves and active_asteroids <= 0:
-		Signals.emit_signal("final_wave_complete")
+	#if wave == waves and active_asteroids <= 0 and dwarf_planet_destroyed:
+	#	Signals.emit_signal("final_wave_complete")

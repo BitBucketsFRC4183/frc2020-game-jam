@@ -60,7 +60,7 @@ func research_tech(name, tier):
 	if(name == "mine"):
 		tech_level["mine"] = Enums.raw.mine2 if tier == 2 else Enums.raw.mine3
 	elif(name == "power"):
-		tech_level["power"] = Enums.power.power2 if tier == 2 else Enums.raw.power3
+		tech_level["power"] = Enums.power.power2 if tier == 2 else Enums.power.power3
 	elif(name == "science"):
 		tech_level["science"] = Enums.science.science2 if tier == 2 else Enums.science.science3
 	elif(name == "missile"):
