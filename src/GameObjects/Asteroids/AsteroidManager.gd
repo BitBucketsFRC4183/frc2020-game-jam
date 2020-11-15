@@ -36,7 +36,7 @@ func _ready():
 
 func _on_Timer_timeout():
 	wave += 1
-	if wave < (waves - 1) or waves == -1:
+	if wave < (waves) or waves == -1:
 		$Timer.start(base_wave_time * rand_range(0.25,2))
 		Signals.emit_signal("asteroid_wave_timer_updated", $Timer.time_left)
 	if wave == waves:

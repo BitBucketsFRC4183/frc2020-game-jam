@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="Animation" id=2]
-length = 5.0
+length = 15.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -17,7 +17,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.5, 5 ),
+"times": PoolRealArray( 0, 7.5, 15 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 180.0, 360.0 ]
