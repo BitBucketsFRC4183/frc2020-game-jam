@@ -4,31 +4,33 @@ You are leading a nation and helping to defend the world against waves of astero
 
 ## Controls
 
-| Input         | Action                 	|
-| ------------- | -----------------------------	|
-| Mouse Wheel   | Zoom In/Out on the map 	|
-| Middle Button | Hold to Drag Map       	|
-| T             | Open/Close Tech Tree         	|
-| Tab		| Open/Close Leaderboard	|
+| Input         | Action                             |
+| ------------- | ---------------------------------- |
+| Mouse Wheel   | Zoom In/Out on the map 	         |
+| MMB & RMB     | Hold and drag to pan the camera    |
+| W/A/S/D       | Move the camera up/left/down/right |
+| T             | Open/Close Tech Tree               |
+| Tab		    | Open/Close Leaderboard	         |
 
 ## Buildings
 
-| Building    | Icons                                            | Purpose                                             |
-| ----------- | ------------------------------------------------ | --------------------------------------------------- |
-| Mine        | ![Mine](assets/icons/Mine.png)                   | Generates raw resources stored for building         |
-| Power Plant | ![<Power Plant>](<assets/icons/Power Plant.png>) | Generates constant energy                           |
-| Lab         | ![Lab](assets/icons/Lab.png)                     | Generates science points for research               |
-| Shield      | ![Shield](assets/icons/Shield.png)               | Protects against asteroids                          |
-| Laser       | ![Laser](assets/icons/Missile.png)               | Consumes energy to shoot down incoming asteroids    |
+| Building    | Icons                                            | Purpose                                                  |
+| ----------- | ------------------------------------------------ | -------------------------------------------------------- |
+| Mine        | ![Mine](assets/icons/Mine.png)                   | Generates raw materials stored for building              |
+| Power Plant | ![<Power Plant>](<assets/icons/Power Plant.png>) | Generates power cells used for making defenses           |
+| Lab         | ![Lab](assets/icons/Lab.png)                     | Generates science points for research                    |
+| Shield      | ![Shield](assets/icons/Shield.png)               | Protects against asteroids that impact within its radius |
+| Laser       | ![Laser](assets/icons/Missile.png)               | Shoots down asteroids that fall through its radius       |
 
 ## Research
 
-| Building | Level 1                             | Level 2                             | Level 3                             |
-| -------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| Mining   | Mines produce 5 resources per turn  | Mines produce 10 resources per turn | Mines produce 15 resources per turn |
-| Power    | Power plants produce 5MW of output  | Power plants produce 10MW of output | Power plants produce 15MW of output |
-| Shield   | Protects against small asteroids    | Protects against medium asteroids   | Protects against large asteroids    |
-| Laser    | Destroys small asteroids in one hit | Destroys medium asteroids in 1 hit  | Destroys large asteroids in 1 hit   |
+| Building    | Level 1                                               | Level 2                                                | Level 3                                               |
+| ----------- | ----------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------- |
+| Mine        | Produces 1 units of materials per day                 | Produces 2 units of materials per day                  | Produces 3 units of materials per day                 |
+| Power Plant | Produces 1 power cell per day                         | Produces 2 power cells per day                         | Produces 3 power cells per day                        |
+| Lab         | Produces 5 science points per day                     | Produces 10 science points per day                     | Produces 15 science points per day                    |
+| Shield      | Protects against one small asteroid before going down | Protects against one medium asteroid before going down | Protects against one large asteroid before going down |
+| Laser       | Shoots at incoming asteroids                          | Increased range                                        | Increased range and slightly increased damage         |
 
 # Game Journal
 
