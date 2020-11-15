@@ -57,6 +57,10 @@ See if you and you friends can make it to the end! Good luck!
 7. Build another shield
 8. Keep building lasers (and the occasional shield) whenever possible
 
+## Multiplayer Support
+
+Asteroid Apocalypse supports multiplayer over the internet. Unfortunatley, the networking is not as optimized as it should be and works best over a local network rather than over the internet. It will work over the internet, but it gets pretty laggy when the action gets intense.
+
 # Game Journal
 
 Check out the [Journal](docs/journal.md) for a log of our progress!

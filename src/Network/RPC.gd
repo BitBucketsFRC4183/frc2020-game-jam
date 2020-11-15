@@ -152,7 +152,10 @@ remote func asteroid_incoming(position: Vector2, asteroid_strength:int, attribut
 	Signals.emit_signal("asteroid_incoming", position, asteroid_strength, attributes)
 
 func send_asteroid_position_update(asteroid_id: int, position: Vector2):
-	rpc_unreliable("asteroid_position_updated", asteroid_id, position)
+	for p in PlayersManager.players_by_network_id.values():
+		if p.network_id > 1:
+			# send each player an asteroid position update
+			rpc_unreliable_id(p.network_id, "asteroid_position_updated", asteroid_id, position)
 
 remote func asteroid_position_updated(asteroid_id: int, position: Vector2):
 	Signals.emit_signal("asteroid_position_updated", asteroid_id, position)
@@ -165,7 +168,7 @@ remote func asteroid_impact(asteroid_id: int, position: Vector2, explosion_radiu
 
 
 func send_asteroid_destroyed(asteroid_id: int, position: Vector2, size):
-	rpc("asteroid_destroyed", asteroid_id, position, size)
+	rpc_unreliable("asteroid_destroyed", asteroid_id, position, size)
 
 remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 	Signals.emit_signal("asteroid_destroyed", asteroid_id, position, size)
@@ -175,7 +178,7 @@ remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 #
 func send_shield_update(building_id: String, active: bool):
 	# the server will notify clients when shields go down
-	rpc("shield_update", building_id, active)
+	rpc_unreliable("shield_update", building_id, active)
 
 remote func sheild_update(building_id: String, active: bool):
 	Signals.emit_signal("shield_update", building_id, active)
@@ -189,7 +192,7 @@ remote func shield_damaged(building_id: String, damage):
 	Signals.emit_signal("shield_damaged", building_id, damage)
 
 func send_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
-	rpc("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
+	rpc_unreliable("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
 
 remote func player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
 	Signals.emit_signal("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
