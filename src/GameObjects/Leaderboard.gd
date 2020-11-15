@@ -17,6 +17,12 @@ func _ready():
 	
 	pass
 
+func _process(delta):
+	if visible:
+		for i in range (1, 6):
+			update_player_data(i)
+		set_leaderboard_rows()
+
 func on_show():
 	for i in range (1, 6):
 		update_player_data(i)
