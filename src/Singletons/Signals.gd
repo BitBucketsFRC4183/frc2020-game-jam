@@ -20,7 +20,7 @@ signal tech_progress_changed(player_data)
 signal player_score_changed
 
 # Notify when the connected players change
-signal players_updated(player_dicts)
+signal players_updated(player_arrays)
 signal player_joined(id)
 signal player_left(id, player) # sent by server when a player disconnects, along with an updated player data
 

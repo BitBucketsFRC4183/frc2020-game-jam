@@ -18,17 +18,17 @@ func send_server_day_updated(day: int, asteroid_time_left: float):
 	assert(get_tree().is_network_server())
 
 	# Make an RPC to notify clients of a new day
-	rpc_unreliable("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_dicts())
+	rpc_unreliable("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_arrays())
 
 
-remotesync func server_day_updated(day: int, asteroid_time_left: float, player_dicts: Array):
+remotesync func server_day_updated(day: int, asteroid_time_left: float, player_arrays: Array):
 	# The server calls this function and it executes on each clients
 	# each client uses it to update it's current day
 	# print_debug ("Client: a new day: %d" % day)
 
 	# update all the player dicts from the server
 	if not get_tree().is_network_server():
-		Signals.emit_signal("players_updated", player_dicts)
+		Signals.emit_signal("players_updated", player_arrays)
 	Signals.emit_signal("asteroid_wave_timer_updated", asteroid_time_left)
 	Signals.emit_signal("day_passed", day)
 
@@ -44,7 +44,7 @@ remotesync func player_joined() -> void:
 	print("Received player_joined message for network id %s" % [get_tree().get_rpc_sender_id()])
 	Signals.emit_signal("player_joined", get_tree().get_rpc_sender_id())
 
-func send_pre_start_game(player_dicts: Array, id: int = 0):
+func send_pre_start_game(player_arrays: Array, id: int = 0):
 	# notify clients we are all ready to start
 	assert(get_tree().is_network_server())
 
@@ -52,12 +52,12 @@ func send_pre_start_game(player_dicts: Array, id: int = 0):
 		print("Server: Notifying all clients to prepare to start")
 
 		# Call to pre-start game for everyone to get setup
-		rpc("pre_start_game", player_dicts)
+		rpc("pre_start_game", player_arrays)
 	else:
 		print("Server: Notifying client %s to prepare to start" % id)
 
 		# Call to pre-start game for everyone to get setup
-		rpc_id(id, "pre_start_game", player_dicts)
+		rpc_id(id, "pre_start_game", player_arrays)
 
 
 remotesync func pre_start_game(players: Array):
@@ -115,12 +115,12 @@ remotesync func post_start_game():
 	# this is called on both clients and servers after the game has started
 	Signals.emit_signal("post_start_game")
 
-func send_players_updated(player_dicts: Array):
+func send_players_updated(player_arrays: Array):
 	# sent our updated player info to all servers
-	rpc_unreliable("players_updated", player_dicts)
+	rpc_unreliable("players_updated", player_arrays)
 
-remote func players_updated(player_dicts: Array):
-	Signals.emit_signal("players_updated", player_dicts);
+remote func players_updated(player_arrays: Array):
+	Signals.emit_signal("players_updated", player_arrays);
 
 ###
 ### This is player actions
@@ -146,10 +146,10 @@ remote func asteroid_wave_started(wave: int, waves: int):
 	Signals.emit_signal("asteroid_wave_started", wave, waves)
 
 
-func send_asteroid(position: Vector2, asteroid_strength: int, attributes: Dictionary):
+func send_asteroid(position: Vector2, asteroid_strength: int, attributes: Array):
 	rpc_unreliable("asteroid_incoming", position, asteroid_strength, attributes)
 
-remote func asteroid_incoming(position: Vector2, asteroid_strength:int, attributes: Dictionary):
+remote func asteroid_incoming(position: Vector2, asteroid_strength:int, attributes: Array):
 	Signals.emit_signal("asteroid_incoming", position, asteroid_strength, attributes)
 
 func send_asteroid_position_update(asteroid_id: int, position: Vector2):

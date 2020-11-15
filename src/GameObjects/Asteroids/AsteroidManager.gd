@@ -85,7 +85,7 @@ func send_asteroid(position: Vector2, asteroid_strength: int, asteroid):
 	RPC.send_asteroid(position, asteroid_strength, asteroid.get_attributes())
 
 
-func _on_asteroid_incoming(position: Vector2, asteroid_strength, attributes: Dictionary):
+func _on_asteroid_incoming(position: Vector2, asteroid_strength, attributes: Array):
 	if not get_tree().is_network_server():
 		# only clients care about this method
 		# they spawn
@@ -99,7 +99,7 @@ func _on_asteroid_incoming(position: Vector2, asteroid_strength, attributes: Dic
 		add_child(asteroid)
 		call_deferred("_update_asteroid_after_spawn", asteroid, attributes)
 
-func _update_asteroid_after_spawn(asteroid, attributes: Dictionary):
+func _update_asteroid_after_spawn(asteroid, attributes: Array):
 	asteroid.from_attributes(attributes)
 
 func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):

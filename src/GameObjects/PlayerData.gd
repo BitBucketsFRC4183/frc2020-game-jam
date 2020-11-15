@@ -2,7 +2,7 @@
 extends Reference
 class_name PlayerData
 
-var network_id: int 				# The player's network id
+var network_id: int = 0			# The player's network id
 var num: int 						# The player number, i.e. player 1, 2, 3...
 var name: String					# The player's name in the game
 var ready: bool = true				# Is the player AI Controlled?
@@ -113,33 +113,44 @@ func _init(num: int, name: String, color: Color) -> void:
 	self.name = name
 	self.color = color
 
-func to_dict() -> Dictionary:
+func to_array() -> Array:
 	# convert this player to a dictionary so we can send it over RPC
-	return {
-		"network_id": network_id,
-		"name": name,
-		"num": num,
-		"ready": ready,
-		"ai_controlled": ai_controlled,
-		"color": color.to_rgba32(),
-		"resources": resources,
-		"selected_tech": selected_tech,
-		"tech_research_progress": tech_research_progress,
-		"tech_level": tech_level,
-		"score": score
-	}
+	return [
+		network_id,
+		name,
+		num,
+		ready,
+		ai_controlled,
+		color.to_rgba32(),
+		resources,
+		selected_tech,
+		tech_research_progress,
+		tech_level,
+		score
+	]
 
-func from_dict(dict: Dictionary) -> void:
+func from_array(array: Array) -> void:
 	# update some fields based on this dict
 	# if the field isn't present, just keep what we have
-	network_id = dict.get("network_id", network_id)
-	name = dict.get("name", name)
-	num = dict.get("num", num)
-	ready = dict.get("ready", ready)
-	ai_controlled = dict.get("ai_controlled", ai_controlled)
-	color = Color(dict.get("color", color.to_rgba32()))
-	resources = dict.get("resources", resources)
-	selected_tech = dict.get("selected_tech", selected_tech)
-	tech_research_progress = dict.get("tech_research_progres", tech_research_progress)
-	tech_level = dict.get("tech_level", tech_level)
-	score = dict.get("score", score)
+	var i := 0
+	network_id = array[i]
+	i += 1
+	name = array[i]
+	i += 1
+	num = array[i]
+	i += 1
+	ready = array[i]
+	i += 1
+	ai_controlled = array[i]
+	i += 1
+	color = array[i]
+	i += 1
+	resources = array[i]
+	i += 1
+	selected_tech = array[i]
+	i += 1
+	tech_research_progress = array[i]
+	i += 1
+	tech_level = array[i]
+	i += 1
+	score = array[i]

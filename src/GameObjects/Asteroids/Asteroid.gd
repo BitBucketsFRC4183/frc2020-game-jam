@@ -95,28 +95,37 @@ func _on_asteroid_destroyed(asteroid_id, position: Vector2, size: float):
 		queue_free()
 
 
-func get_attributes() -> Dictionary:
+func get_attributes() -> Array:
 	# get the attributes of this asteroid as a dictionary
 	# so we can send it over RPC
-	return {
-		"id": id,
-		"base_speed": base_speed,
-		"explosion_radius": explosion_radius,
-		"base_distance": base_distance,
-		"max_health": max_health,
-		"distance": distance,
-		"speed": speed,
-		"impact_vector": impact_vector
-	}
+	return [
+		id,
+		base_speed,
+		explosion_radius,
+		base_distance,
+		max_health,
+		distance,
+		speed,
+		impact_vector
+	]
 
-func from_attributes(dict: Dictionary):
-	id = dict.get("id", id)
-	base_speed = dict.get("base_speed", base_speed)
-	explosion_radius = dict.get("explosion_radius", explosion_radius)
-	base_distance = dict.get("base_distance", base_distance)
-	max_health = dict.get("max_health", max_health)
-	distance = dict.get("distance", distance)
-	speed = dict.get("speed", speed)
-	impact_vector = dict.get("impact_vector", impact_vector)
+func from_attributes(array: Array):
+	var i = 0
+	id = array[i]
+	i += 1
+	base_speed = array[i]
+	i += 1
+	explosion_radius = array[i]
+	i += 1
+	base_distance = array[i]
+	i += 1
+	max_health = array[i]
+	i += 1
+	distance = array[i]
+	i += 1
+	speed = array[i]
+	i += 1
+	impact_vector = array[i]
+	i += 1
 
 	_setup_initial_state()
