@@ -10,39 +10,23 @@ extends Node
 # remote - means "execute on all clients except me". This is used for the server to broadcast to clients
 # remote with rpc_id(1, ...) means execute only on the server. The server has an id of 1
 
-
 ###
 ### the server day message is kind of a "sync up with the server" message
 ###
 func send_server_day_updated(day: int, asteroid_time_left: float):
 	assert(get_tree().is_network_server())
-	print("send_server_day_updated")
+
 	# Make an RPC to notify clients of a new day
-	# rpc_unreliable("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_arrays())
-	var player_scores = []
-	for p in PlayersManager.players:
-		player_scores.append(p.score)
-	
-	for id in PlayersManager.players_by_network_id.keys():
-		server_day_updated(day, asteroid_time_left, player_scores)
-		if id != 1 and id != 0:
-			rpc_unreliable_id(id, "server_day_updated", day, asteroid_time_left, player_scores)
+	rpc("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_arrays())
 
-
-remote func server_day_updated(day: int, asteroid_time_left: float, player_scores: Array = []):
+remotesync func server_day_updated(day: int, asteroid_time_left: float, player_arrays: Array):
 	# The server calls this function and it executes on each clients
 	# each client uses it to update it's current day
-	# print_debug ("ClientRPC: a new day: %d" % day)
+	# print_debug ("Client: a new day: %d" % day)
 
 	# update all the player dicts from the server
-	if not get_tree().is_network_server() and player_scores != []:
-		var player_num = 0
-		for score in player_scores:
-			var player = PlayersManager.players[player_num]
-			player.score = score
-			Signals.emit_signal("player_data_updated", player)
-			player_num += 1
-		# Signals.emit_signal("players_updated", player_arrays)
+	if not get_tree().is_network_server():
+		Signals.emit_signal("players_updated", player_arrays)
 	Signals.emit_signal("asteroid_wave_timer_updated", asteroid_time_left)
 	Signals.emit_signal("day_passed", day)
 
@@ -61,7 +45,6 @@ remotesync func player_joined() -> void:
 func send_pre_start_game(player_arrays: Array, id: int = 0):
 	# notify clients we are all ready to start
 	assert(get_tree().is_network_server())
-	print("send_pre_start_game")
 
 	if id == 0:
 		print("Server: Notifying all clients to prepare to start")
@@ -81,9 +64,8 @@ remotesync func pre_start_game(players: Array):
 	Signals.emit_signal("pre_start_game", players)
 
 func send_message(message: String):
-	print("send_message")
 	var player = PlayersManager.whoami()
-	rpc_unreliable("message", PlayerMessage.new(player.num, message).to_dict())
+	rpc("message", PlayerMessage.new(player.num, message).to_dict())
 
 remotesync func message(message_dict: Dictionary):
 	var message = Utils.player_message_from_dict(message_dict)
@@ -93,7 +75,6 @@ remotesync func message(message_dict: Dictionary):
 
 func send_all_messages(messages: Array, id: int = -1):
 	# server sends all messages on startup
-	print("send_all_messages")
 	assert(get_tree().is_network_server())
 	var message_dicts = []
 	for message in messages:
@@ -106,7 +87,7 @@ func send_all_messages(messages: Array, id: int = -1):
 remote func all_messages(messages: Array):
 	PlayersManager.player_messages.clear()
 	for message_dict in messages:
-		Signals.emit_signal("player_message", Utils.player_message_from_dict(message_dict))
+		Signals.emit_signal("player_message", Utils.player_message_from_array(message_dict))
 
 
 func send_ready_to_start(ready: bool):
@@ -123,7 +104,6 @@ remotesync func ready_to_start(ready: bool):
 
 func send_post_start_game(id: int = 0):
 	# sent by the server when all players are ready and we have begun
-	print("send_all_messages")
 	if id == 0:
 		rpc("post_start_game")
 	else:
@@ -135,9 +115,7 @@ remotesync func post_start_game():
 
 func send_players_updated(player_arrays: Array):
 	# sent our updated player info to all servers
-	print("send_players_updated")
-	rpc_unreliable("players_updated", player_arrays)
-
+	rpc("players_updated", player_arrays)
 
 remote func players_updated(player_arrays: Array):
 	Signals.emit_signal("players_updated", player_arrays);
@@ -148,8 +126,7 @@ remote func players_updated(player_arrays: Array):
 
 func send_game_building_placed(building_id: String, building_type_name: String, position: Vector2):
 	# tell the other players about our placed building
-	print("send_game_building_placed")
-	rpc_unreliable("game_building_placed", building_id, building_type_name, position)
+	rpc("game_building_placed", building_id, building_type_name, position)
 
 remote func game_building_placed(building_id: String, building_type_name: String, position: Vector2):
 	# Message sent to us from another player about a building placement
@@ -161,7 +138,6 @@ remote func game_building_placed(building_id: String, building_type_name: String
 
 func send_asteroid_wave_started(wave: int, waves: int):
 	if get_tree().is_network_server():
-		# print("send_asteroid_wave_started")
 		rpc("asteroid_wave_started", wave, waves)
 
 
@@ -170,30 +146,26 @@ remote func asteroid_wave_started(wave: int, waves: int):
 
 
 func send_asteroid(position: Vector2, asteroid_strength: int, attributes: Array):
-	print("send_asteroid")
-	rpc_unreliable("asteroid_incoming", position, asteroid_strength, attributes)
+	rpc("asteroid_incoming", position, asteroid_strength, attributes)
 
 remote func asteroid_incoming(position: Vector2, asteroid_strength:int, attributes: Array):
 	Signals.emit_signal("asteroid_incoming", position, asteroid_strength, attributes)
 
 func send_asteroid_position_update(asteroid_id: int, position: Vector2):
-	print("send_asteroid_position_update")
 	rpc_unreliable("asteroid_position_updated", asteroid_id, position)
 
 remote func asteroid_position_updated(asteroid_id: int, position: Vector2):
 	Signals.emit_signal("asteroid_position_updated", asteroid_id, position)
 
 func send_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
-	print("send_asteroid_impact")
-	rpc_unreliable("asteroid_impact", asteroid_id, position, explosion_radius)
+	rpc("asteroid_impact", asteroid_id, position, explosion_radius)
 
 remote func asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
 	Signals.emit_signal("asteroid_impact", asteroid_id, position, explosion_radius)
 
 
 func send_asteroid_destroyed(asteroid_id: int, position: Vector2, size):
-	print("send_asteroid_destroyed")
-	rpc_unreliable("asteroid_destroyed", asteroid_id, position, size)
+	rpc("asteroid_destroyed", asteroid_id, position, size)
 
 remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 	Signals.emit_signal("asteroid_destroyed", asteroid_id, position, size)
@@ -203,8 +175,7 @@ remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 #
 func send_shield_update(building_id: String, active: bool):
 	# the server will notify clients when shields go down
-	print("send_shield_update")
-	rpc_unreliable("shield_update", building_id, active)
+	rpc("shield_update", building_id, active)
 
 remote func sheild_update(building_id: String, active: bool):
 	Signals.emit_signal("shield_update", building_id, active)
@@ -212,15 +183,13 @@ remote func sheild_update(building_id: String, active: bool):
 func send_shield_damaged(building_id: String, damage):
 	# the server will notify clients when shields take damage, but it could happen a bunch
 	# at once, so make it UDP. This is just for effects
-	print("send_shield_damaged")
 	rpc_unreliable("shield_damaged", building_id, damage)
 
 remote func shield_damaged(building_id: String, damage):
 	Signals.emit_signal("shield_damaged", building_id, damage)
 
 func send_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
-	print("send_player_give_resources")
-	rpc_unreliable("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
+	rpc("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
 
 remote func player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
 	Signals.emit_signal("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
@@ -229,7 +198,6 @@ remote func player_give_resources(source_player_num: int, dest_player_num: int, 
 # End Game
 #
 func send_final_wave_complete():
-	print("send_final_wave_complete")
 	rpc("final_wave_complete")
 
 
@@ -239,7 +207,6 @@ remote func final_wave_complete():
 
 
 func send_loser():
-	print("send_loser")
 	rpc("loser")
 
 
