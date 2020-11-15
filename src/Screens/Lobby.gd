@@ -27,6 +27,7 @@ func _ready():
 func _check_start_game_button():
 	start_game_button.disabled = not Server.is_ready_to_start()
 
+
 func _on_player_message(message: PlayerMessage):
 	var player := PlayersManager.get_player(message.num)
 	chat.text += "\n%s%s: %s" % ["Host - " if player.num == 1 else "", player.name, message.message]

@@ -12,7 +12,7 @@ var it_me := false
 func _ready():
 	_update_name()
 	if not Engine.editor_hint:
-		set_ready(PlayersManager.get_player(player_num).ready)
+		_on_player_data_updated(PlayersManager.get_player(player_num))
 	Signals.connect("player_data_updated", self, "_on_player_data_updated")
 
 func set_player_num(value):
@@ -24,7 +24,7 @@ func _update_name():
 		it_me = true
 
 	$Name.modulate = PlayerColors.colors[player_num]
-	$ReadyCheck.modulate = PlayerColors.colors[player_num]
+	$HBoxContainer/ReadyCheck.modulate = PlayerColors.colors[player_num]
 	if not Engine.editor_hint:
 		$Name.text = "%s%s" % [PlayersManager.get_player(player_num).name, " (me)" if it_me else ""]
 	else:
@@ -33,12 +33,16 @@ func _update_name():
 
 func set_ready(value: bool):
 	ready = value
-	$Ready.text = "Ready" if ready else "Not Ready"
-	$Ready.modulate = PlayerColors.colors[player_num] if ready else Color.white
-	$ReadyCheck.visible = ready
+	$HBoxContainer/Ready.text = "Ready" if ready else "Not Ready"
+	$HBoxContainer/Ready.modulate = PlayerColors.colors[player_num] if ready else Color.white
+	$HBoxContainer/ReadyCheck.visible = ready
+	$HBoxContainer/NotReady.visible = not ready
 
-func _on_player_data_updated(player):
+func _on_player_data_updated(player: PlayerData):
 	if player.num == player_num:
 		_update_name()
 		set_ready(player.ready)
+		$HBoxContainer/RobotIcon.visible = player.ai_controlled
+		$HBoxContainer/PlayerIcon.visible = not player.ai_controlled
+			
 

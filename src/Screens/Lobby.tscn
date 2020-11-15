@@ -48,8 +48,8 @@ __meta__ = {
 }
 
 [node name="ChatContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 455.0
-margin_right = 1155.0
+margin_left = 380.0
+margin_right = 1080.0
 margin_bottom = 556.0
 rect_min_size = Vector2( 700, 500 )
 
@@ -76,19 +76,19 @@ margin_bottom = 556.0
 placeholder_text = "  Send a message"
 
 [node name="PlayerReadyContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1165.0
-margin_right = 1465.0
+margin_left = 1090.0
+margin_right = 1540.0
 margin_bottom = 556.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 450, 0 )
 
 [node name="Players" type="Label" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer"]
-margin_right = 300.0
+margin_right = 450.0
 margin_bottom = 20.0
 text = "Players"
 
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer"]
 margin_top = 24.0
-margin_right = 300.0
+margin_right = 450.0
 margin_bottom = 512.0
 size_flags_vertical = 3
 
@@ -106,61 +106,55 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer"]
 margin_left = 10.0
 margin_top = 5.0
-margin_right = 290.0
+margin_right = 440.0
 margin_bottom = 483.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayerReadyContainer1" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_right = 280.0
+margin_right = 430.0
 margin_bottom = 32.0
 rect_rotation = 0.0
-player_num = 1
-ready = false
 
 [node name="PlayerReadyContainer2" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 36.0
-margin_right = 280.0
+margin_right = 430.0
 margin_bottom = 68.0
 rect_rotation = 0.0
 player_num = 2
-ready = false
 
 [node name="PlayerReadyContainer3" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 72.0
-margin_right = 280.0
+margin_right = 430.0
 margin_bottom = 104.0
 rect_rotation = 0.0
 player_num = 3
-ready = false
 
 [node name="PlayerReadyContainer4" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 108.0
-margin_right = 280.0
+margin_right = 430.0
 margin_bottom = 140.0
 rect_rotation = 0.0
 player_num = 4
-ready = false
 
 [node name="PlayerReadyContainer5" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
 margin_top = 144.0
-margin_right = 280.0
+margin_right = 430.0
 margin_bottom = 176.0
 rect_rotation = 0.0
 player_num = 5
-ready = false
 
 [node name="LobbyButtons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer"]
 margin_top = 516.0
-margin_right = 300.0
+margin_right = 450.0
 margin_bottom = 556.0
 rect_min_size = Vector2( 0, 40 )
 custom_constants/separation = 5
 alignment = 1
 
 [node name="StartButtonContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons"]
-margin_right = 141.0
+margin_right = 291.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 
@@ -173,8 +167,8 @@ disabled = true
 text = "Start Game"
 
 [node name="ReadyButtonContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons"]
-margin_left = 146.0
-margin_right = 300.0
+margin_left = 296.0
+margin_right = 450.0
 margin_bottom = 40.0
 alignment = 2
 
