@@ -46,6 +46,9 @@ func _on_asteroid_position_updated(asteroid_id: int, position: Vector2):
 
 func update_asteroid_position(position: Vector2):
 	asteroid.position = position
+	# let any interested parties know how long we have left
+	var distance_remaining: float = (impact_point.position - asteroid.position).length()
+	Signals.emit_signal("asteroid_time_estimate", id, size, distance_remaining / speed)
 
 func _on_ImpactPoint_area_entered(area):
 	if get_tree().is_network_server():

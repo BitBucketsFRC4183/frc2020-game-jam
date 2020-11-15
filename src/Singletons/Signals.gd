@@ -49,6 +49,7 @@ signal asteroid_destroyed(asteroid_id, position, size)
 signal dwarf_planet_destroyed()
 signal asteroid_incoming(position, asteroid_strength, attributes)
 signal asteroid_position_updated(asteroid_id, position)
+signal asteroid_time_estimate(astero_id, size, time_to_impact)
 signal final_wave_complete()
 signal territory_destroyed(territory)
 
