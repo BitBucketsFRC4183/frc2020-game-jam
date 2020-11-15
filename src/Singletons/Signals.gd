@@ -9,7 +9,7 @@ func _ready() -> void:
 
 signal game_building_selected(scene_path, building)
 signal game_building_cancelled
-signal game_building_placed(player_num, building_type_name, position)
+signal game_building_placed(building_id, player_num, building_type_name, position)
 signal day_passed(day)
 signal resource_generated(player_num, resource_info)
 signal player_data_updated(player_data)
@@ -49,6 +49,9 @@ signal dwarf_planet_destroyed()
 signal asteroid_incoming(position, asteroid_strength, attributes)
 signal asteroid_position_updated(asteroid_id, position)
 signal final_wave_complete()
+
+signal shield_update(building_id, active)
+signal shield_damaged(building_id, damage)
 
 signal grand_winner
 signal winner

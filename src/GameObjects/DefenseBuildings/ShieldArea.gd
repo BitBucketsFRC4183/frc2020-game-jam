@@ -16,12 +16,34 @@ onready var timer = $Timer
 
 func _ready():
 	Signals.connect("day_passed", self, "_on_day_passed")
+	Signals.connect("shield_update", self, "_on_shield_update")
+	Signals.connect("shield_damaged", self, "_on_shield_damaged")
 	shape.set_radius(radius)
 	collision.set_shape(shape)
 	add_child(collision)
 	sprite.set_scale(Vector2(radius * 2 / 512, radius * 2 / 512))
 
+func _on_shield_update(building_id: String, active: bool):
+	if get_parent().building_id == building_id:
+		# If the server notified us this shield went down, start up the logic
+		if self.active and not active:
+			# are currently active, disable it
+			disable()
+		elif not self.active and active:
+			# are currently active, damage it to make it inactive
+			timer.stop()
+			enable()
+
+
+func _on_shield_damaged(building_id, damage):
+	if get_parent().building_id == building_id:
+		damage(damage)
+
+			
 func _on_Timer_timeout():
+	enable()
+
+func enable():
 	health = max_health / 4
 	sprite.visible = true
 	active = true
@@ -37,8 +59,10 @@ func damage(damage):
 	health -= damage
 	if health <= 0:
 		disable()
-	else:
-		$AsteroidStrikeAudio.play()
+	$AsteroidStrikeAudio.play()
+	if get_tree().is_network_server():
+		RPC.send_shield_damaged(get_parent().building_id, damage)
+
 
 func disable():
 	health = 0

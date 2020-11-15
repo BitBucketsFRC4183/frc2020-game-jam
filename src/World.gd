@@ -16,6 +16,7 @@ var num_of_territories = {
 
 func _ready():
 	if not get_tree().has_network_peer() and not Server.started:
+		# this is only for launching the World scene directly when developing
 		Network.host_game(true)
 		Server.begin_game(true)
 		RPC.send_ready_to_start(true)

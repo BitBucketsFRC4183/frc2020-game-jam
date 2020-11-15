@@ -4,7 +4,7 @@ var scene_path: String
 var days_until_next_asteroid := 0 setget set_days_until_next_asteroid
 
 func _ready() -> void:
-	Signals.connect("game_building_placed", self, "restore_cursor")
+	Signals.connect("game_building_placed", self, "_on_game_building_placed")
 
 	# The server sends us a day update and our client emits a day_passed signal
 	Signals.connect("day_passed", self, "_on_day_passed")
@@ -54,12 +54,16 @@ func set_days_until_next_asteroid(value: int):
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
-		restore_cursor(0, Enums.game_buildings.Mine, Vector2.ZERO)
+		restore_cursor()
 		Signals.emit_signal("game_building_cancelled")
 
 
+func _on_game_building_placed(building_id, player_num, building_type_name, position):
+	restore_cursor()
+
+
 # parameters are just there so that the signal works
-func restore_cursor(player_num, building_type_name, position):
+func restore_cursor():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 

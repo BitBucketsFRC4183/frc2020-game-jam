@@ -47,7 +47,7 @@ func check_research_complete():
 		var tech_tier = int(selected_tech.substr(selected_tech.length() - 1, selected_tech.length()))
 		var tech_cost = Constants.tech_costs[tech_name][selected_tech]
 
-		print("Research Progress: " + str(tech_research_progress))
+		# print("Research Progress: " + str(tech_research_progress))
 		if tech_cost <= tech_research_progress:
 			research_tech(tech_name, tech_tier)
 			tech_research_progress = 0

@@ -23,6 +23,9 @@ var newly_spawned := false
 # we need this to check if the player has enough money to afford the building
 var building_name: String
 
+# The unique id for this building
+var building_id: String
+
 func _ready() -> void:
 	connect("area_entered", self, "_on_area_entered")
 	connect("area_exited", self, "_on_area_exited")

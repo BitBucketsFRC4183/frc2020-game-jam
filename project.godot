@@ -78,6 +78,7 @@ PlayersManager="*res://src/Singletons/PlayersManager.gd"
 Server="*res://src/Singletons/Server.tscn"
 Utils="*res://src/Singletons/Utils.gd"
 MusicManager="*res://src/Singletons/MusicManager.tscn"
+BuildingsManager="*res://src/Singletons/BuildingsManager.gd"
 
 [display]
 

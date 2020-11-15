@@ -41,7 +41,7 @@ func _on_resource_generated(player_num: int, res_list):
 		
 		Signals.emit_signal("player_data_updated", data)
 
-func _on_game_building_placed(player_num, building_type_name, position):
+func _on_game_building_placed(building_id, player_num, building_type_name, position):
 	if data.num == player_num:
 		var building_cost = Constants.building_costs[building_type_name]
 		data.resources[building_cost.type1] -= building_cost.cost

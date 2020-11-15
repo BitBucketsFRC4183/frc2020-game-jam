@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/GUI/Theme.tres" type="Theme" id=2]
 [ext_resource path="res://src/Screens/Settings.gd" type="Script" id=3]
-[ext_resource path="res://src/GUI/NumLineEdit.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -76,9 +75,9 @@ __meta__ = {
 }
 
 [node name="MusicContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons"]
-margin_top = 198.0
+margin_top = 214.0
 margin_right = 400.0
-margin_bottom = 238.0
+margin_bottom = 254.0
 alignment = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/MusicContainer"]
@@ -93,30 +92,10 @@ margin_left = 328.0
 margin_right = 400.0
 margin_bottom = 40.0
 
-[node name="PortContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons"]
-margin_top = 242.0
-margin_right = 400.0
-margin_bottom = 270.0
-alignment = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/PortContainer"]
-margin_left = 214.0
-margin_top = 4.0
-margin_right = 296.0
-margin_bottom = 24.0
-text = "Server Port"
-
-[node name="Default Port" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/PortContainer" instance=ExtResource( 4 )]
-margin_left = 300.0
-margin_top = 0.0
-margin_right = 400.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 100, 0 )
-
 [node name="Back" type="Button" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons"]
-margin_top = 274.0
+margin_top = 258.0
 margin_right = 400.0
-margin_bottom = 302.0
+margin_bottom = 286.0
 text = "Back"
 [connection signal="toggled" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/MusicContainer/MusicCheckButton" to="." method="_on_MusicCheckButton_toggled"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/Back" to="." method="_on_Back_pressed"]
