@@ -17,6 +17,12 @@ func _ready():
 	
 	pass
 
+func _process(delta):
+	if visible:
+		for i in range (1, 6):
+			update_player_data(i)
+		set_leaderboard_rows()
+
 func on_show():
 	for i in range (1, 6):
 		update_player_data(i)
@@ -31,6 +37,7 @@ func update_player_data(num: int):
 	pass
 
 func set_leaderboard_rows():
+	reorder_player_array()
 	var node = ""
 	for i in range (1, 6):
 		get_node(node_path(i) + "/Name").set_text(str(players[i - 1][0]))
@@ -39,6 +46,14 @@ func set_leaderboard_rows():
 		get_node(node_path(i) + "/Science").set_text("Science: " + str(players[i - 1][3]))
 		get_node(node_path(i) + "/Power").set_text("Power: " + str(players[i - 1][4]))
 	pass
+	
+func reorder_player_array():
+	players.sort_custom(SortPlayers, "sort_by_score")
+	pass
+	
+class SortPlayers:
+	static func sort_by_score(a, b):
+		return a[1] > b[1]
 
 func node_path(i: int):
 	return "Background/Leaderboard/Player" + str(i) + "/Stats"
