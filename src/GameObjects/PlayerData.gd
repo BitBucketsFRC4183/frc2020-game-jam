@@ -70,7 +70,7 @@ func research_tech(name, tier):
 	elif(name == "shield"):
 		tech_level["shield"] = Enums.shield.shield2 if tier == 2 else Enums.shield.shield3
 
-	PlayersManager.whoami().add_score("research_completed")
+	add_score("research_completed")
 
 func can_afford_building(building_name):
 	var costs = Constants.building_costs[building_name]

@@ -38,7 +38,6 @@ func damage(damage):
 	if health <= 0:
 		disable()
 	else:
-		PlayersManager.whoami().add_score("asteroid_deflected")
 		$AsteroidStrikeAudio.play()
 
 func disable():
