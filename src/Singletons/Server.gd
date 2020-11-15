@@ -6,6 +6,7 @@ var players_ready = []
 
 # The current day
 var day := 0
+var asteroid_timer: Timer
 
 # default to single_player
 var single_player := false
@@ -100,7 +101,7 @@ func _on_DaysTimer_timeout():
 	# print_debug("Server: It\'s a new day! %d" % day)
 
 	# send a message to clients
-	RPC.send_server_day_updated(day)
+	RPC.send_server_day_updated(day, asteroid_timer.time_left if asteroid_timer else 0.0)
 
 func _on_player_joined(id: int) -> void:
 	# add this new player to the server's PlayersManager

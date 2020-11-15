@@ -11,15 +11,15 @@ extends Node
 # remote with rpc_id(1, ...) means execute only on the server. The server has an id of 1
 
 ###
-### This is player management stuff
+### the server day message is kind of a "sync up with the server" message
 ###
-func send_server_day_updated(day):
+func send_server_day_updated(day: int, asteroid_time_left: float):
 	assert(get_tree().is_network_server())
 
 	# Make an RPC to notify clients of a new day
-	rpc("server_day_updated", day, PlayersManager.get_all_player_dicts())
+	rpc("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_dicts())
 
-remotesync func server_day_updated(day: int, player_dicts: Array):
+remotesync func server_day_updated(day: int, asteroid_time_left: float, player_dicts: Array):
 	# The server calls this function and it executes on each clients
 	# each client uses it to update it's current day
 	# print_debug ("Client: a new day: %d" % day)
@@ -27,8 +27,12 @@ remotesync func server_day_updated(day: int, player_dicts: Array):
 	# update all the player dicts from the server
 	if not get_tree().is_network_server():
 		Signals.emit_signal("players_updated", player_dicts)
+	Signals.emit_signal("asteroid_wave_timer_updated", asteroid_time_left)
 	Signals.emit_signal("day_passed", day)
 
+###
+### This is player management stuff
+###
 func send_join_game() -> void:
 	# tell the server we joined the game
 	print("Sending player_joined call to server for %s" % get_tree().get_network_unique_id())
@@ -127,6 +131,10 @@ func send_game_building_placed(building_type_name: String, position: Vector2):
 remote func game_building_placed(building_type_name: String, position: Vector2):
 	# Message sent to us from another player about a building placement
 	Signals.emit_signal("game_building_placed", PlayersManager.get_player_num(get_tree().get_rpc_sender_id()), building_type_name, position)
+
+###
+### Asteroid stuff
+###
 
 func send_asteroid(position: Vector2, asteroid_strength: int, attributes: Dictionary):
 	rpc("asteroid_incoming", position, asteroid_strength, attributes)

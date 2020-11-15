@@ -32,6 +32,10 @@ func _ready():
 
 	make_territories_list()
 
+	if get_tree().is_network_server():
+		# hack, but we need to tell our server about the asteroid timer
+		Server.asteroid_timer = $AsteroidManager/Timer
+
 
 func win_game():
 	var player_with_highest_score = 1
