@@ -57,7 +57,7 @@ func _player_connected(id):
 func _player_disconnected(id):
 	var player = PlayersManager.get_network_player(id)
 	PlayersManager.remove_player(id)
-	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
+	RPC.send_players_updated(PlayersManager.get_all_player_arrays())
 	if player:
 		RPC.send_message("Player %s has left the game." % player.num)
 
@@ -78,7 +78,7 @@ func player_ready_to_start(id: int, ready: bool):
 		players_ready.erase(id)
 
 	# notify everyone a player's readiness changed
-	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
+	RPC.send_players_updated(PlayersManager.get_all_player_arrays())
 	Signals.emit_signal("player_data_updated", player)
 
 	if started:
@@ -93,7 +93,7 @@ func begin_game(single_player := true):
 	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
 	RPC.send_message("%s(%s) has joined the game." % [player.name, player.num])
 
-	RPC.send_pre_start_game(PlayersManager.get_all_player_dicts())
+	RPC.send_pre_start_game(PlayersManager.get_all_player_arrays())
 
 
 func post_start_game():
@@ -119,13 +119,13 @@ func _on_asteroid_wave_started(wave: int, waves: int):
 
 func _on_final_wave_complete():
 	reset_values()
-	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
+	RPC.send_players_updated(PlayersManager.get_all_player_arrays())
 	RPC.send_final_wave_complete()
 
 
 func _on_loser():
 	reset_values()
-	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
+	RPC.send_players_updated(PlayersManager.get_all_player_arrays())
 	RPC.send_loser()
 
 
@@ -136,10 +136,10 @@ func _on_player_joined(id: int) -> void:
 	RPC.send_message("%s(%s) has joined the game." % [player.name, player.num])
 
 	# send our player data to all clients, so everyone knows about the new player
-	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
+	RPC.send_players_updated(PlayersManager.get_all_player_arrays())
 	RPC.send_all_messages(PlayersManager.player_messages, id)
 
 	if started:
 		# if we already started the game, tell this new player to join us
-		RPC.send_pre_start_game(PlayersManager.get_all_player_dicts(), id)
+		RPC.send_pre_start_game(PlayersManager.get_all_player_arrays(), id)
 		RPC.send_post_start_game(id)

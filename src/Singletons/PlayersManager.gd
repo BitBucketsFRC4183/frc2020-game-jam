@@ -49,15 +49,15 @@ func set_names():
 	for i in range(1, Constants.num_players+1):
 		players.append(PlayerData.new(i, names[i - 1], PlayerColors.colors[i]))
 
-func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
+func add_player(id: int, player_array: Array = []) -> PlayerData:
 	var player: PlayerData
 
-	if !player_dict.empty():
+	if !player_array.empty():
 		# We are adding a player with a dictionary, so that means
 		# we need to replace an existing player with a new network_id/num
 		player = PlayerData.new(1, "", Color.black)
 
-		player.from_dict(player_dict)
+		player.from_array(player_array)
 		if id != 0:
 			# only add this player to the network list if it's a network controlled player
 			players_by_network_id[id] = player
@@ -96,20 +96,17 @@ func remove_player(id: int) -> PlayerData:
 
 
 
-func update_player(player_dict: Dictionary):
-	var id: int = player_dict.get("network_id", -1)
-	if (id == -1):
-		printerr("We received an update for a player without a player network_id!")
-		return
+func update_player(player_array: Array):
+	var id: int = player_array[0]
 
 	var player: PlayerData
 	if players_by_network_id.has(id):
 		player = players_by_network_id[id]
-		players_by_network_id[id].from_dict(player_dict)
+		players_by_network_id[id].from_array(player_array)
 		Signals.emit_signal("player_data_updated", player)
 		# print_debug("Player %s - %s (network_id: %s) updated in PlayersManager" % [player.num, player.name, player.network_id])
 	else:
-		player = add_player(id, player_dict)
+		player = add_player(id, player_array)
 		# print_debug("Player %s - %s (network_id: %s) added to PlayersManager" % [player.num, player.name, player.network_id])
 
 func whoami() -> PlayerData:
@@ -150,14 +147,14 @@ func get_player_num(network_id: int) -> int:
 		printerr("could not find player_num for network_id: %s" % network_id)
 		return 0
 
-func get_all_player_dicts() -> Array:
+func get_all_player_arrays() -> Array:
 	# get all the PlayerDatas as dicts to send over the wire
-	var player_dicts = []
+	var player_arrays = []
 	for player in players:
-		player_dicts.append(player.to_dict())
-	return player_dicts
+		player_arrays.append(player.to_array())
+	return player_arrays
 
-func update_players(player_dicts: Array):
+func update_players(player_arrays: Array):
 	# update all players in our dictionary
-	for player_dict in player_dicts:
-		update_player(player_dict)
+	for player_array in player_arrays:
+		update_player(player_array)
