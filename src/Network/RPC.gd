@@ -119,6 +119,7 @@ func send_players_updated(player_arrays: Array):
 	# sent our updated player info to all servers
 	rpc_unreliable("players_updated", player_arrays)
 
+
 remote func players_updated(player_arrays: Array):
 	Signals.emit_signal("players_updated", player_arrays);
 

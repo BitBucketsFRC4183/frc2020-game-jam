@@ -66,6 +66,10 @@ rect_min_size = Vector2( 356.99, 153 )
 custom_fonts/font = ExtResource( 5 )
 text = "Show Leaderboard"
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Leaderboard" parent="." instance=ExtResource( 7 )]
 visible = false
+[connection signal="pressed" from="OpenLeaderboard" to="OpenLeaderboard" method="show_leaderboard"]
