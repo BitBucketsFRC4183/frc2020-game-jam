@@ -18,6 +18,8 @@ var destroyed = false
 # the network
 var id: int
 
+var delta_send_network_update := 0.0
+
 func _ready():
 	_setup_initial_state()
 	if not get_tree().is_network_server():
@@ -37,8 +39,11 @@ func _physics_process(delta):
 	# only the server updates asteroids
 	# then it sends the new position to each client
 	if get_tree().is_network_server():
-		pass
-		# RPC.send_asteroid_position_update(id, asteroid.position)
+		# only send asteroid position updates once a second
+		delta_send_network_update += delta
+		if delta_send_network_update > 1:
+			RPC.send_asteroid_position_update(id, asteroid.position)
+			delta_send_network_update = 0.0
 
 func _on_asteroid_position_updated(asteroid_id: int, position: Vector2):
 	# Server messages cause this signal to be raised
