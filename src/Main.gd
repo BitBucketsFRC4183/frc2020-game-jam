@@ -7,6 +7,10 @@ func _ready():
 	Signals.connect("player_data_updated", self, "_on_player_data_updated")
 	Signals.connect("server_disconnected", self, "_on_server_disconnected")
 	Signals.connect("connection_to_server_failed", self, "_on_connection_to_server_failed")
+	
+	$HostWindow/VBoxContainer/HBoxContainer/PortEdit.text = "%s" % Settings.server_port
+	$JoinWindow/VBoxContainer/HBoxContainer/PortEdit.text = "%s" % Settings.client_port
+	$JoinWindow/VBoxContainer/HBoxContainer/HostEdit.text = Settings.client_host
 
 # on exit, quit (obviously)
 func _on_Exit_pressed():
@@ -14,10 +18,8 @@ func _on_Exit_pressed():
 
 
 func _on_HostGameButton_pressed():
-	Network.host_game(false)
-	Server.begin_game(false)
-	get_tree().change_scene("res://src/Screens/Lobby.tscn")
-
+	hide()
+	$HostWindow.popup_centered()
 
 func _on_JoinGameButton_pressed():
 	hide()
@@ -50,6 +52,8 @@ func _on_JoinButton_pressed():
 	$JoinWindow/VBoxContainer/MarginContainer/VBoxContainer/JoinButton.text = "Joining..."
 	var host = $JoinWindow/VBoxContainer/HBoxContainer/HostEdit.text
 	var port = $JoinWindow/VBoxContainer/HBoxContainer/PortEdit.text as int
+	Settings.client_port = port
+	Settings.client_host = host
 	joining = true
 	Network.join_game(host, port)
 
@@ -72,3 +76,15 @@ func _on_connection_to_server_failed():
 	# server kicked us, set joining to false
 	joining = false
 
+
+func _on_CancelHostButton_pressed():
+	$HostWindow.hide()
+	show()
+
+
+func _on_HostButton_pressed():
+	# Update our server port in settings
+	Settings.server_port = $HostWindow/VBoxContainer/HBoxContainer/PortEdit.text as int
+	Network.host_game(false)
+	Server.begin_game(false)
+	get_tree().change_scene("res://src/Screens/Lobby.tscn")
