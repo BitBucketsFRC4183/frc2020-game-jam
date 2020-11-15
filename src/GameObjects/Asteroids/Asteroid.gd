@@ -90,7 +90,7 @@ func _on_asteroid_destroyed(asteroid_id, position: Vector2, size: float):
 	# clients get this event when the server tells them an asteroid is destroyed
 	if asteroid_id == id:
 		queue_free()
-	
+
 
 func get_attributes() -> Dictionary:
 	# get the attributes of this asteroid as a dictionary

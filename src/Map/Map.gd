@@ -2,8 +2,10 @@ extends Node2D
 
 export var own_all = false
 
+var smoke_scene = preload("res://src/VFX/Smoke.tscn")
 var instanced_scene = null
 var building_type_name: String
+
 
 func _ready() -> void:
 	Signals.connect("game_building_selected", self, "_on_game_building_selected")
@@ -122,6 +124,10 @@ func _on_impact_registered(target, area):
 			# delete buildings on now-destroyed territories
 			for b in node.get_buildings():
 				b.queue_free()
+			# smoke fx
+			var smoke = smoke_scene.instance()
+			smoke.position = area.position
+			add_child(smoke)
 
 			if node.get_child_count() > 0:
 				var child = node.get_child(0)

@@ -17,7 +17,7 @@ func get_next_id() -> String:
 func init_buildings(buildings: Array, init_ids = true, id_prefix = "1-"):
 	# init the building manager with our starting buildings
 	# if this is a new game, all buildings are id'd by the server, so we need to keep them
-	# in sync. Ideally, we'd pass these building datatypes over the wire before a game starts, but 
+	# in sync. Ideally, we'd pass these building datatypes over the wire before a game starts, but
 	# in the interests of time, we'll just make them match up
 	for building in buildings:
 		var building_id = building.building_id

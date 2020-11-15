@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/VFX/Cloud_PtrFx.png" type="Texture" id=4]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0494297, 0.913043, 1 )
+colors = PoolColorArray( 0.226562, 0.217086, 0.217086, 1, 0.133333, 0.12549, 0.12549, 1, 0.133333, 0.12549, 0.12549, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.290223 ), 0.0, 3.6562, 0, 0, Vector2( 0.682482, 1 ), -0.0677277, -0.0677277, 0, 0, Vector2( 1, 0.554545 ), -0.29932, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 16.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 40.0
+initial_velocity_random = 0.6
+angular_velocity = 60.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 40.0
+damping_random = 0.5
+angle = 360.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 0.5
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="Animation" id=17]
+length = 3.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SmokeParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="Smoke" type="Node2D"]
+z_index = 1
+z_as_relative = false
+
+[node name="SmokeParticles2D" type="Particles2D" parent="."]
+amount = 15
+lifetime = 3.0
+preprocess = 0.6
+explosiveness = 0.6
+local_coords = false
+process_material = SubResource( 5 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Explode"
+anims/Explode = SubResource( 17 )
