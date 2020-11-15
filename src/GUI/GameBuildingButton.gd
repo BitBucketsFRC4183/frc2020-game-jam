@@ -59,7 +59,7 @@ func check_can_afford(p):
 	if p.resources[cost_item.type1] >= cost_item.cost:
 		if cost_item.has_type_2:
 			# has enough for both types
-			if p.resources[cost_item.type2] > cost_item.cost:
+			if p.resources[cost_item.type2] >= cost_item.cost:
 				return true
 			# not enough for type2
 			else:
