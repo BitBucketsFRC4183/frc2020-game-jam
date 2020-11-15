@@ -29,6 +29,16 @@ func reset_values():
 func _on_player_message(message: PlayerMessage):
 	player_messages.append(message)
 
+
+func double_resources(add_science=true):
+	# quick and dirty easy mode, double resources
+	for p in players:
+		for r in p.resources.keys():
+			p.resources[r] = p.resources[r] * 2
+		if add_science:
+			p.resources[Enums.resource_types.science] = p.resources[Enums.resource_types.raw]
+	
+
 func set_names():
 	# some random names
 	var names = Constants.random_names

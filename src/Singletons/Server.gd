@@ -14,6 +14,9 @@ var single_player := false
 # have we started the game already?
 var started := false
 
+# are we on easy mode?
+var easy := false
+
 onready var timer := $DaysTimer
 
 func _ready():
@@ -84,6 +87,8 @@ func player_ready_to_start(id: int, ready: bool):
 
 func begin_game(single_player := true):
 
+	if easy:
+		PlayersManager.double_resources()
 	# The server/host is always player 1
 	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
 	RPC.send_message("%s(%s) has joined the game." % [player.name, player.num])

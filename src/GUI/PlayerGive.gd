@@ -13,6 +13,7 @@ func _ready():
 		source_player_num = PlayersManager.whoami().num
 
 		Signals.connect("player_data_updated", self, "_on_player_data_updated")
+		_on_player_data_updated(PlayersManager.get_player(player_num))
 
 func _input(event):
 	if event.is_action_pressed("ui_give_100"):

@@ -75,17 +75,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons"]
 margin_top = 172.0
 margin_right = 400.0
-margin_bottom = 200.0
+margin_bottom = 232.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HBoxContainer"]
+margin_right = 288.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HBoxContainer/VBoxContainer"]
+margin_right = 288.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
 text = "New Game"
 
-[node name="HostGameButton" type="Button" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons"]
-margin_top = 204.0
-margin_right = 400.0
-margin_bottom = 232.0
+[node name="HostGameButton" type="Button" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HBoxContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 60.0
 text = "Host Game"
+
+[node name="EasyModeCheckButton" type="CheckButton" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HBoxContainer"]
+margin_left = 292.0
+margin_right = 400.0
+margin_bottom = 60.0
+text = "Easy"
 
 [node name="JoinGameButton" type="Button" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons"]
 margin_top = 236.0
@@ -262,8 +278,9 @@ margin_right = 460.0
 margin_bottom = 61.0
 disabled = true
 text = "Cancel"
-[connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HostGameButton" to="." method="_on_HostGameButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HBoxContainer/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HBoxContainer/VBoxContainer/HostGameButton" to="." method="_on_HostGameButton_pressed"]
+[connection signal="toggled" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HBoxContainer/EasyModeCheckButton" to="." method="_on_EasyModeCheckButton_toggled"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/JoinGameButton" to="." method="_on_JoinGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/Exit" to="." method="_on_Exit_pressed"]

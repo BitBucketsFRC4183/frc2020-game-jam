@@ -5,7 +5,6 @@ onready var chat_message = $VBoxContainer/HBoxContainer/ChatContainer/ChatMessag
 
 onready var start_game_button = $VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/StartButtonContainer/StartGameButton
 
-
 var is_server := false
 func _ready():
 	Signals.connect("pre_start_game", self, "_on_pre_start_game")

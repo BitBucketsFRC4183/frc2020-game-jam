@@ -88,3 +88,7 @@ func _on_HostButton_pressed():
 	Network.host_game(false)
 	Server.begin_game(false)
 	get_tree().change_scene("res://src/Screens/Lobby.tscn")
+
+
+func _on_EasyModeCheckButton_toggled(button_pressed):
+	Server.easy = button_pressed
