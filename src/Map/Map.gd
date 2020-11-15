@@ -132,7 +132,7 @@ func _on_impact_registered(target, area):
 
 			if node.get_child_count() > 0:
 				var child = node.get_child(0)
-				if child is Territory:
+				if child is Territory and child.type != Enums.territory_types.destroyed:
 					child.set_type(Enums.territory_types.destroyed)
 					Signals.emit_signal("territory_destroyed", child)
 	area.queue_free()
