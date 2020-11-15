@@ -55,7 +55,7 @@ func add_player(id: int, player_array: Array = []) -> PlayerData:
 	if !player_array.empty():
 		# We are adding a player with a dictionary, so that means
 		# we need to replace an existing player with a new network_id/num
-		player = PlayerData.new(1, "", Color.black)
+		player = PlayerData.new(0, "", Color.black)
 
 		player.from_array(player_array)
 		if id != 0:
