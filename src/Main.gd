@@ -7,7 +7,7 @@ func _ready():
 	Signals.connect("player_data_updated", self, "_on_player_data_updated")
 	Signals.connect("server_disconnected", self, "_on_server_disconnected")
 	Signals.connect("connection_to_server_failed", self, "_on_connection_to_server_failed")
-	
+
 	$HostWindow/VBoxContainer/HBoxContainer/PortEdit.text = "%s" % Settings.server_port
 	$JoinWindow/VBoxContainer/HBoxContainer/PortEdit.text = "%s" % Settings.client_port
 	$JoinWindow/VBoxContainer/HBoxContainer/HostEdit.text = Settings.client_host

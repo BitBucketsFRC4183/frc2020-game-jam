@@ -62,6 +62,8 @@ func research_next():
 func _on_day_passed(day):
 	# only the server does AI
 	if get_tree().is_network_server() and active:
+		research_next()
+
 		var all_build_tiles = get_tree().get_nodes_in_group("ai_tiles")
 
 		var our_build_tiles = []
@@ -109,7 +111,6 @@ func _on_day_passed(day):
 				new_build_tile.build_tile()
 			else:
 				new_build_tile.queue_free()
-	research_next()
 
 	# every day brings new players
 	check_active()

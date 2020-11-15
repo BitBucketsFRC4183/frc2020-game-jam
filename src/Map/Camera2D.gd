@@ -7,6 +7,9 @@ export var zoom_constant = Vector2(0.05, 0.05)
 # how much we scroll at a time
 export var scroll_constant = 1.5
 
+func _ready() -> void:
+	Signals.connect("asteroid_impact", self, "shake_camera")
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_in"):
 		# don't zoom in past 0
@@ -39,3 +42,6 @@ func _process(delta: float) -> void:
 		position.x -= scroll_amt
 	if Input.is_action_pressed("right"):
 		position.x += scroll_amt
+
+func shake_camera(asteroid_id, impact_point, explosion_radius):
+	$ScreenShake.start()

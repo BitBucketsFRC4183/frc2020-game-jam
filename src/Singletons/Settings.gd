@@ -40,7 +40,7 @@ func set_client_port(value: int):
 		client_port = value
 		config.set_value("network", "client_port", client_port)
 		_save()
-		
+
 func _save():
 	# Save the changes by overwriting the previous file
 	config.save("user://settings.cfg")
