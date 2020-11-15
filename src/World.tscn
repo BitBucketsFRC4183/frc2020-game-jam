@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/World.gd" type="Script" id=1]
 [ext_resource path="res://src/Map/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GameObjects/TechTree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/GUI/GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/GameObjects/Asteroids/AsteroidManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/GUI/ServerDisconnectPopup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/GameObjects/Leaderboard.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Node2D"]
@@ -36,4 +37,7 @@ visible = false
 [node name="EndGameDelayTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="ServerDisconnectPopup" parent="." instance=ExtResource( 6 )]
+visible = false
 [connection signal="visibility_changed" from="CanvasLayer/TechTree" to="CanvasLayer/TechTree" method="_on_show"]

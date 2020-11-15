@@ -11,7 +11,6 @@ func _ready():
 	Signals.connect("post_start_game", self, "_on_post_start_game")
 	Signals.connect("player_message", self, "_on_player_message")
 	Signals.connect("player_data_updated", self, "_on_player_data_updated")
-	Signals.connect("server_disconnected", self, "_on_server_disconnected")
 
 	is_server = get_tree().is_network_server()
 	if is_server:
@@ -55,14 +54,6 @@ func _on_BackButton_pressed():
 	Network.close_connection()
 	Server.reset_values()
 	PlayersManager.reset_values()
-	get_tree().change_scene("res://src/Main.tscn")
-
-func _on_server_disconnected():
-	PlayersManager.reset_values()
-	$VBoxContainer.modulate.a = .5
-	$Popup/ServerDisconnectedDialog.show()
-
-func _on_ServerDisconnectedDialog_confirmed():
 	get_tree().change_scene("res://src/Main.tscn")
 
 
