@@ -123,10 +123,11 @@ func _on_impact_registered(target, area):
 
 			# delete buildings on now-destroyed territories
 			for b in node.get_buildings():
-				b.queue_free()
+				if b != null:
+					b.queue_free()
 			# smoke fx
 			var smoke = smoke_scene.instance()
-			smoke.position = area.position
+			smoke.global_position = node.get_territory().center_global
 			add_child(smoke)
 			$AsteroidTerritoryStrike.play()
 
