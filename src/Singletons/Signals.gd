@@ -43,6 +43,7 @@ signal server_started
 
 
 signal asteroid_wave_timer_updated(time_left)
+signal asteroid_wave_started(wave, waves)
 signal asteroid_impact(asteroid_id, impact_point, explosion_radius)
 signal asteroid_destroyed(asteroid_id, position, size)
 signal dwarf_planet_destroyed()

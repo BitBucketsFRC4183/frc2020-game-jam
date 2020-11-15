@@ -52,6 +52,7 @@ func join_game(ip, port):
 	peer.create_client(ip, port)
 	get_tree().set_network_peer(peer)
 
+
 func close_connection():
 	if peer:
 		peer.close_connection()

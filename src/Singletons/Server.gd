@@ -21,9 +21,11 @@ func _ready():
 	Signals.connect("post_start_game", self, "post_start_game")
 	Signals.connect("player_joined", self, "_on_player_joined")
 
+	Signals.connect("asteroid_wave_started", self, "_on_asteroid_wave_started")
 	Signals.connect("grand_winner", self, "reset_values")
 	Signals.connect("winner", self, "reset_values")
-	Signals.connect("loser", self, "reset_values")
+	Signals.connect("loser", self, "_on_loser")
+	Signals.connect("final_wave_complete", self, "_on_final_wave_complete")
 
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self,"_player_disconnected")
@@ -102,6 +104,19 @@ func _on_DaysTimer_timeout():
 
 	# send a message to clients
 	RPC.send_server_day_updated(day, asteroid_timer.time_left if asteroid_timer else 0.0)
+
+
+func _on_asteroid_wave_started(wave: int, waves: int):
+	RPC.send_asteroid_wave_started(wave, waves)
+
+
+func _on_final_wave_complete():
+	RPC.send_final_wave_complete()
+
+
+func _on_loser():
+	RPC.send_loser()
+
 
 func _on_player_joined(id: int) -> void:
 	# add this new player to the server's PlayersManager

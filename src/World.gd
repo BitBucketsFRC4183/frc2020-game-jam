@@ -30,7 +30,6 @@ func _ready():
 	Signals.connect("final_wave_complete", self, "win_game")
 	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
 
-
 	make_territories_list()
 
 	if get_tree().is_network_server():
