@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/GUI/MainMenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GUI/fonts/Font75.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/GUI/EndGameScreen.gd" type="Script" id=4]
 [ext_resource path="res://src/GUI/fonts/Font30.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/GameObjects/Leaderboard.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/GUI/OpenLeaderboard.gd" type="Script" id=7]
 
 [node name="GrandWinScreen" type="Control"]
 anchor_right = 1.0
@@ -64,6 +65,11 @@ margin_bottom = 830.64
 rect_min_size = Vector2( 356.99, 153 )
 custom_fonts/font = ExtResource( 5 )
 text = "Show Leaderboard"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Leaderboard" parent="." instance=ExtResource( 6 )]
 visible = false
+[connection signal="pressed" from="OpenLeaderboard" to="OpenLeaderboard" method="show_leaderboard"]
