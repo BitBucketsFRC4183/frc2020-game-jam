@@ -48,6 +48,8 @@ func _on_Timer_timeout():
 	if wave == waves:
 		final_wave()
 
+	Signals.emit_signal("asteroid_wave_started", wave, waves)
+
 	asteroid_count += wave + asteroid_quantity_modifier
 
 	if asteroid_count > max_count:
@@ -89,7 +91,11 @@ func _on_asteroid_incoming(position: Vector2, asteroid_strength, attributes: Dic
 	if not get_tree().is_network_server():
 		# only clients care about this method
 		# they spawn
-		var asteroid = _get_asteroid_instance(asteroid_strength)
+		var asteroid
+		if asteroid_strength == 40000:
+			asteroid = dwarf_planet.instance()
+		else:
+			asteroid = _get_asteroid_instance(asteroid_strength)
 		asteroid.global_position = position
 		active_asteroids += 1
 		add_child(asteroid)
@@ -116,6 +122,8 @@ func final_wave():
 			active_asteroids += 1
 			break
 	add_child(boss)
+	# after this asteroid is setup, send it to the clients
+	call_deferred("send_asteroid", boss.global_position, 40000, boss)
 
 func remove_active_asteroid():
 	active_asteroids -= 1

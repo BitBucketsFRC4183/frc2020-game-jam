@@ -136,6 +136,14 @@ remote func game_building_placed(building_id: String, building_type_name: String
 ### Asteroid stuff
 ###
 
+func send_asteroid_wave_started(wave: int, waves: int):
+	rpc("asteroid_wave_started", wave, waves)
+
+
+remote func asteroid_wave_started(wave: int, waves: int):
+	Signals.emit_signal("asteroid_wave_started", wave, waves)
+
+
 func send_asteroid(position: Vector2, asteroid_strength: int, attributes: Dictionary):
 	rpc("asteroid_incoming", position, asteroid_strength, attributes)
 
@@ -184,3 +192,23 @@ func send_player_give_resources(source_player_num: int, dest_player_num: int, re
 
 remote func player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
 	Signals.emit_signal("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
+
+#
+# End Game
+#
+func send_final_wave_complete():
+	rpc("final_wave_complete")
+
+
+remote func final_wave_complete():
+	# tell clients we survivied the final wave!
+	Signals.emit_signal("final_wave_complete")
+
+
+func send_loser():
+	rpc("loser")
+
+
+remote func loser():
+	# tell clients we survivied the final wave!
+	Signals.emit_signal("loser")
