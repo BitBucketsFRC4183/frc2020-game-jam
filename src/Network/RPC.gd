@@ -79,7 +79,7 @@ func send_all_messages(messages: Array, id: int = -1):
 	var message_dicts = []
 	for message in messages:
 		message_dicts.append(message.to_dict())
-	if id != -1:
+	if id == -1:
 		rpc("all_messages", message_dicts)
 	else:
 		rpc_id(id, "all_messages", message_dicts)
@@ -196,6 +196,22 @@ func send_player_give_resources(source_player_num: int, dest_player_num: int, re
 
 remote func player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
 	Signals.emit_signal("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
+
+#
+# Science
+#
+
+func send_player_select_tech(selected_tech: String):
+	if not get_tree().is_network_server():
+		# called by clients to send their selected tech
+		rpc_id(1, "player_select_tech", selected_tech)
+
+
+remote func player_select_tech(selected_tech: String):
+	assert(get_tree().is_network_server())
+	var player = PlayersManager.get_network_player(get_tree().get_rpc_sender_id())
+	if player:
+		Utils.research_tech(selected_tech, player)
 
 #
 # End Game
