@@ -62,8 +62,11 @@ var score_granted := {
 	"research_completed": 500,
 	"donated": 750,
 	"asteroid_shot": 250,
-	"asteroid_deflected": 150,
-	"asteroid_destroyed": 250
+	# this is 0 since the shields overlap and whoever placed their shield first is basically at a disadvantage
+	# orange might get credit for blocking a asteroid on blue which blue would have blocked anyways
+	"asteroid_deflected": 0,
+	# this is 0 since otherwise Orange racks up point
+	"asteroid_destroyed": 0
 }
 
 # WARNING! This value can't really just be changed here. We need to add
