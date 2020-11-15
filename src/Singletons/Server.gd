@@ -6,6 +6,7 @@ var players_ready = []
 
 # The current day
 var day := 0
+var asteroid_timer: Timer
 
 # default to single_player
 var single_player := false
@@ -45,29 +46,43 @@ func _player_connected(id):
 		print("Server: Player connected: %d" % id)
 
 
-# Callback from SceneTree.
+# A player disconnected from the server, remove them
 func _player_disconnected(id):
+	var player = PlayersManager.get_network_player(id)
 	PlayersManager.remove_player(id)
+	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
+	if player:
+		RPC.send_message("Player %s has left the game." % player.num)
 
-func player_ready_to_start(id: int):
+
+func is_ready_to_start() -> bool:
+	return players_ready.size() == PlayersManager.players_by_network_id.size()
+
+func player_ready_to_start(id: int, ready: bool):
 	# A player is ready to start
 	assert(get_tree().is_network_server())
 
-	if not id in players_ready:
-		players_ready.append(id)
+	var player = PlayersManager.get_network_player(id)
+	player.ready = ready
 
-	if players_ready.size() == PlayersManager.players_by_network_id.size():
-		if started:
-			print("Server: New player ready, sending post_start_game")
-			RPC.send_post_start_game(id)
-		else:
-			print("Server: All players ready, sending post_start_game")
-			RPC.send_post_start_game()
+	if ready:
+		players_ready.append(id)
+	else:
+		players_ready.erase(id)
+
+	# notify everyone a player's readiness changed
+	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
+	Signals.emit_signal("player_data_updated", player)
+
+	if started:
+		print("Server: New player ready, sending post_start_game")
+		RPC.send_post_start_game(id)
 
 func begin_game(single_player := true):
 
 	# The server/host is always player 1
 	var player = PlayersManager.add_player(get_tree().get_network_unique_id())
+	RPC.send_message("%s(%s) has joined the game." % [player.name, player.num])
 
 	RPC.send_pre_start_game(PlayersManager.get_all_player_dicts())
 
@@ -86,17 +101,17 @@ func _on_DaysTimer_timeout():
 	# print_debug("Server: It\'s a new day! %d" % day)
 
 	# send a message to clients
-	RPC.send_server_day_updated(day)
+	RPC.send_server_day_updated(day, asteroid_timer.time_left if asteroid_timer else 0.0)
 
 func _on_player_joined(id: int) -> void:
-	# TODO: Support player_name. For now it's randomly assigned
-
 	# add this new player to the server's PlayersManager
 	var player = PlayersManager.add_player(id)
-	print("Player %s joined, assumed player %s - %s" % [id, player.num, player.name])
+
+	RPC.send_message("%s(%s) has joined the game." % [player.name, player.num])
 
 	# send our player data to all clients, so everyone knows about the new player
 	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
+	RPC.send_all_messages(PlayersManager.player_messages, id)
 
 	if started:
 		# if we already started the game, tell this new player to join us

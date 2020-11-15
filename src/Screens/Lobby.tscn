@@ -1,22 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/GUI/Theme.tres" type="Theme" id=2]
 [ext_resource path="res://src/Screens/Lobby.gd" type="Script" id=3]
+[ext_resource path="res://src/GUI/PlayerReadyContainer.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 1 )
 
 [node name="Lobby" type="MarginContainer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 960.0
-margin_bottom = 540.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_rotation = -0.017263
 theme = ExtResource( 2 )
 custom_constants/margin_right = 0
 custom_constants/margin_top = 0
@@ -33,50 +29,181 @@ margin_bottom = 1080.0
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 257.0
+margin_top = 229.0
 margin_right = 1920.0
-margin_bottom = 318.0
+margin_bottom = 290.0
 custom_fonts/font = SubResource( 1 )
 text = "Let's All Go to the Lobby"
 align = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 322.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 294.0
 margin_right = 1920.0
-margin_bottom = 822.0
-rect_min_size = Vector2( 500, 500 )
+margin_bottom = 850.0
+custom_constants/separation = 10
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="VBoxContainer/CenterContainer"]
-margin_left = 710.0
-margin_right = 1210.0
-margin_bottom = 500.0
-rect_min_size = Vector2( 500, 500 )
+[node name="ChatContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 455.0
+margin_right = 1155.0
+margin_bottom = 556.0
+rect_min_size = Vector2( 700, 500 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer/Panel"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ChatContainer"]
+margin_right = 700.0
+margin_bottom = 20.0
+text = "Chat"
+
+[node name="Chat" type="TextEdit" parent="VBoxContainer/HBoxContainer/ChatContainer"]
+margin_top = 24.0
+margin_right = 700.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 0, 500 )
+text = "Welcome to the server..."
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatMessage" type="LineEdit" parent="VBoxContainer/HBoxContainer/ChatContainer"]
+margin_top = 528.0
+margin_right = 700.0
+margin_bottom = 556.0
+placeholder_text = "  Send a message"
+
+[node name="PlayerReadyContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 1165.0
+margin_right = 1465.0
+margin_bottom = 556.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="Players" type="Label" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer"]
+margin_right = 300.0
+margin_bottom = 20.0
+text = "Players"
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer"]
+margin_top = 24.0
+margin_right = 300.0
+margin_bottom = 524.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-alignment = 1
+custom_constants/margin_right = 10
+custom_constants/margin_top = 5
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButtons" type="VBoxContainer" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer"]
-margin_left = 50.0
-margin_right = 450.0
-margin_bottom = 500.0
-rect_min_size = Vector2( 400, 0 )
-theme = ExtResource( 2 )
-alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 290.0
+margin_bottom = 495.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" type="Button" parent="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons"]
-margin_top = 236.0
-margin_right = 400.0
-margin_bottom = 264.0
+[node name="PlayerReadyContainer1" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_right = 280.0
+margin_bottom = 32.0
+rect_rotation = 0.0
+player_num = 1
+ready = false
+
+[node name="PlayerReadyContainer2" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 36.0
+margin_right = 280.0
+margin_bottom = 68.0
+rect_rotation = 0.0
+player_num = 2
+ready = false
+
+[node name="PlayerReadyContainer3" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 72.0
+margin_right = 280.0
+margin_bottom = 104.0
+rect_rotation = 0.0
+player_num = 3
+ready = false
+
+[node name="PlayerReadyContainer4" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 108.0
+margin_right = 280.0
+margin_bottom = 140.0
+rect_rotation = 0.0
+player_num = 4
+ready = false
+
+[node name="PlayerReadyContainer5" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 144.0
+margin_right = 280.0
+margin_bottom = 176.0
+rect_rotation = 0.0
+player_num = 5
+ready = false
+
+[node name="LobbyButtons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer"]
+margin_top = 528.0
+margin_right = 300.0
+margin_bottom = 556.0
+custom_constants/separation = 5
+alignment = 1
+
+[node name="StartButtonContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons"]
+margin_right = 141.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/StartButtonContainer"]
+visible = false
+margin_right = 100.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 100, 0 )
+disabled = true
+text = "Start Game"
+
+[node name="ReadyButtonContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons"]
+margin_left = 146.0
+margin_right = 300.0
+margin_bottom = 28.0
+alignment = 2
+
+[node name="ReadyButton" type="Button" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/ReadyButtonContainer"]
+margin_right = 100.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 100, 0 )
+text = "Ready"
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/ReadyButtonContainer"]
+margin_left = 104.0
+margin_right = 154.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 50, 0 )
 text = "Back"
-[connection signal="pressed" from="VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/BackButton" to="." method="_on_BackButton_pressed"]
+
+[node name="Popup" type="CenterContainer" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="ServerDisconnectedDialog" type="AcceptDialog" parent="Popup"]
+visible = true
+margin_left = 844.0
+margin_top = 504.0
+margin_right = 1075.0
+margin_bottom = 576.0
+window_title = "Oh Noes!"
+dialog_text = "Server Disconnected"
+[connection signal="text_entered" from="VBoxContainer/HBoxContainer/ChatContainer/ChatMessage" to="." method="_on_ChatMessage_text_entered"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/StartButtonContainer/StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/ReadyButtonContainer/ReadyButton" to="." method="_on_ReadyButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/ReadyButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="confirmed" from="Popup/ServerDisconnectedDialog" to="." method="_on_ServerDisconnectedDialog_confirmed"]

@@ -18,7 +18,8 @@ func _ready():
 	if not get_tree().has_network_peer() and not Server.started:
 		Network.host_game(true)
 		Server.begin_game(true)
-		RPC.send_ready_to_start()
+		RPC.send_ready_to_start(true)
+		RPC.send_post_start_game()
 
 	isTechTreeOpen = false
 	$AsteroidManager.territories = $Map.get_territories()
@@ -30,6 +31,10 @@ func _ready():
 
 
 	make_territories_list()
+
+	if get_tree().is_network_server():
+		# hack, but we need to tell our server about the asteroid timer
+		Server.asteroid_timer = $AsteroidManager/Timer
 
 
 func win_game():

@@ -56,3 +56,6 @@ func is_tech_valid(tech, p: PlayerData):
 	else:
 		return false
 	pass
+
+func player_message_from_dict(dict: Dictionary) -> PlayerMessage:
+	return PlayerMessage.new(dict.get("num", 1), dict.get("message", ""))

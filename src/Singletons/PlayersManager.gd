@@ -6,12 +6,14 @@ var PlayerColors = preload("res://assets/PlayerColors.tres")
 
 # a list of players, by player index
 var players = []
+var player_messages = []
 
 # players by their network id
 var players_by_network_id: Dictionary
 
 func _ready():
 	Signals.connect("players_updated", self, "update_players")
+	Signals.connect("player_message", self, "_on_player_message")
 
 	Signals.connect("grand_winner", self, "reset_values")
 	Signals.connect("winner", self, "reset_values")
@@ -20,9 +22,13 @@ func _ready():
 
 func reset_values():
 	players = []
+	player_messages = []
 	players_by_network_id = {}
 	set_names()
 
+func _on_player_message(message: PlayerMessage):
+	player_messages.append(message)
+	
 func set_names():
 	# some random names
 	var names = Constants.random_names
@@ -40,7 +46,7 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 		# We are adding a player with a dictionary, so that means
 		# we need to replace an existing player with a new network_id/num
 		player = PlayerData.new(1, "", Color.black)
-		player.ai_controlled = false
+		
 		player.from_dict(player_dict)
 		if id != 0:
 			# only add this player to the network list if it's a network controlled player
@@ -53,6 +59,7 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 		for existing_player in players:
 			if existing_player.ai_controlled:
 				existing_player.ai_controlled = false
+				existing_player.ready = false
 				existing_player.network_id = id
 				if id != 0:
 					# only add this player to the network list if it's a network controlled player
@@ -61,17 +68,22 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 				# print_debug("Player %s (network_id: %s) added to registry as %s" % [player.num, player.network_id, player.name])
 				break
 
-	Signals.emit_signal("player_owner_changed", player)
 	Signals.emit_signal("player_data_updated", player)
 	return player
 
 
-func remove_player(id: int):
+func remove_player(id: int) -> PlayerData:
 	# reset this player to ai controlled
 	if players_by_network_id.has(id):
+		var player = players_by_network_id[id]
 		players_by_network_id[id].ai_controlled = true
+		players_by_network_id[id].ready = true
 		players_by_network_id[id].network_id = 0
 		players_by_network_id.erase(id)
+		Signals.emit_signal("player_data_updated", player)
+		return player
+	return null
+	
 
 
 func update_player(player_dict: Dictionary):
@@ -84,6 +96,7 @@ func update_player(player_dict: Dictionary):
 	if players_by_network_id.has(id):
 		player = players_by_network_id[id]
 		players_by_network_id[id].from_dict(player_dict)
+		Signals.emit_signal("player_data_updated", player)
 		# print_debug("Player %s - %s (network_id: %s) updated in PlayersManager" % [player.num, player.name, player.network_id])
 	else:
 		player = add_player(id, player_dict)
@@ -106,14 +119,26 @@ func get_player(player_num: int) -> PlayerData:
 	if player_num > 0 && player_num <= players.size():
 		return players[player_num - 1]
 	printerr("Tried to get a player with player_num %s" % player_num)
+	if Engine.editor_hint or players.size() == 0:
+		# return an empty player for the editor
+		return PlayerData.new(player_num, Constants.random_names[player_num], PlayerColors.colors[player_num])
 	return players[0]
+
+func get_network_player(network_id: int) -> PlayerData:
+	if players_by_network_id.has(network_id):
+		return players_by_network_id[network_id]
+	else:
+		printerr("could not find player_num for network_id: %s" % network_id)
+		return null
 
 
 func get_player_num(network_id: int) -> int:
-	if players_by_network_id.has(network_id):
-		return players_by_network_id[network_id].num
-	printerr("could not find player_num for network_id: %s" % network_id)
-	return 0
+	var player = get_network_player(network_id)
+	if player:
+		return player.num
+	else:
+		printerr("could not find player_num for network_id: %s" % network_id)
+		return 0
 
 func get_all_player_dicts() -> Array:
 	# get all the PlayerDatas as dicts to send over the wire

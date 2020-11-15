@@ -14,21 +14,22 @@ signal day_passed(day)
 signal resource_generated(player_num, resource_info)
 signal player_data_updated(player_data)
 signal player_give_resources(source_player_num, dest_player_num, resource_type, amount)
+signal player_message(message)
 
 signal tech_progress_changed(player_data)
 signal player_score_changed
 
 # Notify when the connected players change
 signal players_updated(player_dicts)
-signal player_owner_changed(player)
-signal player_joined(id, player)
+signal player_joined(id)
+signal player_left(id, player) # sent by server when a player disconnects, along with an updated player data
 
 # These are lifecycle signals. The server sends a
 # pre_start_game to each client
 # each client responds with a ready_to_start
 # the server sends each client a post_start_game
 signal pre_start_game(players)
-signal player_ready_to_start(id)
+signal player_ready_to_start(id, ready)
 signal post_start_game
 
 # client connection signals
@@ -41,7 +42,7 @@ signal server_disconnected
 signal server_started
 
 
-signal asteroid_wave_timer_reset(time_left)
+signal asteroid_wave_timer_updated(time_left)
 signal asteroid_impact(asteroid_id, impact_point, explosion_radius)
 signal asteroid_destroyed(asteroid_id, position, size)
 signal asteroid_incoming(position, asteroid_strength, attributes)
