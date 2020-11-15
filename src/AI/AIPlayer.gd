@@ -44,7 +44,7 @@ func check_active():
 			active = false
 
 func _on_player_data_updated(player_data: PlayerData):
-	if player_data.num == id:
+	if player_data != null and player_data.num == id:
 		check_active()
 
 func get_next_research():
