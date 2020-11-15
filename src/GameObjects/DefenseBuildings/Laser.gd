@@ -11,6 +11,8 @@ func _ready() -> void:
 	Signals.connect("day_passed", self, "_on_day_passed")
 
 	tech_check()
+	if Server.easy:
+		damage = damage * 2
 	$Timer.start(cooldown)
 
 func _process(delta):

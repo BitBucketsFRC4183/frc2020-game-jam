@@ -88,7 +88,7 @@ text = "Players"
 [node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer"]
 margin_top = 24.0
 margin_right = 300.0
-margin_bottom = 524.0
+margin_bottom = 512.0
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/Panel"]
@@ -106,7 +106,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 5.0
 margin_right = 290.0
-margin_bottom = 495.0
+margin_bottom = 483.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -151,41 +151,41 @@ player_num = 5
 ready = false
 
 [node name="LobbyButtons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer"]
-margin_top = 528.0
+margin_top = 516.0
 margin_right = 300.0
 margin_bottom = 556.0
+rect_min_size = Vector2( 0, 40 )
 custom_constants/separation = 5
 alignment = 1
 
 [node name="StartButtonContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons"]
 margin_right = 141.0
-margin_bottom = 28.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 
 [node name="StartGameButton" type="Button" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/StartButtonContainer"]
-visible = false
-margin_right = 100.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 100, 0 )
+margin_right = 120.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 120, 0 )
 disabled = true
 text = "Start Game"
 
 [node name="ReadyButtonContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons"]
 margin_left = 146.0
 margin_right = 300.0
-margin_bottom = 28.0
+margin_bottom = 40.0
 alignment = 2
 
 [node name="ReadyButton" type="Button" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/ReadyButtonContainer"]
 margin_right = 100.0
-margin_bottom = 28.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 100, 0 )
 text = "Ready"
 
 [node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/ReadyButtonContainer"]
 margin_left = 104.0
 margin_right = 154.0
-margin_bottom = 28.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 50, 0 )
 text = "Back"
 

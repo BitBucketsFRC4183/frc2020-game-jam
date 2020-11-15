@@ -72,7 +72,7 @@ func set_days_until_next_asteroid(value: int):
 
 func _update_asteroid_wave_message():
 	var header = $TopMenu/Center/VBoxContainer/HeaderLabel
-	if (wave + 1) == waves:
+	if (wave + 1) >= waves:
 		header.text = "FINAL WAVE! SHORE UP YOUR DEFENSES! %.1f" % [0.0 if time_to_boss_impact <= 0 else time_to_boss_impact]
 	else:
 		header.text = "Asteroid Wave %s of %s incoming in %s days!" % [wave + 1, waves, days_until_next_asteroid]
