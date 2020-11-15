@@ -43,6 +43,4 @@ func _on_Shield_mouse_exited():
 		$ShieldArea/Sprite.set_modulate(Color(1,1,1,0.25))
 		
 func _on_day_passed(day):
-	if(not active):
-		PlayersManager.get_player(player_num).add_score("asteroid_deflected")
 	tech_check()

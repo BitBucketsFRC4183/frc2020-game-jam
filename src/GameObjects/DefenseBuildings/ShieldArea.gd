@@ -60,6 +60,9 @@ func damage(damage):
 	if health <= 0:
 		disable()
 	$AsteroidStrikeAudio.play()
+	
+	# we survived! give us points
+	PlayersManager.get_player(get_owner().player_num).add_score("asteroid_deflected")
 	if get_tree().is_network_server():
 		RPC.send_shield_damaged(get_parent().building_id, damage)
 

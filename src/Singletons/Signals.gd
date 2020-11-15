@@ -50,6 +50,7 @@ signal dwarf_planet_destroyed()
 signal asteroid_incoming(position, asteroid_strength, attributes)
 signal asteroid_position_updated(asteroid_id, position)
 signal final_wave_complete()
+signal territory_destroyed(territory)
 
 signal shield_update(building_id, active)
 signal shield_damaged(building_id, damage)

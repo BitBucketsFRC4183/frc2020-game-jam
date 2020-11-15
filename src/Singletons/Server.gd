@@ -37,7 +37,9 @@ func reset_values():
 	day = 0
 	single_player = false
 	started = false
+	timer.stop()
 	timer.wait_time = Constants.seconds_per_day
+
 
 # A new player has connected to the game
 func _player_connected(id):
@@ -111,10 +113,14 @@ func _on_asteroid_wave_started(wave: int, waves: int):
 
 
 func _on_final_wave_complete():
+	reset_values()
+	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
 	RPC.send_final_wave_complete()
 
 
 func _on_loser():
+	reset_values()
+	RPC.send_players_updated(PlayersManager.get_all_player_dicts())
 	RPC.send_loser()
 
 

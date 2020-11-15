@@ -68,7 +68,7 @@ func _update_asteroid_wave_message():
 	if wave == waves:
 		header.text = "FINAL WAVE! SHORE UP YOUR DEFENSES!"
 	else:
-		header.text = "Asteroid Wave %s of %s incoming in %s days!" % [wave, waves, days_until_next_asteroid]
+		header.text = "Asteroid Wave %s of %s incoming in %s days!" % [wave + 1, waves, days_until_next_asteroid]
 
 
 func _input(event: InputEvent) -> void:
