@@ -39,7 +39,7 @@ func _on_shield_damaged(building_id, damage):
 	if get_parent().building_id == building_id:
 		damage(damage)
 
-			
+
 func _on_Timer_timeout():
 	enable()
 
@@ -60,7 +60,7 @@ func damage(damage):
 	if health <= 0:
 		disable()
 	$AsteroidStrikeAudio.play()
-	
+
 	# we survived! give us points
 	PlayersManager.get_player(get_owner().player_num).add_score("asteroid_deflected")
 	if get_tree().is_network_server():
