@@ -35,11 +35,14 @@ visible = false
 
 [node name="QuitPopup" type="ConfirmationDialog" parent="CanvasLayer"]
 visible = true
-margin_left = 749.0
-margin_top = 408.0
-margin_right = 949.0
-margin_bottom = 507.0
-rect_min_size = Vector2( 400, 140 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.5
+margin_top = -49.5
+margin_right = 167.5
+margin_bottom = 49.5
 theme = ExtResource( 8 )
 dialog_text = "Are you sure you want to quit to the Main Menu?"
 dialog_autowrap = true
@@ -49,9 +52,9 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="CanvasLayer/QuitPopup"]
 margin_left = 8.0
-margin_top = 22.0
-margin_right = 392.0
-margin_bottom = 104.0
+margin_top = 51.0
+margin_right = 327.0
+margin_bottom = 71.0
 
 [node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
 
