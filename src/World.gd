@@ -134,6 +134,10 @@ func _input(event):
 			close_tech_tree()
 		if isLeaderboardOpen:
 			close_leaderboard()
+		if $CanvasLayer/QuitPopup.visible:
+			$CanvasLayer/QuitPopup.hide()
+	elif event.is_action_pressed("quit"):
+		$CanvasLayer/QuitPopup.show()
 
 func show_leaderboard():
 	$CanvasLayer/Leaderboard.show()
@@ -160,3 +164,9 @@ func close_map():
 	$Map.hide()
 	$AsteroidManager.hide()
 	$CanvasLayer/GUI.hide()
+
+func _on_QuitPopup_confirmed() -> void:
+	Network.close_connection()
+	Server.reset_values()
+	PlayersManager.reset_values()
+	get_tree().change_scene("res://src/Main.tscn")
