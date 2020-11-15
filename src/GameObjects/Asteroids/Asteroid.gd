@@ -37,7 +37,8 @@ func _physics_process(delta):
 	# only the server updates asteroids
 	# then it sends the new position to each client
 	if get_tree().is_network_server():
-		RPC.send_asteroid_position_update(id, asteroid.position)
+		pass
+		# RPC.send_asteroid_position_update(id, asteroid.position)
 
 func _on_asteroid_position_updated(asteroid_id: int, position: Vector2):
 	# Server messages cause this signal to be raised
