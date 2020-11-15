@@ -30,7 +30,7 @@ func _check_start_game_button():
 func _on_player_message(message: PlayerMessage):
 	var player := PlayersManager.get_player(message.num)
 	chat.text += "\n%s%s: %s" % ["Host - " if player.num == 1 else "", player.name, message.message]
-
+	chat.set_v_scroll(chat.get_line_count())
 
 func _on_ChatMessage_text_entered(new_text):
 	RPC.send_message(new_text)
