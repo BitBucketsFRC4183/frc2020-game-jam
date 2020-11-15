@@ -18,10 +18,5 @@ func _on_day_passed(day: int):
 			PlayersManager.players[player_num - 1].tech_research_progress += resource_amt
 			PlayersManager.players[player_num - 1].check_research_complete()
 
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		if rng.randi_range(0, 10) > 7:
-			PlayersManager.whoami().add_score_value(resource_amt)
-
 		var resource_info = [resource_type, resource_amt]
 		Signals.emit_signal("resource_generated", player_num, resource_info)
