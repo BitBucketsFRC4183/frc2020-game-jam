@@ -25,6 +25,7 @@ func _ready():
 		# events from the server
 		Signals.connect("asteroid_position_updated", self, "_on_asteroid_position_updated")
 		Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
+		Signals.connect("asteroid_destroyed", self, "_on_asteroid_destroyed")
 
 
 func _setup_initial_state():
@@ -79,9 +80,15 @@ func damage(damage):
 		destroy()
 
 func _on_asteroid_impact(asteroid_id: int, position: Vector2, explosion_radius: float):
+	# clients get this event when the server tells them an asteroid impacts the surface
 	if asteroid_id == id:
 		queue_free()
 
+func _on_asteroid_destroyed(asteroid_id, position: Vector2, size: float):
+	# clients get this event when the server tells them an asteroid is destroyed
+	if asteroid_id == id:
+		queue_free()
+	
 
 func get_attributes() -> Dictionary:
 	# get the attributes of this asteroid as a dictionary
