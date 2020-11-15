@@ -1,8 +1,8 @@
 extends MarginContainer
 
-onready var play_music_check_button = $VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/HBoxContainer/MusicCheckButton
+onready var play_music_check_button = $VBoxContainer/CenterContainer/Panel/HBoxContainer/MenuButtons/MusicContainer/MusicCheckButton
 
-func _ready():	
+func _ready():
 	play_music_check_button.pressed = Settings.play_music
 
 
