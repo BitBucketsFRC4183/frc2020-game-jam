@@ -133,6 +133,16 @@ func _input(event):
 	elif event.is_action_pressed("quit"):
 		$CanvasLayer/QuitPopup.show()
 
+
+func _on_GUI_leader_board_button_pressed():
+	show_leaderboard()
+	isLeaderboardOpen = true
+
+func _on_GUI_tech_tree_button_pressed():
+	show_tech_tree()
+	isTechTreeOpen = true
+
+
 func show_leaderboard():
 	$CanvasLayer/Leaderboard.show()
 	close_map()
@@ -164,3 +174,4 @@ func _on_QuitPopup_confirmed() -> void:
 	Server.reset_values()
 	PlayersManager.reset_values()
 	get_tree().change_scene("res://src/Main.tscn")
+

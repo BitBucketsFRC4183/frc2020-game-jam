@@ -1,5 +1,8 @@
 extends Control
 
+signal tech_tree_button_pressed
+signal leader_board_button_pressed
+
 var scene_path: String
 var days_until_next_asteroid := 0
 var wave := 1
@@ -113,3 +116,11 @@ func _on_GameBuildingButton_selected(building) -> void:
 		scene_path = start_path + "ResourceBuildings/" + end_path
 		# pass scene path as well as building name
 		Signals.emit_signal("game_building_selected", scene_path, building)
+
+
+func _on_LeaderBoardButton_pressed():
+	emit_signal("leader_board_button_pressed")
+
+
+func _on_TechTreeButton_pressed():
+	emit_signal("tech_tree_button_pressed")
