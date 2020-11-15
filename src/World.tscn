@@ -32,6 +32,21 @@ rect_min_size = Vector2( 1920, 1080 )
 [node name="Leaderboard" parent="CanvasLayer" instance=ExtResource( 7 )]
 visible = false
 
+[node name="QuitPopup" type="ConfirmationDialog" parent="CanvasLayer"]
+visible = true
+margin_left = 749.0
+margin_top = 408.0
+margin_right = 949.0
+margin_bottom = 507.0
+dialog_text = "Are you sure you want to quit to the Main Menu?"
+dialog_autowrap = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/QuitPopup"]
+margin_left = 8.0
+margin_top = 39.0
+margin_right = 192.0
+margin_bottom = 63.0
+
 [node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
 
 [node name="EndGameDelayTimer" type="Timer" parent="."]
@@ -41,3 +56,4 @@ one_shot = true
 [node name="ServerDisconnectPopup" parent="." instance=ExtResource( 6 )]
 visible = false
 [connection signal="visibility_changed" from="CanvasLayer/TechTree" to="CanvasLayer/TechTree" method="_on_show"]
+[connection signal="confirmed" from="CanvasLayer/QuitPopup" to="." method="_on_QuitPopup_confirmed"]
