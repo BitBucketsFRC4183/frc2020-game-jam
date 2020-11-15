@@ -43,6 +43,7 @@ margin_left = -167.5
 margin_top = -49.5
 margin_right = 167.5
 margin_bottom = 49.5
+rect_min_size = Vector2( 400, 140 )
 theme = ExtResource( 8 )
 dialog_text = "Are you sure you want to quit to the Main Menu?"
 dialog_autowrap = true
@@ -52,9 +53,9 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="CanvasLayer/QuitPopup"]
 margin_left = 8.0
-margin_top = 51.0
-margin_right = 327.0
-margin_bottom = 71.0
+margin_top = 28.0
+margin_right = 392.0
+margin_bottom = 96.0
 
 [node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
 
@@ -64,5 +65,7 @@ one_shot = true
 
 [node name="ServerDisconnectPopup" parent="." instance=ExtResource( 6 )]
 visible = false
+[connection signal="leader_board_button_pressed" from="CanvasLayer/GUI" to="." method="_on_GUI_leader_board_button_pressed"]
+[connection signal="tech_tree_button_pressed" from="CanvasLayer/GUI" to="." method="_on_GUI_tech_tree_button_pressed"]
 [connection signal="visibility_changed" from="CanvasLayer/TechTree" to="CanvasLayer/TechTree" method="_on_show"]
 [connection signal="confirmed" from="CanvasLayer/QuitPopup" to="." method="_on_QuitPopup_confirmed"]
