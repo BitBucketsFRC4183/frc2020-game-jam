@@ -36,7 +36,7 @@ func set_ready(value: bool):
 	$HBoxContainer/Ready.text = "Ready" if ready else "Not Ready"
 	$HBoxContainer/Ready.modulate = PlayerColors.colors[player_num] if ready else Color.white
 	$HBoxContainer/ReadyCheck.visible = ready
-	$HBoxContainer/NotReady.visible = not ready
+	$HBoxContainer/NotReady.visible = not $HBoxContainer/ReadyCheck.visible
 
 func _on_player_data_updated(player: PlayerData):
 	if player.num == player_num:

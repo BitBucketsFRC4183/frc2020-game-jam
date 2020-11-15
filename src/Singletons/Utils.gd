@@ -33,6 +33,9 @@ func can_research(tech_name, p: PlayerData):
 
 func research_tech(tech: String, p: PlayerData):
 	p.selected_tech = tech.to_lower()
+	if not get_tree().is_network_server():
+		# tell the server we are researching this
+		RPC.send_player_select_tech(p.selected_tech)
 
 	var science = p.resources[Enums.resource_types.science]
 	var t_name = tech.to_lower().substr(0, tech.length() - 1).to_lower()
