@@ -21,14 +21,6 @@ func build_tile():
 		return false
 
 	if can_afford_tile():
-		var building_scene = load(Utils._get_scene_path_for_building_type(building_name)).instance()
-
-		building_scene.player_num = id
-		building_scene.position =  position
-		building_scene.activate()
-		get_parent().get_parent().add_child(building_scene)
-
-		player_data.add_score("building_built")
 		built = true
 
 		var building_id := BuildingsManager.get_next_id()

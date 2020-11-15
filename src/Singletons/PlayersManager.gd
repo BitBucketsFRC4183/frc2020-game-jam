@@ -28,7 +28,7 @@ func reset_values():
 
 func _on_player_message(message: PlayerMessage):
 	player_messages.append(message)
-	
+
 func set_names():
 	# some random names
 	var names = Constants.random_names
@@ -46,7 +46,7 @@ func add_player(id: int, player_dict: Dictionary = {}) -> PlayerData:
 		# We are adding a player with a dictionary, so that means
 		# we need to replace an existing player with a new network_id/num
 		player = PlayerData.new(1, "", Color.black)
-		
+
 		player.from_dict(player_dict)
 		if id != 0:
 			# only add this player to the network list if it's a network controlled player
@@ -83,7 +83,7 @@ func remove_player(id: int) -> PlayerData:
 		Signals.emit_signal("player_data_updated", player)
 		return player
 	return null
-	
+
 
 
 func update_player(player_dict: Dictionary):

@@ -33,12 +33,12 @@ func _on_resource_generated(player_num: int, res_list):
 			data.resources[res_list[0]] += res_list[1] * (data.tech_level["science"] + 1)
 		if res_list[0] == Enums.resource_types.raw:
 			data.resources[res_list[0]] += res_list[1] * (data.tech_level["mine"] + 1)
-		
+
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		if rng.randi_range(0, 10) > 7:
 			PlayersManager.get_player(player_num).add_score_value(res_list[1])
-		
+
 		Signals.emit_signal("player_data_updated", data)
 
 func _on_game_building_placed(building_id, player_num, building_type_name, position):
