@@ -69,6 +69,8 @@ func impact():
 		queue_free()
 
 func destroy():
+	if size == 3:
+		Signals.emit_signal("dwarf_planet_destroyed")
 	destroyed = true
 	Signals.emit_signal("asteroid_destroyed", id, global_position, size)
 	RPC.send_asteroid_destroyed(id, global_position, size)

@@ -54,8 +54,9 @@ func get_next_research():
 
 func research_next():
 	var next_research = get_next_research()
-	if Utils.can_research(next_research, player_data):
-		Utils.research_tech(next_research, player_data)
+	if next_research != null:
+		if Utils.can_research(next_research, player_data):
+			Utils.research_tech(next_research, player_data)
 
 
 func _on_day_passed(day):
