@@ -18,17 +18,31 @@ func send_server_day_updated(day: int, asteroid_time_left: float):
 	assert(get_tree().is_network_server())
 
 	# Make an RPC to notify clients of a new day
-	rpc_unreliable("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_arrays())
+	# rpc_unreliable("server_day_updated", day, asteroid_time_left, PlayersManager.get_all_player_arrays())
+	var player_scores = []
+	for p in PlayersManager.players:
+		player_scores.append(p.score)
+	
+	for id in PlayersManager.players_by_network_id.keys():
+		server_day_updated(day, asteroid_time_left, player_scores)
+		if id != 1 and id != 0:
+			rpc_unreliable_id(id, "server_day_updated", day, asteroid_time_left, player_scores)
 
 
-remotesync func server_day_updated(day: int, asteroid_time_left: float, player_arrays: Array):
+remote func server_day_updated(day: int, asteroid_time_left: float, player_scores: Array = []):
 	# The server calls this function and it executes on each clients
 	# each client uses it to update it's current day
 	# print_debug ("Client: a new day: %d" % day)
 
 	# update all the player dicts from the server
-	if not get_tree().is_network_server():
-		Signals.emit_signal("players_updated", player_arrays)
+	if not get_tree().is_network_server() and player_scores != []:
+		var player_num = 0
+		for score in player_scores:
+			var player = PlayersManager.players[player_num]
+			player.score = score
+			Signals.emit_signal("player_data_updated", player)
+			player_num += 1
+		# Signals.emit_signal("players_updated", player_arrays)
 	Signals.emit_signal("asteroid_wave_timer_updated", asteroid_time_left)
 	Signals.emit_signal("day_passed", day)
 
