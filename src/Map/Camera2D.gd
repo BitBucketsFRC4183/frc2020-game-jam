@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 			position += event.relative * zoom * -1
 
 	if event is InputEventMouseButton:
-		if event.button_index == 3:
+		if event.button_index == 3 or event.button_index == 2:
 			pressed = event.pressed
 
 func _process(delta: float) -> void:
