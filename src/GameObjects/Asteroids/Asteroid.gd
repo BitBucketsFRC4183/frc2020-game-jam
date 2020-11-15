@@ -41,7 +41,7 @@ func _physics_process(delta):
 	if get_tree().is_network_server():
 		# only send asteroid position updates once a second
 		delta_send_network_update += delta
-		if delta_send_network_update > 1:
+		if delta_send_network_update > 2:
 			RPC.send_asteroid_position_update(id, asteroid.position)
 			delta_send_network_update = 0.0
 
