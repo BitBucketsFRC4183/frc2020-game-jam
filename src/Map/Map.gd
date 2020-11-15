@@ -128,6 +128,7 @@ func _on_impact_registered(target, area):
 			var smoke = smoke_scene.instance()
 			smoke.position = area.position
 			add_child(smoke)
+			$AsteroidTerritoryStrike.play()
 
 			if node.get_child_count() > 0:
 				var child = node.get_child(0)
