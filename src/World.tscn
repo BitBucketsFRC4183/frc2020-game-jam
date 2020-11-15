@@ -35,10 +35,14 @@ visible = false
 
 [node name="QuitPopup" type="ConfirmationDialog" parent="CanvasLayer"]
 visible = true
-margin_left = 635.549
-margin_top = 474.106
-margin_right = 970.549
-margin_bottom = 573.106
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.5
+margin_top = -49.5
+margin_right = 167.5
+margin_bottom = 49.5
 theme = ExtResource( 8 )
 dialog_text = "Are you sure you want to quit to the Main Menu?"
 dialog_autowrap = true
