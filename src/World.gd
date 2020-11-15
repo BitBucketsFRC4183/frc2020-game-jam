@@ -126,8 +126,10 @@ func _input(event):
 	elif(event.is_action_pressed("escape")):
 		if isTechTreeOpen:
 			close_tech_tree()
+			isTechTreeOpen = false
 		if isLeaderboardOpen:
 			close_leaderboard()
+			isLeaderboardOpen = false
 		if $CanvasLayer/QuitPopup.visible:
 			$CanvasLayer/QuitPopup.hide()
 	elif event.is_action_pressed("quit"):
