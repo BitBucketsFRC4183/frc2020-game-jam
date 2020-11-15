@@ -817,62 +817,62 @@ id = 4
 
 [node name="AIBuildTile" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1375.8, 283 )
-id = 4
+id = 5
 building_to_build = 0
 
 [node name="AIBuildTile2" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1409.14, 263.011 )
-id = 4
+id = 5
 build_order = 2
 building_to_build = 1
 
 [node name="AIBuildTile3" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1516.58, 247.908 )
-id = 4
+id = 5
 build_order = 3
 
 [node name="AIBuildTile4" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1444.99, 240.472 )
-id = 4
+id = 5
 build_order = 4
 building_to_build = 2
 
 [node name="AIBuildTile5" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1600.23, 203.713 )
-id = 4
+id = 5
 build_order = 5
 building_to_build = 5
 
 [node name="AIBuildTile6" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1690.5, 441.927 )
-id = 4
+id = 5
 build_order = 6
 
 [node name="AIBuildTile7" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1634.02, 243.76 )
-id = 4
+id = 5
 build_order = 7
 building_to_build = 5
 
 [node name="AIBuildTile8" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1662.51, 285.859 )
-id = 4
+id = 5
 build_order = 8
 building_to_build = 5
 
 [node name="AIBuildTile9" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1469.06, 387.164 )
-id = 4
+id = 5
 build_order = 9
 
 [node name="AIBuildTile10" parent="BuildTiles/Orange" instance=ExtResource( 8 )]
 position = Vector2( 1705.6, 339.167 )
-id = 4
+id = 5
 build_order = 10
 building_to_build = 5
 
 [node name="AIPlayer" parent="BuildTiles/Orange" instance=ExtResource( 9 )]
-id = 4
+id = 5
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

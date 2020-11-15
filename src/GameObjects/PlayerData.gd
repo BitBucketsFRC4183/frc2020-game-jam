@@ -31,6 +31,10 @@ func add_score(score_event_name):
 	score += Constants.score_granted[score_event_name];
 	Signals.emit_signal("player_score_changed")
 
+func add_score_value(i):
+	score += i
+	Signals.emit_signal("player_score_changed")
+
 # the player's currently selected tech
 var selected_tech = ""
 

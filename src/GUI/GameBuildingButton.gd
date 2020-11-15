@@ -2,6 +2,7 @@ tool
 extends TextureButton
 
 export (Enums.game_buildings) var building = Enums.game_buildings.Mine
+var building_name
 
 signal selected(building)
 
@@ -22,8 +23,12 @@ func _ready() -> void:
 		Enums.game_buildings.Shield:
 			texture_normal = load("res://assets/icons/Shield.png")
 
+	building_name = Enums.game_buildings.keys()[building]
+	$Label.text = building_name
+
+
 func _on_GameBuildingButton_pressed() -> void:
 	# pass the name of the building to be used to instance the scene (used to check hitboxes)
-	emit_signal("selected", Enums.game_buildings.keys()[building])
+	emit_signal("selected", building_name)
 	$ClickSound.play(.2)
 

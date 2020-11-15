@@ -73,7 +73,7 @@ var score_granted := {
 const num_players = 5
 const random_names = [
 	"Bit Buckets",
-	"The Buhlian Operators",
+	"Murphy's Outlaws",
 	"Javawockies",
 	"Blue Alliange",
 	"Alumiboti",

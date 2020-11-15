@@ -27,8 +27,12 @@ var tech = {
 
 func _on_resource_generated(player_num: int, res_list):
 	if data.num == player_num:
-		
-		data.resources[res_list[0]] += res_list[1]
+		if res_list[0] == Enums.resource_types.power:
+			data.resources[res_list[0]] += res_list[1] * (data.tech_level["power"] + 1)
+		if res_list[0] == Enums.resource_types.science:
+			data.resources[res_list[0]] += res_list[1] * (data.tech_level["science"] + 1)
+		if res_list[0] == Enums.resource_types.raw:
+			data.resources[res_list[0]] += res_list[1] * (data.tech_level["mine"] + 1)
 		Signals.emit_signal("player_data_updated", data)
 
 func _on_game_building_placed(player_num, building_type_name, position):
@@ -48,8 +52,8 @@ func _on_player_give_resources(source_player_num: int, dest_player_num: int, res
 		data.resources[resource_type] -= amount
 		print_debug("(%s) gave player %s %s %s resources!" % [data.name, dest_player_num, amount, Enums.resource_types.keys()[resource_type]])
 		Signals.emit_signal("player_data_updated", data)
-		
-		PlayersManager.whoami().add_score("donated")
+
+		PlayersManager.whoami().add_score_value(amount * 10)
 	elif dest_player_num == data.num:
 		# I am the receiver. I gain resources
 		data.resources[resource_type] += amount

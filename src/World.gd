@@ -96,12 +96,16 @@ func _input(event):
 			show_tech_tree()
 		else:
 			close_tech_tree()
-		isTechTreeOpen = !isTechTreeOpen		
+		if(isLeaderboardOpen):
+				$CanvasLayer/Leaderboard.hide()
+		isTechTreeOpen = !isTechTreeOpen
 	elif(event.is_action_pressed("ui_leaderboard")):
 		if(!isLeaderboardOpen):
 			show_leaderboard()
 		else:
 			close_leaderboard()
+		if(isTechTreeOpen):
+				$CanvasLayer/TechTree.hide()
 		isLeaderboardOpen = !isLeaderboardOpen
 	elif(event.is_action_pressed("escape")):
 		if isTechTreeOpen:
@@ -112,7 +116,7 @@ func _input(event):
 func show_leaderboard():
 	$CanvasLayer/Leaderboard.show()
 	close_map()
-	
+
 func close_leaderboard():
 	$CanvasLayer/Leaderboard.hide()
 	show_map()
