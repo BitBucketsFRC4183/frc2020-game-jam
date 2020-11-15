@@ -31,7 +31,8 @@ func build_tile():
 		player_data.add_score("building_built")
 		built = true
 
-		Signals.emit_signal("game_building_placed", id, building_name, position)
-		RPC.send_game_building_placed(building_name, position)
+		var building_id := BuildingsManager.get_next_id()
+		Signals.emit_signal("game_building_placed", building_id, id, building_name, position)
+		RPC.send_game_building_placed(building_id, building_name, position)
 
 		return true

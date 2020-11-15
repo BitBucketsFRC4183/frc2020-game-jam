@@ -6,6 +6,7 @@ export var asteroid_strength_multiplier = 1
 export var max_strength = 50
 export var max_count = 50
 export var base_wave_time = 60
+export var initial_wave_time = 30
 
 var asteroid_small = preload("res://src/GameObjects/Asteroids/FallingAsteroidSmall.tscn")
 var asteroid_medium = preload("res://src/GameObjects/Asteroids/FallingAsteroidMedium.tscn")
@@ -27,14 +28,14 @@ func _ready():
 
 	if get_tree().is_network_server() && Server.started:
 		# if we are network server and the server is already started, start the timer
-		$Timer.start()
+		$Timer.start(initial_wave_time)
 		Signals.emit_signal("asteroid_wave_timer_updated", $Timer.time_left)
 
 func _on_server_started():
 	if get_tree().is_network_server():
 		print("Starting asteroid waves")
 		# only start the timer to spanw new waves if we are the server
-		$Timer.start()
+		$Timer.start(initial_wave_time)
 		Signals.emit_signal("asteroid_wave_timer_updated", $Timer.time_left)
 
 func _on_Timer_timeout():

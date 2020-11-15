@@ -124,13 +124,13 @@ remote func players_updated(player_dicts: Array):
 ### This is player actions
 ###
 
-func send_game_building_placed(building_type_name: String, position: Vector2):
+func send_game_building_placed(building_id: String, building_type_name: String, position: Vector2):
 	# tell the other players about our placed building
-	rpc("game_building_placed", building_type_name, position)
+	rpc("game_building_placed", building_id, building_type_name, position)
 
-remote func game_building_placed(building_type_name: String, position: Vector2):
+remote func game_building_placed(building_id: String, building_type_name: String, position: Vector2):
 	# Message sent to us from another player about a building placement
-	Signals.emit_signal("game_building_placed", PlayersManager.get_player_num(get_tree().get_rpc_sender_id()), building_type_name, position)
+	Signals.emit_signal("game_building_placed", building_id, PlayersManager.get_player_num(get_tree().get_rpc_sender_id()), building_type_name, position)
 
 ###
 ### Asteroid stuff
@@ -161,7 +161,24 @@ func send_asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 remote func asteroid_destroyed(asteroid_id: int, position: Vector2, size):
 	Signals.emit_signal("asteroid_destroyed", asteroid_id, position, size)
 
+#
+# Shields
+#
+func send_shield_update(building_id: String, active: bool):
+	# the server will notify clients when shields go down
+	rpc("shield_update", building_id, active)
 
+remote func sheild_update(building_id: String, active: bool):
+	Signals.emit_signal("shield_update", building_id, active)
+
+func send_shield_damaged(building_id: String, damage):
+	# the server will notify clients when shields take damage, but it could happen a bunch
+	# at once, so make it UDP. This is just for effects
+	rpc_unreliable("shield_damaged", building_id, damage)
+
+remote func shield_damaged(building_id: String, damage):
+	Signals.emit_signal("shield_damaged", building_id, damage)
+	
 func send_player_give_resources(source_player_num: int, dest_player_num: int, resource_type: int, amount: int):
 	rpc("player_give_resources", source_player_num, dest_player_num, resource_type, amount)
 

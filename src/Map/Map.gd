@@ -18,6 +18,9 @@ func _ready() -> void:
 			if territory is Territory:
 				territory.set_territory_owner(1)
 
+	# init our building manager. On the client and server these should be the same
+	var buildings = get_buildings()
+	BuildingsManager.init_buildings(buildings)
 
 func _on_game_building_selected(scene_path, building):
 	instanced_scene = load(scene_path).instance()
@@ -49,20 +52,23 @@ func _input(event: InputEvent) -> void:
 			$Click.play(.2)
 			# emit a signal so it will be placed
 			var position := get_local_mouse_position()
-			Signals.emit_signal("game_building_placed", instanced_scene.player_num, building_type_name, position)
-			RPC.send_game_building_placed(building_type_name, position)
+			var building_id := BuildingsManager.get_next_id()
+			Signals.emit_signal("game_building_placed", building_id, instanced_scene.player_num, building_type_name, position)
+			RPC.send_game_building_placed(building_id, building_type_name, position)
 
 			# cancel our placement
 			_on_game_building_cancelled()
 
-func _on_game_building_placed(player_num: int, building_type_name: String, position: Vector2):
+func _on_game_building_placed(building_id: String, player_num: int, building_type_name: String, position: Vector2):
 	var building_scene = load(Utils._get_scene_path_for_building_type(building_type_name)).instance()
 	building_scene.player_num = player_num
 	building_scene.position =  position
+	building_scene.building_id = building_id
 	building_scene.activate()
 	add_child(building_scene)
 
 	PlayersManager.get_player(player_num).add_score("building_built")
+	BuildingsManager.add_building(building_scene)
 
 func get_territories(root: Node = self) -> Array:
 	# recursively loop through all nodes in the tree and find all the Territories
@@ -75,6 +81,18 @@ func get_territories(root: Node = self) -> Array:
 			for child_territory in child_territories:
 				territories.append(child_territory)
 	return territories
+
+func get_buildings(root: Node = self) -> Array:
+	# recursively loop through all nodes in the tree and find all the GameBuildings
+	var buildings = []
+	for node in root.get_children():
+		if node is GameBuilding:
+			buildings.append(node)
+		if node.get_child_count() > 0:
+			var child_buildings = get_buildings(node)
+			for child_building in child_buildings:
+				buildings.append(child_building)
+	return buildings
 
 
 func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
