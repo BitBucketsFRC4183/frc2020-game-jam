@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MuyBienClick.ogg-8ec6825d196b6db1584932dbd4a6de6f.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/MuyBienClick.ogg"
+dest_files=[ "res://.import/MuyBienClick.ogg-8ec6825d196b6db1584932dbd4a6de6f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
