@@ -4,6 +4,7 @@ var scene_path: String
 var days_until_next_asteroid := 0
 var wave := 1
 var waves := 15
+var time_to_boss_impact := 0.0
 
 func _ready() -> void:
 	Signals.connect("game_building_placed", self, "_on_game_building_placed")
@@ -14,6 +15,7 @@ func _ready() -> void:
 	# update our asteroid incoming message
 	Signals.connect("asteroid_wave_timer_updated", self, "_on_asteroid_wave_timer_updated")
 	Signals.connect("asteroid_wave_started", self, "_on_asteroid_wave_started")
+	Signals.connect("asteroid_time_estimate", self, "_on_asteroid_time_estimate")
 
 	# update score gui node
 	Signals.connect("player_score_changed", self, "update_player_score_label")
@@ -47,6 +49,11 @@ func _on_asteroid_wave_timer_updated(time_left: float):
 	set_days_until_next_asteroid((time_left / Constants.seconds_per_day) as int)
 
 
+func _on_asteroid_time_estimate(asteroid_id: int, size: int, time_to_impact: float):
+	if size == 3:
+		time_to_boss_impact = time_to_impact
+		_update_asteroid_wave_message()
+
 func _on_asteroid_wave_started(wave: int, waves: int):
 	if self.wave != wave or self.waves != waves:
 		self.wave = wave
@@ -65,10 +72,10 @@ func set_days_until_next_asteroid(value: int):
 
 func _update_asteroid_wave_message():
 	var header = $TopMenu/Center/VBoxContainer/HeaderLabel
-	if wave == waves:
-		header.text = "FINAL WAVE! SHORE UP YOUR DEFENSES!"
+	if (wave + 1) == waves:
+		header.text = "FINAL WAVE! SHORE UP YOUR DEFENSES! %.1f" % [0.0 if time_to_boss_impact <= 0 else time_to_boss_impact]
 	else:
-		header.text = "Asteroid Wave %s of %s incoming in %s days!" % [wave, waves, days_until_next_asteroid]
+		header.text = "Asteroid Wave %s of %s incoming in %s days!" % [wave + 1, waves, days_until_next_asteroid]
 
 
 func _input(event: InputEvent) -> void:

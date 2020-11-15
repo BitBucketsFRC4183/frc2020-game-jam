@@ -35,7 +35,7 @@ scale_random = 0.5
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=6]
 length = 3.0
 loop = true
 step = 0.05
@@ -67,4 +67,4 @@ texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Explode"
-anims/Explode = SubResource( 17 )
+anims/Explode = SubResource( 6 )

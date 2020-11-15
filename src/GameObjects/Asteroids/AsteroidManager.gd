@@ -32,22 +32,20 @@ func _ready():
 		# if we are network server and the server is already started, start the timer
 		$Timer.start(initial_wave_time)
 		Signals.emit_signal("asteroid_wave_timer_updated", $Timer.time_left)
-
-func _on_server_started():
-	if get_tree().is_network_server():
-		print("Starting asteroid waves")
-		# only start the timer to spanw new waves if we are the server
-		$Timer.start(initial_wave_time)
-		Signals.emit_signal("asteroid_wave_timer_updated", $Timer.time_left)
+		Signals.emit_signal("asteroid_wave_started", wave, waves)
 
 func _on_Timer_timeout():
 	wave += 1
-	if wave < waves or waves == -1:
+	if wave < (waves - 1) or waves == -1:
 		$Timer.start(base_wave_time * rand_range(0.25,2))
 		Signals.emit_signal("asteroid_wave_timer_updated", $Timer.time_left)
 	if wave == waves:
+		print_debug("FINAL WAVE")
 		final_wave()
 
+	if wave > waves:
+		print_debug("whoops, we called our timer again after our waves are done")
+		return
 	Signals.emit_signal("asteroid_wave_started", wave, waves)
 
 	asteroid_count += wave + asteroid_quantity_modifier
@@ -116,10 +114,12 @@ func _on_dwarf_planet_destroyed():
 
 func final_wave():
 	var boss = dwarf_planet.instance()
+	boss.id = num_asteroids
+	active_asteroids += 1
+	num_asteroids += 1
 	for territory in territories:
 		if PlayersManager.get_player(territory.territory_owner).ai_controlled == false:
 			boss.global_position = territory.center_global
-			active_asteroids += 1
 			break
 	add_child(boss)
 	# after this asteroid is setup, send it to the clients

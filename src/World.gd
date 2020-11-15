@@ -6,13 +6,25 @@ var isTechTreeOpen
 var isLeaderboardOpen
 var num_asteroids_hit := 0
 
-var num_of_territories = {
-	1: 0,
-	2: 0,
-	3: 0,
-	4: 0,
-	5: 0
-}
+# use these to ignore events 
+var game_over := false
+
+var num_of_territories = [
+	0,
+	0,
+	0,
+	0,
+	0
+]
+
+
+var num_of_destroyed = [
+	0,
+	0,
+	0,
+	0,
+	0	
+]
 
 func _ready():
 	if not get_tree().has_network_peer() and not Server.started:
@@ -28,7 +40,7 @@ func _ready():
 	_add_players_to_world()
 
 	Signals.connect("final_wave_complete", self, "win_game")
-	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
+	Signals.connect("territory_destroyed", self, "_on_territory_destroyed")
 
 	make_territories_list()
 
@@ -38,7 +50,17 @@ func _ready():
 
 
 func win_game():
-	var player_with_highest_score = 1
+	if game_over:
+		# only do this once
+		return
+	game_over = true
+	# let our people revel in success
+	$EndGameDelayTimer.connect("timeout", self, "_on_end_game_win")
+	$EndGameDelayTimer.start()
+
+
+func _on_end_game_win():
+	var player_with_highest_score = PlayersManager.whoami().num
 	var highest_score = PlayersManager.whoami().score
 
 	for p in PlayersManager.players:
@@ -55,6 +77,16 @@ func win_game():
 
 
 func lose_game():
+	if game_over:
+		# only do this once
+		return
+	game_over = true
+	# let our stuff get all messed up and damaged before
+	# we transition
+	$EndGameDelayTimer.connect("timeout", self, "_on_end_game_lose")
+	$EndGameDelayTimer.start()
+
+func _on_end_game_lose():
 	Signals.emit_signal("loser")
 	get_tree().change_scene("res://src/GUI/LoseScreen.tscn")
 
@@ -62,25 +94,15 @@ func lose_game():
 func make_territories_list():
 	var territories = $Map.get_territories()
 	for t in territories:
-		num_of_territories[t.territory_owner] += 1
+		if t.territory_owner > 0 && t.territory_owner <= num_of_territories.size():
+			num_of_territories[t.territory_owner-1] += 1
 
-func _on_asteroid_impact(asteroid_id, impact_point, explosion_radius):
-	var territories = $Map.get_territories()
+func _on_territory_destroyed(t: Territory):
+	if t.territory_owner > 0 and t.territory_owner <= num_of_territories.size() and t.territory_owner <= num_of_destroyed.size():
+		num_of_destroyed[t.territory_owner - 1] += 1
 
-	# for each player id
-	for player in PlayersManager.players:
-		var id = player.num
-		var tiles_destroyed = 0
-		# we go through every territory in the map
-		for t in territories:
-			# only check territory for curernt player
-			if t.territory_owner == id:
-				# if there is a non-destroyed tile, set flag to true
-				# re-start loop which will hit the if statement below
-				if t.type == Enums.territory_types.destroyed:
-					tiles_destroyed += 1
-					if tiles_destroyed == num_of_territories[id]:
-						lose_game()
+		if num_of_destroyed[t.territory_owner - 1] == num_of_territories[t.territory_owner - 1]:
+			lose_game()
 
 
 func _add_players_to_world():

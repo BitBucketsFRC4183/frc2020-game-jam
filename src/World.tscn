@@ -32,4 +32,8 @@ rect_min_size = Vector2( 1920, 1080 )
 visible = false
 
 [node name="AsteroidManager" parent="." instance=ExtResource( 5 )]
+
+[node name="EndGameDelayTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 [connection signal="visibility_changed" from="CanvasLayer/TechTree" to="CanvasLayer/TechTree" method="_on_show"]
