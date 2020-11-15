@@ -1,7 +1,7 @@
 extends Control
 
 var scene_path: String
-var days_until_next_asteroid := 0 
+var days_until_next_asteroid := 0
 var wave := 1
 var waves := 15
 
