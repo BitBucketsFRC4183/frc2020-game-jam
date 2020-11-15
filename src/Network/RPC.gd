@@ -87,7 +87,7 @@ func send_all_messages(messages: Array, id: int = -1):
 remote func all_messages(messages: Array):
 	PlayersManager.player_messages.clear()
 	for message_dict in messages:
-		Signals.emit_signal("player_message", Utils.player_message_from_array(message_dict))
+		Signals.emit_signal("player_message", Utils.player_message_from_dict(message_dict))
 
 
 func send_ready_to_start(ready: bool):
