@@ -135,5 +135,6 @@ func _on_impact_registered(target, area):
 				if child is Territory:
 					child.set_type(Enums.territory_types.destroyed)
 					Signals.emit_signal("territory_destroyed", child)
+	area.queue_free()
 
 
