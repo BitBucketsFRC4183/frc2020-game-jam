@@ -95,6 +95,9 @@ func restore_cursor():
 
 
 func _on_GameBuildingButton_selected(building) -> void:
+	# get rid of any button in our hand
+	Signals.emit_signal("game_building_cancelled")
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	var dir = Directory.new()
@@ -110,7 +113,3 @@ func _on_GameBuildingButton_selected(building) -> void:
 		scene_path = start_path + "ResourceBuildings/" + end_path
 		# pass scene path as well as building name
 		Signals.emit_signal("game_building_selected", scene_path, building)
-
-
-
-

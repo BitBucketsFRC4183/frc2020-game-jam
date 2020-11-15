@@ -6,7 +6,7 @@ var isTechTreeOpen
 var isLeaderboardOpen
 var num_asteroids_hit := 0
 
-# use these to ignore events 
+# use these to ignore events
 var game_over := false
 
 var num_of_territories = [
@@ -23,7 +23,7 @@ var num_of_destroyed = [
 	0,
 	0,
 	0,
-	0	
+	0
 ]
 
 func _ready():
