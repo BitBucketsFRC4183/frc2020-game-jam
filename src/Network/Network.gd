@@ -23,6 +23,7 @@ func _on_connected_to_server():
 
 # Callback from SceneTree, only for clients (not server).
 func _server_disconnected():
+	close_connection()
 	Signals.emit_signal("server_disconnected")
 
 
@@ -54,7 +55,11 @@ func join_game(ip, port):
 
 
 func close_connection():
-	if peer:
+	# if we have a peer and are connected, close the connection
+	if peer and peer.get_connection_status() == 2:
 		peer.close_connection()
-		get_tree().set_network_peer(null) # Remove peer
-		peer = null
+	get_tree().set_network_peer(null) # Remove peer
+	call_deferred("_null_peer")
+
+func _null_peer():
+	peer = null

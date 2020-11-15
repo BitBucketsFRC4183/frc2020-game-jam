@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/TechTreeFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/GUI/Theme.tres" type="Theme" id=2]
 [ext_resource path="res://src/Screens/Lobby.gd" type="Script" id=3]
 [ext_resource path="res://src/GUI/PlayerReadyContainer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/GUI/ServerDisconnectPopup.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -164,6 +165,7 @@ margin_bottom = 40.0
 size_flags_horizontal = 3
 
 [node name="StartGameButton" type="Button" parent="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/StartButtonContainer"]
+visible = false
 margin_right = 120.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 120, 0 )
@@ -189,21 +191,9 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 50, 0 )
 text = "Back"
 
-[node name="Popup" type="CenterContainer" parent="."]
+[node name="Popup" parent="." instance=ExtResource( 5 )]
 visible = false
-margin_right = 1920.0
-margin_bottom = 1080.0
-
-[node name="ServerDisconnectedDialog" type="AcceptDialog" parent="Popup"]
-visible = true
-margin_left = 844.0
-margin_top = 504.0
-margin_right = 1075.0
-margin_bottom = 576.0
-window_title = "Oh Noes!"
-dialog_text = "Server Disconnected"
 [connection signal="text_entered" from="VBoxContainer/HBoxContainer/ChatContainer/ChatMessage" to="." method="_on_ChatMessage_text_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/StartButtonContainer/StartGameButton" to="." method="_on_StartGameButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/ReadyButtonContainer/ReadyButton" to="." method="_on_ReadyButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerReadyContainer/LobbyButtons/ReadyButtonContainer/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="confirmed" from="Popup/ServerDisconnectedDialog" to="." method="_on_ServerDisconnectedDialog_confirmed"]

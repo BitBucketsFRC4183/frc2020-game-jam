@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/GUI/ServerDisconnectPopup.gd" type="Script" id=1]
+[ext_resource path="res://src/GUI/Theme.tres" type="Theme" id=2]
+
+[node name="Popup" type="CenterContainer"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerDisconnectedDialog" type="AcceptDialog" parent="."]
+visible = true
+margin_left = 844.0
+margin_top = 504.0
+margin_right = 1075.0
+margin_bottom = 576.0
+window_title = "Oh Noes!"
+dialog_text = "Server Disconnected"
+[connection signal="confirmed" from="ServerDisconnectedDialog" to="." method="_on_ServerDisconnectedDialog_confirmed"]
