@@ -223,7 +223,7 @@ Buildings improve with research!
 ### EP
 
 Updated documentation, last minute fixes and improvements!
-[readme](../readme.md)
+[README](../README.md)
 
 ### IB
 
