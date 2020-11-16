@@ -172,7 +172,58 @@ New HUD with player gifting!
 
 ### EP
 
+Worked on balance, and added lasers!
+![Lasers](JournalImages/LasersShootingAsteroid.png)
+
+### IB
+
 ...
+
+---
+
+## 11/14/2020
+
+### OS
+
+...
+
+### CP
+
+...
+
+### SM
+
+...
+
+### EP
+
+Buildings improve with research!
+![<Tier-3 Laser>](JournalImages/HighTechLaser.png)
+
+### IB
+
+...
+
+---
+
+## 11/15/2020
+
+### OS
+
+...
+
+### CP
+
+...
+
+### SM
+
+...
+
+### EP
+
+Updated documentation, last minute fixes and improvements!
+[readme](../readme.md)
 
 ### IB
 
