@@ -2,6 +2,8 @@
 
 This journal is a log of the various improvements each developer made during the game jam.
 
+---
+
 ## 11/7/2020
 
 The game jam has begun! The team had a meetup to discuss ideas for a game with Coopertition. We came up with 3 main ideas:
@@ -40,6 +42,34 @@ Researched menu designing godot
 
 ---
 
+## 11/8/2020
+
+### OS
+
+..
+
+### CP
+
+..
+
+### SM
+
+..
+
+### EP
+
+..
+
+### IB
+
+..
+
+### EP
+Map design
+![Map](JournalImages/2020-11-08-01.jpeg)
+
+---
+
 ## 11/9/2020
 
 ### OS
@@ -65,8 +95,7 @@ Tech Tree godot screen layout
 
 ### EP
 
-Map design
-![Map](JournalImages/2020-11-08-01.jpeg)
+..
 
 ### IB
 
