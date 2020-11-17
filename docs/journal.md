@@ -13,6 +13,8 @@ The game jam has begun! The team had a meetup to discuss ideas for a game with C
 
 We quickly settled on the Earth Sim with an asteroid threat, missiles and laser defense, and any nation being destroyed means game over for everyone.
 
+Here is our [brainstorm](brainstorm.md) document we came up with while throwing out ideas.
+
 ### OS
 
 Created initial gamejam project
@@ -77,7 +79,9 @@ Buildings can be placed on territories, and they also cost resources.
 
 ### CP
 
-...
+- Assisted student with asteroid logic and gdscript issues.
+- Added get_territories() logic to get all territories in a map for asteroid selection.
+- Worked on PlayersManager to create 5 human or ai players and manage all their data
 
 ### SM
 
@@ -134,8 +138,9 @@ As you can see in this gif.. it didn't exactly pan out in the beginning
 
 ### CP
 
-More networking work today. Player Management is better structured, and each player that joins becomes another player.
-Implemented networked building placement as well as asteroids
+More networking to fix players joining and assuming AI. Added multiplayer support for asteroid spawning, position and impact.
+Also added support for multiplayer building placement!
+
 ![networkas](JournalImages/Networked-Asteroids.gif)
 ![netowrkbuild](JournalImages/Networked-Building-Placement.gif)
 
@@ -163,8 +168,23 @@ Worked on a wave system for the asteroids!
 
 ### CP
 
-New HUD with player gifting!
-![HUD](JournalImages/2020-11-13-01.png)
+- New HUD
+  ![HUD](JournalImages/2020-11-13-01.png)
+
+- Players can now give gifts to other players. Coopertition mode enabled!
+- Each button turns into a plus icon when you hover over it.
+
+![HUD with resources](JournalImages/2020-11-13-02.png)
+
+- Music! Ievan Polkka, but less dancing cats and more techno.
+- LASER NOISES. Pew Pew!
+- Click sound
+- New gifting icons
+
+![Gift Icons](JournalImages/2020-11-13-03.png)
+![Gift Plus Icon](JournalImages/2020-11-13-04.png)
+
+- Added networked asteroid destroy event
 
 ### SM
 
@@ -189,7 +209,20 @@ Worked on balance, and added lasers!
 
 ### CP
 
-...
+- Main Menu, Settings + Host/Join + Lobby menus written
+
+![Let's All Go to the Lobby](JournalImages/2020-11-14-01.png)
+
+- Shield events syncing over network
+- Tested multiplayer over local network with EP
+
+![Local Network Multiplayer Test](JournalImages/2020-11-14-02.png)
+
+**Quality of life improvements**
+
+- Added settings to disable music and saving port/host for next session
+- Added display for which asteroid wave we're on
+- Made end game conditions disconnect from the network
 
 ### SM
 
@@ -214,7 +247,25 @@ Buildings improve with research!
 
 ### CP
 
-...
+**More Quality of life improvements**
+
+- Wave `n` of `m` title text
+- Final asteroid countdown timer
+- Easy mode
+- Asteroid strike noise to complement OS's screen shake!
+- Added EP's human/robot icons to lobby
+- Leaderboard/Tech Tree icons so SM's awesome features will be discoverable
+
+![Little Icons!](JournalImages/2020-11-15-01.png)
+
+**LOTS of multiplayer fixes**
+
+- Throw error popup if the server disconnects you
+- Moved a bunch of less important things to use udp for network
+- Changed player/asteroid serialization to use array instead of dict
+- Finally located networking bug that was causing an infinite RPC loop between server -> client -> server -> client, etc
+
+Most importantly, the team all played a multiplayer game together and WON! Hooray!
 
 ### SM
 
