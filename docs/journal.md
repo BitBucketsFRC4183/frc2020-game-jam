@@ -46,7 +46,7 @@ Researched menu designing godot
 
 ### OS
 
-..
+Work on the general world scene, and separate our Enums into a singleton so that it's accessible from anywhere.
 
 ### CP
 
@@ -136,6 +136,7 @@ Began designing menu system
 ### OS
 
 Worked on cursor changing based on whether or not a building is being placed or not
+For example, if the user has a mine selected and their mouse is over a non-resource tile, the cursor will show a "forbidden" icon.
 
 ### CP
 
@@ -150,6 +151,7 @@ HW is amazing, so that's why I worked on that
 ### EP
 
 Asteroids now destroy tiles!
+
 ![asteroid destroy](JournalImages/asteroidsdestroy.gif)
 
 ### IB
@@ -164,8 +166,8 @@ Menu Mockups
 
 ### OS
 
-Working on asteroids destroying the buildings on a destroyed tiles.
-As you can see in this gif.. it didn't exactly pan out in the beginning
+Working on asteroids destroying the buildings on a destroyed tile.
+As you can see in this gif.. it didn't exactly pan out in the beginning.
 
 ![Asteroid Destruction](JournalImages/2020-11-12-01.gif)
 
@@ -179,12 +181,12 @@ Also added support for multiplayer building placement!
 
 ### SM
 
-Worked on tech tree (UI fixes, added keybind), nodes change based on whether or not players can research a tech, and it shows a progress bar!
+Worked on tech tree (UI fixes, added keybind), nodes change based on whether or not players can research a tech, and it shows a progress bar! (ignore weird GIF compression)
 ![techtree](JournalImages/tecthree.gif)
 
 ### EP
 
-Worked on a wave system for the asteroids!
+Worked on a wave system for the asteroids! (ignore weird GIF compression)
 ![wave](JournalImages/asteoridwave.gif)
 
 ### IB
@@ -197,7 +199,11 @@ Worked on a wave system for the asteroids!
 
 ### OS
 
-...
+Buildings show a hitbox radius when being placed so you have a better idea of where you can and can't place it:
+![radius](JournalImages/radius.png)
+
+Additionally, I got a basic AI running, which automatically places buildings in a pre-defined sequence at pre-defined spots when it has the money to.
+![AI](journalimages/AI.gif)
 
 ### CP
 
@@ -240,7 +246,19 @@ Worked on balance, and added lasers!
 
 ### OS
 
-...
+- Implemented WASD controls for the camera pan
+
+Many AI improvements
+- AI was now on all the countries and automatically turned on/off based on whether or not there was a real player connected
+  - There was ~~many~~ *some* bugs with this, but we got them sorted out eventually
+- After AI's built the 10 pre-defined buildings, they would spam lasers in random areas.
+    ![ai spam](journalimages/aispam.png)
+- The AI now researched in the tech tree as well, so that it wouldn't be at too much of a disadvantage.
+  - There were also some bugs with this where even if the AI was turned off (if a player was connected), it would still research for the player.   
+  Turns out the function call for researching tech was outside of the if-statement which decided whether or not to execute the AI code.
+
+- Additionally, I implemented some smoke particles for when asteroids destroyed tiles!
+![smoke](journalimages/smoke.gif)
 
 ### CP
 
@@ -277,9 +295,27 @@ Buildings improve with research!
 
 ## 11/15/2020
 
+**The final day!!**
+
 ### OS
 
-...
+As one final feature - one that was on my to-do for multiple days at this point, as well as one that would nicely complement the smoke - I implemented a camera shake for when asteroids hit tiles:
+
+![screnshake](journalimages/shake.gif)
+
+This was implemented around 10:40 AM (MST, so 12:40 et) and the next 3 or so hours were devoted to various small features and bug fixes throughout the game:
+
+- Added a Quit option so that the player can go back to the main menu by pressing Q
+- You can now pan with right click as well so that people without mouses/people who macs (smh) can move around
+- Some score balance changes where people who destroy/deflect asteroids don't gain points otherwise Orange and random countries in Europe would get an unfair advantage
+- Changed window scaling options so that the aspect ratio would be maintained. One of our teammates tested it on their ultra-wide, and results were... not optimal
+- Showed the cost of a building above it so that the player has a better idea of how much they need to build something
+- Made the bg blue since the ocean is blue
+- Implemented code to darken the building button at the bottom if you can't afford it
+  - This is a bit buggy, but it works enough
+- Fixed a bug where you would lose randomly
+
+Around 2 PM or so (it was due at 4 pm for us) we began to transition to testing networking and multiplayer (and CP fixed them!), and we tagged our release just 20 minutes before it was due!
 
 ### CP
 
