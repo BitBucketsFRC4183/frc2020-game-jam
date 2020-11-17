@@ -1,5 +1,9 @@
 # Asteroid Apocalypse
 
+<span style="background-color:#19558f;">
+
+![screenshot](screenshot.png)
+
 You are leading a nation and helping to defend the world against waves of asteroids. You must build mines and power plants to supply your nation with resources and power cells. You must research new technologies to defend your country and the world against the asteroids. You must share science, resources, and power cells with other countries to protect them. The nation that builds the most successful asteroid defense wins. If any nation falls, we all lose.
 
 ## Coopertition
@@ -64,3 +68,5 @@ Asteroid Apocalypse supports multiplayer over the internet. Unfortunatley, the n
 # Game Journal
 
 Check out the [Journal](docs/journal.md) for a log of our progress!
+
+</span>
