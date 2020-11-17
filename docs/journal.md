@@ -4,6 +4,16 @@ This journal is a log of the various improvements each developer made during the
 
 ---
 
+## Credits
+
+- Craig Post - mentor/team leader/networking
+- Ojas Sanghi - Game logic, core engine, and Godot evangelist
+- Sap Mallick - Research Tree, Research and Score
+- Elias Post - Asteroids, Lasers, Shields and Game Balancing
+- Ibrahim Bah - Menu Design/Game Design
+- Kevin Forbes - Testing/Lobby autoscroll/UI Improvements
+- Howard Beck - Playtesting and Feedback
+
 ## 11/7/2020
 
 The game jam has begun! The team had a meetup to discuss ideas for a game with Coopertition. We came up with 3 main ideas:
@@ -46,25 +56,29 @@ Researched menu designing godot
 
 ### OS
 
-Work on the general world scene, and separate our Enums into a singleton so that it's accessible from anywhere.
+- Work on the general world scene, and separate our Enums into a singleton so that it's accessible from anywhere.
+- Created Signals singleton for easy node signal communication
 
 ### CP
 
-..
+- Created Territory CollisionPolygon2D node for map editing
 
 ### SM
 
-..
+- Tech tree initial UI design with Godot UI and circles
+- Hooked up each tech button to signals
 
 ### EP
 
-..
+- Built initial map
+- Created Building Icons
 
 ### IB
 
 ..
 
 ### EP
+
 Map design
 ![Map](JournalImages/2020-11-08-01.jpeg)
 
@@ -249,16 +263,18 @@ Worked on balance, and added lasers!
 - Implemented WASD controls for the camera pan
 
 Many AI improvements
+
 - AI was now on all the countries and automatically turned on/off based on whether or not there was a real player connected
-  - There was ~~many~~ *some* bugs with this, but we got them sorted out eventually
+  - There was ~~many~~ _some_ bugs with this, but we got them sorted out eventually
 - After AI's built the 10 pre-defined buildings, they would spam lasers in random areas.
-    ![ai spam](journalimages/aispam.png)
+  ![ai spam](journalimages/aispam.png)
 - The AI now researched in the tech tree as well, so that it wouldn't be at too much of a disadvantage.
-  - There were also some bugs with this where even if the AI was turned off (if a player was connected), it would still research for the player.   
-  Turns out the function call for researching tech was outside of the if-statement which decided whether or not to execute the AI code.
+
+  - There were also some bugs with this where even if the AI was turned off (if a player was connected), it would still research for the player.  
+    Turns out the function call for researching tech was outside of the if-statement which decided whether or not to execute the AI code.
 
 - Additionally, I implemented some smoke particles for when asteroids destroyed tiles!
-![smoke](journalimages/smoke.gif)
+  ![smoke](journalimages/smoke.gif)
 
 ### CP
 
