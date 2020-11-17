@@ -56,6 +56,10 @@ Managed to get the client and server in sync
 
 ### SM
 
+Added Tech Tree nodes with textures
+Added a costs dictionary to hold each Tech's cost
+Added a popup that opens when the player clicks on a node
+Players can research tech and it updates their data accordingly
 Tech Tree godot screen layout
 ![Tech Tree](JournalImages/2020-11-08-02.png)
 
@@ -85,7 +89,7 @@ Buildings can be placed on territories, and they also cost resources.
 
 ### SM
 
-...
+Tech Tree UI improvements (labels, readability)
 
 ### EP
 
@@ -112,7 +116,7 @@ More networking work today. Player Management is better structured, and each pla
 
 ### SM
 
-...
+HW is amazing, so that's why I worked on that
 
 ### EP
 
@@ -146,7 +150,7 @@ Also added support for multiplayer building placement!
 
 ### SM
 
-Worked on tech tree, nodes change based on whether or not players can research a tech, and it shows a progress bar!
+Worked on tech tree (UI fixes, added keybind), nodes change based on whether or not players can research a tech, and it shows a progress bar!
 ![techtree](JournalImages/tecthree.gif)
 
 ### EP
@@ -188,7 +192,9 @@ Worked on a wave system for the asteroids!
 
 ### SM
 
-...
+Worked on score - granted score based on a variety of events (like building, asteroids, researching, donating)
+Added a basic leaderboard
+Removed missiles :(
 
 ### EP
 
@@ -226,7 +232,8 @@ Worked on balance, and added lasers!
 
 ### SM
 
-...
+Leaderboard UI improvements (awesome new textures), research bug fixes
+![New Leaderboard](JournalImages/newleaderboard.png)
 
 ### EP
 
@@ -269,7 +276,7 @@ Most importantly, the team all played a multiplayer game together and WON! Hoora
 
 ### SM
 
-...
+Added a way to view the leaderboard when the game ends
 
 ### EP
 
