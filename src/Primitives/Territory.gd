@@ -22,11 +22,13 @@ func _ready():
 	$Polygon2D.color = get_polygon_color()
 
 	calculate_center()
+	
 
 	if not Engine.editor_hint:
 		call_deferred("_reparent_area2d")
 		$Center.position = center_local
 		center_global = $Center.global_position
+		$Smoke.global_position = center_global
 
 func _reparent_area2d():
 	# make this area2d our parent so we can create a polygon2d in the editor, but
@@ -48,6 +50,10 @@ func set_territory_owner(value: int):
 func set_type(value):
 	type = value
 	$Polygon2D.color = get_polygon_color()
+	if type == Enums.territory_types.destroyed:
+		$Smoke.visible = true
+	else:
+		$Smoke.visible = false
 
 func get_polygon_color():
 	if type == Enums.territory_types.normal:
