@@ -1,10 +1,8 @@
 # Asteroid Apocalypse
 
-<span style="background-color:#19558f;">
-
 ![screenshot](screenshot.png)
 
-You are leading a nation and helping to defend the world against waves of asteroids. You must build mines and power plants to supply your nation with resources and power cells. You must research new technologies to defend your country and the world against the asteroids. You must share science, resources, and power cells with other countries to protect them. The nation that builds the most successful asteroid defense wins. If any nation falls, we all lose.
+You and up to 4 of your friends are leaders in charge of protecting your countries from an incoming ASTEROID APOCALYPSE! Band together for a thrilling, real time, cooperative strategy game. Build shields and lasers to protect yourself and your neighbors. Build mines, power plants and labs to improve your economy. Research new technology to improve your buildings. Give to those in need when you have plenty. Who among your friends will come out on top? Will you even survive AT ALL?
 
 ## Coopertition
 
@@ -24,13 +22,13 @@ See if you and you friends can make it to the end! Good luck!
 
 ## Buildings
 
-| Building    | Icons                                            | Purpose                                                  |
-| ----------- | ------------------------------------------------ | -------------------------------------------------------- |
-| Mine        | ![Mine](assets/icons/Mine.png)                   | Generates raw resources stored for building              |
-| Power Plant | ![<Power Plant>](<assets/icons/Power Plant.png>) | Generates power cells used for making defenses           |
-| Lab         | ![Lab](assets/icons/Lab.png)                     | Generates science points for research                    |
-| Shield      | ![Shield](assets/icons/Shield.png)               | Protects against asteroids that impact within its radius |
-| Laser       | ![Laser](assets/icons/Missile.png)               | Shoots down asteroids that fall through its radius       |
+| Building    | Icons                                                                                         | Purpose                                                  |
+| ----------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Mine        | <div style="background-color:#19558f;">![Mine](assets/icons/Mine.png)</div>                   | Generates raw resources stored for building              |
+| Power Plant | <div style="background-color:#19558f;">![<Power Plant>](<assets/icons/Power Plant.png>)</div> | Generates power cells used for making defenses           |
+| Lab         | <div style="background-color:#19558f;">![Lab](assets/icons/Lab.png)</div>                     | Generates science points for research                    |
+| Shield      | <div style="background-color:#19558f;">![Shield](assets/icons/Shield.png)</div>               | Protects against asteroids that impact within its radius |
+| Laser       | <div style="background-color:#19558f;">![Laser](assets/icons/Missile.png)</div>               | Shoots down asteroids that fall through its radius       |
 
 ## Research
 
@@ -68,5 +66,3 @@ Asteroid Apocalypse supports multiplayer over the internet. Unfortunatley, the n
 # Game Journal
 
 Check out the [Journal](docs/journal.md) for a log of our progress!
-
-</span>
