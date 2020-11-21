@@ -38,7 +38,9 @@ func host_game(single_player := true):
 	# for single player games, we have 0 users
 
 	peer = NetworkedMultiplayerENet.new()
-	peer.create_server(Settings.server_port, 1 if single_player else Constants.num_players)
+	var error := peer.create_server(Settings.server_port, 1 if single_player else Constants.num_players)
+	if error != OK:
+		printerr("Failed to create local server: %s" % error)
 	get_tree().set_network_peer(peer)
 
 	if single_player:
