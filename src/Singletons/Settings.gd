@@ -16,6 +16,7 @@ func _ready():
 		play_music = config.get_value("audio", "play_music", play_music)
 		client_host = config.get_value("network", "client_host", client_host)
 		client_port = config.get_value("network", "client_port", client_port)
+		server_port = config.get_value("network", "server_port", server_port)
 
 func set_play_music(value: bool):
 	if play_music != value:

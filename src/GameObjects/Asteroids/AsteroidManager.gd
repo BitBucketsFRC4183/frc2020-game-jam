@@ -23,7 +23,7 @@ var dwarf_planet_destroyed = false
 func _ready():
 	Signals.connect("asteroid_impact", self, "_on_asteroid_impact")
 	Signals.connect("asteroid_destroyed", self, "_on_asteroid_destroyed")
-	Signals.connect("server_started", self, "_on_server_started")
+
 	# clients listen for asteroid_incoming messages
 	Signals.connect("asteroid_incoming", self, "_on_asteroid_incoming")
 	Signals.connect("dwarf_planet_destroyed", self, "_on_dwarf_planet_destroyed")
