@@ -1,6 +1,6 @@
 # Asteroid Apocalypse
 
-![screenshot](screenshot.png)
+![screenshot](docs/screenshot.png)
 
 You and up to 4 of your friends are leaders in charge of protecting your countries from an incoming ASTEROID APOCALYPSE! Band together for a thrilling, real time, cooperative strategy game. Build shields and lasers to protect yourself and your neighbors. Build mines, power plants and labs to improve your economy. Research new technology to improve your buildings. Give to those in need when you have plenty. Who among your friends will come out on top? Will you even survive AT ALL?
 
